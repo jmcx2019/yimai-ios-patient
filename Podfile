@@ -10,6 +10,7 @@ target 'YiMaiPatient' do
   pod 'swiftScan'
   pod 'Proposer'
   pod 'SwiftDate'
+  pod 'MWIDCardValidate'
   pod 'Graph'
 end
 
