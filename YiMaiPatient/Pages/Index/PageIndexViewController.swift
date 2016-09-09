@@ -13,17 +13,10 @@ public class PageIndexViewController: PageViewController {
     public var BodyView: PageIndexBodyView? = nil
     override func PageLayout() {
         super.PageLayout()
-        let img = YMLayout.GetSuitableImageView("TIndexBkg")
-        let scroll = UIScrollView()
+        BodyView = PageIndexBodyView(parentView: self.SelfView!, navController: self.NavController!)
+        TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "")
 
-        self.SelfView!.addSubview(scroll)
-        scroll.fillSuperview()
-        scroll.addSubview(img)
-        
-        img.anchorToEdge(Edge.Top, padding: 0, width: img.width, height: img.height)
-        
-        YMLayout.SetVScrollViewContentSize(scroll, lastSubView: img)
-        
-//        BodyView = PageIndexBodyView(parentView: self.SelfView!, navController: self.NavController!)
+        BodyView?.DrawTopBtn(TopView!.TopViewPanel)
+        BodyView?.DrawSideBar()
     }
 }

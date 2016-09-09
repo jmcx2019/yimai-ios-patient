@@ -8,6 +8,7 @@
 
 import Foundation
 import AFNetworking
+import SwiftyJSON
 
 public typealias YMAPIJsonCallback = ((NSDictionary?) -> Void)
 public typealias YMAPIImageCallback = ((UIImage?) -> Void)
@@ -141,6 +142,27 @@ public class YMAPICommonVariable {
 public class YMAPIUtility {
 
     private var Key: String = ""
+    
+    public static func PrintErrorInfo(error: NSError) {
+        if(nil != error.userInfo["com.alamofire.serialization.response.error.response"]) {
+            let response = error.userInfo["com.alamofire.serialization.response.error.response"]!
+            let errInfo = error.userInfo["com.alamofire.serialization.response.error.data"] as? NSData
+            let errStr = NSString(data: errInfo!, encoding: NSUTF8StringEncoding)
+            
+            
+            print("error code is : \(response.statusCode)")
+            if(nil != errInfo) {
+                print("error info is : \(JSON(errInfo!))")
+            } else {
+                print("no error info")
+            }
+            
+            print("------------org error info---------------")
+            print(errStr)
+        } else {
+            print(error)
+        }
+    }
     
     private static func AppendTokenToUrl(url:String, token: String) -> String {
         return url + "?\(YMCommonStrings.CS_API_PARAM_KEY_TOKEN)=\(token)"
@@ -328,13 +350,13 @@ public class YMAPIUtility {
 
         YMCoreDataEngine.SaveData(YMCoreDataKeyStrings.CS_USER_INFO, data: realData[YMCoreDataKeyStrings.INIT_DATA_USER]!)
         YMCoreDataEngine.SaveData(YMCoreDataKeyStrings.CS_SYSTEM_INFO, data: realData[YMCoreDataKeyStrings.INIT_DATA_SYS_INFO]!)
-        YMCoreDataEngine.SaveData(YMCoreDataKeyStrings.CS_USER_RELATIONS, data: realData[YMCoreDataKeyStrings.INIT_DATA_RELATIONS]!)
-        YMCoreDataEngine.SaveData(YMCoreDataKeyStrings.CS_RECENT_CONTACTS, data: realData[YMCoreDataKeyStrings.INIT_DATA_RECENT_CONTACTS]!)
         
-        let userData = realData[YMCoreDataKeyStrings.INIT_DATA_USER] as! [String: AnyObject]
-        if(nil != userData["rong_yun_token"] as? String) {
-            let ryTonken = userData["rong_yun_token"] as! String
-        }
+        YMVar.MyInfo = realData[YMCoreDataKeyStrings.INIT_DATA_USER] as! [String: AnyObject]
+        
+//        let userData = realData[YMCoreDataKeyStrings.INIT_DATA_USER] as! [String: AnyObject]
+//        if(nil != userData["rong_yun_token"] as? String) {
+//            let ryTonken = userData["rong_yun_token"] as! String
+//        }
     }
     
     private func YMGetInitDataError(error: NSError) {

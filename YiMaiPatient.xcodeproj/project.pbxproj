@@ -70,6 +70,8 @@
 		73A678901D60C3720005E90C /* PageIndex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A678921D60C3720005E90C /* PageIndex.storyboard */; };
 		73A678941D60C37F0005E90C /* PageIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A678931D60C37F0005E90C /* PageIndexViewController.swift */; };
 		73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A678951D60C3B70005E90C /* PageIndexBodyView.swift */; };
+		FD4735CD1D81B22000BBEF16 /* SwiftQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */; };
+		FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -161,6 +163,8 @@
 		73A678931D60C37F0005E90C /* PageIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexViewController.swift; sourceTree = "<group>"; };
 		73A678951D60C3B70005E90C /* PageIndexBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexBodyView.swift; sourceTree = "<group>"; };
 		F7591AC2A9B639D8F3C115FB /* Pods_YiMaiPatient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiMaiPatient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRCode.swift; sourceTree = "<group>"; };
+		FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexActions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +222,7 @@
 				730DDF5D1D5EC4D600E4ABB6 /* YMNetworkUtility.swift */,
 				730DDF5E1D5EC4D600E4ABB6 /* YMValueValidator.swift */,
 				730DDF5F1D5EC4D600E4ABB6 /* YMVar.swift */,
+				FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -514,20 +519,13 @@
 		73A6788A1D60C3530005E90C /* Index */ = {
 			isa = PBXGroup;
 			children = (
-				73A6788B1D60C3530005E90C /* Actions */,
+				FDDEFC6D1D810D5E00887C3E /* Actions */,
 				73A6788C1D60C3530005E90C /* Body */,
 				73A6788D1D60C3530005E90C /* Top */,
 				73A678921D60C3720005E90C /* PageIndex.storyboard */,
 				73A678931D60C37F0005E90C /* PageIndexViewController.swift */,
 			);
 			path = Index;
-			sourceTree = "<group>";
-		};
-		73A6788B1D60C3530005E90C /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 		73A6788C1D60C3530005E90C /* Body */ = {
@@ -554,6 +552,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FDDEFC6D1D810D5E00887C3E /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -561,12 +567,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7312EDA71D5EB99D006F6B56 /* Build configuration list for PBXNativeTarget "YiMaiPatient" */;
 			buildPhases = (
-				8BF0E751DCBCFC06E02020CC /* 📦 Check Pods Manifest.lock */,
+				8BF0E751DCBCFC06E02020CC /* [CP] Check Pods Manifest.lock */,
 				7312ED781D5EB99D006F6B56 /* Sources */,
 				7312ED791D5EB99D006F6B56 /* Frameworks */,
 				7312ED7A1D5EB99D006F6B56 /* Resources */,
-				5BC83E4C6EE086DD73CC032E /* 📦 Embed Pods Frameworks */,
-				1976EFD96378C579CBEDE2D5 /* 📦 Copy Pods Resources */,
+				5BC83E4C6EE086DD73CC032E /* [CP] Embed Pods Frameworks */,
+				1976EFD96378C579CBEDE2D5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -692,14 +698,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1976EFD96378C579CBEDE2D5 /* 📦 Copy Pods Resources */ = {
+		1976EFD96378C579CBEDE2D5 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,14 +713,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YiMaiPatient/Pods-YiMaiPatient-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5BC83E4C6EE086DD73CC032E /* 📦 Embed Pods Frameworks */ = {
+		5BC83E4C6EE086DD73CC032E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,14 +728,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YiMaiPatient/Pods-YiMaiPatient-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8BF0E751DCBCFC06E02020CC /* 📦 Check Pods Manifest.lock */ = {
+		8BF0E751DCBCFC06E02020CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -760,6 +766,7 @@
 				730DDF731D5EC4D600E4ABB6 /* YMLoaclData.swift in Sources */,
 				730DDF721D5EC4D600E4ABB6 /* YMCoreDataEngine.swift in Sources */,
 				7307BFDD1D5EF442000F31E5 /* PageRegisterActions.swift in Sources */,
+				FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */,
 				730DDF751D5EC4D600E4ABB6 /* YMNetworkUtility.swift in Sources */,
 				730DDF891D5EC5A800E4ABB6 /* YMCommonStrings.swift in Sources */,
 				73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */,
@@ -774,6 +781,7 @@
 				730DDF821D5EC4D600E4ABB6 /* YMTableView.swift in Sources */,
 				730DDF841D5EC4D600E4ABB6 /* YMTextInput.swift in Sources */,
 				730DDF811D5EC4D600E4ABB6 /* YMSelectors.swift in Sources */,
+				FD4735CD1D81B22000BBEF16 /* SwiftQRCode.swift in Sources */,
 				738F49581D5ECD2D00E577F4 /* PageLoginActions.swift in Sources */,
 				730DDF971D5EC64600E4ABB6 /* YMCommonActions.swift in Sources */,
 				730DDF801D5EC4D600E4ABB6 /* YMDatetime.swift in Sources */,

@@ -42,5 +42,8 @@ public class YMColors {
     
     public static let PatientFontGreen = UIColor(red: 0x60.RGBVal(), green: 0xb6.RGBVal(), blue: 0x56.RGBVal(), alpha: 1)
     public static let PatientFontGray = UIColor(red: 0x95.RGBVal(), green: 0x95.RGBVal(), blue: 0x95.RGBVal(), alpha: 1)
+    public static let PatientFontDarkGray = UIColor(red: 0x84.RGBVal(), green: 0x84.RGBVal(), blue: 0x84.RGBVal(), alpha: 1)
     public static let PatientDisabledBtnBkgGray = UIColor(red: 0xdf.RGBVal(), green: 0xdf.RGBVal(), blue: 0xdf.RGBVal(), alpha: 1)
+    public static let PatientBorderGray = UIColor(red: 0xed.RGBVal(), green: 0xed.RGBVal(), blue: 0xed.RGBVal(), alpha: 1)
+    public static let PatientBorderDarkGray = UIColor(red: 0xe0.RGBVal(), green: 0xe0.RGBVal(), blue: 0xe0.RGBVal(), alpha: 1)
 }

@@ -28,8 +28,7 @@ public class PageRegisterActions: PageJumpActions {
     }
     
     private func GetVerifyCodeError(error: NSError){
-        let errInfo = JSON(data: error.userInfo["com.alamofire.serialization.response.error.data"] as! NSData)
-        YMPageModalMessage.ShowErrorInfo("\(errInfo["message"])", nav: self.NavController!)
+        YMAPIUtility.PrintErrorInfo(error)
     }
     
     private func GetVerifyCodeSuccess(data: NSDictionary?) {
