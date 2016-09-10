@@ -34,6 +34,8 @@ public class YMAPIInterfaceURL {
     static let GetCity = YMAPIInterfaceURL.ApiBaseUrl + "/city"
     static let GetCityGrouped = YMAPIInterfaceURL.ApiBaseUrl + "/city/group"
     
+    static let GetMyDoctors = YMAPIInterfaceURL.ApiBaseUrl + "/search/my-doctor"
+    
     static let SearchHospital = YMAPIInterfaceURL.ApiBaseUrl + "/hospital/search"
     static let GetHospitalById = YMAPIInterfaceURL.ApiBaseUrl + "/hospital"
     static let GetHospitalsByCity = YMAPIInterfaceURL.ApiBaseUrl + "/hospital/city"
@@ -684,6 +686,10 @@ public class YMAPIUtility {
 
         finallyParam!["type"] = "same_department"
         YMAPIPost(YMAPIInterfaceURL.GetSameDepartmentList, param: finallyParam, progressHandler: nil)
+    }
+    
+    public func YMGetMyDoctors() {
+        YMAPIPost(YMAPIInterfaceURL.GetMyDoctors, param: nil, progressHandler: nil)
     }
 }
 

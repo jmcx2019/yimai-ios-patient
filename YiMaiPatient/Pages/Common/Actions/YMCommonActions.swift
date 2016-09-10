@@ -13,21 +13,7 @@ public class YMCommonActions : PageJumpActions {
     
     private let PageBottomIconByCurrentPage = [
         YMCommonStrings.CS_PAGE_INDEX_NAME:[
-            YMCommonStrings.CS_PAGE_INDEX_NAME:"IndexButtonHomeBlue",
-            YMCommonStrings.CS_PAGE_YIMAI_NAME:"IndexButtonYiMaiGray",
-            YMCommonStrings.CS_PAGE_PERSONAL_NAME:"IndexButtonPersonalGray"
-        ],
-        
-        YMCommonStrings.CS_PAGE_YIMAI_NAME:[
-            YMCommonStrings.CS_PAGE_INDEX_NAME:"IndexButtonHomeGray",
-            YMCommonStrings.CS_PAGE_YIMAI_NAME:"IndexButtonYiMaiBlue",
-            YMCommonStrings.CS_PAGE_PERSONAL_NAME:"IndexButtonPersonalGray"
-        ],
-        
-        YMCommonStrings.CS_PAGE_PERSONAL_NAME:[
-            YMCommonStrings.CS_PAGE_INDEX_NAME:"IndexButtonHomeGray",
-            YMCommonStrings.CS_PAGE_YIMAI_NAME:"IndexButtonYiMaiGray",
-            YMCommonStrings.CS_PAGE_PERSONAL_NAME:"IndexButtonPersonalBlue"
+            YMCommonStrings.CS_PAGE_INDEX_NAME:"IndexButtonHomeBlue"
         ]
     ]
 

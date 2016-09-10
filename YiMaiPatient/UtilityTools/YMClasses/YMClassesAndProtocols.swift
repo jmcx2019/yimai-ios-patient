@@ -15,7 +15,9 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_INDEX_NAME: true,
         YMCommonStrings.CS_PAGE_REGISTER_NAME: true,
         YMCommonStrings.CS_PAGE_REGISTER_PERSONAL_INFO_NAME: true,
-        YMCommonStrings.CS_PAGE_SELECT_CITY_NAME: true
+        YMCommonStrings.CS_PAGE_SELECT_CITY_NAME: true,
+        YMCommonStrings.CS_PAGE_GET_MY_DOCTORS_NAME: true
+
     ]
 }
 
@@ -24,8 +26,6 @@ public class NoBackByGesturePage {
         YMCommonStrings.CS_PAGE_LOGIN_NAME: true,
         YMCommonStrings.CS_PAGE_REGISTER_PERSONAL_INFO_NAME: true,
         YMCommonStrings.CS_PAGE_INDEX_NAME:true,
-        YMCommonStrings.CS_PAGE_PERSONAL_NAME:true,
-        YMCommonStrings.CS_PAGE_YIMAI_NAME:true
     ]
 }
 

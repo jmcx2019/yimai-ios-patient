@@ -23,7 +23,8 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func AdmissionButtonTouched(gr: UIGestureRecognizer) {
-        print("AdmissionButtonTouched")
+//        print("AdmissionButtonTouched")
+        DoJump(YMCommonStrings.CS_PAGE_GET_MY_DOCTORS_NAME)
     }
     
     public func AppointmentButtonTouched(gr: UIGestureRecognizer) {

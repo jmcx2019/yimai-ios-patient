@@ -25,9 +25,7 @@ public class PageCommonBottomView : NSObject {
     private var PersonalImageButton: YMTouchableImageView? = nil
     
     public static var BottomButtonImage = [
-        YMCommonStrings.CS_PAGE_INDEX_NAME:"IndexButtonHomeBlue",
-        YMCommonStrings.CS_PAGE_YIMAI_NAME:"IndexButtonYiMaiGray",
-        YMCommonStrings.CS_PAGE_PERSONAL_NAME:"IndexButtonPersonalGray"
+        YMCommonStrings.CS_PAGE_INDEX_NAME:"IndexButtonHomeBlue"
     ]
     
     convenience init(parentView:UIView, navController:UINavigationController) {
@@ -45,43 +43,6 @@ public class PageCommonBottomView : NSObject {
     }
     
     private func DrawBottomPanel() {
-        IndexButton = UIView()
-        YiMaiButton = UIView()
-        PersonalButton = UIView()
-        
-        let bottomShadow = UIView()
-        bottomShadow.layer.shadowOffset = CGSizeMake(0, 4);
-        bottomShadow.layer.shadowOpacity = 0.6;
-        bottomShadow.layer.shadowColor = UIColor.blackColor().CGColor
-        bottomShadow.backgroundColor = UIColor.whiteColor()
-        
-        BottomViewPanel.addSubview(bottomShadow)
-        BottomViewPanel.addSubview(IndexButton!)
-        BottomViewPanel.addSubview(YiMaiButton!)
-        BottomViewPanel.addSubview(PersonalButton!)
-        
-        bottomShadow.fillSuperview()
-        BottomViewPanel.groupAndFill(group: Group.Horizontal, views: [IndexButton!, YiMaiButton!, PersonalButton!], padding: 0)
 
-        IndexImageButton = YMLayout.GetTouchableImageView(useObject: Actions!, useMethod: "PageJumpToByImageViewSender:".Sel(),
-            imageName: PageCommonBottomView.BottomButtonImage[YMCommonStrings.CS_PAGE_INDEX_NAME]!)
-        
-        YiMaiImageButton = YMLayout.GetTouchableImageView(useObject: Actions!, useMethod: "PageJumpToByImageViewSender:".Sel(),
-            imageName: PageCommonBottomView.BottomButtonImage[YMCommonStrings.CS_PAGE_YIMAI_NAME]!)
-        
-        PersonalImageButton = YMLayout.GetTouchableImageView(useObject: Actions!, useMethod: "PageJumpToByImageViewSender:".Sel(),
-            imageName: PageCommonBottomView.BottomButtonImage[YMCommonStrings.CS_PAGE_PERSONAL_NAME]!)
-        
-        IndexImageButton?.UserStringData = YMCommonStrings.CS_PAGE_INDEX_NAME
-        YiMaiImageButton?.UserStringData = YMCommonStrings.CS_PAGE_YIMAI_NAME
-        PersonalImageButton?.UserStringData = YMCommonStrings.CS_PAGE_PERSONAL_NAME
-        
-        IndexButton?.addSubview(IndexImageButton!)
-        YiMaiButton?.addSubview(YiMaiImageButton!)
-        PersonalButton?.addSubview(PersonalImageButton!)
-        
-        IndexImageButton?.anchorInCenter(width: (IndexImageButton?.width)!, height: (IndexImageButton?.height)!)
-        YiMaiImageButton?.anchorInCenter(width: (YiMaiImageButton?.width)!, height: (YiMaiImageButton?.height)!)
-        PersonalImageButton?.anchorInCenter(width: (PersonalImageButton?.width)!, height: (PersonalImageButton?.height)!)
     }
 }

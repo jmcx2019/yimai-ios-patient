@@ -71,6 +71,10 @@
 		73A678941D60C37F0005E90C /* PageIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A678931D60C37F0005E90C /* PageIndexViewController.swift */; };
 		73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A678951D60C3B70005E90C /* PageIndexBodyView.swift */; };
 		FD4735CD1D81B22000BBEF16 /* SwiftQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */; };
+		FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */; };
+		FDB5B0BF1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */; };
+		FDB5B0C11D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */; };
+		FDB5B0C31D8262A000FD07C4 /* PageGetMyDoctorsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0C21D8262A000FD07C4 /* PageGetMyDoctorsActions.swift */; };
 		FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +168,10 @@
 		73A678951D60C3B70005E90C /* PageIndexBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexBodyView.swift; sourceTree = "<group>"; };
 		F7591AC2A9B639D8F3C115FB /* Pods_YiMaiPatient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiMaiPatient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRCode.swift; sourceTree = "<group>"; };
+		FDB5B0BA1D82620C00FD07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageGetMyDoctors.storyboard; sourceTree = "<group>"; };
+		FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsViewController.swift; sourceTree = "<group>"; };
+		FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsBodyView.swift; sourceTree = "<group>"; };
+		FDB5B0C21D8262A000FD07C4 /* PageGetMyDoctorsActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsActions.swift; sourceTree = "<group>"; };
 		FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexActions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -271,6 +279,7 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				FDB5B0B41D8261E800FD07C4 /* GetMyDoctors */,
 				73A6788A1D60C3530005E90C /* Index */,
 				738F495B1D5ECF7500E577F4 /* AppLoading */,
 				738F49421D5EC98B00E577F4 /* Login */,
@@ -552,6 +561,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FDB5B0B41D8261E800FD07C4 /* GetMyDoctors */ = {
+			isa = PBXGroup;
+			children = (
+				FDB5B0B51D8261E800FD07C4 /* Actions */,
+				FDB5B0B61D8261E800FD07C4 /* Body */,
+				FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */,
+				FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */,
+			);
+			path = GetMyDoctors;
+			sourceTree = "<group>";
+		};
+		FDB5B0B51D8261E800FD07C4 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FDB5B0C21D8262A000FD07C4 /* PageGetMyDoctorsActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		FDB5B0B61D8261E800FD07C4 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
 		FDDEFC6D1D810D5E00887C3E /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -670,6 +706,7 @@
 			files = (
 				73A678901D60C3720005E90C /* PageIndex.storyboard in Resources */,
 				7307BFD31D5EEF7B000F31E5 /* PageRegister.storyboard in Resources */,
+				FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */,
 				7312ED8D1D5EB99D006F6B56 /* LaunchScreen.storyboard in Resources */,
 				738F495F1D5ED04300E577F4 /* PageAppLoading.storyboard in Resources */,
 				738F49501D5ECC8200E577F4 /* PageLogin.storyboard in Resources */,
@@ -755,6 +792,7 @@
 				730DDF7C1D5EC4D600E4ABB6 /* YMSizes.swift in Sources */,
 				730DDF711D5EC4D600E4ABB6 /* YMAPIUtility.swift in Sources */,
 				7307BFDB1D5EF42B000F31E5 /* YMRegisterStrings.swift in Sources */,
+				FDB5B0C11D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift in Sources */,
 				738F495A1D5ECEBB00E577F4 /* YMLoginStrings.swift in Sources */,
 				7312ED801D5EB99D006F6B56 /* AppDelegate.swift in Sources */,
 				730DDF771D5EC4D600E4ABB6 /* YMVar.swift in Sources */,
@@ -768,6 +806,7 @@
 				7307BFDD1D5EF442000F31E5 /* PageRegisterActions.swift in Sources */,
 				FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */,
 				730DDF751D5EC4D600E4ABB6 /* YMNetworkUtility.swift in Sources */,
+				FDB5B0C31D8262A000FD07C4 /* PageGetMyDoctorsActions.swift in Sources */,
 				730DDF891D5EC5A800E4ABB6 /* YMCommonStrings.swift in Sources */,
 				73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */,
 				730DDF8A1D5EC5A800E4ABB6 /* YMCoreDataKeyStrings.swift in Sources */,
@@ -782,6 +821,7 @@
 				730DDF841D5EC4D600E4ABB6 /* YMTextInput.swift in Sources */,
 				730DDF811D5EC4D600E4ABB6 /* YMSelectors.swift in Sources */,
 				FD4735CD1D81B22000BBEF16 /* SwiftQRCode.swift in Sources */,
+				FDB5B0BF1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift in Sources */,
 				738F49581D5ECD2D00E577F4 /* PageLoginActions.swift in Sources */,
 				730DDF971D5EC64600E4ABB6 /* YMCommonActions.swift in Sources */,
 				730DDF801D5EC4D600E4ABB6 /* YMDatetime.swift in Sources */,
@@ -901,6 +941,14 @@
 			name = PageIndex.storyboard;
 			sourceTree = "<group>";
 		};
+		FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDB5B0BA1D82620C00FD07C4 /* Base */,
+			);
+			name = PageGetMyDoctors.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -997,7 +1045,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.cc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1014,7 +1062,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.cc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
