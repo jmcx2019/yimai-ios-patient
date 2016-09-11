@@ -29,6 +29,13 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_GET_MY_DOCTOR = "apiGetMyDoctors"
     public static let CS_API_ACTION_GET_DEFAULT_SEARCH = "apiGetDefaultSearch"
     public static let CS_API_ACTION_DOCTOR_SEARCH = "apiSearchDoctor"
+    
+    public static let CS_API_ACTION_CREATE_NEW_APPOINTMENT = "apiCreateNewAppointment"
+    public static let CS_API_ACTION_UPLOAD_PHOTO_APPOINTMENT = "apiUploadAppointmentPhoto"
+    public static let CS_API_ACTION_GET_APPOINTMENT_LIST = "apiGetAppointmentList"
+    public static let CS_API_ACTION_GET_APPOINTMENT_DETAIL = "apiGetAppointmentDetail"
+    public static let CS_API_ACTION_DENY_APPOINTMENT = "apiDenyAppointment"
+    public static let CS_API_ACTION_ACCEPT_APPOINTMENT = "apiAcceptAppointment"
 
 }
 

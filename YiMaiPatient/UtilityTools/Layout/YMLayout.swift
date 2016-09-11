@@ -11,6 +11,7 @@ import UIKit
 import Neon
 import Toucan
 import ChameleonFramework
+import Photos
 
 public class TextFieldCreateParam {
     public var Placholder : String = ""
@@ -371,6 +372,31 @@ public class YMLayout {
         label.sizeToFit()
 
         return label
+    }
+
+    public static func TransPHAssetToUIImage(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.defaultManager()
+        let option = PHImageRequestOptions()
+        var img = UIImage()
+        option.synchronous = true
+        let targetWidth = asset.pixelWidth.LayoutVal()
+        let targetHeight = asset.pixelHeight.LayoutVal()
+        
+        manager.requestImageForAsset(asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight),
+                                     contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+                                        img = Toucan(image: result!).resize(CGSize(width: targetWidth, height: targetHeight)).image
+        })
+        
+        return img
+    }
+    
+    public static func TransPHAssetsToUIImages(assets: [PHAsset]) -> [UIImage] {
+        var ret = [UIImage]()
+        
+        for asset in assets {
+            ret.append(YMLayout.TransPHAssetToUIImage(asset))
+        }
+        return ret
     }
 }
 

@@ -25,6 +25,11 @@ public class YMCommonStrings {
     public static let CS_PAGE_GET_MY_DOCTORS_NAME = "PageGetMyDoctors"
     public static let CS_PAGE_GET_DEFAULT_SEARCH = "PageSearchDefault"
 
+    public static let CS_PAGE_APPOINTMENT_SELECT_TIME = "PageAppointmentSelectTime"
+    public static let CS_PAGE_APPOINTMENT = "PageAppointment"
+    
+    public static let CS_PAGE_APPOINTMENT_PATIENT_BASIC_INFO_NAME = "PageAppointmentBasicInfo"
+    public static let CS_PAGE_APPOINTMENT_PATIENT_CONDITION_NAME = "PageAppointmentPatientCondition"
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"
     public static let CS_API_PARAM_KEY_PHONE = "phone"

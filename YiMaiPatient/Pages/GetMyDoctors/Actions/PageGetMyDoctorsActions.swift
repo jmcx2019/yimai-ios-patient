@@ -52,7 +52,8 @@ public class PageGetMyDoctorsActions: PageJumpActions {
     }
     
     public func AppointmentTouched(sender: UIButton) {
-        //调到约诊页面
+        PageAppointmentViewController.SelectedDoctor = TargetView?.SelectedDoc
+        DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_SELECT_TIME)
     }
     
     public func ProxyTouched(sender: UIButton) {

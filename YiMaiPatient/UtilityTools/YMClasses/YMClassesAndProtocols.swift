@@ -17,8 +17,11 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_REGISTER_PERSONAL_INFO_NAME: true,
         YMCommonStrings.CS_PAGE_SELECT_CITY_NAME: true,
         YMCommonStrings.CS_PAGE_GET_MY_DOCTORS_NAME: true,
-        YMCommonStrings.CS_PAGE_GET_DEFAULT_SEARCH: true
-
+        YMCommonStrings.CS_PAGE_GET_DEFAULT_SEARCH: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT_SELECT_TIME: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT_PATIENT_BASIC_INFO_NAME: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT_PATIENT_CONDITION_NAME: true
     ]
 }
 
