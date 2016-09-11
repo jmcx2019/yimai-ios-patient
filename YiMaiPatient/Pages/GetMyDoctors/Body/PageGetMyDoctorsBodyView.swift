@@ -33,12 +33,9 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         DrawSearchPanel()
         
         LoadingView = YMPageLoadingView(parentView: self.BodyView)
-        LoadingView?.Show()
         DrawDoctorsPanel()
         
         DrawBoxPanel()
-        
-        DoctorsActions?.GetMyDoctorList()
     }
     
     func DrawSearchPanel() {
@@ -87,6 +84,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
     
     func Clear() {
         SearchInput.text = ""
+        HideBox()
         YMLayout.ClearView(view: MyDoctorsPanel)
         MyDoctorsPanel.align(Align.UnderMatchingLeft, relativeTo: SearchPanel, padding: 0, width: YMSizes.PageWidth, height: 0)
     }

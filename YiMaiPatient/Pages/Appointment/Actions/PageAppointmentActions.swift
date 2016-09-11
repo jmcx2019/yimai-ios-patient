@@ -64,7 +64,8 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
             UploadApi?.YMUploadAddmissionPhotos(["id": AppointmentId], blockBuilder: self.UploadBlockBuilder)
         } else {
             TargetController?.Loading?.Hide()
-            self.NavController!.popViewControllerAnimated(true)
+            PageAppointmentViewController.NewAppointment = true
+            DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
         }
     }
     
@@ -72,7 +73,8 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
         YMAPIUtility.PrintErrorInfo(err)
         TargetController?.Loading?.Hide()
 //        YMPageModalMessage.ShowErrorInfo("网络错误，请稍后再试！", nav: self.NavController!)
-        DoJump(YMCommonStrings.CS_PAGE_GET_MY_DOCTORS_NAME)
+        PageAppointmentViewController.NewAppointment = true
+        DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
     }
     
     public func PhotoScrollLeft(sender: UIGestureRecognizer) {
@@ -124,6 +126,9 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
         if(PhotoIndex < TargetController!.BodyView!.PhotoArray.count) {
             ImageForUpload = TargetController!.BodyView!.PhotoArray[PhotoIndex]
             UploadApi?.YMUploadAddmissionPhotos(["id": AppointmentId], blockBuilder: self.UploadBlockBuilder)
+        } else {
+            PageAppointmentViewController.NewAppointment = true
+            DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
         }
         
     }

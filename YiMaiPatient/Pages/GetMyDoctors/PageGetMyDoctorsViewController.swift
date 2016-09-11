@@ -16,5 +16,14 @@ class PageGetMyDoctorsViewController: PageViewController {
         BodyView = PageGetMyDoctorsBodyView(parentView: self.SelfView!, navController: self.NavController!)
         TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "选择医生", navController: self.NavController!)
     }
+    
+    override func PageDisapeared() {
+        BodyView?.Clear()
+    }
+    
+    override func PagePreRefresh() {
+        BodyView?.LoadingView?.Show()
+        BodyView?.DoctorsActions?.GetMyDoctorList()
+    }
 
 }

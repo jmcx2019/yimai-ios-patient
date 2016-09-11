@@ -31,12 +31,10 @@ public class PageAppointmentViewController: PageViewController {
     }
 
     override func PagePreRefresh() {
+        Actions?.PhotoIndex = 0
         if(PageAppointmentViewController.NewAppointment) {
-            
-            PageAppointmentViewController.SelectedDoctor = nil
             PageAppointmentViewController.PatientBasicInfo = nil
             PageAppointmentViewController.PatientCondition = ""
-            PageAppointmentViewController.SelectedTime = ""
             
             BodyView?.BodyView.removeFromSuperview()
             TopView?.TopViewPanel.removeFromSuperview()
@@ -44,6 +42,7 @@ public class PageAppointmentViewController: PageViewController {
             BodyView = PageAppointmentBodyView(parentView: self.SelfView!, navController: self.NavController!, pageActions: Actions!)
             TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "预约医生", navController: self.NavController!)
             PageAppointmentViewController.NewAppointment = false
+            BodyView?.Reload()
         } else {
             BodyView?.Reload()
             if(nil != VerifyInput(false)) {
@@ -55,15 +54,19 @@ public class PageAppointmentViewController: PageViewController {
     }
     
     override func PageDisapeared() {
-        PageAppointmentViewController.PatientBasicInfo = nil
-        PageAppointmentViewController.PatientCondition = ""
-        PageAppointmentViewController.SelectedTime = ""
-        
-        BodyView?.BodyView.removeFromSuperview()
-        TopView?.TopViewPanel.removeFromSuperview()
-        
-        BodyView = PageAppointmentBodyView(parentView: self.SelfView!, navController: self.NavController!, pageActions: Actions!)
-        TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "预约医生", navController: self.NavController!)
+        if(PageAppointmentViewController.NewAppointment) {
+            PageAppointmentViewController.PatientBasicInfo = nil
+            PageAppointmentViewController.PatientCondition = ""
+            PageAppointmentViewController.SelectedTime = ""
+            
+            BodyView?.BodyView.removeFromSuperview()
+            TopView?.TopViewPanel.removeFromSuperview()
+            
+            BodyView = PageAppointmentBodyView(parentView: self.SelfView!, navController: self.NavController!, pageActions: Actions!)
+            TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "预约医生", navController: self.NavController!)
+            BodyView?.Reload()
+            PageAppointmentViewController.NewAppointment = false
+        }
     }
 
     public func VerifyInput(showAlarm: Bool = true) -> [String:String]? {
