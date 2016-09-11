@@ -70,6 +70,10 @@
 		73A678901D60C3720005E90C /* PageIndex.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73A678921D60C3720005E90C /* PageIndex.storyboard */; };
 		73A678941D60C37F0005E90C /* PageIndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A678931D60C37F0005E90C /* PageIndexViewController.swift */; };
 		73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A678951D60C3B70005E90C /* PageIndexBodyView.swift */; };
+		73C7EF731D85419A00B1B971 /* PageSearchDefault.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C7EF751D85419A00B1B971 /* PageSearchDefault.storyboard */; };
+		73C7EF771D8541AD00B1B971 /* PageSearchDefaultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EF761D8541AD00B1B971 /* PageSearchDefaultViewController.swift */; };
+		73C7EF791D8541E500B1B971 /* PageSearchDefaultBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EF781D8541E500B1B971 /* PageSearchDefaultBodyView.swift */; };
+		73C7EF7B1D85422900B1B971 /* PageSearchDefaultActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EF7A1D85422900B1B971 /* PageSearchDefaultActions.swift */; };
 		FD4735CD1D81B22000BBEF16 /* SwiftQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */; };
 		FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */; };
 		FDB5B0BF1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */; };
@@ -166,6 +170,10 @@
 		73A678911D60C3720005E90C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageIndex.storyboard; sourceTree = "<group>"; };
 		73A678931D60C37F0005E90C /* PageIndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexViewController.swift; sourceTree = "<group>"; };
 		73A678951D60C3B70005E90C /* PageIndexBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexBodyView.swift; sourceTree = "<group>"; };
+		73C7EF741D85419A00B1B971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageSearchDefault.storyboard; sourceTree = "<group>"; };
+		73C7EF761D8541AD00B1B971 /* PageSearchDefaultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSearchDefaultViewController.swift; sourceTree = "<group>"; };
+		73C7EF781D8541E500B1B971 /* PageSearchDefaultBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSearchDefaultBodyView.swift; sourceTree = "<group>"; };
+		73C7EF7A1D85422900B1B971 /* PageSearchDefaultActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSearchDefaultActions.swift; sourceTree = "<group>"; };
 		F7591AC2A9B639D8F3C115FB /* Pods_YiMaiPatient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiMaiPatient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRCode.swift; sourceTree = "<group>"; };
 		FDB5B0BA1D82620C00FD07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageGetMyDoctors.storyboard; sourceTree = "<group>"; };
@@ -279,6 +287,7 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				73C7EF6E1D85416500B1B971 /* SearchDefault */,
 				FDB5B0B41D8261E800FD07C4 /* GetMyDoctors */,
 				73A6788A1D60C3530005E90C /* Index */,
 				738F495B1D5ECF7500E577F4 /* AppLoading */,
@@ -552,6 +561,33 @@
 			path = Top;
 			sourceTree = "<group>";
 		};
+		73C7EF6E1D85416500B1B971 /* SearchDefault */ = {
+			isa = PBXGroup;
+			children = (
+				73C7EF6F1D85416500B1B971 /* Actions */,
+				73C7EF701D85416500B1B971 /* Body */,
+				73C7EF751D85419A00B1B971 /* PageSearchDefault.storyboard */,
+				73C7EF761D8541AD00B1B971 /* PageSearchDefaultViewController.swift */,
+			);
+			path = SearchDefault;
+			sourceTree = "<group>";
+		};
+		73C7EF6F1D85416500B1B971 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				73C7EF7A1D85422900B1B971 /* PageSearchDefaultActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		73C7EF701D85416500B1B971 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				73C7EF781D8541E500B1B971 /* PageSearchDefaultBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
 		C68F0C02424F8D4A587F7E93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -711,6 +747,7 @@
 				738F495F1D5ED04300E577F4 /* PageAppLoading.storyboard in Resources */,
 				738F49501D5ECC8200E577F4 /* PageLogin.storyboard in Resources */,
 				7307BFE21D5F02F2000F31E5 /* PageRegisterInputInfo.storyboard in Resources */,
+				73C7EF731D85419A00B1B971 /* PageSearchDefault.storyboard in Resources */,
 				7312ED8A1D5EB99D006F6B56 /* Assets.xcassets in Resources */,
 				73A678811D60AF950005E90C /* PageSelectCity.storyboard in Resources */,
 				73A678891D60B2FB0005E90C /* cityDictionary.plist in Resources */,
@@ -810,9 +847,11 @@
 				730DDF891D5EC5A800E4ABB6 /* YMCommonStrings.swift in Sources */,
 				73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */,
 				730DDF8A1D5EC5A800E4ABB6 /* YMCoreDataKeyStrings.swift in Sources */,
+				73C7EF771D8541AD00B1B971 /* PageSearchDefaultViewController.swift in Sources */,
 				73A678941D60C37F0005E90C /* PageIndexViewController.swift in Sources */,
 				7307BFE61D5F0301000F31E5 /* PageRegisterInputInfoViewController.swift in Sources */,
 				738F49631D5ED0CA00E577F4 /* PageAppLoadingViewController.swift in Sources */,
+				73C7EF791D8541E500B1B971 /* PageSearchDefaultBodyView.swift in Sources */,
 				7307BFD91D5EEFBA000F31E5 /* PageRegisterBodyView.swift in Sources */,
 				738F49661D5ED11900E577F4 /* PageAppLoadingActions.swift in Sources */,
 				730DDF7F1D5EC4D600E4ABB6 /* YMClassesAndProtocols.swift in Sources */,
@@ -835,6 +874,7 @@
 				730DDF7D1D5EC4D600E4ABB6 /* YMButton.swift in Sources */,
 				730DDF791D5EC4D600E4ABB6 /* YMColors.swift in Sources */,
 				730DDF831D5EC4D600E4ABB6 /* YMTextArea.swift in Sources */,
+				73C7EF7B1D85422900B1B971 /* PageSearchDefaultActions.swift in Sources */,
 				738F49541D5ECCA300E577F4 /* PageLoginViewController.swift in Sources */,
 				730DDF7A1D5EC4D600E4ABB6 /* YMFonts.swift in Sources */,
 				730DDF991D5EC64600E4ABB6 /* PageSearchResultCell.swift in Sources */,
@@ -939,6 +979,14 @@
 				73A678911D60C3720005E90C /* Base */,
 			);
 			name = PageIndex.storyboard;
+			sourceTree = "<group>";
+		};
+		73C7EF751D85419A00B1B971 /* PageSearchDefault.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				73C7EF741D85419A00B1B971 /* Base */,
+			);
+			name = PageSearchDefault.storyboard;
 			sourceTree = "<group>";
 		};
 		FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */ = {

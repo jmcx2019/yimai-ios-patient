@@ -23,6 +23,7 @@ public class YMCommonStrings {
 
     public static let CS_PAGE_REGISTER_PERSONAL_INFO_NAME = "PageRegisterInputInfo"
     public static let CS_PAGE_GET_MY_DOCTORS_NAME = "PageGetMyDoctors"
+    public static let CS_PAGE_GET_DEFAULT_SEARCH = "PageSearchDefault"
 
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"

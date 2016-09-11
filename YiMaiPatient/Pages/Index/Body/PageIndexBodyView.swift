@@ -80,7 +80,7 @@ public class PageIndexBodyView: PageBodyView {
     
     func DrawMsgPanel() {
         BodyView.addSubview(MsgPanel)
-        MsgPanel.align(Align.UnderMatchingLeft, relativeTo: BtnGroupPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 0, offset: 0)
+        MsgPanel.align(Align.UnderMatchingLeft, relativeTo: BtnGroupPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 0	)
         
         MessageNotifyCell = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "MessageNotifyTouched:".Sel())
         MsgPanel.addSubview(MessageNotifyCell!)
@@ -139,7 +139,8 @@ public class PageIndexBodyView: PageBodyView {
         
         self.ParentView!.addSubview(SideBar)
         SideBar.anchorToEdge(Edge.Left, padding: -540.LayoutVal(), width: 540.LayoutVal(), height: YMSizes.PageHeight)
-        
+        SideBar.layer.opacity = 0
+
         let userHead = YMLayout.GetSuitableImageView("PageIndexUserheadBkg")
         SideBar.addSubview(userHead)
         userHead.anchorToEdge(Edge.Top, padding: YMSizes.PageTopHeight, width: userHead.width, height: userHead.height)

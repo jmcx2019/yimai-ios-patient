@@ -12,5 +12,10 @@ target 'YiMaiPatient' do
   pod 'SwiftDate'
   pod 'MWIDCardValidate'
   pod 'Graph'
+  pod 'Kingfisher', '~> 2.4'
+  pod 'Toucan'
+  pod 'QBImagePickerController', '~> 3.4.0'
+  pod 'KMPlaceholderTextView', '~> 1.2.1'
+  pod 'ChameleonFramework/Swift'
 end
 

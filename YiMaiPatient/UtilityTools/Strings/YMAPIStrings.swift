@@ -27,6 +27,8 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_GET_DOCTOR_BY_ID = "apiGetDoctorById"
     
     public static let CS_API_ACTION_GET_MY_DOCTOR = "apiGetMyDoctors"
+    public static let CS_API_ACTION_GET_DEFAULT_SEARCH = "apiGetDefaultSearch"
+    public static let CS_API_ACTION_DOCTOR_SEARCH = "apiSearchDoctor"
 
 }
 

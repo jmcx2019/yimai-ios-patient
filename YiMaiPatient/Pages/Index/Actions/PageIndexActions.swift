@@ -19,11 +19,10 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func SearchButtonTouched(gr: UIGestureRecognizer) {
-        print("SearchButtonTouched")
+        DoJump(YMCommonStrings.CS_PAGE_GET_DEFAULT_SEARCH)
     }
     
     public func AdmissionButtonTouched(gr: UIGestureRecognizer) {
-//        print("AdmissionButtonTouched")
         DoJump(YMCommonStrings.CS_PAGE_GET_MY_DOCTORS_NAME)
     }
     
@@ -45,7 +44,8 @@ public class PageIndexActions: PageJumpActions {
         
         TargetView?.MainPageMask?.hidden = true
         TargetView?.SideBar.frame.origin.x = -sideBarWidth
-        
+        TargetView?.SideBar.layer.opacity = 0.0
+
         UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
         UIView.commitAnimations()
     }
@@ -61,6 +61,7 @@ public class PageIndexActions: PageJumpActions {
         TargetView?.MainPageMask?.hidden = false
         TargetView?.SideBar.frame.origin.x = 0
         
+        TargetView?.SideBar.layer.opacity = 1.0
         UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
         UIView.commitAnimations()
     }

@@ -35,6 +35,8 @@ public class YMAPIInterfaceURL {
     static let GetCityGrouped = YMAPIInterfaceURL.ApiBaseUrl + "/city/group"
     
     static let GetMyDoctors = YMAPIInterfaceURL.ApiBaseUrl + "/search/my-doctor"
+    static let GetDefaultSearch = YMAPIInterfaceURL.ApiBaseUrl + "/search/default"
+    static let DoctorSearch = YMAPIInterfaceURL.ApiBaseUrl + "/search"
     
     static let SearchHospital = YMAPIInterfaceURL.ApiBaseUrl + "/hospital/search"
     static let GetHospitalById = YMAPIInterfaceURL.ApiBaseUrl + "/hospital"
@@ -689,7 +691,15 @@ public class YMAPIUtility {
     }
     
     public func YMGetMyDoctors() {
-        YMAPIPost(YMAPIInterfaceURL.GetMyDoctors, param: nil, progressHandler: nil)
+        YMAPIGet(YMAPIInterfaceURL.GetMyDoctors, param: nil, progressHandler: nil)
+    }
+    
+    public func YMGetDefaultSearch() {
+        YMAPIGet(YMAPIInterfaceURL.GetDefaultSearch, param: nil, progressHandler: nil)
+    }
+    
+    public func YMDoctorSearch(param: [String: AnyObject]) {
+        YMAPIPost(YMAPIInterfaceURL.DoctorSearch, param: param, progressHandler: nil)
     }
 }
 

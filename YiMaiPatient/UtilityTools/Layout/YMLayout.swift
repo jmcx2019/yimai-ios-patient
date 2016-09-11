@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Neon
+import Toucan
+import ChameleonFramework
 
 public class TextFieldCreateParam {
     public var Placholder : String = ""
@@ -270,6 +272,105 @@ public class YMLayout {
         userHead!.setImageWithURL(urlObj!)
         
         return userHead!
+    }
+    
+    public static func LoadImageFromServer(imageView: UIImageView, url: String, fullUrl: String? = nil, makeItRound: Bool = false) {
+        var url = url
+        
+        if(nil != fullUrl) {
+            url = fullUrl!
+        } else {
+            url = YMAPIInterfaceURL.Server + url
+        }
+        
+        imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: imageView.image, optionsInfo: nil, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
+            if(makeItRound) {
+                imageView.image = Toucan(image: image!).maskWithEllipse().image
+            }
+        })
+    }
+    
+    public static func DrawCommonDocCell(data: [String: AnyObject], docPanel: UIView, action: AnyObject, selector: Selector, prevCell: UIView?) -> YMTouchableView {
+        let head = data["head_url"] as! String
+        let name = data["name"] as! String
+        let hospital = data["hospital"] as! [String: AnyObject]
+        let department = data["department"] as! [String: AnyObject]
+        let jobTitle = data["job_title"] as? String
+        let userId = data["id"] as! String
+        
+        let nameLabel = UILabel()
+        let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))
+        let jobTitleLabel = UILabel()
+        let deptLabel = UILabel()
+        let hosLabel = UILabel()
+        let userHeadBackground = YMLayout.GetSuitableImageView("HeadImageBorder")
+        let bottomBorder = UIView()
+        
+        bottomBorder.backgroundColor = HexColor("#e0e0e0")
+        
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        nameLabel.text = name
+        nameLabel.textColor = YMColors.PatientFontGray
+        nameLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
+        nameLabel.sizeToFit()
+        
+        divider.backgroundColor = YMColors.PatientFontGray
+        
+        jobTitleLabel.text = jobTitle
+        jobTitleLabel.textColor = YMColors.PatientFontGray
+        jobTitleLabel.font = YMFonts.YMDefaultFont(22.LayoutVal())
+        jobTitleLabel.sizeToFit()
+        
+        deptLabel.text = department["name"] as? String
+        deptLabel.textColor = YMColors.PatientFontGray
+        deptLabel.font = YMFonts.YMDefaultFont(22.LayoutVal())
+        deptLabel.sizeToFit()
+        
+        hosLabel.text = hospital["name"] as? String
+        hosLabel.textColor = YMColors.PatientFontGray
+        hosLabel.font = YMFonts.YMDefaultFont(26.LayoutVal())
+        hosLabel.sizeToFit()
+        hosLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        
+        let cell = YMLayout.GetTouchableView(useObject: action, useMethod: selector, userStringData: userId)
+        
+        cell.addSubview(userHeadBackground)
+        cell.addSubview(nameLabel)
+        cell.addSubview(divider)
+        cell.addSubview(jobTitleLabel)
+        cell.addSubview(deptLabel)
+        cell.addSubview(hosLabel)
+        cell.addSubview(bottomBorder)
+        
+        cell.UserObjectData = data
+        
+        docPanel.addSubview(cell)
+        
+        if(nil == prevCell) {
+            cell.anchorToEdge(Edge.Top, padding: 0.LayoutVal(), width: YMSizes.PageWidth, height: 150.LayoutVal())
+        } else {
+            cell.alignAndFillWidth(align: Align.UnderMatchingLeft, relativeTo: prevCell!, padding: YMSizes.OnPx, height: 150.LayoutVal())
+        }
+        
+        userHeadBackground.anchorToEdge(Edge.Left, padding: 40.LayoutVal(), width: userHeadBackground.width, height: userHeadBackground.height)
+        nameLabel.anchorInCorner(Corner.TopLeft, xPad: 180.LayoutVal(), yPad: 25.LayoutVal(), width: nameLabel.width, height: nameLabel.height)
+        divider.align(Align.ToTheRightCentered, relativeTo: nameLabel, padding: 15.LayoutVal(), width: YMSizes.OnPx, height: divider.height)
+        jobTitleLabel.align(Align.ToTheRightCentered, relativeTo: divider, padding: 15.LayoutVal(), width: jobTitleLabel.width, height: jobTitleLabel.height)
+        deptLabel.align(Align.UnderMatchingLeft, relativeTo: nameLabel, padding: 6.LayoutVal(), width: deptLabel.width, height: deptLabel.height)
+        hosLabel.align(Align.UnderMatchingLeft, relativeTo: deptLabel, padding: 6.LayoutVal(), width: 540.LayoutVal(), height: hosLabel.height)
+        bottomBorder.anchorToEdge(Edge.Bottom, padding: 0, width: cell.width, height: YMSizes.OnPx)
+        
+        return cell
+    }
+    
+    public static func GetNomalLabel(text: String, textColor: UIColor, fontSize: CGFloat) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.textColor = textColor
+        label.font = YMFonts.YMDefaultFont(fontSize)
+        label.sizeToFit()
+
+        return label
     }
 }
 

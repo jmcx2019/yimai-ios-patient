@@ -46,4 +46,5 @@ public class YMColors {
     public static let PatientDisabledBtnBkgGray = UIColor(red: 0xdf.RGBVal(), green: 0xdf.RGBVal(), blue: 0xdf.RGBVal(), alpha: 1)
     public static let PatientBorderGray = UIColor(red: 0xed.RGBVal(), green: 0xed.RGBVal(), blue: 0xed.RGBVal(), alpha: 1)
     public static let PatientBorderDarkGray = UIColor(red: 0xe0.RGBVal(), green: 0xe0.RGBVal(), blue: 0xe0.RGBVal(), alpha: 1)
+    public static let PatientSearchBackgroundGray = UIColor(red: 0xf9.RGBVal(), green: 0xf9.RGBVal(), blue: 0xf9.RGBVal(), alpha: 1)
 }
