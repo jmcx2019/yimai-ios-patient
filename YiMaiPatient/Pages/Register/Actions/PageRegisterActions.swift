@@ -65,7 +65,7 @@ public class PageRegisterActions: PageJumpActions {
         YMLocalData.SaveLogin(input!["phone"]!, pwd: input!["password"]!)
         DoJump(YMCommonStrings.CS_PAGE_REGISTER_PERSONAL_INFO_NAME)
     }
-    
+
     public func AgreementButtonTouched(sender: YMButton) {
         TargetBodyView?.ToggleAgreementStatus()
         CheckWhenInputChanged(TargetBodyView!.VerifyCodeInput!)

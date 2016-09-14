@@ -93,11 +93,23 @@
 		73C7EFAF1D85A28300B1B971 /* PageAppointmentPatientCondition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C7EFA51D85A28300B1B971 /* PageAppointmentPatientCondition.storyboard */; };
 		73C7EFB01D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EFA81D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift */; };
 		73C7EFB11D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EFA91D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift */; };
+		FD0544041D86A43400185AEF /* PageAppointmentProxyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0543FE1D86A43400185AEF /* PageAppointmentProxyActions.swift */; };
+		FD0544051D86A43400185AEF /* PageAppointmentProxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0543FF1D86A43400185AEF /* PageAppointmentProxy.storyboard */; };
+		FD0544061D86A43400185AEF /* PageAppointmentProxyBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0544021D86A43400185AEF /* PageAppointmentProxyBodyView.swift */; };
+		FD0544071D86A43400185AEF /* PageAppointmentProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0544031D86A43400185AEF /* PageAppointmentProxyViewController.swift */; };
 		FD4735CD1D81B22000BBEF16 /* SwiftQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */; };
 		FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */; };
 		FDB5B0BF1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */; };
 		FDB5B0C11D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */; };
 		FDB5B0C31D8262A000FD07C4 /* PageGetMyDoctorsActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0C21D8262A000FD07C4 /* PageGetMyDoctorsActions.swift */; };
+		FDD9B7D61D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9B7C81D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift */; };
+		FDD9B7D71D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD9B7C91D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard */; };
+		FDD9B7D81D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9B7CC1D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoBodyView.swift */; };
+		FDD9B7D91D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9B7CD1D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift */; };
+		FDD9B7DA1D86B40F0038F84B /* PageAppointmentProxyPatientConditionActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9B7D01D86B40F0038F84B /* PageAppointmentProxyPatientConditionActions.swift */; };
+		FDD9B7DB1D86B40F0038F84B /* PageAppointmentProxyPatientCondition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDD9B7D11D86B40F0038F84B /* PageAppointmentProxyPatientCondition.storyboard */; };
+		FDD9B7DC1D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9B7D41D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift */; };
+		FDD9B7DD1D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD9B7D51D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift */; };
 		FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */; };
 /* End PBXBuildFile section */
 
@@ -213,11 +225,23 @@
 		73C7EFA81D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentPatientConditionBodyView.swift; sourceTree = "<group>"; };
 		73C7EFA91D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentPatientConditionViewController.swift; sourceTree = "<group>"; };
 		F7591AC2A9B639D8F3C115FB /* Pods_YiMaiPatient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiMaiPatient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD0543FE1D86A43400185AEF /* PageAppointmentProxyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyActions.swift; sourceTree = "<group>"; };
+		FD0544001D86A43400185AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAppointmentProxy.storyboard; sourceTree = "<group>"; };
+		FD0544021D86A43400185AEF /* PageAppointmentProxyBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyBodyView.swift; sourceTree = "<group>"; };
+		FD0544031D86A43400185AEF /* PageAppointmentProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyViewController.swift; sourceTree = "<group>"; };
 		FD4735CC1D81B22000BBEF16 /* SwiftQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftQRCode.swift; sourceTree = "<group>"; };
 		FDB5B0BA1D82620C00FD07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageGetMyDoctors.storyboard; sourceTree = "<group>"; };
 		FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsViewController.swift; sourceTree = "<group>"; };
 		FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsBodyView.swift; sourceTree = "<group>"; };
 		FDB5B0C21D8262A000FD07C4 /* PageGetMyDoctorsActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsActions.swift; sourceTree = "<group>"; };
+		FDD9B7C81D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientBasicInfoActions.swift; sourceTree = "<group>"; };
+		FDD9B7CA1D86B40F0038F84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAppointmentProxyBasicInfo.storyboard; sourceTree = "<group>"; };
+		FDD9B7CC1D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientBasicInfoBodyView.swift; sourceTree = "<group>"; };
+		FDD9B7CD1D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientBasicInfoViewController.swift; sourceTree = "<group>"; };
+		FDD9B7D01D86B40F0038F84B /* PageAppointmentProxyPatientConditionActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientConditionActions.swift; sourceTree = "<group>"; };
+		FDD9B7D21D86B40F0038F84B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAppointmentProxyPatientCondition.storyboard; sourceTree = "<group>"; };
+		FDD9B7D41D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientConditionBodyView.swift; sourceTree = "<group>"; };
+		FDD9B7D51D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientConditionViewController.swift; sourceTree = "<group>"; };
 		FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexActions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -328,6 +352,9 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				FDD9B7C61D86B40F0038F84B /* AppointmentPatientProxyBasicInfo */,
+				FDD9B7CE1D86B40F0038F84B /* AppointmentProxyPatientCondition */,
+				FD0543FC1D86A43400185AEF /* AppointmentProxy */,
 				73C7EF9A1D85A28300B1B971 /* AppointmentPatientBasicInfo */,
 				73C7EFA21D85A28300B1B971 /* AppointmentPatientCondition */,
 				73C7EF8A1D85995600B1B971 /* Appointment */,
@@ -750,6 +777,33 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		FD0543FC1D86A43400185AEF /* AppointmentProxy */ = {
+			isa = PBXGroup;
+			children = (
+				FD0544011D86A43400185AEF /* Body */,
+				FD0543FD1D86A43400185AEF /* Actions */,
+				FD0543FF1D86A43400185AEF /* PageAppointmentProxy.storyboard */,
+				FD0544031D86A43400185AEF /* PageAppointmentProxyViewController.swift */,
+			);
+			path = AppointmentProxy;
+			sourceTree = "<group>";
+		};
+		FD0543FD1D86A43400185AEF /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FD0543FE1D86A43400185AEF /* PageAppointmentProxyActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		FD0544011D86A43400185AEF /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				FD0544021D86A43400185AEF /* PageAppointmentProxyBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
 		FDB5B0B41D8261E800FD07C4 /* GetMyDoctors */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +827,60 @@
 			isa = PBXGroup;
 			children = (
 				FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		FDD9B7C61D86B40F0038F84B /* AppointmentPatientProxyBasicInfo */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9B7CB1D86B40F0038F84B /* Body */,
+				FDD9B7C71D86B40F0038F84B /* Actions */,
+				FDD9B7C91D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard */,
+				FDD9B7CD1D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift */,
+			);
+			path = AppointmentPatientProxyBasicInfo;
+			sourceTree = "<group>";
+		};
+		FDD9B7C71D86B40F0038F84B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9B7C81D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		FDD9B7CB1D86B40F0038F84B /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9B7CC1D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		FDD9B7CE1D86B40F0038F84B /* AppointmentProxyPatientCondition */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9B7D31D86B40F0038F84B /* Body */,
+				FDD9B7CF1D86B40F0038F84B /* Actions */,
+				FDD9B7D11D86B40F0038F84B /* PageAppointmentProxyPatientCondition.storyboard */,
+				FDD9B7D51D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift */,
+			);
+			path = AppointmentProxyPatientCondition;
+			sourceTree = "<group>";
+		};
+		FDD9B7CF1D86B40F0038F84B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9B7D01D86B40F0038F84B /* PageAppointmentProxyPatientConditionActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		FDD9B7D31D86B40F0038F84B /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				FDD9B7D41D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift */,
 			);
 			path = Body;
 			sourceTree = "<group>";
@@ -895,6 +1003,7 @@
 			files = (
 				73A678901D60C3720005E90C /* PageIndex.storyboard in Resources */,
 				7307BFD31D5EEF7B000F31E5 /* PageRegister.storyboard in Resources */,
+				FDD9B7D71D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard in Resources */,
 				FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */,
 				7312ED8D1D5EB99D006F6B56 /* LaunchScreen.storyboard in Resources */,
 				738F495F1D5ED04300E577F4 /* PageAppLoading.storyboard in Resources */,
@@ -906,6 +1015,8 @@
 				73A678811D60AF950005E90C /* PageSelectCity.storyboard in Resources */,
 				73C7EF851D85988600B1B971 /* PageAppointmentSelectTime.storyboard in Resources */,
 				73C7EFAB1D85A28300B1B971 /* PageAppointmentBasicInfo.storyboard in Resources */,
+				FD0544051D86A43400185AEF /* PageAppointmentProxy.storyboard in Resources */,
+				FDD9B7DB1D86B40F0038F84B /* PageAppointmentProxyPatientCondition.storyboard in Resources */,
 				73A678891D60B2FB0005E90C /* cityDictionary.plist in Resources */,
 				7312ED851D5EB99D006F6B56 /* Main.storyboard in Resources */,
 				73C7EF931D85995600B1B971 /* PageAppointment.storyboard in Resources */,
@@ -981,10 +1092,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDD9B7DA1D86B40F0038F84B /* PageAppointmentProxyPatientConditionActions.swift in Sources */,
 				730DDF851D5EC4D600E4ABB6 /* YMTouchableView.swift in Sources */,
 				73C7EFB01D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift in Sources */,
 				7312ED821D5EB99D006F6B56 /* ViewController.swift in Sources */,
 				730DDF7C1D5EC4D600E4ABB6 /* YMSizes.swift in Sources */,
+				FDD9B7D91D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift in Sources */,
+				FD0544041D86A43400185AEF /* PageAppointmentProxyActions.swift in Sources */,
+				FDD9B7D61D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift in Sources */,
 				730DDF711D5EC4D600E4ABB6 /* YMAPIUtility.swift in Sources */,
 				7307BFDB1D5EF42B000F31E5 /* YMRegisterStrings.swift in Sources */,
 				FDB5B0C11D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift in Sources */,
@@ -1003,6 +1118,7 @@
 				73C7EF841D85988600B1B971 /* PageAppointmentSelectTimeActions.swift in Sources */,
 				FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */,
 				730DDF751D5EC4D600E4ABB6 /* YMNetworkUtility.swift in Sources */,
+				FDD9B7D81D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoBodyView.swift in Sources */,
 				FDB5B0C31D8262A000FD07C4 /* PageGetMyDoctorsActions.swift in Sources */,
 				730DDF891D5EC5A800E4ABB6 /* YMCommonStrings.swift in Sources */,
 				73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */,
@@ -1013,7 +1129,9 @@
 				73C7EF771D8541AD00B1B971 /* PageSearchDefaultViewController.swift in Sources */,
 				73C7EF871D85988600B1B971 /* PageAppointmentSelectTimeViewController.swift in Sources */,
 				73A678941D60C37F0005E90C /* PageIndexViewController.swift in Sources */,
+				FD0544071D86A43400185AEF /* PageAppointmentProxyViewController.swift in Sources */,
 				7307BFE61D5F0301000F31E5 /* PageRegisterInputInfoViewController.swift in Sources */,
+				FDD9B7DD1D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift in Sources */,
 				738F49631D5ED0CA00E577F4 /* PageAppLoadingViewController.swift in Sources */,
 				73C7EF791D8541E500B1B971 /* PageSearchDefaultBodyView.swift in Sources */,
 				7307BFD91D5EEFBA000F31E5 /* PageRegisterBodyView.swift in Sources */,
@@ -1021,6 +1139,7 @@
 				738F49661D5ED11900E577F4 /* PageAppLoadingActions.swift in Sources */,
 				730DDF7F1D5EC4D600E4ABB6 /* YMClassesAndProtocols.swift in Sources */,
 				73C7EF891D8598EF00B1B971 /* YMAppointmentStrings.swift in Sources */,
+				FDD9B7DC1D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift in Sources */,
 				730DDF761D5EC4D600E4ABB6 /* YMValueValidator.swift in Sources */,
 				730DDF821D5EC4D600E4ABB6 /* YMTableView.swift in Sources */,
 				730DDF841D5EC4D600E4ABB6 /* YMTextInput.swift in Sources */,
@@ -1051,6 +1170,7 @@
 				730DDF991D5EC64600E4ABB6 /* PageSearchResultCell.swift in Sources */,
 				730DDF781D5EC4D600E4ABB6 /* YMBasicTypeExtensionForLayout.swift in Sources */,
 				7307BFE81D5F032A000F31E5 /* PageRegisterInputInfoBodyView.swift in Sources */,
+				FD0544061D86A43400185AEF /* PageAppointmentProxyBodyView.swift in Sources */,
 				7312ED881D5EB99D006F6B56 /* YiMaiPatient.xcdatamodeld in Sources */,
 				738F49561D5ECCF300E577F4 /* PageLoginBodyView.swift in Sources */,
 				73C7EFB11D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift in Sources */,
@@ -1193,12 +1313,36 @@
 			name = PageAppointmentPatientCondition.storyboard;
 			sourceTree = "<group>";
 		};
+		FD0543FF1D86A43400185AEF /* PageAppointmentProxy.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD0544001D86A43400185AEF /* Base */,
+			);
+			name = PageAppointmentProxy.storyboard;
+			sourceTree = "<group>";
+		};
 		FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FDB5B0BA1D82620C00FD07C4 /* Base */,
 			);
 			name = PageGetMyDoctors.storyboard;
+			sourceTree = "<group>";
+		};
+		FDD9B7C91D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDD9B7CA1D86B40F0038F84B /* Base */,
+			);
+			name = PageAppointmentProxyBasicInfo.storyboard;
+			sourceTree = "<group>";
+		};
+		FDD9B7D11D86B40F0038F84B /* PageAppointmentProxyPatientCondition.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDD9B7D21D86B40F0038F84B /* Base */,
+			);
+			name = PageAppointmentProxyPatientCondition.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1294,12 +1438,12 @@
 			baseConfigurationReference = 1C81E0AA32E7C1994A8E645F /* Pods-YiMaiPatient.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.cc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1311,12 +1455,12 @@
 			baseConfigurationReference = 2C248139E12DFB7B423DC1FB /* Pods-YiMaiPatient.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wisdom Hospital & Healthcare Management Co.Ltd.";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.cc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

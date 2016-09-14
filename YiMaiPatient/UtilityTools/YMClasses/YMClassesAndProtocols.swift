@@ -21,7 +21,10 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_APPOINTMENT_SELECT_TIME: true,
         YMCommonStrings.CS_PAGE_APPOINTMENT: true,
         YMCommonStrings.CS_PAGE_APPOINTMENT_PATIENT_BASIC_INFO_NAME: true,
-        YMCommonStrings.CS_PAGE_APPOINTMENT_PATIENT_CONDITION_NAME: true
+        YMCommonStrings.CS_PAGE_APPOINTMENT_PATIENT_CONDITION_NAME: true,
+        YMCommonStrings.CS_PAGE_APPOINMENT_PROXY_NAME: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_BASIC_INFO_NAME: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_CONDITION_NAME: true
     ]
 }
 
