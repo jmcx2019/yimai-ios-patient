@@ -52,8 +52,6 @@
 		7312ED881D5EB99D006F6B56 /* YiMaiPatient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7312ED861D5EB99D006F6B56 /* YiMaiPatient.xcdatamodeld */; };
 		7312ED8A1D5EB99D006F6B56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7312ED891D5EB99D006F6B56 /* Assets.xcassets */; };
 		7312ED8D1D5EB99D006F6B56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7312ED8B1D5EB99D006F6B56 /* LaunchScreen.storyboard */; };
-		7312ED981D5EB99D006F6B56 /* YiMaiPatientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7312ED971D5EB99D006F6B56 /* YiMaiPatientTests.swift */; };
-		7312EDA31D5EB99D006F6B56 /* YiMaiPatientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7312EDA21D5EB99D006F6B56 /* YiMaiPatientUITests.swift */; };
 		738F49411D5EC6DD00E577F4 /* YMAPIStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738F49401D5EC6DD00E577F4 /* YMAPIStrings.swift */; };
 		738F49501D5ECC8200E577F4 /* PageLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 738F49521D5ECC8200E577F4 /* PageLogin.storyboard */; };
 		738F49541D5ECCA300E577F4 /* PageLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738F49531D5ECCA300E577F4 /* PageLoginViewController.swift */; };
@@ -113,23 +111,6 @@
 		FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		7312ED941D5EB99D006F6B56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7312ED741D5EB99C006F6B56 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7312ED7B1D5EB99D006F6B56;
-			remoteInfo = YiMaiPatient;
-		};
-		7312ED9F1D5EB99D006F6B56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7312ED741D5EB99C006F6B56 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7312ED7B1D5EB99D006F6B56;
-			remoteInfo = YiMaiPatient;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		1C81E0AA32E7C1994A8E645F /* Pods-YiMaiPatient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiMaiPatient.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YiMaiPatient/Pods-YiMaiPatient.debug.xcconfig"; sourceTree = "<group>"; };
 		2C248139E12DFB7B423DC1FB /* Pods-YiMaiPatient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YiMaiPatient.release.xcconfig"; path = "Pods/Target Support Files/Pods-YiMaiPatient/Pods-YiMaiPatient.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,10 +160,8 @@
 		7312ED891D5EB99D006F6B56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7312ED8C1D5EB99D006F6B56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7312ED8E1D5EB99D006F6B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7312ED931D5EB99D006F6B56 /* YiMaiPatientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiMaiPatientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7312ED971D5EB99D006F6B56 /* YiMaiPatientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YiMaiPatientTests.swift; sourceTree = "<group>"; };
 		7312ED991D5EB99D006F6B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7312ED9E1D5EB99D006F6B56 /* YiMaiPatientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YiMaiPatientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7312EDA21D5EB99D006F6B56 /* YiMaiPatientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YiMaiPatientUITests.swift; sourceTree = "<group>"; };
 		7312EDA41D5EB99D006F6B56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		738F49401D5EC6DD00E577F4 /* YMAPIStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMAPIStrings.swift; sourceTree = "<group>"; };
@@ -251,20 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				00E7C407FA57CD648BFB7AB1 /* Pods_YiMaiPatient.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7312ED901D5EB99D006F6B56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7312ED9B1D5EB99D006F6B56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,8 +397,6 @@
 			isa = PBXGroup;
 			children = (
 				7312ED7C1D5EB99D006F6B56 /* YiMaiPatient.app */,
-				7312ED931D5EB99D006F6B56 /* YiMaiPatientTests.xctest */,
-				7312ED9E1D5EB99D006F6B56 /* YiMaiPatientUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -916,42 +879,6 @@
 			productReference = 7312ED7C1D5EB99D006F6B56 /* YiMaiPatient.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7312ED921D5EB99D006F6B56 /* YiMaiPatientTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7312EDAA1D5EB99D006F6B56 /* Build configuration list for PBXNativeTarget "YiMaiPatientTests" */;
-			buildPhases = (
-				7312ED8F1D5EB99D006F6B56 /* Sources */,
-				7312ED901D5EB99D006F6B56 /* Frameworks */,
-				7312ED911D5EB99D006F6B56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7312ED951D5EB99D006F6B56 /* PBXTargetDependency */,
-			);
-			name = YiMaiPatientTests;
-			productName = YiMaiPatientTests;
-			productReference = 7312ED931D5EB99D006F6B56 /* YiMaiPatientTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		7312ED9D1D5EB99D006F6B56 /* YiMaiPatientUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7312EDAD1D5EB99D006F6B56 /* Build configuration list for PBXNativeTarget "YiMaiPatientUITests" */;
-			buildPhases = (
-				7312ED9A1D5EB99D006F6B56 /* Sources */,
-				7312ED9B1D5EB99D006F6B56 /* Frameworks */,
-				7312ED9C1D5EB99D006F6B56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7312EDA01D5EB99D006F6B56 /* PBXTargetDependency */,
-			);
-			name = YiMaiPatientUITests;
-			productName = YiMaiPatientUITests;
-			productReference = 7312ED9E1D5EB99D006F6B56 /* YiMaiPatientUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -965,14 +892,6 @@
 					7312ED7B1D5EB99D006F6B56 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 6HV8LR8T36;
-					};
-					7312ED921D5EB99D006F6B56 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 7312ED7B1D5EB99D006F6B56;
-					};
-					7312ED9D1D5EB99D006F6B56 = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = 7312ED7B1D5EB99D006F6B56;
 					};
 				};
 			};
@@ -990,8 +909,6 @@
 			projectRoot = "";
 			targets = (
 				7312ED7B1D5EB99D006F6B56 /* YiMaiPatient */,
-				7312ED921D5EB99D006F6B56 /* YiMaiPatientTests */,
-				7312ED9D1D5EB99D006F6B56 /* YiMaiPatientUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1020,20 +937,6 @@
 				73A678891D60B2FB0005E90C /* cityDictionary.plist in Resources */,
 				7312ED851D5EB99D006F6B56 /* Main.storyboard in Resources */,
 				73C7EF931D85995600B1B971 /* PageAppointment.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7312ED911D5EB99D006F6B56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7312ED9C1D5EB99D006F6B56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1177,36 +1080,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7312ED8F1D5EB99D006F6B56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7312ED981D5EB99D006F6B56 /* YiMaiPatientTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7312ED9A1D5EB99D006F6B56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7312EDA31D5EB99D006F6B56 /* YiMaiPatientUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7312ED951D5EB99D006F6B56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7312ED7B1D5EB99D006F6B56 /* YiMaiPatient */;
-			targetProxy = 7312ED941D5EB99D006F6B56 /* PBXContainerItemProxy */;
-		};
-		7312EDA01D5EB99D006F6B56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7312ED7B1D5EB99D006F6B56 /* YiMaiPatient */;
-			targetProxy = 7312ED9F1D5EB99D006F6B56 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7307BFD51D5EEF7B000F31E5 /* PageRegister.storyboard */ = {
@@ -1467,52 +1341,6 @@
 			};
 			name = Release;
 		};
-		7312EDAB1D5EB99D006F6B56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = YiMaiPatientTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient.YiMaiPatientTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YiMaiPatient.app/YiMaiPatient";
-			};
-			name = Debug;
-		};
-		7312EDAC1D5EB99D006F6B56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = YiMaiPatientTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient.YiMaiPatientTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YiMaiPatient.app/YiMaiPatient";
-			};
-			name = Release;
-		};
-		7312EDAE1D5EB99D006F6B56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = YiMaiPatientUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient.YiMaiPatientUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = YiMaiPatient;
-			};
-			name = Debug;
-		};
-		7312EDAF1D5EB99D006F6B56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = YiMaiPatientUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient.YiMaiPatientUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = YiMaiPatient;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1530,24 +1358,6 @@
 			buildConfigurations = (
 				7312EDA81D5EB99D006F6B56 /* Debug */,
 				7312EDA91D5EB99D006F6B56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7312EDAA1D5EB99D006F6B56 /* Build configuration list for PBXNativeTarget "YiMaiPatientTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7312EDAB1D5EB99D006F6B56 /* Debug */,
-				7312EDAC1D5EB99D006F6B56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7312EDAD1D5EB99D006F6B56 /* Build configuration list for PBXNativeTarget "YiMaiPatientUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7312EDAE1D5EB99D006F6B56 /* Debug */,
-				7312EDAF1D5EB99D006F6B56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
