@@ -117,7 +117,7 @@ public class PageIndexBodyView: PageBodyView {
         userIcon.anchorInCenter(width: userIcon.width, height: userIcon.height)
         
         
-        let qrBtn = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "QRScanTouched:".Sel())
+        let qrBtn = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "QRButtonTouched:".Sel())
         let qrIcon = YMLayout.GetSuitableImageView("PageIndexScanBtn")
         qrBtn.backgroundColor = YMColors.None
 

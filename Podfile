@@ -11,7 +11,7 @@ target 'YiMaiPatient' do
   pod 'Proposer'
   pod 'SwiftDate'
   pod 'MWIDCardValidate'
-  pod 'Graph'
+  pod 'Graph', '~> 1.1.0'
   pod 'Kingfisher', '~> 2.4'
   pod 'Toucan'
   pod 'QBImagePickerController', '~> 3.4.0'

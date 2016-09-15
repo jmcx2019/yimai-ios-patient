@@ -91,6 +91,13 @@
 		73C7EFAF1D85A28300B1B971 /* PageAppointmentPatientCondition.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73C7EFA51D85A28300B1B971 /* PageAppointmentPatientCondition.storyboard */; };
 		73C7EFB01D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EFA81D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift */; };
 		73C7EFB11D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7EFA91D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift */; };
+		9676762C1D8AFD0500A07106 /* LBXPermissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967676251D8AFD0500A07106 /* LBXPermissions.swift */; };
+		9676762D1D8AFD0500A07106 /* LBXScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967676261D8AFD0500A07106 /* LBXScanLineAnimation.swift */; };
+		9676762E1D8AFD0500A07106 /* LBXScanNetAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967676271D8AFD0500A07106 /* LBXScanNetAnimation.swift */; };
+		9676762F1D8AFD0500A07106 /* LBXScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967676281D8AFD0500A07106 /* LBXScanView.swift */; };
+		967676301D8AFD0500A07106 /* LBXScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967676291D8AFD0500A07106 /* LBXScanViewController.swift */; };
+		967676311D8AFD0500A07106 /* LBXScanViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676762A1D8AFD0500A07106 /* LBXScanViewStyle.swift */; };
+		967676321D8AFD0500A07106 /* LBXScanWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9676762B1D8AFD0500A07106 /* LBXScanWrapper.swift */; };
 		FD0544041D86A43400185AEF /* PageAppointmentProxyActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0543FE1D86A43400185AEF /* PageAppointmentProxyActions.swift */; };
 		FD0544051D86A43400185AEF /* PageAppointmentProxy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD0543FF1D86A43400185AEF /* PageAppointmentProxy.storyboard */; };
 		FD0544061D86A43400185AEF /* PageAppointmentProxyBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0544021D86A43400185AEF /* PageAppointmentProxyBodyView.swift */; };
@@ -203,6 +210,13 @@
 		73C7EFA61D85A28300B1B971 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAppointmentPatientCondition.storyboard; sourceTree = "<group>"; };
 		73C7EFA81D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentPatientConditionBodyView.swift; sourceTree = "<group>"; };
 		73C7EFA91D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentPatientConditionViewController.swift; sourceTree = "<group>"; };
+		967676251D8AFD0500A07106 /* LBXPermissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXPermissions.swift; sourceTree = "<group>"; };
+		967676261D8AFD0500A07106 /* LBXScanLineAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanLineAnimation.swift; sourceTree = "<group>"; };
+		967676271D8AFD0500A07106 /* LBXScanNetAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanNetAnimation.swift; sourceTree = "<group>"; };
+		967676281D8AFD0500A07106 /* LBXScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanView.swift; sourceTree = "<group>"; };
+		967676291D8AFD0500A07106 /* LBXScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewController.swift; sourceTree = "<group>"; };
+		9676762A1D8AFD0500A07106 /* LBXScanViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanViewStyle.swift; sourceTree = "<group>"; };
+		9676762B1D8AFD0500A07106 /* LBXScanWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBXScanWrapper.swift; sourceTree = "<group>"; };
 		F7591AC2A9B639D8F3C115FB /* Pods_YiMaiPatient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YiMaiPatient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD0543FE1D86A43400185AEF /* PageAppointmentProxyActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyActions.swift; sourceTree = "<group>"; };
 		FD0544001D86A43400185AEF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAppointmentProxy.storyboard; sourceTree = "<group>"; };
@@ -301,6 +315,7 @@
 		730DDF671D5EC4D600E4ABB6 /* YMClasses */ = {
 			isa = PBXGroup;
 			children = (
+				967676241D8AFD0500A07106 /* YMQRScan */,
 				730DDF681D5EC4D600E4ABB6 /* YMButton.swift */,
 				730DDF6A1D5EC4D600E4ABB6 /* YMClassesAndProtocols.swift */,
 				730DDF6B1D5EC4D600E4ABB6 /* YMDatetime.swift */,
@@ -731,6 +746,20 @@
 			path = Body;
 			sourceTree = "<group>";
 		};
+		967676241D8AFD0500A07106 /* YMQRScan */ = {
+			isa = PBXGroup;
+			children = (
+				967676251D8AFD0500A07106 /* LBXPermissions.swift */,
+				967676261D8AFD0500A07106 /* LBXScanLineAnimation.swift */,
+				967676271D8AFD0500A07106 /* LBXScanNetAnimation.swift */,
+				967676281D8AFD0500A07106 /* LBXScanView.swift */,
+				967676291D8AFD0500A07106 /* LBXScanViewController.swift */,
+				9676762A1D8AFD0500A07106 /* LBXScanViewStyle.swift */,
+				9676762B1D8AFD0500A07106 /* LBXScanWrapper.swift */,
+			);
+			path = YMQRScan;
+			sourceTree = "<group>";
+		};
 		C68F0C02424F8D4A587F7E93 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1001,7 +1030,9 @@
 				7312ED821D5EB99D006F6B56 /* ViewController.swift in Sources */,
 				730DDF7C1D5EC4D600E4ABB6 /* YMSizes.swift in Sources */,
 				FDD9B7D91D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift in Sources */,
+				9676762E1D8AFD0500A07106 /* LBXScanNetAnimation.swift in Sources */,
 				FD0544041D86A43400185AEF /* PageAppointmentProxyActions.swift in Sources */,
+				967676311D8AFD0500A07106 /* LBXScanViewStyle.swift in Sources */,
 				FDD9B7D61D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift in Sources */,
 				730DDF711D5EC4D600E4ABB6 /* YMAPIUtility.swift in Sources */,
 				7307BFDB1D5EF42B000F31E5 /* YMRegisterStrings.swift in Sources */,
@@ -1009,11 +1040,14 @@
 				738F495A1D5ECEBB00E577F4 /* YMLoginStrings.swift in Sources */,
 				7312ED801D5EB99D006F6B56 /* AppDelegate.swift in Sources */,
 				730DDF771D5EC4D600E4ABB6 /* YMVar.swift in Sources */,
+				9676762C1D8AFD0500A07106 /* LBXPermissions.swift in Sources */,
 				730DDF8B1D5EC5A800E4ABB6 /* YMLoaclDataStrings.swift in Sources */,
 				7307BFD71D5EEF94000F31E5 /* PageRegisterViewController.swift in Sources */,
 				73A678851D60AFAE0005E90C /* PageSelectCityViewController.swift in Sources */,
+				967676321D8AFD0500A07106 /* LBXScanWrapper.swift in Sources */,
 				73A678871D60B0710005E90C /* PageSelectCityBodyView.swift in Sources */,
 				730DDF981D5EC64600E4ABB6 /* PageCommonBottomView.swift in Sources */,
+				9676762D1D8AFD0500A07106 /* LBXScanLineAnimation.swift in Sources */,
 				730DDF731D5EC4D600E4ABB6 /* YMLoaclData.swift in Sources */,
 				73C7EF921D85995600B1B971 /* PageAppointmentActions.swift in Sources */,
 				730DDF721D5EC4D600E4ABB6 /* YMCoreDataEngine.swift in Sources */,
@@ -1070,6 +1104,7 @@
 				73C7EF971D85998A00B1B971 /* YMYiMaiStrings.swift in Sources */,
 				738F49541D5ECCA300E577F4 /* PageLoginViewController.swift in Sources */,
 				730DDF7A1D5EC4D600E4ABB6 /* YMFonts.swift in Sources */,
+				9676762F1D8AFD0500A07106 /* LBXScanView.swift in Sources */,
 				730DDF991D5EC64600E4ABB6 /* PageSearchResultCell.swift in Sources */,
 				730DDF781D5EC4D600E4ABB6 /* YMBasicTypeExtensionForLayout.swift in Sources */,
 				7307BFE81D5F032A000F31E5 /* PageRegisterInputInfoBodyView.swift in Sources */,
@@ -1077,6 +1112,7 @@
 				7312ED881D5EB99D006F6B56 /* YiMaiPatient.xcdatamodeld in Sources */,
 				738F49561D5ECCF300E577F4 /* PageLoginBodyView.swift in Sources */,
 				73C7EFB11D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift in Sources */,
+				967676301D8AFD0500A07106 /* LBXScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
