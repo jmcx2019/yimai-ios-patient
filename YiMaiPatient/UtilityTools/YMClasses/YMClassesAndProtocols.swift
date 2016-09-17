@@ -24,7 +24,8 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_APPOINTMENT_PATIENT_CONDITION_NAME: true,
         YMCommonStrings.CS_PAGE_APPOINMENT_PROXY_NAME: true,
         YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_BASIC_INFO_NAME: true,
-        YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_CONDITION_NAME: true
+        YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_CONDITION_NAME: true,
+        YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME: true
     ]
 }
 
@@ -32,8 +33,10 @@ public class NoBackByGesturePage {
     public static let PageMap: [String:Bool] = [
         YMCommonStrings.CS_PAGE_LOGIN_NAME: true,
         YMCommonStrings.CS_PAGE_REGISTER_PERSONAL_INFO_NAME: true,
-        YMCommonStrings.CS_PAGE_INDEX_NAME:true,
+        YMCommonStrings.CS_PAGE_INDEX_NAME:true
     ]
+    
+    public static var DynamicPageMap = [String: Bool]()
 }
 
 public protocol PageJumpActionsProtocol {
@@ -197,10 +200,12 @@ public class PageViewController: UIViewController, UIGestureRecognizerDelegate{
     
     public func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         if(gestureRecognizer.isKindOfClass(UIScreenEdgePanGestureRecognizer)) {
-            if(nil == NoBackByGesturePage.PageMap[YMCurrentPage.CurrentPage]) {
-                return true
-            } else {
+            if(nil != NoBackByGesturePage.PageMap[YMCurrentPage.CurrentPage]) {
                 return false
+            } else if(nil != NoBackByGesturePage.DynamicPageMap[YMCurrentPage.CurrentPage]) {
+                return false
+            } else {
+                return true
             }
         }
 

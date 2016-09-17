@@ -50,10 +50,6 @@ public class YMTextFieldDelegate : NSObject, UITextFieldDelegate {
         let lang = realTextField.textInputMode?.primaryLanguage
         let keboard = realTextField.keyboardType
         
-        if(nil != realTextField.EditChangedCallback) {
-            realTextField.EditChangedCallback!(realTextField)
-        }
-        
         if("zh-Hans" == lang && UIKeyboardType.Default == keboard) {
             if(nil == selectedRange) {
                 if(0 != maxCharactersCount){
@@ -68,6 +64,10 @@ public class YMTextFieldDelegate : NSObject, UITextFieldDelegate {
                     realTextField.text = (realTextField.text! as NSString).substringToIndex(maxCharactersCount)
                 }
             }
+        }
+        
+        if(nil != realTextField.EditChangedCallback) {
+            realTextField.EditChangedCallback!(realTextField)
         }
     }
     

@@ -19,6 +19,7 @@ public class YMCommonStrings {
     public static let CS_PAGE_LOGIN_NAME = "PageLogin"
     public static let CS_PAGE_REGISTER_NAME = "PageRegister"
 
+    public static let CS_PAGE_COMMON_SEARCH_NAME = "PageCommonSearch"
     public static let CS_PAGE_SELECT_CITY_NAME = "PageSelectCity"
 
     public static let CS_PAGE_REGISTER_PERSONAL_INFO_NAME = "PageRegisterInputInfo"

@@ -12,6 +12,8 @@ import ChameleonFramework
 import Photos
 
 public class PageAppointmentProxyBodyView: PageBodyView {
+    private var PorxyActions: PageAppointmentProxyActions!
+    
     private var PatientBasicInfoPanel: YMTouchableView? = nil
     private var PatientConditionPanel: YMTouchableView? = nil
     private var PhotoIcon = YMLayout.GetSuitableImageView("PageAppointmentPhotoIcon")
@@ -23,13 +25,20 @@ public class PageAppointmentProxyBodyView: PageBodyView {
     private var PhotoScrollRightButton: YMTouchableView? = nil
     
     private var ProxyInfoPanel = UIView()
-    let ProxyInfoInput = YMTextArea(aDelegate: nil)
+    var RequireDocName: YMTextField? = nil
+    var RequireHospital: YMTextField? = nil
+    var RequireDepartment: YMTextField? = nil
+    var RequireJobTitle: YMTextField? = nil
     
     private var SelectDoctorPanel: UIView? = nil
     private var SelectDoctorButton: YMTouchableView? = nil
     private let SelectDoctorButtonIcon = YMLayout.GetSuitableImageView("PageAppointmentAddDoctorIcon")
     private let SelectDoctorButtonLabel = UILabel()
     private var SelectedDoctorCell: UIView? = nil
+    
+    private let SelectTimePanel = UIView()
+    private var BySysRadioPanel: YMTouchableView!
+    private var ByUserRadioPanel: YMTouchableView!
     
     private var ConfirmButton: YMButton? = nil
     
@@ -81,11 +90,15 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         self.DrawDocCell(PageAppointmentProxyViewController.SelectedDoctor)
         self.UpdateBasicInfo()
         self.UpdateCondition()
+        SetSelectTimeBySys()
+        PageAppointmentProxyViewController.SelectedTimeForUpload.removeAll()
     }
 
     override func ViewLayout() {
         YMLayout.BodyLayoutWithTop(ParentView!, bodyView: BodyView)
         BodyView.backgroundColor = HexColor("#f0f0f0")
+        
+        PorxyActions = Actions as! PageAppointmentProxyActions
         
         PhotoPikcer = YMPhotoSelector(nav: self.NavController!, maxSelection: AllowedSelection)
         PhotoPikcer?.SelectedCallback = ImagesSelected
@@ -97,6 +110,17 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         DrawPhotoPanel()
         DrawPhotoButton()
         DrawConfirmButton()
+        
+        DrawSelectTimePanel()
+        
+        YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: SelectTimePanel, padding: 118.LayoutVal())
+    }
+    
+    func AllInputResignFirstResponder() {
+        RequireDocName?.resignFirstResponder()
+        RequireHospital?.resignFirstResponder()
+        RequireDepartment?.resignFirstResponder()
+        RequireJobTitle?.resignFirstResponder()
     }
     
     private func DrawProxyInfo() {
@@ -107,17 +131,55 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         
         ProxyInfoPanel.addSubview(titleView)
         titleView.addSubview(title)
-        ProxyInfoPanel.addSubview(ProxyInfoInput)
         
         titleView.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 60.LayoutVal())
         title.anchorToEdge(Edge.Left, padding: 40.LayoutVal(), width: title.width, height: title.height)
-        ProxyInfoInput.align(Align.UnderMatchingLeft, relativeTo: titleView, padding: 0, width: YMSizes.PageWidth, height: 160.LayoutVal())
-        ProxyInfoInput.placeholder = "填写代约需求（例如：医生姓名、医院、科室、职称、特长等）"
-        ProxyInfoInput.MaxCharCount = 140
-        ProxyInfoInput.font = YMFonts.YMDefaultFont(24.LayoutVal())
-        ProxyInfoInput.backgroundColor = YMColors.White
+
+        let param = TextFieldCreateParam()
         
-        YMLayout.SetViewHeightByLastSubview(ProxyInfoPanel, lastSubView: ProxyInfoInput)
+        param.BackgroundColor = YMColors.PatientSearchBackgroundGray
+        param.FontColor = YMColors.PatientFontGray
+        param.FontSize = 26.LayoutVal()
+        
+        param.Placholder = "专家姓名（非必填）"
+        RequireDocName = YMLayout.GetTextFieldWithMaxCharCount(param, maxCharCount: 20)
+        
+        param.Placholder = "医院（必填）"
+        RequireHospital = YMLayout.GetTextFieldWithMaxCharCount(param, maxCharCount: 20)
+        
+        param.Placholder = "科室（必填）"
+        RequireDepartment = YMLayout.GetTextFieldWithMaxCharCount(param, maxCharCount: 20)
+        
+        param.Placholder = "职称（必填，可多选）"
+        RequireJobTitle = YMLayout.GetTextFieldWithMaxCharCount(param, maxCharCount: 20)
+        
+        RequireHospital?.EditStartCallback = PorxyActions.RequireHospitalBeginEdit
+        RequireDepartment?.EditStartCallback = PorxyActions.RequireDepartmentBeginEdit
+        RequireJobTitle?.EditStartCallback = PorxyActions.RequireJobTitleBeginEdit
+        
+        ProxyInfoPanel.addSubview(RequireDocName!)
+        ProxyInfoPanel.addSubview(RequireHospital!)
+        ProxyInfoPanel.addSubview(RequireDepartment!)
+        ProxyInfoPanel.addSubview(RequireJobTitle!)
+        
+        RequireDocName?.align(Align.UnderMatchingLeft, relativeTo: titleView,
+                              padding: 0, width: YMSizes.PageWidth, height: 80.LayoutVal())
+        
+        RequireHospital?.align(Align.UnderMatchingLeft, relativeTo: RequireDocName!,
+                              padding: YMSizes.OnPx, width: YMSizes.PageWidth, height: 80.LayoutVal())
+        
+        RequireDepartment?.align(Align.UnderMatchingLeft, relativeTo: RequireHospital!,
+                              padding: YMSizes.OnPx, width: YMSizes.PageWidth, height: 80.LayoutVal())
+        
+        RequireJobTitle?.align(Align.UnderMatchingLeft, relativeTo: RequireDepartment!,
+                              padding: YMSizes.OnPx, width: YMSizes.PageWidth, height: 80.LayoutVal())
+        
+        RequireDocName?.SetLeftPaddingWidth(40.LayoutVal())
+        RequireHospital?.SetLeftPaddingWidth(40.LayoutVal())
+        RequireDepartment?.SetLeftPaddingWidth(40.LayoutVal())
+        RequireJobTitle?.SetLeftPaddingWidth(40.LayoutVal())
+        
+        YMLayout.SetViewHeightByLastSubview(ProxyInfoPanel, lastSubView: RequireJobTitle!)
     }
     
     private func DrawPatientTextLabel(text: String, panel: UIView, textColor: UIColor) {
@@ -365,7 +427,9 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         let photoButton = YMLayout.GetTouchableImageView(useObject: Actions!, useMethod: "PhotoSelect:".Sel(), imageName: "PageAppointmentPhotoIcon")
         
         BodyView.addSubview(photoButton)
-        photoButton.anchorToEdge(Edge.Top, padding: 575.LayoutVal(), width: photoButton.width, height: photoButton.height)
+        photoButton.align(Align.AboveCentered, relativeTo: PhotoPanel!,
+                          padding: -50.LayoutVal(), width: photoButton.width, height: photoButton.height)
+//        photoButton.anchorToEdge(Edge.Top, padding: 575.LayoutVal(), width: photoButton.width, height: photoButton.height)
     }
     
     private func DrawConfirmButton() {
@@ -409,6 +473,121 @@ public class PageAppointmentProxyBodyView: PageBodyView {
             let pos = CGPointMake(x, self.LastImage!.frame.origin.y)
             PhotoInnerPanel?.setContentOffset(pos, animated: true)
         }
+    }
+    
+    private func DrawSelectTimePanel() {
+        YMLayout.ClearView(view: SelectTimePanel)
+        BodyView.addSubview(SelectTimePanel)
+        SelectTimePanel.align(Align.UnderMatchingLeft, relativeTo: PhotoPanel!,
+                              padding: 50.LayoutVal(), width: YMSizes.PageWidth, height: 0)
+        
+        let title = YMLayout.GetNomalLabel("期望就诊时间", textColor: YMColors.FontGray,
+                                           fontSize: 24.LayoutVal())
+        let bySysTitle = YMLayout.GetNomalLabel("专家决定（选择由专家决定可增加您的约诊率）",
+                                                textColor: YMColors.PatientFontGray, fontSize: 28.LayoutVal())
+        let byUserTitle = YMLayout.GetNomalLabel("指定时间",
+                                                textColor: YMColors.PatientFontGray, fontSize: 28.LayoutVal())
+        
+        let byUserTimeLabel = UILabel()
+        byUserTimeLabel.font = YMFonts.YMDefaultFont(28.LayoutVal())
+        byUserTimeLabel.text = "请指定时间"
+        byUserTimeLabel.textColor = YMColors.PatientFontGreen
+        byUserTimeLabel.textAlignment = NSTextAlignment.Center
+        byUserTimeLabel.layer.borderColor = YMColors.PatientBorderGray.CGColor
+        byUserTimeLabel.layer.borderWidth = YMSizes.OnPx
+        byUserTimeLabel.backgroundColor = YMColors.PatientSearchBackgroundGray
+
+        let bySysSelectedIcon = YMLayout.GetSuitableImageView("SelectedRadioBtn")
+        let bySysUnselectedIcon = YMLayout.GetSuitableImageView("UnselectedRadioBtn")
+        
+        let byUserSelectedIcon = YMLayout.GetSuitableImageView("SelectedRadioBtn")
+        let byUserUnselectedIcon = YMLayout.GetSuitableImageView("UnselectedRadioBtn")
+        
+        BySysRadioPanel = YMLayout.GetTouchableView(useObject: Actions!, useMethod: "TimeBySysTouched:".Sel())
+        ByUserRadioPanel = YMLayout.GetTouchableView(useObject: Actions!, useMethod: "TimeByUserTouched:".Sel())
+
+        BySysRadioPanel.backgroundColor = YMColors.None
+        ByUserRadioPanel.backgroundColor = YMColors.None
+        
+        SelectTimePanel.addSubview(title)
+        SelectTimePanel.addSubview(BySysRadioPanel)
+        SelectTimePanel.addSubview(ByUserRadioPanel)
+        
+        BySysRadioPanel.addSubview(bySysTitle)
+        BySysRadioPanel.addSubview(bySysSelectedIcon)
+        BySysRadioPanel.addSubview(bySysUnselectedIcon)
+        
+        ByUserRadioPanel.addSubview(byUserTitle)
+        ByUserRadioPanel.addSubview(byUserSelectedIcon)
+        ByUserRadioPanel.addSubview(byUserUnselectedIcon)
+        ByUserRadioPanel.addSubview(byUserTimeLabel)
+        
+        title.anchorAndFillEdge(Edge.Top, xPad: 40.LayoutVal(), yPad: 0, otherSize: title.height)
+        BySysRadioPanel.align(Align.UnderMatchingLeft, relativeTo: title,
+                              padding: 32.LayoutVal(), width: YMSizes.PageWidth, height: 28.LayoutVal())
+        ByUserRadioPanel.align(Align.UnderMatchingLeft, relativeTo: BySysRadioPanel,
+                               padding: 20.LayoutVal(), width: YMSizes.PageWidth, height: 46.LayoutVal())
+        
+        bySysSelectedIcon.anchorToEdge(Edge.Left, padding: 0,
+                                       width: bySysSelectedIcon.width, height: bySysSelectedIcon.height)
+        bySysUnselectedIcon.anchorToEdge(Edge.Left, padding: 0,
+                                         width: bySysUnselectedIcon.width, height: bySysUnselectedIcon.height)
+        bySysTitle.align(Align.ToTheRightCentered, relativeTo: bySysSelectedIcon,
+                         padding: 10.LayoutVal(), width: bySysTitle.width, height: bySysTitle.height)
+        
+        
+        byUserSelectedIcon.anchorToEdge(Edge.Left, padding: 0,
+                                       width: byUserSelectedIcon.width, height: byUserSelectedIcon.height)
+        byUserUnselectedIcon.anchorToEdge(Edge.Left, padding: 0,
+                                          width: byUserUnselectedIcon.width, height: byUserUnselectedIcon.height)
+        
+        byUserTitle.align(Align.ToTheRightCentered, relativeTo: byUserUnselectedIcon,
+                          padding: 10.LayoutVal(), width: byUserTitle.width, height: byUserTitle.height)
+        byUserTimeLabel.align(Align.ToTheRightCentered, relativeTo: byUserTitle,
+                              padding: 16.LayoutVal(), width: 242.LayoutVal(), height: 46.LayoutVal())
+        
+        YMLayout.SetViewHeightByLastSubview(SelectTimePanel, lastSubView: ByUserRadioPanel)
+        
+        BySysRadioPanel.UserObjectData = ["selectedIcon": bySysSelectedIcon,
+                                           "unselectedIcon": bySysUnselectedIcon]
+        ByUserRadioPanel.UserObjectData = ["selectedIcon": byUserSelectedIcon,
+                                           "unselectedIcon": byUserUnselectedIcon,
+                                           "shownLabel": byUserTimeLabel]
+        
+        bySysUnselectedIcon.hidden = true
+    }
+    
+    func SetSelectTimeByUser() {
+        let userIcons = ByUserRadioPanel.UserObjectData as! [String: AnyObject]
+        let sysIcons = BySysRadioPanel.UserObjectData as! [String: AnyObject]
+        
+        let userUnselectIcon = userIcons["unselectedIcon"] as! YMTouchableImageView
+        let sysUnselectedIcon = sysIcons["unselectedIcon"] as! YMTouchableImageView
+        
+        userUnselectIcon.hidden = true
+        sysUnselectedIcon.hidden = false
+    }
+    
+    func SetSelectTimeBySys() {
+        let userIcons = ByUserRadioPanel.UserObjectData as! [String: AnyObject]
+        let sysIcons = BySysRadioPanel.UserObjectData as! [String: AnyObject]
+        
+        let userUnselectIcon = userIcons["unselectedIcon"] as! YMTouchableImageView
+        let sysUnselectedIcon = sysIcons["unselectedIcon"] as! YMTouchableImageView
+        let userTimeLabel = userIcons["shownLabel"] as! UILabel
+        userTimeLabel.text = "请指定时间"
+        
+        PageAppointmentProxyViewController.SelectedTimeForUpload.removeAll()
+        
+        userUnselectIcon.hidden = false
+        sysUnselectedIcon.hidden = true
+    }
+    
+    func UpdateTimeSelectByUser(timeToShow: String) {
+        let userIcons = ByUserRadioPanel.UserObjectData as! [String: AnyObject]
+        let userTimeLabel = userIcons["shownLabel"] as! UILabel
+
+        userTimeLabel.text = timeToShow
     }
 }
 

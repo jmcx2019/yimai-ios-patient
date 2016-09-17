@@ -147,6 +147,73 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
             ApiUtility?.YMCreateNewAppointment(uploadData!)
         }
     }
+    
+    public func TimeBySysTouched(gr: UIGestureRecognizer) {
+        TargetController?.BodyView?.SetSelectTimeBySys()
+    }
+    
+    public func TimeByUserTouched(gr: UIGestureRecognizer) {
+        TargetController?.BodyView?.SetSelectTimeByUser()
+        NoBackByGesturePage.DynamicPageMap[YMCurrentPage.CurrentPage] = true
+        TargetController?.ShowDatePicker()
+    }
+    
+    public func RequireHospitalBeginEdit(textField: YMTextField) -> Bool {
+        TargetController?.BodyView?.AllInputResignFirstResponder()
+        PageCommonSearchViewController.SearchPageTypeName =
+            YMCommonSearchPageStrings.CS_HOSPITAL_SEARCH_PAGE_TYPE
+        DoJump(YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME)
+        return false
+    }
+    
+    public func RequireDepartmentBeginEdit(textField: YMTextField) -> Bool {
+        TargetController?.BodyView?.AllInputResignFirstResponder()
+        PageCommonSearchViewController.SearchPageTypeName =
+            YMCommonSearchPageStrings.CS_DEPARTMENT_SEARCH_PAGE_TYPE
+        DoJump(YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME)
+        return false
+    }
+    
+    public func RequireJobTitleBeginEdit(textField: YMTextField) -> Bool {
+        TargetController?.BodyView?.AllInputResignFirstResponder()
+//        PageCommonSearchViewController.SearchPageTypeName = YMCommonSearchPageStrings.CS_HOSPITAL_SEARCH_PAGE_TYPE
+//        DoJump(YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME)
+        return false
+    }
+    
+    public func DatePickerBackgroundTouched(gr: UIGestureRecognizer) {
+        NoBackByGesturePage.DynamicPageMap.removeValueForKey(YMCurrentPage.CurrentPage)
+        TargetController?.HideDatePicker()
+        if(0 == PageAppointmentProxyViewController.SelectedTimeForUpload.count) {
+            TargetController?.BodyView?.SetSelectTimeBySys()
+        }
+    }
+    
+    public func DatePickedTouched(sender: UIButton) {
+        NoBackByGesturePage.DynamicPageMap.removeValueForKey(YMCurrentPage.CurrentPage)
+        TargetController?.HideDatePicker()
+        
+        let dateFmt = NSDateFormatter()
+        let AMorPMFmt = NSDateFormatter()
+        let fullFmt = NSDateFormatter()
+        
+        fullFmt.locale = NSLocale(localeIdentifier: "zh_CN")
+        dateFmt.locale = NSLocale(localeIdentifier: "zh_CN")
+        AMorPMFmt.locale = NSLocale(localeIdentifier: "zh_CN")
+        
+        dateFmt.dateFormat = "yyyy-MM-dd"
+        AMorPMFmt.dateFormat = "a"
+        fullFmt.dateFormat = "yyyy-MM-dd a"
+        
+        TargetController?.BodyView?
+            .UpdateTimeSelectByUser(fullFmt.stringFromDate(TargetController!.DatePicker.date))
+
+        PageAppointmentProxyViewController.SelectedTimeForUpload.removeAll()
+        PageAppointmentProxyViewController.SelectedTimeForUpload
+            .append(dateFmt.stringFromDate(TargetController!.DatePicker.date))
+        PageAppointmentProxyViewController.SelectedTimeForUpload
+            .append(AMorPMFmt.stringFromDate(TargetController!.DatePicker.date))
+    }
 }
 
 

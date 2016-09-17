@@ -19,4 +19,9 @@ public class PageIndexViewController: PageViewController {
         BodyView?.DrawTopBtn(TopView!.TopViewPanel)
         BodyView?.DrawSideBar()
     }
+    
+    override func PagePreRefresh() {
+        super.PagePreRefresh()
+        YMCurrentPage.CurrentPage = YMCommonStrings.CS_PAGE_INDEX_NAME
+    }
 }
