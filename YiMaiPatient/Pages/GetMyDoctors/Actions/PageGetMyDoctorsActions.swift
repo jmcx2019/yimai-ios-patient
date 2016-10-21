@@ -58,7 +58,7 @@ public class PageGetMyDoctorsActions: PageJumpActions {
     
     public func ProxyTouched(sender: UIButton) {
         PageAppointmentProxyViewController.SelectedDoctor = TargetView?.SelectedDoc
-        DoJump(YMCommonStrings.CS_PAGE_APPOINMENT_PROXY_NAME)
+        DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_NAME)
     }
 }
 

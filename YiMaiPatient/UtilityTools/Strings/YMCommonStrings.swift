@@ -34,7 +34,9 @@ public class YMCommonStrings {
     
     public static let CS_PAGE_APPOINTMENT_PROXY_PATIENT_BASIC_INFO_NAME = "PageAppointmentProxyBasicInfo"
     public static let CS_PAGE_APPOINTMENT_PROXY_PATIENT_CONDITION_NAME = "PageAppointmentProxyPatientCondition"
-    public static let CS_PAGE_APPOINMENT_PROXY_NAME = "PageAppointmentProxy"
+    public static let CS_PAGE_APPOINTMENT_PROXY_NAME = "PageAppointmentProxy"
+    
+    public static let CS_PAGE_APPOINTMENT_RECORD = "PageAppointmentRecord"
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"
     public static let CS_API_PARAM_KEY_PHONE = "phone"

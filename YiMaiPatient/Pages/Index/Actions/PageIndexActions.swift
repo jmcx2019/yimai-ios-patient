@@ -27,7 +27,7 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func AppointmentButtonTouched(gr: UIGestureRecognizer) {
-        print("AppointmentButtonTouched")
+        DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_RECORD)
     }
     
     public func MessageNotifyTouched(qr: UIGestureRecognizer) {

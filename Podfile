@@ -17,5 +17,6 @@ target 'YiMaiPatient' do
   pod 'QBImagePickerController', '~> 3.4.0'
   pod 'KMPlaceholderTextView', '~> 1.2.1'
   pod 'ChameleonFramework/Swift'
+  pod 'UMengSocialCOM', '~> 5.2.1'
 end
 

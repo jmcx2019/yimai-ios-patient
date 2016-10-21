@@ -113,6 +113,14 @@
 		FD0544061D86A43400185AEF /* PageAppointmentProxyBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0544021D86A43400185AEF /* PageAppointmentProxyBodyView.swift */; };
 		FD0544071D86A43400185AEF /* PageAppointmentProxyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD0544031D86A43400185AEF /* PageAppointmentProxyViewController.swift */; };
 		FD4735CD1D81B22000BBEF16 /* YMQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4735CC1D81B22000BBEF16 /* YMQRCode.swift */; };
+		FD5353641DB720DB007C056A /* WXPay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5353631DB720DB007C056A /* WXPay.swift */; };
+		FD53536C1DB7212C007C056A /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5353661DB7212C007C056A /* libWeChatSDK.a */; };
+		FD53536D1DB7212C007C056A /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = FD5353671DB7212C007C056A /* read_me.txt */; };
+		FD53536E1DB7212C007C056A /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = FD5353681DB7212C007C056A /* README.txt */; };
+		FD95C55E1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD95C55D1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift */; };
+		FD95C5601DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD95C55F1DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift */; };
+		FD95C5621DBA002500AFFE5B /* PageAppointmentRecordActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD95C5611DBA002500AFFE5B /* PageAppointmentRecordActions.swift */; };
+		FD95C5631DBA023C00AFFE5B /* PageAppointmentRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD95C5651DBA023C00AFFE5B /* PageAppointmentRecord.storyboard */; };
 		FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */; };
 		FDB5B0BF1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */; };
 		FDB5B0C11D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */; };
@@ -243,6 +251,18 @@
 		FD0544021D86A43400185AEF /* PageAppointmentProxyBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyBodyView.swift; sourceTree = "<group>"; };
 		FD0544031D86A43400185AEF /* PageAppointmentProxyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyViewController.swift; sourceTree = "<group>"; };
 		FD4735CC1D81B22000BBEF16 /* YMQRCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMQRCode.swift; sourceTree = "<group>"; };
+		FD5353631DB720DB007C056A /* WXPay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXPay.swift; sourceTree = "<group>"; };
+		FD5353661DB7212C007C056A /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		FD5353671DB7212C007C056A /* read_me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
+		FD5353681DB7212C007C056A /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		FD5353691DB7212C007C056A /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		FD53536A1DB7212C007C056A /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		FD53536B1DB7212C007C056A /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		FD53536F1DB72184007C056A /* YiMaiPatient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YiMaiPatient-Bridging-Header.h"; sourceTree = "<group>"; };
+		FD95C55D1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentRecordViewController.swift; sourceTree = "<group>"; };
+		FD95C55F1DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentRecordBodyView.swift; sourceTree = "<group>"; };
+		FD95C5611DBA002500AFFE5B /* PageAppointmentRecordActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentRecordActions.swift; sourceTree = "<group>"; };
+		FD95C5641DBA023C00AFFE5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAppointmentRecord.storyboard; sourceTree = "<group>"; };
 		FDB5B0BA1D82620C00FD07C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageGetMyDoctors.storyboard; sourceTree = "<group>"; };
 		FDB5B0BE1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsViewController.swift; sourceTree = "<group>"; };
 		FDB5B0C01D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageGetMyDoctorsBodyView.swift; sourceTree = "<group>"; };
@@ -256,6 +276,7 @@
 		FDD9B7D41D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientConditionBodyView.swift; sourceTree = "<group>"; };
 		FDD9B7D51D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentProxyPatientConditionViewController.swift; sourceTree = "<group>"; };
 		FDDEFC6E1D810D7B00887C3E /* PageIndexActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexActions.swift; sourceTree = "<group>"; };
+		FDF051E51DB7643A003408E0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD53536C1DB7212C007C056A /* libWeChatSDK.a in Frameworks */,
 				00E7C407FA57CD648BFB7AB1 /* Pods_YiMaiPatient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,6 +295,7 @@
 		1E56F4D2C0E12888B9E6D3F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FDF051E51DB7643A003408E0 /* CoreTelephony.framework */,
 				F7591AC2A9B639D8F3C115FB /* Pods_YiMaiPatient.framework */,
 			);
 			name = Frameworks;
@@ -292,6 +315,7 @@
 		730DDF581D5EC4D600E4ABB6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FD5353651DB7212C007C056A /* WXPayLib */,
 				730DDF591D5EC4D600E4ABB6 /* YMAPIUtility.swift */,
 				730DDF5A1D5EC4D600E4ABB6 /* YMCoreDataEngine.swift */,
 				730DDF5B1D5EC4D600E4ABB6 /* YMLoaclData.swift */,
@@ -300,6 +324,7 @@
 				730DDF5E1D5EC4D600E4ABB6 /* YMValueValidator.swift */,
 				730DDF5F1D5EC4D600E4ABB6 /* YMVar.swift */,
 				FD4735CC1D81B22000BBEF16 /* YMQRCode.swift */,
+				FD5353631DB720DB007C056A /* WXPay.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -353,6 +378,7 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				FD95C5581DB9FF4900AFFE5B /* AppointmentRecord */,
 				966FD6891D8BD85300FD49B9 /* CommonSearch */,
 				FDD9B7C61D86B40F0038F84B /* AppointmentPatientProxyBasicInfo */,
 				FDD9B7CE1D86B40F0038F84B /* AppointmentProxyPatientCondition */,
@@ -451,6 +477,7 @@
 				7312ED8B1D5EB99D006F6B56 /* LaunchScreen.storyboard */,
 				7312ED8E1D5EB99D006F6B56 /* Info.plist */,
 				7312ED861D5EB99D006F6B56 /* YiMaiPatient.xcdatamodeld */,
+				FD53536F1DB72184007C056A /* YiMaiPatient-Bridging-Header.h */,
 			);
 			path = YiMaiPatient;
 			sourceTree = "<group>";
@@ -866,6 +893,46 @@
 			path = Body;
 			sourceTree = "<group>";
 		};
+		FD5353651DB7212C007C056A /* WXPayLib */ = {
+			isa = PBXGroup;
+			children = (
+				FD5353661DB7212C007C056A /* libWeChatSDK.a */,
+				FD5353671DB7212C007C056A /* read_me.txt */,
+				FD5353681DB7212C007C056A /* README.txt */,
+				FD5353691DB7212C007C056A /* WechatAuthSDK.h */,
+				FD53536A1DB7212C007C056A /* WXApi.h */,
+				FD53536B1DB7212C007C056A /* WXApiObject.h */,
+			);
+			path = WXPayLib;
+			sourceTree = "<group>";
+		};
+		FD95C5581DB9FF4900AFFE5B /* AppointmentRecord */ = {
+			isa = PBXGroup;
+			children = (
+				FD95C5591DB9FF4900AFFE5B /* Actions */,
+				FD95C55A1DB9FF4900AFFE5B /* BodyView */,
+				FD95C5651DBA023C00AFFE5B /* PageAppointmentRecord.storyboard */,
+				FD95C55D1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift */,
+			);
+			path = AppointmentRecord;
+			sourceTree = "<group>";
+		};
+		FD95C5591DB9FF4900AFFE5B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FD95C5611DBA002500AFFE5B /* PageAppointmentRecordActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		FD95C55A1DB9FF4900AFFE5B /* BodyView */ = {
+			isa = PBXGroup;
+			children = (
+				FD95C55F1DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift */,
+			);
+			path = BodyView;
+			sourceTree = "<group>";
+		};
 		FDB5B0B41D8261E800FD07C4 /* GetMyDoctors */ = {
 			isa = PBXGroup;
 			children = (
@@ -1019,6 +1086,7 @@
 			files = (
 				73A678901D60C3720005E90C /* PageIndex.storyboard in Resources */,
 				7307BFD31D5EEF7B000F31E5 /* PageRegister.storyboard in Resources */,
+				FD53536E1DB7212C007C056A /* README.txt in Resources */,
 				966FD69A1D8BD85300FD49B9 /* PageCommonSearch.storyboard in Resources */,
 				FDD9B7D71D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard in Resources */,
 				FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */,
@@ -1030,6 +1098,7 @@
 				7312ED8A1D5EB99D006F6B56 /* Assets.xcassets in Resources */,
 				73C7EFAF1D85A28300B1B971 /* PageAppointmentPatientCondition.storyboard in Resources */,
 				73A678811D60AF950005E90C /* PageSelectCity.storyboard in Resources */,
+				FD53536D1DB7212C007C056A /* read_me.txt in Resources */,
 				73C7EF851D85988600B1B971 /* PageAppointmentSelectTime.storyboard in Resources */,
 				73C7EFAB1D85A28300B1B971 /* PageAppointmentBasicInfo.storyboard in Resources */,
 				FD0544051D86A43400185AEF /* PageAppointmentProxy.storyboard in Resources */,
@@ -1037,6 +1106,7 @@
 				73A678891D60B2FB0005E90C /* cityDictionary.plist in Resources */,
 				7312ED851D5EB99D006F6B56 /* Main.storyboard in Resources */,
 				73C7EF931D85995600B1B971 /* PageAppointment.storyboard in Resources */,
+				FD95C5631DBA023C00AFFE5B /* PageAppointmentRecord.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1101,10 +1171,12 @@
 				7312ED821D5EB99D006F6B56 /* ViewController.swift in Sources */,
 				966FD6981D8BD85300FD49B9 /* PageDepartmentSearchActions.swift in Sources */,
 				730DDF7C1D5EC4D600E4ABB6 /* YMSizes.swift in Sources */,
+				FD5353641DB720DB007C056A /* WXPay.swift in Sources */,
 				FDD9B7D91D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift in Sources */,
 				9676762E1D8AFD0500A07106 /* LBXScanNetAnimation.swift in Sources */,
 				FD0544041D86A43400185AEF /* PageAppointmentProxyActions.swift in Sources */,
 				966FD6A01D8BD85300FD49B9 /* PageCommonSearchTopView.swift in Sources */,
+				FD95C5621DBA002500AFFE5B /* PageAppointmentRecordActions.swift in Sources */,
 				967676311D8AFD0500A07106 /* LBXScanViewStyle.swift in Sources */,
 				FDD9B7D61D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift in Sources */,
 				730DDF711D5EC4D600E4ABB6 /* YMAPIUtility.swift in Sources */,
@@ -1163,6 +1235,7 @@
 				738F49581D5ECD2D00E577F4 /* PageLoginActions.swift in Sources */,
 				730DDF971D5EC64600E4ABB6 /* YMCommonActions.swift in Sources */,
 				730DDF801D5EC4D600E4ABB6 /* YMDatetime.swift in Sources */,
+				FD95C5601DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift in Sources */,
 				73C7EF941D85995600B1B971 /* PageAppointmentBodyView.swift in Sources */,
 				73C7EFAA1D85A28300B1B971 /* PageAppointmentPatientBasicInfoActions.swift in Sources */,
 				730DDF741D5EC4D600E4ABB6 /* YMModelView.swift in Sources */,
@@ -1176,6 +1249,7 @@
 				7307BFDF1D5EF540000F31E5 /* YMModuleStrings.swift in Sources */,
 				730DDF7D1D5EC4D600E4ABB6 /* YMButton.swift in Sources */,
 				966FD6A21D8BDD4700FD49B9 /* YMCommonSearchPageStrings.swift in Sources */,
+				FD95C55E1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift in Sources */,
 				730DDF791D5EC4D600E4ABB6 /* YMColors.swift in Sources */,
 				730DDF831D5EC4D600E4ABB6 /* YMTextArea.swift in Sources */,
 				73C7EF7B1D85422900B1B971 /* PageSearchDefaultActions.swift in Sources */,
@@ -1319,6 +1393,14 @@
 			name = PageAppointmentProxy.storyboard;
 			sourceTree = "<group>";
 		};
+		FD95C5651DBA023C00AFFE5B /* PageAppointmentRecord.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD95C5641DBA023C00AFFE5B /* Base */,
+			);
+			name = PageAppointmentRecord.storyboard;
+			sourceTree = "<group>";
+		};
 		FDB5B0BB1D82620C00FD07C4 /* PageGetMyDoctors.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1441,9 +1523,14 @@
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YiMaiPatient/UtilityTools/Common/WXPayLib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YiMaiPatient/YiMaiPatient-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1458,9 +1545,14 @@
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YiMaiPatient/UtilityTools/Common/WXPayLib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "YiMaiPatient/YiMaiPatient-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
