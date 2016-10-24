@@ -29,4 +29,18 @@ public class YMVar:NSObject {
         
         return "\(ret!)"
     }
+    
+    public static func GetOptionalValAsString(val: AnyObject?) -> String {
+        if(nil == val) {
+            return ""
+        }
+        
+        let valStr = "\(val!)"
+        
+        if("<null>" == valStr) {
+            return ""
+        }
+        
+        return valStr
+    }
 }

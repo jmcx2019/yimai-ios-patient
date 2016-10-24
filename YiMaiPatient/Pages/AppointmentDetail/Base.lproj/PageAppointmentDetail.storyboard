@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PoZ-xC-04I">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Page Appointment Detail View Controller-->
+        <scene sceneID="KoV-Ku-H5s">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="PoZ-xC-04I" customClass="PageAppointmentDetailViewController" customModule="YiMaiPatient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QSK-A3-IHn"/>
+                        <viewControllerLayoutGuide type="bottom" id="bAP-f3-WGf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="brz-Mg-VxZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tmX-k3-e3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="319"/>
+        </scene>
+    </scenes>
+</document>

@@ -275,8 +275,17 @@ public class YMLayout {
         return userHead!
     }
     
-    public static func LoadImageFromServer(imageView: UIImageView, url: String, fullUrl: String? = nil, makeItRound: Bool = false) {
-        var url = url
+    public static func LoadImageFromServer(imageView: UIImageView, url urlSegment: String, fullUrl: String? = nil, makeItRound: Bool = false, refresh: Bool = false) {
+        var url = urlSegment
+        
+        var urlArr = url.componentsSeparatedByString("Optional(")
+        if(1 < urlArr.count) {
+            url = urlArr[0]
+            let url2 = urlArr[1]
+            let urlArr2 = url2.componentsSeparatedByString(")")
+            
+            url += urlArr2[0]
+        }
         
         if(nil != fullUrl) {
             url = fullUrl!
@@ -284,11 +293,23 @@ public class YMLayout {
             url = YMAPIInterfaceURL.Server + url
         }
         
-        imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: imageView.image, optionsInfo: nil, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
-            if(makeItRound) {
-                imageView.image = Toucan(image: image!).maskWithEllipse().image
-            }
-        })
+        if(refresh) {
+            url += "?t=" + "\(NSDate().timeIntervalSince1970)"
+        }
+        
+        print(url)
+        let imgUrl = NSURL(string: url)
+        if(nil != imgUrl) {
+            imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: imageView.image, optionsInfo: nil, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
+                if(makeItRound) {
+                    if(nil != image) {
+                        imageView.image = Toucan(image: image!)
+                            .resize(CGSize(width: imageView.width, height: imageView.height), fitMode: Toucan.Resize.FitMode.Crop)
+                            .maskWithEllipse().image
+                    }
+                }
+            })
+        }
     }
     
     public static func DrawCommonDocCell(data: [String: AnyObject], docPanel: UIView, action: AnyObject, selector: Selector, prevCell: UIView?) -> YMTouchableView {

@@ -649,8 +649,8 @@ public class YMAPIUtility {
     }
     
     public func YMGetAppointmentDetail(appointmentId: String) {
-        let url = YMAPIUtility.AppendRouteParamToUrl(YMAPIInterfaceURL.GetAppointmentDetail, value: appointmentId)
-        YMAPIGet(url, param: nil, progressHandler: nil)
+//        let url = YMAPIUtility.AppendRouteParamToUrl(YMAPIInterfaceURL.GetAppointmentDetail, value: appointmentId)
+        YMAPIPost(YMAPIInterfaceURL.GetAppointmentDetail, param: ["id": appointmentId], progressHandler: nil)
     }
     
     public func YMGetAdmissionsList() {

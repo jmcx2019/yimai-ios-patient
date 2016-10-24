@@ -26,7 +26,8 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_BASIC_INFO_NAME: true,
         YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_CONDITION_NAME: true,
         YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME: true,
-        YMCommonStrings.CS_PAGE_APPOINTMENT_RECORD: true
+        YMCommonStrings.CS_PAGE_APPOINTMENT_RECORD: true,
+        YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME: true
     ]
 }
 
@@ -240,12 +241,16 @@ public class PageBodyView {
     internal var Actions: AnyObject? = nil
     public var BodyView: UIScrollView = UIScrollView()
     
+    var FullPageLoading: YMPageLoadingView!
+    
     convenience init(parentView: UIView, navController: UINavigationController, pageActions: AnyObject? = nil) {
         self.init()
         self.ParentView = parentView
         self.NavController = navController
         self.Actions = pageActions
         
+        FullPageLoading = YMPageLoadingView(parentView: parentView)
+
         self.ViewLayout()
     }
     
