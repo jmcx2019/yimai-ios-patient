@@ -35,7 +35,7 @@ public class YMCoreDataEngine {
     private static let OneceHandlerLock = NSObject()
     
     private static var HandlerProcessIntervalInUS: UInt32 = 100000
-    private static var OnceHandlerMapClearIntervalInUS: UInt32 = 100000
+    private static var OnceHandlerMapClearIntervalInUS: UInt32 = 200000
     
     public static let OnceHandlerClearLock = NSObject()
     public static let HandlerClearLock = NSObject()

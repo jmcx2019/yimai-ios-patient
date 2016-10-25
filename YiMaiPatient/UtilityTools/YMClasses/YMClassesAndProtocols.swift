@@ -27,7 +27,8 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_PATIENT_CONDITION_NAME: true,
         YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME: true,
         YMCommonStrings.CS_PAGE_APPOINTMENT_RECORD: true,
-        YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME: true
+        YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME: true,
+        YMCommonStrings.CS_PAGE_PERSONAL_INFO_NAME: true
     ]
 }
 

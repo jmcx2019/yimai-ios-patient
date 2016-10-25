@@ -34,6 +34,10 @@ public class PageIndexActions: PageJumpActions {
         print("MessageNotifyTouched")
     }
     
+    public func UserHeadTouched(gr: UIGestureRecognizer) {
+        DoJump(YMCommonStrings.CS_PAGE_PERSONAL_INFO_NAME)
+    }
+    
     public func MainPageMaskTouched(qr: UIGestureRecognizer) {
         let sideBarWidth = 540.LayoutVal()
         

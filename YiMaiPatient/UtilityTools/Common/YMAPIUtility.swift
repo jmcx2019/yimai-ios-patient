@@ -15,6 +15,7 @@ public typealias YMAPIImageCallback = ((UIImage?) -> Void)
 public typealias YMAPIErrorCallback = ((NSError) -> Void)
 
 public class YMAPIInterfaceURL {
+    public static let DoctorServer = "http://139.129.210.89"
     public static let Server = "http://139.129.167.9"
     public static let ApiBaseUrl = "http://139.129.167.9/api"
 
@@ -736,6 +737,11 @@ public class YMAPIUtility {
     
     public func YMUploadAddmissionPhotos(param: AnyObject?, blockBuilder: NetworkBodyWidthBlockBuilder) {
         YMAPIUploadPhotos(YMAPIInterfaceURL.UploadAppointmentPhoto,
+                          param: param, blockBuilder: blockBuilder, progressHandler: nil)
+    }
+    
+    public func YMUploadUserHead(param: AnyObject?, blockBuilder: NetworkBodyWidthBlockBuilder) {
+        YMAPIUploadPhotos(YMAPIInterfaceURL.ChangeUserInfo,
                           param: param, blockBuilder: blockBuilder, progressHandler: nil)
     }
 }

@@ -84,7 +84,7 @@ public class PageRegisterActions: PageJumpActions {
     }
     
     public func VerifyCodeHandler(data: AnyObject?, queue:NSOperationQueue) -> Bool {
-        self.VerifyCodeEnableCounter = self.VerifyCodeEnableCounter + 1
+        self.VerifyCodeEnableCounter = self.VerifyCodeEnableCounter + 2
         if(0 == self.VerifyCodeEnableCounter % 10) {
             queue.addOperationWithBlock({
                 let title = "重新获取(\(60 - self.VerifyCodeEnableCounter/10))"

@@ -29,13 +29,13 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         super.ViewLayout()
         
         DetailActions = PageAppointmentDetailActions(navController: self.NavController!, target: self)
-        Loading = YMPageLoadingView(parentView: self.BodyView)
+//        Loading = YMPageLoadingView(parentView: self.BodyView)
         
         CreateTimelineIconMap()
         DrawBreadcrumbs()
         DrawDP()
         DrawAppointmentNum()
-        Loading?.Show()
+        FullPageLoading?.Show()
     }
     
     private func CreateTimelineIconMap() {
@@ -136,7 +136,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     }
 
     private func DrawDorctor(data: [String: AnyObject]) {
-        let headImage = YMLayout.GetSuitableImageView("CommonHeadImageBorder")
+        let headImage = YMLayout.GetSuitableImageView("HeadImageBorder")
         let docName = UILabel()
         let jobTitle = UILabel()
         let dept = UILabel()
@@ -155,15 +155,15 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         let head = data["head_url"] as? String
         if(nil != head) {
-            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
+            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: YMAPIInterfaceURL.DoctorServer + head!, makeItRound: true)
         }
 
-        divider.backgroundColor = YMColors.FontBlue
+        divider.backgroundColor = YMColors.PatientFontGreen
         divider.align(Align.UnderCentered, relativeTo: headImage,
                       padding: 20.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
         
         docName.text = data["name"] as? String
-        docName.textColor = YMColors.FontBlue
+        docName.textColor = YMColors.PatientFontGreen
         docName.font = YMFonts.YMDefaultFont(30.LayoutVal())
         docName.sizeToFit()
         docName.align(Align.ToTheLeftCentered, relativeTo: divider,
@@ -179,7 +179,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                        width: jobTitle.width, height: jobTitle.height)
         
         dept.text = data["department"] as? String
-        dept.textColor = YMColors.FontBlue
+        dept.textColor = YMColors.PatientFontGreen
         dept.font = YMFonts.YMDefaultFont(20.LayoutVal())
         dept.sizeToFit()
         dept.align(Align.UnderCentered, relativeTo: divider,
@@ -200,7 +200,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     }
     
     private func DrawPatient(data: [String: AnyObject]) {
-        let headImage = YMLayout.GetSuitableImageView("CommonHeadImageBorder")
+        let headImage = YMLayout.GetSuitableImageView("HeadImageBorder")
         let patientName = UILabel()
         let gender = UILabel()
         let age = UILabel()
@@ -225,14 +225,14 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         }
         
         patientName.text = "\(data["name"]!)"
-        patientName.textColor = YMColors.FontBlue
+        patientName.textColor = YMColors.PatientFontGreen
         patientName.font = YMFonts.YMDefaultFont(30.LayoutVal())
         patientName.sizeToFit()
         patientName.align(Align.UnderCentered, relativeTo: headImage,
                       padding: 12.LayoutVal(),
                       width: patientName.width, height: patientName.height)
         
-        divider.backgroundColor = YMColors.FontBlue
+        divider.backgroundColor = YMColors.PatientFontGreen
         divider.align(Align.UnderCentered, relativeTo: patientName,
                       padding: 12.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
         
@@ -288,7 +288,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     private func DrawAppointmentNum() {
         BodyView.addSubview(AppointmentNum)
         AppointmentNum.font = YMFonts.YMDefaultFont(20.LayoutVal())
-        AppointmentNum.textColor = YMColors.FontBlue
+        AppointmentNum.textColor = YMColors.PatientFontGreen
         AppointmentNum.textAlignment = NSTextAlignment.Center
         AppointmentNum.align(Align.UnderMatchingLeft, relativeTo: DPPanel,
                              padding: 0, width: YMSizes.PageWidth, height: 50.LayoutVal())
@@ -305,7 +305,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         TextInfoPanel.addSubview(titleLabel)
         titleLabel.text = "病情资料"
-        titleLabel.textColor = YMColors.FontBlue
+        titleLabel.textColor = YMColors.PatientFontGreen
         titleLabel.font = YMFonts.YMDefaultFont(26.LayoutVal())
         titleLabel.sizeToFit()
         titleLabel.anchorInCorner(Corner.TopLeft,
@@ -444,7 +444,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         func SetTimelableStyle(text: String, label: UILabel) {
             label.text = text
-            label.textColor = YMColors.FontBlue
+            label.textColor = YMColors.PatientFontGreen
             label.font = YMFonts.YMDefaultFont(22.LayoutVal())
             label.sizeToFit()
         }
@@ -494,7 +494,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
             contentCell.addSubview(contentLabel)
             
             contentLabel.text = content!
-            contentLabel.textColor = YMColors.FontBlue
+            contentLabel.textColor = YMColors.PatientFontGreen
             contentLabel.font = YMFonts.YMDefaultFont(24.LayoutVal())
             contentLabel.numberOfLines = 0
             contentLabel.frame = CGRectMake(0, 0, contentInnerWidth, 0)
@@ -541,7 +541,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     private func DrawLine(detailCell: UIView, icon: UIImageView) -> UIView {
         let line = UIView()
         TimeLinePanel.addSubview(line)
-        line.backgroundColor = YMColors.FontBlue
+        line.backgroundColor = YMColors.PatientFontGreen
         line.align(Align.UnderCentered, relativeTo: icon, padding: 10.LayoutVal(),
                    width: YMSizes.OnPx, height: detailCell.frame.origin.y - icon.frame.origin.y + 45.LayoutVal())
         return line
@@ -581,7 +581,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     }
     
     private func SetBreadcrumbsEnabel(label: UILabel) {
-        label.backgroundColor = YMColors.FontBlue
+        label.backgroundColor = YMColors.PatientFontGreen
         label.textColor = YMColors.White
     }
     
@@ -680,8 +680,10 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         DrawImageList(patient)
         DrawTimeline(timeLine)
         
+        print(data)
+        
         YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel)
-        Loading?.Hide()
+        FullPageLoading?.Hide()
     }
     
     public func GetDetail() {

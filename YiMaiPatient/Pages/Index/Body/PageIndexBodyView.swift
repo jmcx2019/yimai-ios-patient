@@ -141,14 +141,17 @@ public class PageIndexBodyView: PageBodyView {
         SideBar.anchorToEdge(Edge.Left, padding: -540.LayoutVal(), width: 540.LayoutVal(), height: YMSizes.PageHeight)
         SideBar.layer.opacity = 0
 
-        let userHead = YMLayout.GetSuitableImageView("PageIndexUserheadBkg")
+//        let userHead = YMLayout.GetSuitableImageView("PageIndexUserheadBkg")
+        let userHead = YMLayout.GetTouchableImageView(useObject: IndexActions!, useMethod: "UserHeadTouched:".Sel(), imageName: "PageIndexUserheadBkg")
         SideBar.addSubview(userHead)
         userHead.anchorToEdge(Edge.Top, padding: YMSizes.PageTopHeight, width: userHead.width, height: userHead.height)
         
         let userNameLabel = UILabel()
         let userPhone = UILabel()
         
-        userNameLabel.text = "测试用户" //TODO: YMVar.MyInfo[name] as? String
+        print(YMVar.MyInfo)
+        
+        userNameLabel.text = YMVar.GetOptionalValAsString(YMVar.MyInfo["name"])
         userNameLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
         userNameLabel.textColor = YMColors.PatientFontDarkGray
         userNameLabel.sizeToFit()
