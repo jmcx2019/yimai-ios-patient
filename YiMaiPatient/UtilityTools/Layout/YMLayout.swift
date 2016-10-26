@@ -300,12 +300,11 @@ public class YMLayout {
             url += "?t=" + "\(NSDate().timeIntervalSince1970)"
         }
         
-        print(url)
         let imgUrl = NSURL(string: url)
         if(nil != imgUrl) {
-            var opt: KingfisherOptionsInfo? = nil
+            var opt: KingfisherOptionsInfo = [KingfisherOptionsInfoItem.Transition(ImageTransition.Fade(0.1))]
             if(refresh) {
-                opt = [KingfisherOptionsInfoItem.ForceRefresh]
+                opt.append(KingfisherOptionsInfoItem.ForceRefresh)
             }
             imageView.kf_setImageWithURL(NSURL(string: url)!, placeholderImage: imageView.image, optionsInfo: opt, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
                 if(makeItRound) {

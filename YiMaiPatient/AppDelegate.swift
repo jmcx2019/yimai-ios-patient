@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     var window: UIWindow?
 
@@ -108,7 +108,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        print("openURL:\(url.absoluteString)")
 
+        if (url.scheme == "wx2097e8b109f9dc35") {
+            return WXApi.handleOpenURL(url, delegate: self)
+        }
+        
+        return false
+    }
+    
+    //wx pay callback
+    func onResp(resp: BaseResp!) {
+        let ctrl = window?.rootViewController as? UINavigationController
+        let targetCtrl = ctrl?.viewControllers.last
+
+        if resp.isKindOfClass(PayResp) {
+            switch resp.errCode {
+            case 0 :
+                targetCtrl?.YMUpdateStateFromWXPay()
+            default:
+                targetCtrl?.YMShowErrorFromWXPay()
+            }
+        }
+    }
 }
 
 func YMDelay(delay:Double, closure:()->()) {

@@ -22,6 +22,8 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     private var TimelineIconMap = [String: String]()
     
     private var DetailActions: PageAppointmentDetailActions? = nil
+    
+    var GoToPayBtn = YMButton()
 
     public var Loading: YMPageLoadingView? = nil
 
@@ -664,6 +666,28 @@ public class PageAppointmentDetailBodyView: PageBodyView {
             SetBreadcrumbsEnabel(end)
         }
     }
+    
+    func DrawBottom() {
+        let status = PageAppointmentDetailViewController.RecordInfo["status"] as! String
+        
+        GoToPayBtn.setTitle("", forState: UIControlState.Normal)
+        GoToPayBtn.setTitleColor(YMColors.White, forState: UIControlState.Normal)
+        GoToPayBtn.backgroundColor = YMColors.PatientFontGreen
+        GoToPayBtn.titleLabel?.font = YMFonts.YMDefaultFont(32.LayoutVal())
+        
+        if(status.containsString("保证金")) {
+            ParentView!.addSubview(GoToPayBtn)
+            GoToPayBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
+            GoToPayBtn.setTitle("缴纳保证金", forState: UIControlState.Normal)
+            
+            GoToPayBtn.addTarget(DetailActions, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        } else if(status.containsString("诊费")) {
+            ParentView!.addSubview(GoToPayBtn)
+            GoToPayBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
+            GoToPayBtn.setTitle("缴纳诊费", forState: UIControlState.Normal)
+            GoToPayBtn.addTarget(DetailActions, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        }
+    }
 
     public func LoadData(data: NSDictionary) {
         let otherInfo = data["other_info"] as! [String: AnyObject]
@@ -680,10 +704,12 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         DrawImageList(patient)
         DrawTimeline(timeLine)
         
-        print(data)
-        
-        YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel)
+        YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel, padding: 128.LayoutVal())
         FullPageLoading?.Hide()
+        
+        print(PageAppointmentDetailViewController.RecordInfo)
+        DrawBottom()
+
     }
     
     public func GetDetail() {
@@ -697,6 +723,9 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         YMLayout.ClearView(view: TextInfoPanel)
         YMLayout.ClearView(view: ImagePanel)
         YMLayout.ClearView(view: TimeLinePanel)
+        
+        GoToPayBtn.removeFromSuperview()
+        GoToPayBtn.removeTarget(nil, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
     }
 }
 

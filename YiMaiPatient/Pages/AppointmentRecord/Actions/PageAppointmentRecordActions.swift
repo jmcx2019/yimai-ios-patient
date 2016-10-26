@@ -23,7 +23,6 @@ class PageAppointmentRecordActions: PageJumpActions {
     }
     
     func GetAppointmentListSuccess(data: NSDictionary?) {
-        print(data)
         if(nil == data) {
             TargetView.FullPageLoading.Hide()
             TargetView.ShowWaitForConfirm()
@@ -59,6 +58,7 @@ class PageAppointmentRecordActions: PageJumpActions {
         let cell = gr.view as! YMTouchableView
         let cellData = cell.UserObjectData as! [String: AnyObject]
         PageAppointmentDetailViewController.AppointmentID = "\(cellData["id"]!)"
+        PageAppointmentDetailViewController.RecordInfo = cellData
         DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME)
     }
 }

@@ -159,6 +159,23 @@ public class PageJumpActions: NSObject, PageJumpActionsProtocol{
     }
 }
 
+extension NSObject {
+    
+    func swiftClassFromString(className: String) -> AnyClass? {
+        // get the project name
+        if  let appName: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as! String? {
+            //拼接控制器名
+            return NSClassFromString("\(appName).\(className)")
+        }
+        return nil;
+    }
+}
+
+extension UIViewController {
+    func YMUpdateStateFromWXPay() {}
+    func YMShowErrorFromWXPay() {}
+}
+
 public class PageViewController: UIViewController, UIGestureRecognizerDelegate{
     internal var PageLayoutFlag = false
     internal var TopView : PageCommonTopView? = nil
@@ -183,7 +200,7 @@ public class PageViewController: UIViewController, UIGestureRecognizerDelegate{
     override public func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        //Do some release operation
+        //Do some release operationctrl
         self.PageDisapeared()
     }
     
