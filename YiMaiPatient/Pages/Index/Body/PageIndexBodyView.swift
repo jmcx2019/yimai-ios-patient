@@ -188,10 +188,10 @@ public class PageIndexBodyView: PageBodyView {
         menuPanel.addSubview(myWallet)
         menuPanel.addSubview(broadcast)
         menuPanel.addSubview(about)
-        menuPanel.addSubview(healthZone)
+//        menuPanel.addSubview(healthZone)
         
         menuPanel.backgroundColor = YMColors.PatientBorderDarkGray
-        menuPanel.groupAndFill(group: Group.Vertical, views: [myDoc, myWallet, broadcast, about, healthZone], padding: YMSizes.OnPx)
+        menuPanel.groupAndFill(group: Group.Vertical, views: [myDoc, myWallet, broadcast, about], padding: YMSizes.OnPx)
         
         func BuildMenuEntry(entry: UIView, text: String, iconName: String) {
             let label = UILabel()

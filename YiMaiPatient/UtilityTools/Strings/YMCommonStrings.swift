@@ -40,6 +40,11 @@ public class YMCommonStrings {
     public static let CS_PAGE_APPOINTMENT_DETAIL_NAME = "PageAppointmentDetail"
     
     public static let CS_PAGE_PERSONAL_INFO_NAME = "PagePersonalInfo"
+    
+    public static let CS_PAGE_SHOW_WEB_PAGE = "PageShowWebView"
+    public static let CS_PAGE_COMMON_TEXT_INPUT = "PageCommonTextInput"
+
+    public static let CS_PAGE_SYS_BROADCAST = "PageSYSBroadcast"
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"
     public static let CS_API_PARAM_KEY_PHONE = "phone"

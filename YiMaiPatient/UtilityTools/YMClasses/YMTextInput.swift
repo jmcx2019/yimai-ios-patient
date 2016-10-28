@@ -100,6 +100,11 @@ public class YMTextField: UITextField {
         self.rightView = UIView(frame: rightPaddingFrame)
     }
     
+    public func SetBothPaddingWidth(padding: CGFloat, paddingMode: UITextFieldViewMode = UITextFieldViewMode.Always) {
+        self.SetLeftPaddingWidth(padding, paddingMode: paddingMode)
+        self.SetRightPaddingWidth(padding, paddingMode: paddingMode)
+    }
+    
     public func SetLeftPadding(leftPaddingWidth: CGFloat, leftPaddingImage: String, paddingMode: UITextFieldViewMode = UITextFieldViewMode.Always) {
         self.leftViewMode = paddingMode
         let paddingFrame = CGRect(x: 0,y: 0,width: leftPaddingWidth, height: self.height)

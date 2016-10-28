@@ -45,6 +45,8 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_UPLOAD_USER_HEAD = "apiUploadUserHead"
     
     public static let CS_API_ACTION_GOTO_PAY = "apiGoToPay"
+    
+    public static let CS_API_ACTION_GET_SYS_BORADCAST_LIST = "apiGetSYSBroadcastList"
 }
 
 

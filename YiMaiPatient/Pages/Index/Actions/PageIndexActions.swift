@@ -79,7 +79,7 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func BroadcastTouched(qr: UIGestureRecognizer) {
-        print("BroadcastTouched")
+        DoJump(YMCommonStrings.CS_PAGE_SYS_BROADCAST)
     }
     
     public func AboutTouched(qr: UIGestureRecognizer) {

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YOO-3P-0fp">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--PageSYS Broadcast View Controller-->
+        <scene sceneID="mV5-0t-6LO">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="YOO-3P-0fp" customClass="PageSYSBroadcastViewController" customModule="YiMaiPatient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Te-zU-bNU"/>
+                        <viewControllerLayoutGuide type="bottom" id="tko-l6-4Cb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="75P-px-9F0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L2m-wK-39Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="807" y="717"/>
+        </scene>
+    </scenes>
+</document>
