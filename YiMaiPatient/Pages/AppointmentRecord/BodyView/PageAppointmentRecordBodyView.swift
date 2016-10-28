@@ -99,12 +99,18 @@ class PageAppointmentRecordBodyView: PageBodyView {
     
     func ShowWaitForDiagnosis() {
         SetTabSelected(WaitForDiagnosisTab)
+        if(nil == AppointmentList) {
+            return
+        }
         let listData = AppointmentList!["wait_meet"]!
         DrawList(listData)
     }
     
     func ShowAlreadyCompleted() {
         SetTabSelected(AlreadyCompletedTab)
+        if(nil == AppointmentList) {
+            return
+        }
         let listData = AppointmentList!["completed"]!
         DrawList(listData)
     }
