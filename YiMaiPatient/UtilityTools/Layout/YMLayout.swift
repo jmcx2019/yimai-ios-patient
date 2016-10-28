@@ -302,7 +302,7 @@ public class YMLayout {
         
         let imgUrl = NSURL(string: url)
         if(nil != imgUrl) {
-            var opt: KingfisherOptionsInfo = [KingfisherOptionsInfoItem.Transition(ImageTransition.Fade(0.1))]
+            var opt: KingfisherOptionsInfo = [KingfisherOptionsInfoItem]()
             if(refresh) {
                 opt.append(KingfisherOptionsInfoItem.ForceRefresh)
             }
