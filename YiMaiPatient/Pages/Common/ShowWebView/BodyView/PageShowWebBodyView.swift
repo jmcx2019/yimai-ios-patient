@@ -9,7 +9,7 @@
 import Foundation
 import Neon
 
-class PageShowWebBodyView: PageBodyView {
+class PageShowWebBodyView: PageBodyView, UIWebViewDelegate {
     var WebActions: PageShowWebViewActions!
     var WebPanel = UIWebView()
     
@@ -27,10 +27,15 @@ class PageShowWebBodyView: PageBodyView {
         WebPanel.fillSuperview()
     }
     
+    func webViewDidFinishLoad(webView: UIWebView) {
+        self.FullPageLoading.Hide()
+    }
+    
     func Clear() {
         let url = NSURL(string: "about:blank")
         let req = NSURLRequest(URL: url!)
         
+        WebPanel.delegate = self
         WebPanel.loadRequest(req)
     }
     
@@ -38,6 +43,7 @@ class PageShowWebBodyView: PageBodyView {
         let url = NSURL(string: urlString)
         let req = NSURLRequest(URL: url!)
         
+        self.FullPageLoading.Show()
         WebPanel.loadRequest(req)
     }
 }

@@ -83,7 +83,7 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func AboutTouched(qr: UIGestureRecognizer) {
-        print("AboutTouched")
+        DoJump(YMCommonStrings.CS_PAGE_ABOUT_YIMAI)
     }
     
     public func HealthZoneTouched(qr: UIGestureRecognizer) {

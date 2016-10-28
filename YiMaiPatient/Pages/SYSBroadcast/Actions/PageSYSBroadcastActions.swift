@@ -40,8 +40,6 @@ class PageSYSBroadcastActions: PageJumpActions {
         let cell = gr.view as! YMTouchableView
         let data = cell.UserObjectData as! [String: AnyObject]
         
-        print(data)
-        
         PageShowWebViewController.TargetUrl = data["url"] as! String
         DoJump(YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE)
         //TODO: 显示content

@@ -30,7 +30,8 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME: true,
         YMCommonStrings.CS_PAGE_PERSONAL_INFO_NAME: true,
         YMCommonStrings.CS_PAGE_SYS_BROADCAST: true,
-        YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE: true
+        YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE: true,
+        YMCommonStrings.CS_PAGE_ABOUT_YIMAI: true
     ]
 }
 
@@ -255,7 +256,7 @@ public class PageViewController: UIViewController, UIGestureRecognizerDelegate{
     internal func PagePreRefresh() {}
 }
 
-public class PageBodyView {
+public class PageBodyView: NSObject {
     internal var ParentView: UIView? = nil
     internal var NavController: UINavigationController? = nil
     internal var Actions: AnyObject? = nil

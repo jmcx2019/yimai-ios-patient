@@ -138,6 +138,10 @@
 		FD67C3EF1DC335E600500798 /* PageShowWebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD67C3E91DC335E600500798 /* PageShowWebView.storyboard */; };
 		FD67C3F01DC335E600500798 /* PageShowWebBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67C3EC1DC335E600500798 /* PageShowWebBodyView.swift */; };
 		FD67C3F11DC335E600500798 /* PageShowWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67C3ED1DC335E600500798 /* PageShowWebViewController.swift */; };
+		FD67C3FA1DC33D5A00500798 /* PageAboutYiMaiActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67C3F41DC33D5A00500798 /* PageAboutYiMaiActions.swift */; };
+		FD67C3FB1DC33D5A00500798 /* PageAboutYiMai.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD67C3F51DC33D5A00500798 /* PageAboutYiMai.storyboard */; };
+		FD67C3FC1DC33D5A00500798 /* PageAboutYiMaiBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67C3F81DC33D5A00500798 /* PageAboutYiMaiBodyView.swift */; };
+		FD67C3FD1DC33D5A00500798 /* PageAboutYiMaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD67C3F91DC33D5A00500798 /* PageAboutYiMaiViewController.swift */; };
 		FD95C55E1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD95C55D1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift */; };
 		FD95C5601DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD95C55F1DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift */; };
 		FD95C5621DBA002500AFFE5B /* PageAppointmentRecordActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD95C5611DBA002500AFFE5B /* PageAppointmentRecordActions.swift */; };
@@ -301,6 +305,10 @@
 		FD67C3EA1DC335E600500798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageShowWebView.storyboard; sourceTree = "<group>"; };
 		FD67C3EC1DC335E600500798 /* PageShowWebBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageShowWebBodyView.swift; sourceTree = "<group>"; };
 		FD67C3ED1DC335E600500798 /* PageShowWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageShowWebViewController.swift; sourceTree = "<group>"; };
+		FD67C3F41DC33D5A00500798 /* PageAboutYiMaiActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAboutYiMaiActions.swift; sourceTree = "<group>"; };
+		FD67C3F61DC33D5A00500798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageAboutYiMai.storyboard; sourceTree = "<group>"; };
+		FD67C3F81DC33D5A00500798 /* PageAboutYiMaiBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAboutYiMaiBodyView.swift; sourceTree = "<group>"; };
+		FD67C3F91DC33D5A00500798 /* PageAboutYiMaiViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAboutYiMaiViewController.swift; sourceTree = "<group>"; };
 		FD95C55D1DB9FFAB00AFFE5B /* PageAppointmentRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentRecordViewController.swift; sourceTree = "<group>"; };
 		FD95C55F1DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentRecordBodyView.swift; sourceTree = "<group>"; };
 		FD95C5611DBA002500AFFE5B /* PageAppointmentRecordActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageAppointmentRecordActions.swift; sourceTree = "<group>"; };
@@ -421,6 +429,7 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				FD67C3F21DC33D5A00500798 /* AboutYiMai */,
 				FD67C3CB1DC3333900500798 /* SYSBroadcast */,
 				FD02057E1DBDA9C700D6E563 /* PersonalInfo */,
 				9633372A1DBB52C300A296C8 /* AppointmentDetail */,
@@ -1065,9 +1074,9 @@
 		FD67C3E61DC335E600500798 /* ShowWebView */ = {
 			isa = PBXGroup;
 			children = (
+				FD67C3EB1DC335E600500798 /* BodyView */,
 				FD67C3E71DC335E600500798 /* Actions */,
 				FD67C3E91DC335E600500798 /* PageShowWebView.storyboard */,
-				FD67C3EB1DC335E600500798 /* BodyView */,
 				FD67C3ED1DC335E600500798 /* PageShowWebViewController.swift */,
 			);
 			path = ShowWebView;
@@ -1087,6 +1096,33 @@
 				FD67C3EC1DC335E600500798 /* PageShowWebBodyView.swift */,
 			);
 			path = BodyView;
+			sourceTree = "<group>";
+		};
+		FD67C3F21DC33D5A00500798 /* AboutYiMai */ = {
+			isa = PBXGroup;
+			children = (
+				FD67C3F71DC33D5A00500798 /* Body */,
+				FD67C3F31DC33D5A00500798 /* Actions */,
+				FD67C3F51DC33D5A00500798 /* PageAboutYiMai.storyboard */,
+				FD67C3F91DC33D5A00500798 /* PageAboutYiMaiViewController.swift */,
+			);
+			path = AboutYiMai;
+			sourceTree = "<group>";
+		};
+		FD67C3F31DC33D5A00500798 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FD67C3F41DC33D5A00500798 /* PageAboutYiMaiActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		FD67C3F71DC33D5A00500798 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				FD67C3F81DC33D5A00500798 /* PageAboutYiMaiBodyView.swift */,
+			);
+			path = Body;
 			sourceTree = "<group>";
 		};
 		FD95C5581DB9FF4900AFFE5B /* AppointmentRecord */ = {
@@ -1275,6 +1311,7 @@
 				FDD9B7D71D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard in Resources */,
 				FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */,
 				7312ED8D1D5EB99D006F6B56 /* LaunchScreen.storyboard in Resources */,
+				FD67C3FB1DC33D5A00500798 /* PageAboutYiMai.storyboard in Resources */,
 				738F495F1D5ED04300E577F4 /* PageAppLoading.storyboard in Resources */,
 				738F49501D5ECC8200E577F4 /* PageLogin.storyboard in Resources */,
 				7307BFE21D5F02F2000F31E5 /* PageRegisterInputInfo.storyboard in Resources */,
@@ -1386,6 +1423,7 @@
 				73A678871D60B0710005E90C /* PageSelectCityBodyView.swift in Sources */,
 				730DDF981D5EC64600E4ABB6 /* PageCommonBottomView.swift in Sources */,
 				9676762D1D8AFD0500A07106 /* LBXScanLineAnimation.swift in Sources */,
+				FD67C3FC1DC33D5A00500798 /* PageAboutYiMaiBodyView.swift in Sources */,
 				FD67C3E31DC3357300500798 /* PageCommonTextInputBodyView.swift in Sources */,
 				730DDF731D5EC4D600E4ABB6 /* YMLoaclData.swift in Sources */,
 				73C7EF921D85995600B1B971 /* PageAppointmentActions.swift in Sources */,
@@ -1404,6 +1442,7 @@
 				73C7EFAE1D85A28300B1B971 /* PageAppointmentPatientConditionActions.swift in Sources */,
 				73C7EFAC1D85A28300B1B971 /* PageAppointmentPatientBasicInfoBodyView.swift in Sources */,
 				73C7EF951D85995600B1B971 /* PageAppointmentViewController.swift in Sources */,
+				FD67C3FA1DC33D5A00500798 /* PageAboutYiMaiActions.swift in Sources */,
 				730DDF8A1D5EC5A800E4ABB6 /* YMCoreDataKeyStrings.swift in Sources */,
 				73C7EF771D8541AD00B1B971 /* PageSearchDefaultViewController.swift in Sources */,
 				73C7EF871D85988600B1B971 /* PageAppointmentSelectTimeViewController.swift in Sources */,
@@ -1437,6 +1476,7 @@
 				FD67C3D61DC3333900500798 /* PageSYSBroadcastViewController.swift in Sources */,
 				FD67C3D31DC3333900500798 /* PageSYSBroadcastActions.swift in Sources */,
 				FD95C5601DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift in Sources */,
+				FD67C3FD1DC33D5A00500798 /* PageAboutYiMaiViewController.swift in Sources */,
 				73C7EF941D85995600B1B971 /* PageAppointmentBodyView.swift in Sources */,
 				73C7EFAA1D85A28300B1B971 /* PageAppointmentPatientBasicInfoActions.swift in Sources */,
 				730DDF741D5EC4D600E4ABB6 /* YMModelView.swift in Sources */,
@@ -1635,6 +1675,14 @@
 				FD67C3EA1DC335E600500798 /* Base */,
 			);
 			name = PageShowWebView.storyboard;
+			sourceTree = "<group>";
+		};
+		FD67C3F51DC33D5A00500798 /* PageAboutYiMai.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FD67C3F61DC33D5A00500798 /* Base */,
+			);
+			name = PageAboutYiMai.storyboard;
 			sourceTree = "<group>";
 		};
 		FD95C5651DBA023C00AFFE5B /* PageAppointmentRecord.storyboard */ = {

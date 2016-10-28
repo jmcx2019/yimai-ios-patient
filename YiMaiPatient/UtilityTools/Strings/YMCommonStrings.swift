@@ -45,6 +45,7 @@ public class YMCommonStrings {
     public static let CS_PAGE_COMMON_TEXT_INPUT = "PageCommonTextInput"
 
     public static let CS_PAGE_SYS_BROADCAST = "PageSYSBroadcast"
+    public static let CS_PAGE_ABOUT_YIMAI = "PageAboutYiMai"
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"
     public static let CS_API_PARAM_KEY_PHONE = "phone"
