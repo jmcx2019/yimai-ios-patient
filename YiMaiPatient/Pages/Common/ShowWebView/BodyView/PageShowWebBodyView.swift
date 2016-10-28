@@ -25,6 +25,7 @@ class PageShowWebBodyView: PageBodyView, UIWebViewDelegate {
     func DrawBody() {
         BodyView.addSubview(WebPanel)
         WebPanel.fillSuperview()
+        WebPanel.delegate = self
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
@@ -35,7 +36,6 @@ class PageShowWebBodyView: PageBodyView, UIWebViewDelegate {
         let url = NSURL(string: "about:blank")
         let req = NSURLRequest(URL: url!)
         
-        WebPanel.delegate = self
         WebPanel.loadRequest(req)
     }
     

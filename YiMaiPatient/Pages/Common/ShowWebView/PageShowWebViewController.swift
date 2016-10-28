@@ -32,8 +32,8 @@ class PageShowWebViewController: PageViewController {
     }
     
     override func PageDisapeared() {
-        BodyView.Clear()
         PageShowWebViewController.TargetUrl = "/"
+        BodyView.Clear()
     }
 }
 
