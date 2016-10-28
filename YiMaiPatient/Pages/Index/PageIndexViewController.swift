@@ -22,6 +22,7 @@ public class PageIndexViewController: PageViewController {
     
     override func PagePreRefresh() {
         super.PagePreRefresh()
+        BodyView?.Refresh()
         YMCurrentPage.CurrentPage = YMCommonStrings.CS_PAGE_INDEX_NAME
     }
 }

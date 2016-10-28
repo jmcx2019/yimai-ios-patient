@@ -21,6 +21,7 @@ public class PageIndexBodyView: PageBodyView {
     var TopView: UIView? = nil
 
     var MessageNotifyCell: YMTouchableView? = nil
+    var SideBarHead: YMTouchableImageView!
 
     override func ViewLayout() {
         super.ViewLayout()
@@ -142,9 +143,14 @@ public class PageIndexBodyView: PageBodyView {
         SideBar.layer.opacity = 0
 
 //        let userHead = YMLayout.GetSuitableImageView("PageIndexUserheadBkg")
-        let userHead = YMLayout.GetTouchableImageView(useObject: IndexActions!, useMethod: "UserHeadTouched:".Sel(), imageName: "PageIndexUserheadBkg")
-        SideBar.addSubview(userHead)
-        userHead.anchorToEdge(Edge.Top, padding: YMSizes.PageTopHeight, width: userHead.width, height: userHead.height)
+        SideBarHead = YMLayout.GetTouchableImageView(useObject: IndexActions!, useMethod: "UserHeadTouched:".Sel(), imageName: "PageIndexUserheadBkg")
+        SideBar.addSubview(SideBarHead)
+        SideBarHead.anchorToEdge(Edge.Top, padding: YMSizes.PageTopHeight, width: SideBarHead.width, height: SideBarHead.height)
+        
+        let headurl = YMVar.GetOptionalValAsString(YMVar.MyInfo["head_url"])
+        if(!YMValueValidator.IsEmptyString(headurl)) {
+            YMLayout.LoadImageFromServer(SideBarHead, url: headurl, fullUrl: nil, makeItRound: true)
+        }
         
         let userNameLabel = UILabel()
         let userPhone = UILabel()
@@ -164,7 +170,7 @@ public class PageIndexBodyView: PageBodyView {
         SideBar.addSubview(userNameLabel)
         SideBar.addSubview(userPhone)
         
-        userNameLabel.align(Align.UnderCentered, relativeTo: userHead, padding: 20.LayoutVal(), width: userNameLabel.width, height: userNameLabel.height)
+        userNameLabel.align(Align.UnderCentered, relativeTo: SideBarHead, padding: 20.LayoutVal(), width: userNameLabel.width, height: userNameLabel.height)
         userPhone.align(Align.UnderCentered, relativeTo: userNameLabel, padding: 18.LayoutVal(), width: userPhone.width, height: userPhone.height)
         
         let menuPanel = UIView()
@@ -213,6 +219,13 @@ public class PageIndexBodyView: PageBodyView {
         BuildMenuEntry(broadcast, text: "广播站", iconName: "PageIndexSideBarBroadcastIcon")
         BuildMenuEntry(about, text: "关于 “医脉-看专家”", iconName: "PageIndexSideBarAboutIcon")
 //        BuildMenuEntry(healthZone, text: "健康合作顾问专区", iconName: "PageIndexSideBarHealthZone")
+    }
+    
+    func Refresh() {
+        let headurl = YMVar.GetOptionalValAsString(YMVar.MyInfo["head_url"])
+        if(!YMValueValidator.IsEmptyString(headurl)) {
+            YMLayout.LoadImageFromServer(SideBarHead, url: headurl, fullUrl: nil, makeItRound: true)
+        }
     }
 }
 
