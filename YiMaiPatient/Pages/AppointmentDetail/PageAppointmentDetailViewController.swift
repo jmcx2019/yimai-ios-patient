@@ -27,17 +27,18 @@ public class PageAppointmentDetailViewController: PageViewController {
     override func PageDisapeared() {
         print("isMovingToParentViewController : \(self.isMovingToParentViewController())")
         print("isMovingFromParentViewController : \(self.isMovingFromParentViewController())")
-        BodyView!.Clear()
+        if(self.isMovingFromParentViewController()) {
+            BodyView!.Clear()
+            BodyView!.FullPageLoading.Hide()
+        }
     }
     
     override func YMUpdateStateFromWXPay() {
         super.YMUpdateStateFromWXPay()
         BodyView!.FullPageLoading.Show()
-        BodyView!.Clear()
-        BodyView!.GetDetail()
-        
-        print("!YMUpdateStateFromWXPay")
-        
+        self.NavController?.popViewControllerAnimated(true)
+//        BodyView!.Clear()
+//        BodyView!.GetDetail()
     }
     
     override func YMShowErrorFromWXPay() {

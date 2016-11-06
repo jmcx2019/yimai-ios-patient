@@ -35,13 +35,13 @@ public class PageAppLoadingViewController: PageViewController {
     }
     
     override public func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        self.Actions?.JumpToLogin()
-//        YMDelay(1.0) { () -> () in
-//            if(nil == self.LoginInfo) {
-//                self.Actions?.JumpToLogin()
-//            } else {
-//                self.Actions?.DoLogin()
-//            }
-//        }
+//        self.Actions?.JumpToLogin()
+        YMDelay(1.0) { () -> () in
+            if(nil == self.LoginInfo) {
+                self.Actions?.JumpToLogin()
+            } else {
+                self.Actions?.DoLogin()
+            }
+        }
     }
 }

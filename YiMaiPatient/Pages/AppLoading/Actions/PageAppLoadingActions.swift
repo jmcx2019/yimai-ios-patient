@@ -38,7 +38,7 @@ public class PageAppLoadingActions: PageJumpActions {
 //        BackEndApi.DoApi()
         
         let handler = YMCoreMemDataOnceHandler(handler: LoginSuccess)
-//        YMCoreDataEngine.SetDataOnceHandler(YMModuleStrings.MODULE_NAME_MY_ACCOUNT_SETTING, handler: handler)
+        YMCoreDataEngine.SetDataOnceHandler(YMModuleStrings.MODULE_NAME_MY_ACCOUNT_SETTING, handler: handler)
     }
     
     private func LoginSuccess(_: AnyObject?, queue: NSOperationQueue) -> Bool {
