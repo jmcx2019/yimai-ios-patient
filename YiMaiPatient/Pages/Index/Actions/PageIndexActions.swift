@@ -75,7 +75,8 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func MyWalletTouched(qr: UIGestureRecognizer) {
-        print("MyWalletTouched")
+//        print("MyWalletTouched")
+        DoJump(YMCommonStrings.CS_PAGE_WALLET_INFO)
     }
     
     public func BroadcastTouched(qr: UIGestureRecognizer) {

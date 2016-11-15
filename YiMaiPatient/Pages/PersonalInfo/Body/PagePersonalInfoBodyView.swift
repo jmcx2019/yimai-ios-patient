@@ -119,6 +119,7 @@ class PagePersonalInfoBodyView: PageBodyView {
         prev = DrawCell("姓名", content: name, act: PageJumpActions.DoNothingSel, showArr: true, prev: prev)
         prev = DrawCell("性别", content: sex, act: "GenderTouched:".Sel(), showArr: true, prev: prev)
         prev = DrawCell("出生日期", content: birthday, act: "BirthdayTouched:".Sel(), showArr: true, prev: prev)
+        prev = DrawCell("退出登录", content: "", act: "LogoutTouched:".Sel(), showArr: true, prev: prev)
     }
     
     func UpdateBirthday(birthday: NSDate) -> String {

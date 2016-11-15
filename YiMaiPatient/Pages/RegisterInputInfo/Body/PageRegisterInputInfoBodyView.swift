@@ -38,7 +38,7 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
         ConfirmButton.enabled = false
         
         ConfirmButton.UserStringData = YMCommonStrings.CS_PAGE_INDEX_NAME
-        ConfirmButton.addTarget(InfoActions!, action: PageJumpActions.PageJumToSel, forControlEvents: UIControlEvents.TouchUpInside)
+        ConfirmButton.addTarget(InfoActions!, action: "UpdateUserInfo:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
         
         ParentView!.addSubview(ConfirmButton)
         ConfirmButton.anchorAndFillEdge(Edge.Bottom, xPad: 0, yPad: 0, otherSize: 98.LayoutVal())
@@ -131,7 +131,8 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
         DrawInfoInputPanel("RegisterInputBirthday",
                            title: "\(birthday.year)-\(birthday.month)-\(birthday.day)",
                            cell: BirthdayCell!)
-        PageRegisterInputInfoBodyView.InfoList["birthday"] = birthday
+        PageRegisterInputInfoBodyView.InfoList["birthdayDate"] = birthday//"\(birthday.year)-\(birthday.month)-\(birthday.day)"
+        PageRegisterInputInfoBodyView.InfoList["birthday"] = "\(birthday.year)-\(birthday.month)-\(birthday.day)"
         
         VerifyInputComplete()
     }

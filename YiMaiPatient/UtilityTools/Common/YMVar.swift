@@ -12,6 +12,11 @@ public class YMVar:NSObject {
     public static var MyId: String = ""
     public static var MyInfo: [String:AnyObject]!
     
+    public static func Clear() {
+        YMVar.MyInfo.removeAll()
+        YMVar.MyId = ""
+    }
+    
     public static func GetStringByKey(dict: [String: AnyObject], key: String) -> String {
         let ret = dict[key] as? String
         if(nil == ret) {

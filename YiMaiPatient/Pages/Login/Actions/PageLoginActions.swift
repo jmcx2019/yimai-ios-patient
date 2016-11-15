@@ -60,6 +60,7 @@ public class PageLoginActions: PageJumpActions {
             })
         } else {
             queue.addOperationWithBlock({ () -> Void in
+                PageIndexViewController.IsFromLogin = true
                 self.PageLoginBody?.ClearLoginControls()
                 self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
             })

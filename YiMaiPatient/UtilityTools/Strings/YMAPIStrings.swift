@@ -47,6 +47,7 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_GOTO_PAY = "apiGoToPay"
     
     public static let CS_API_ACTION_GET_SYS_BORADCAST_LIST = "apiGetSYSBroadcastList"
+    public static let CS_API_ACTION_UPDATE_USER_INFO_WHEN_REG = "apiUpdateUserInfoWhenReg"
 }
 
 

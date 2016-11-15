@@ -124,6 +124,15 @@ class PagePersonalInfoActions: PageJumpActions {
     func ChangeHeadImage(_: UIGestureRecognizer) {
         TargetView.PhotoPikcer?.Show()
     }
+    
+    func LogoutTouched(_: UIGestureRecognizer) {
+        YMCoreDataEngine.Clear()
+        YMLocalData.ClearLogin()
+        YMVar.Clear()
+//        YMBackgroundRefresh.Stop()
+        //        YMAPICommonVariable.ClearCallbackMap()
+        self.DoJump(YMCommonStrings.CS_PAGE_LOGIN_NAME)
+    }
 }
 
 

@@ -12,10 +12,52 @@ import Neon
 public class PageRegisterInputInfoActions: PageJumpActions {
     private var TargetView: PageRegisterInputInfoBodyView? = nil
     
+    var UpdateApi: YMAPIUtility!
+    
     override func ExtInit() {
         super.ExtInit()
         
         self.TargetView = self.Target as? PageRegisterInputInfoBodyView
+        UpdateApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_UPDATE_USER_INFO_WHEN_REG,
+                                 success: UpdateSuccess, error: UpdateError)
+    }
+    
+    func UpdateSuccess(data: NSDictionary?) {
+        YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_NAME_INIT_DATA).YMGetAPPInitData()
+        //        BackEndApi.DoApi()
+        
+        let handler = YMCoreMemDataOnceHandler(handler: LoginSuccess)
+        YMCoreDataEngine.SetDataOnceHandler(YMModuleStrings.MODULE_NAME_MY_ACCOUNT_SETTING, handler: handler)
+    }
+    
+    private func LoginSuccess(_: AnyObject?, queue: NSOperationQueue) -> Bool {
+        let loginStatus = YMCoreDataEngine.GetData(YMCoreDataKeyStrings.CS_USER_LOGIN_STATUS) as? Bool
+        
+        if(nil == loginStatus) {
+            return false
+        }
+        
+        let unpackedStatus = loginStatus!
+        if(!unpackedStatus) {
+            queue.addOperationWithBlock({ () -> Void in
+                self.TargetView?.FullPageLoading.Show()
+                self.UpdateUserInfo(UIButton())
+            })
+            return false
+        } else {
+            queue.addOperationWithBlock({ () -> Void in
+                self.TargetView?.FullPageLoading.Hide()
+                PageIndexViewController.IsFromLogin = true
+                self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            })
+        }
+        
+        return true
+    }
+    
+    func UpdateError(data: NSError) {
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowErrorInfo("上传信息失败，请重新上传。", nav: self.NavController!)
     }
     
     public func GenderTouched(sender: UIGestureRecognizer) {
@@ -45,10 +87,10 @@ public class PageRegisterInputInfoActions: PageJumpActions {
         datePicker.minimumDate = NSDate(year: 1800, month: 1, day: 1)
         
         // 设置默认时间
-        if(nil == PageRegisterInputInfoBodyView.InfoList["birthday"]){
+        if(nil == PageRegisterInputInfoBodyView.InfoList["birthdayDate"]){
             datePicker.date = NSDate()
         } else {
-            datePicker.date = PageRegisterInputInfoBodyView.InfoList["birthday"] as! NSDate
+            datePicker.date = PageRegisterInputInfoBodyView.InfoList["birthdayDate"] as! NSDate
         }
         
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n\n\n\n", message: nil,
@@ -68,6 +110,11 @@ public class PageRegisterInputInfoActions: PageJumpActions {
     
     public func CityTouched(sender: UIGestureRecognizer) {
 //        DoJump(YMCommonStrings.CS_PAGE_SELECT_CITY_NAME)
+    }
+    
+    func UpdateUserInfo(sender: UIButton) {
+        TargetView?.FullPageLoading.Show()
+        UpdateApi.YMChangeUserInfo(PageRegisterInputInfoBodyView.InfoList)
     }
 }
 
