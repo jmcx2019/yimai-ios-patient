@@ -8,6 +8,7 @@
 
 import Foundation
 import Neon
+import SwiftyJSON
 import SwiftDate
 import ChameleonFramework
 
@@ -100,7 +101,7 @@ public class PageAppointmentSelectTimeBodyView: PageBodyView {
         let name = dataObj[YMYiMaiStrings.CS_DATA_KEY_NAME] as! String
         let hospital = dataObj[YMYiMaiStrings.CS_DATA_KEY_HOSPATIL] as! [String: AnyObject]
         let department = dataObj[YMYiMaiStrings.CS_DATA_KEY_DEPARTMENT] as! [String: AnyObject]
-        let jobTitle = dataObj[YMYiMaiStrings.CS_DATA_KEY_JOB_TITLE] as? String
+        let jobTitle = YMVar.GetStringByKey(dataObj, key: YMYiMaiStrings.CS_DATA_KEY_JOB_TITLE, defStr: "医生")
         
         let nameLabel = UILabel()
         let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))
@@ -169,8 +170,80 @@ public class PageAppointmentSelectTimeBodyView: PageBodyView {
         bottomLine.backgroundColor = YMColors.DividerLineGray
         bottomLine.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: YMSizes.OnPx)
         
-        DrawDoctorCell(PageAppointmentViewController.SelectedDoctor, docPanel: innerPanel)
+        DrawDoctorCell(PageAppointmentSelectTimeViewController.SelectedDoctor, docPanel: innerPanel)
+    }
+    
+    func IsTimeAvailable(date: NSDate, AP: String) -> Bool {
+        let fixedScheduleString = PageAppointmentSelectTimeViewController.SelectedDoctor!["admission_set_fixed"] as? String
+        let flexibleScheduleString = PageAppointmentSelectTimeViewController.SelectedDoctor!["admission_set_flexible"] as? String
         
+        let fixedSchedule = YMVar.TryToGetArrayFromJsonStringData(fixedScheduleString)
+        let flexibleSchedule = YMVar.TryToGetArrayFromJsonStringData(flexibleScheduleString)
+        
+        let weekdayMap = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+        var ret = false
+
+        let dateInString = date.toString(DateFormat.Custom("YYYY-MM-dd"))!
+        let dateWeekday = weekdayMap[date.weekday-1]
+        if(nil != fixedSchedule) {
+            for v in fixedSchedule! {
+                let d = v as? [String: AnyObject]
+                if(nil == d) {
+                    continue
+                }
+                let am = YMVar.GetStringByKey(d!, key: "am")
+                let pm = YMVar.GetStringByKey(d!, key: "pm")
+                let weekday = YMVar.GetStringByKey(d!, key: "week", defStr: "no weekday")
+                
+                if(weekday == dateWeekday) {
+                    if("am" == AP) {
+                        if("1" == am || "true" == am) {
+                            ret = true
+                            break
+                        }
+                    } else {
+                        if("1" == pm || "true" == pm) {
+                            ret = true
+                            break
+                        }
+                    }
+                }
+
+            }
+        }
+        
+        if(nil != flexibleSchedule) {
+            for v in flexibleSchedule! {
+                let d = v as? [String: AnyObject]
+                if(nil == d) {
+                    continue
+                }
+                
+                let theDate = YMVar.GetStringByKey(d!, key: "date")
+                let am = YMVar.GetStringByKey(d!, key: "am")
+                let pm = YMVar.GetStringByKey(d!, key: "pm")
+
+                if(theDate == dateInString) {
+                    if("am" == AP) {
+                        if("1" == am || "true" == am) {
+                            ret = true
+                        } else {
+                            ret = false
+                        }
+                    } else {
+                        if("1" == pm || "true" == pm) {
+                            ret = true
+                        } else {
+                            ret = false
+                        }
+                    }
+                    
+                    break
+                }
+            }
+        }
+        
+        return ret
     }
     
     private func GetCalendarLabelCell(label: String, width: CGFloat, height: CGFloat) -> UIView {
@@ -201,15 +274,15 @@ public class PageAppointmentSelectTimeBodyView: PageBodyView {
         let cellInner = UIView()
         cell.addSubview(cellInner)
         
-        let untouchable = date.isInWeekend()!
-        if(untouchable) {
+        let available = IsTimeAvailable(date, AP: AMorPMEng) //date.isInWeekend()!
+        if(!available) {
             cellInner.backgroundColor = YMColors.UntouchableCellGray
         } else {
             cellInner.backgroundColor = YMColors.PanelBackgroundGray
         }
         cellInner.anchorInCorner(Corner.TopLeft, xPad: 0, yPad: 0, width: CellInnerWidth, height: CellInnerHeight)
         
-        userData[YMAppointmentStrings.CS_CALENDAR_TOUCHABLE_CELL_KEY] = untouchable
+        userData[YMAppointmentStrings.CS_CALENDAR_TOUCHABLE_CELL_KEY] = !available
         userData[YMAppointmentStrings.CS_CALENDAR_TOUCH_STATUS_KEY] = false
         userData[YMAppointmentStrings.CS_CALENDAR_CELL_INNER_KEY] = cellInner
         userData[YMAppointmentStrings.CS_CALENDAR_CELL_DATE_KEY] = date.toString(format)! + AMorPM

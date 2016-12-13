@@ -19,5 +19,5 @@ public class YMRegisterStrings {
     public static let CS_VERIFY_CODE_BUTTON = "获取验证码"
     public static let CS_INVITED_CODE_BUTTON = "输入邀请码"
     public static let CS_NEXT_STEP_BUTTON = "下一步"
-    public static let CS_AGREE_LABEL_BUTTON = "同意《“医脉”在线服务协议》"
+    public static let CS_AGREE_LABEL_BUTTON = "同意《“医者脉连”在线服务协议》"
 }

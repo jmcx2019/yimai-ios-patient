@@ -51,7 +51,7 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     
     public func UploadBlockBuilder(formData: AFMultipartFormData) {
         let filename = "\(PhotoIndex).jpg"
-        let imgData = GetImageData(ImageForUpload!)
+        let imgData = YMLayout.GetScaledImageData(ImageForUpload!)//GetImageData(ImageForUpload!)
 
         formData.appendPartWithFileData(imgData, name: "img", fileName: filename, mimeType: "image/jpeg")
     }
@@ -64,6 +64,8 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
             UploadApi?.YMUploadAddmissionPhotos(["id": AppointmentId], blockBuilder: self.UploadBlockBuilder)
         } else {
             TargetController?.Loading?.Hide()
+            PhotoIndex = 0
+            ImageForUpload = nil
             PageAppointmentProxyViewController.NewAppointment = true
             DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
         }
@@ -72,6 +74,8 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     public func UploadError(err: NSError) {
         YMAPIUtility.PrintErrorInfo(err)
         TargetController?.Loading?.Hide()
+        PhotoIndex = 0
+        ImageForUpload = nil
 //        YMPageModalMessage.ShowErrorInfo("网络错误，请稍后再试！", nav: self.NavController!)
         PageAppointmentProxyViewController.NewAppointment = true
         DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
@@ -132,7 +136,7 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
         }
         
     }
-    
+
     public func CreateAppointmentError(err: NSError) {
         YMAPIUtility.PrintErrorInfo(err)
         TargetController?.Loading?.Hide()
@@ -144,7 +148,7 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
         
         if(nil != uploadData) {
             TargetController?.Loading?.Show()
-            ApiUtility?.YMCreateNewAppointment(uploadData!)
+            ApiUtility?.YMCreateInsteadAppointment(uploadData!)
         }
     }
     
@@ -174,8 +178,15 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
         return false
     }
     
+    func JobTitleSelected(act: UIAlertAction) {
+        let title = act.title!
+        TargetController?.BodyView?.RequireJobTitle?.text = title
+        TargetController?.VerifyInput(false)
+    }
+    
     public func RequireJobTitleBeginEdit(textField: YMTextField) -> Bool {
         TargetController?.BodyView?.AllInputResignFirstResponder()
+        YMJobtitleSelectModal.ShowSelectModal(NavController!, callback: self.JobTitleSelected)
 //        PageCommonSearchViewController.SearchPageTypeName = YMCommonSearchPageStrings.CS_HOSPITAL_SEARCH_PAGE_TYPE
 //        DoJump(YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME)
         return false

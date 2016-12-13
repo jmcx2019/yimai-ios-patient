@@ -24,6 +24,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
     let BoxInfoPanel = UIView()
     
     var SelectedDoc: [String: AnyObject]? = nil
+    var MyDoctor = [[String: AnyObject]]()
     
     override public func ViewLayout() {
         super.ViewLayout()
@@ -75,7 +76,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         for doc in data {
             cell = YMLayout.DrawCommonDocCell(doc, docPanel: MyDoctorsPanel, action: DoctorsActions!, selector: "DoctorTouched:".Sel(), prevCell: cell)
         }
-        
+        MyDoctor = data
         if (nil != cell) {
             YMLayout.SetViewHeightByLastSubview(MyDoctorsPanel, lastSubView: cell!)
         }
@@ -205,7 +206,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         deptLabel.align(Align.UnderCentered, relativeTo: divider, padding: 10.LayoutVal(), width: deptLabel.width, height: deptLabel.height)
         hosLabel.align(Align.UnderCentered, relativeTo: deptLabel, padding: 10.LayoutVal(), width: hosLabel.width, height: hosLabel.height)
         
-        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
 
         
         BoxPanel.hidden = false

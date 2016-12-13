@@ -24,6 +24,8 @@ public class PageRegisterBodyView: NSObject {
     
     private var AgreeButton : YMButton? = nil
     private var AgreeCheckbox : UIImageView? = nil
+    private let ShowAgreementBtn = UIButton()
+
     private var AgreementCheckedImage : UIImage = UIImage(named: "RegisterCheckboxAgreeChecked")!
     private var AgreementUncheckedImage : UIImage = UIImage(named: "RegisterCheckboxAgreeUnchecked")!
     
@@ -37,7 +39,7 @@ public class PageRegisterBodyView: NSObject {
     private let VerifyButtonFrame = CGRect(x: 550.LayoutVal(), y: 248.LayoutVal(), width: 160.LayoutVal(), height: 50.LayoutVal())
     private let NextStepButtonFrame = CGRect(x: 40.LayoutVal(), y: 383.LayoutVal(), width: 670.LayoutVal(), height: 90.LayoutVal())
     
-    private let AgreeButtonFrame = CGRect(x: 84.LayoutVal(), y: 585.LayoutVal(), width: 330.LayoutVal(), height: 24.LayoutVal())
+    private let AgreeButtonFrame = CGRect(x: 84.LayoutVal(), y: 585.LayoutVal(), width: 380.LayoutVal(), height: 24.LayoutVal())
     
     public var AgreeChecked = true
     
@@ -137,6 +139,12 @@ public class PageRegisterBodyView: NSObject {
                                                        useMethod: "AgreementImageTouched:".Sel(),
                                                        imageName: "RegisterCheckboxAgreeChecked")
         
+        ShowAgreementBtn.addTarget(Actions, action: "ShowAgreementTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        ShowAgreementBtn.setTitle("查看", forState: UIControlState.Normal)
+        ShowAgreementBtn.titleLabel?.font = YMFonts.YMDefaultFont(24.LayoutVal())
+        ShowAgreementBtn.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Normal)
+        ShowAgreementBtn.sizeToFit()
+        
         AgreeButton?.addTarget(self.Actions, action: "AgreementButtonTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
         AgreeButton?.setTitle(YMRegisterStrings.CS_AGREE_LABEL_BUTTON, forState: UIControlState.Normal)
         AgreeButton?.titleLabel?.font = UIFont.systemFontOfSize(24.LayoutVal())
@@ -148,6 +156,10 @@ public class PageRegisterBodyView: NSObject {
         
         BodyView.addSubview(AgreeButton!)
         BodyView.addSubview(AgreeCheckbox!)
+        BodyView.addSubview(ShowAgreementBtn)
+
+        ShowAgreementBtn.align(Align.ToTheRightCentered, relativeTo: AgreeButton!, padding: 10.LayoutVal(),
+                               width: ShowAgreementBtn.width, height: ShowAgreementBtn.height)
     }
     
     public func VerifyPhoneBeforeGetCode() -> [String: String]? {

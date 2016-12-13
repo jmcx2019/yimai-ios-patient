@@ -23,4 +23,8 @@ public class PageAppointmentPatientConditionViewController: PageViewController {
         
         BodyView!.DrawSpecialTopButton(TopView!.TopViewPanel)
     }
+    
+    override func PagePreRefresh() {
+        BodyView?.ConditionInput?.text = PageAppointmentViewController.PatientCondition
+    }
 }

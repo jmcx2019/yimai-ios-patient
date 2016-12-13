@@ -28,6 +28,8 @@ class PagePersonalInfoActions: PageJumpActions {
         UploadApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_UPLOAD_USER_HEAD,
                                  success: UploadSuccess,
                                  error: UploadError)
+        
+        print(TargetView)
     }
     
     func UploadSuccess(data: NSDictionary?) {

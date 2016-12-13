@@ -15,9 +15,9 @@ public typealias YMAPIImageCallback = ((UIImage?) -> Void)
 public typealias YMAPIErrorCallback = ((NSError) -> Void)
 
 public class YMAPIInterfaceURL {
-    public static let DoctorServer = "http://139.129.210.89"
-    public static let Server = "http://139.129.167.9"
-    public static let ApiBaseUrl = "http://139.129.167.9/api"
+    public static let DoctorServer = "http://d.medi-link.cn/"
+    public static let Server = "http://p.medi-link.cn/"
+    public static let ApiBaseUrl = "http://p.medi-link.cn/api"
 
     static let APPInit = YMAPIInterfaceURL.ApiBaseUrl + "/init"
 
@@ -64,6 +64,7 @@ public class YMAPIInterfaceURL {
     static let UploadAppointmentPhoto = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/upload-img"
     static let GetAppointmentList = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/list"
     static let GetAppointmentDetail = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/detail"
+    static let CreateInsteadAppointment = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/instead"
     
     static let GetAdmissionsList = YMAPIInterfaceURL.ApiBaseUrl + "/admissions/list"
     static let GetAdmissionDetail = YMAPIInterfaceURL.ApiBaseUrl + "/admissions/detail"
@@ -644,6 +645,10 @@ public class YMAPIUtility {
     
     public func YMCreateNewAppointment(param: AnyObject) {
         YMAPIPost(YMAPIInterfaceURL.CreateNewAppointment, param: param, progressHandler: nil)
+    }
+    
+    public func YMCreateInsteadAppointment(param: AnyObject) {
+        YMAPIPost(YMAPIInterfaceURL.CreateInsteadAppointment, param: param, progressHandler: nil)
     }
     
     public func YMGetAppointmentList() {

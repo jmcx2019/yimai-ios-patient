@@ -51,6 +51,8 @@ public class PageAppointmentProxyViewController: PageViewController {
             BodyView = PageAppointmentProxyBodyView(parentView: self.SelfView!, navController: self.NavController!, pageActions: Actions!)
             TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "预约医生", navController: self.NavController!)
             PageAppointmentProxyViewController.NewAppointment = false
+            PageHospitalSearchBodyView.HospitalSelected = nil
+            PageDepartmentSearchBodyView.DepartmentSelected = nil
             BodyView?.Reload()
             DrawDatePicker()
         } else {
@@ -95,6 +97,32 @@ public class PageAppointmentProxyViewController: PageViewController {
             return nil
         }
         
+        let hos = BodyView!.RequireHospital!.text
+        let dept = BodyView!.RequireDepartment!.text
+        let jobtitle = BodyView!.RequireJobTitle!.text
+        let docName = BodyView!.RequireDocName!.text
+        
+        if(YMValueValidator.IsEmptyString(hos)) {
+            if(showAlarm) {
+                YMPageModalMessage.ShowErrorInfo("请指定医院！", nav: self.NavController!)
+            }
+            return nil
+        }
+        
+        if(YMValueValidator.IsEmptyString(dept)) {
+            if(showAlarm) {
+                YMPageModalMessage.ShowErrorInfo("请指定科室！", nav: self.NavController!)
+            }
+            return nil
+        }
+        
+        if(YMValueValidator.IsEmptyString(jobtitle)) {
+            if(showAlarm) {
+                YMPageModalMessage.ShowErrorInfo("请指定职称！", nav: self.NavController!)
+            }
+            return nil
+        }
+        
 //        if(nil == PageAppointmentProxyViewController.SelectedTimeForUpload) {
 //            if(showAlarm) {
 //                YMPageModalMessage.ShowErrorInfo("请选择就诊时间！", nav: self.NavController!)
@@ -120,8 +148,12 @@ public class PageAppointmentProxyViewController: PageViewController {
                 "phone": "\(basicInfo["phone"]!)",
                 "sex": "\(basicInfo["gender"]!)",
                 "age": "\(basicInfo["age"]!)",
+                "demand_doctor_name": docName!,
+                "demand_hospital": hos!,
+                "demand_dept": dept!,
+                "demand_title": jobtitle!,
                 "history": "\(PageAppointmentProxyViewController.PatientCondition)",
-                "doctor": "\(doctor[YMYiMaiStrings.CS_DATA_KEY_USER_ID]!)",
+                "locums_doctor": "\(doctor[YMYiMaiStrings.CS_DATA_KEY_USER_ID]!)",
                 "date": date,
                 "am_or_pm": amOrPm
         ]

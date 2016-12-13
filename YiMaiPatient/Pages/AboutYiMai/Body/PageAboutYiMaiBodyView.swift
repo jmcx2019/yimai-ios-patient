@@ -29,11 +29,11 @@ public class PageAboutYiMaiBodyView: PageBodyView {
     private func DrawButtons() {
         let intro = YMLayout.GetCommonFullWidthTouchableView(
             BodyView, useObject: AboutActions!, useMethod: "ShowIntro:".Sel(),
-            label: UILabel(), text: "简介")
+            label: ActiveLabel(), text: "简介")
         
         let contact = YMLayout.GetCommonFullWidthTouchableView(
             BodyView, useObject: AboutActions!, useMethod: "ShowContact:".Sel(),
-            label: UILabel(), text: "联系我们")
+            label: ActiveLabel(), text: "联系我们")
         
         BodyView.addSubview(intro)
         BodyView.addSubview(contact)

@@ -10,7 +10,7 @@ import Foundation
 import Neon
 
 public class PageAppointmentPatientConditionBodyView: PageBodyView {
-    private var ConditionInput: YMTextArea? = nil
+    var ConditionInput: YMTextArea? = nil
 
     override func ViewLayout() {
         super.ViewLayout()

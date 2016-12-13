@@ -16,12 +16,13 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
     private var PatientAgePanel = UIView()
     
     private var PatientNameInput: YMTextField? = nil
-    private var PatientPhoneInput: YMTextField? = nil
+    var PatientPhoneInput: YMTextField? = nil
     private var PatientGenderInput: YMTextField? = nil
     private var PatientAgeInput: YMTextField? = nil
     
     private var ConfirmButton: YMButton? = nil
 
+    private let ErrorMsgLabel = ActiveLabel()
     
     public func Reload(){}
     
@@ -44,6 +45,10 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
         DrawConfirmButton()
     }
     
+    func ShowErrorInfo(msg: String) {
+        ErrorMsgLabel.text = msg
+    }
+    
     public func ShowGenderSelector(textField: YMTextField) -> Bool {
         let alertController = UIAlertController(title: "选择性别", message: nil, preferredStyle: .Alert)
         let goBack = UIAlertAction(title: "男", style: .Default,
@@ -59,8 +64,8 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
 
         })
         
-        goBack.setValue(YMColors.FontBlue, forKey: "titleTextColor")
-        goOn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        goBack.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
+        goOn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
         
         alertController.addAction(goBack)
         alertController.addAction(goOn)
@@ -74,7 +79,7 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
             
             param.Placholder = placeholder
             param.FontSize = 28.LayoutVal()
-            param.FontColor = YMColors.FontBlue
+            param.FontColor = YMColors.PatientFontGreen
             var input: YMTextField
             if(isPhone) {
                 input = YMLayout.GetCellPhoneField(param)
@@ -93,6 +98,8 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
         BodyView.addSubview(PatientGenderPanel)
         BodyView.addSubview(PatientAgePanel)
         
+        BodyView.addSubview(ErrorMsgLabel)
+        
         PatientNamePanel.backgroundColor = YMColors.White
         PatientPhonePanel.backgroundColor = YMColors.White
         PatientGenderPanel.backgroundColor = YMColors.White
@@ -105,6 +112,11 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
                                 padding: YMSizes.OnPx, width: YMSizes.PageWidth, height: 80.LayoutVal())
         PatientAgePanel.align(Align.UnderMatchingLeft, relativeTo: PatientGenderPanel,
                                 padding: YMSizes.OnPx, width: YMSizes.PageWidth, height: 80.LayoutVal())
+        
+        ErrorMsgLabel.font = YMFonts.YMDefaultFont(24.LayoutVal())
+        ErrorMsgLabel.textAlignment = NSTextAlignment.Center
+        ErrorMsgLabel.textColor = YMColors.AlarmFontColor
+        ErrorMsgLabel.align(Align.UnderCentered, relativeTo: PatientAgePanel, padding: 80.LayoutVal(), width: YMSizes.PageWidth, height: 24.LayoutVal())
 
         PatientNameInput = BuildInputPanel("患者姓名（必填）", inputWidth: 670.LayoutVal(), panel: PatientNamePanel, maxCount: 10)
         PatientPhoneInput = BuildInputPanel("电话（必填）", inputWidth: 400.LayoutVal(), panel: PatientPhonePanel, maxCount: 13, isPhone: true)
@@ -117,6 +129,7 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
         let basicAction = Actions as? PageAppointmentPatientBasicInfoActions
         PatientNameInput?.EditChangedCallback = basicAction?.CheckWhenInputChanged
         PatientPhoneInput?.EditChangedCallback = basicAction?.CheckWhenInputChanged
+        PatientPhoneInput?.EditEndCallback = basicAction?.CheckWhenInputChanged
     }
     
     private func DrawConfirmButton() {
@@ -135,7 +148,7 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
     
     public func SetConfirmEnable() {
         ConfirmButton?.enabled = true
-        ConfirmButton?.backgroundColor = YMColors.FontBlue
+        ConfirmButton?.backgroundColor = YMColors.PatientFontGreen
     }
     
     public func SetConfirmDisable() {

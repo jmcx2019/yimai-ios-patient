@@ -17,13 +17,20 @@ public class YMVar:NSObject {
         YMVar.MyId = ""
     }
     
-    public static func GetStringByKey(dict: [String: AnyObject], key: String) -> String {
-        let ret = dict[key] as? String
+    public static func GetStringByKey(dict: [String: AnyObject]?, key: String, defStr: String = "") -> String {
+        if(nil == dict) {
+            return defStr
+        }
+        let ret = dict![key]
         if(nil == ret) {
-            return ""
+            return defStr
         }
         
-        return ret!
+        if("<null>" == "\(ret!)") {
+            return defStr
+        }
+        
+        return "\(ret!)"
     }
     
     public static func GetIntStringByKey(dict: [String: AnyObject], key: String) -> String {
@@ -47,5 +54,25 @@ public class YMVar:NSObject {
         }
         
         return valStr
+    }
+    
+    static func TryToGetArrayFromJsonStringData(json: String?) -> NSArray? {
+        if(nil == json) {
+            return nil
+        }
+        let data = json!.dataUsingEncoding(NSUTF8StringEncoding)
+        if(nil == data) { return nil }
+        guard let ret = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSArray else { return nil }
+        return ret
+    }
+    
+    static func TryToGetDictFromJsonStringData(json: String?) -> NSDictionary? {
+        if(nil == json) {
+            return nil
+        }
+        let data = json!.dataUsingEncoding(NSUTF8StringEncoding)
+        if(nil == data) { return nil }
+        guard let ret = try? NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? NSDictionary else { return nil }
+        return ret
     }
 }

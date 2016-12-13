@@ -26,6 +26,19 @@ public class YMTextFieldDelegate : NSObject, UITextFieldDelegate {
         
         return true;
     }
+
+    public func textFieldDidEndEditing(textField: UITextField) {
+        if(!textField.isKindOfClass(YMTextField)) { return }
+        
+        let realTextField = textField as! YMTextField
+        
+        textField.resignFirstResponder()
+        if(nil != realTextField.EditEndCallback) {
+            realTextField.EditEndCallback!(realTextField)
+        }
+        
+        return;
+    }
     
     public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         if(!textField.isKindOfClass(YMTextField)) { return true }

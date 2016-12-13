@@ -17,7 +17,6 @@ public class PageAppointmentDetailViewController: PageViewController {
         super.PageLayout()
         BodyView = PageAppointmentDetailBodyView(parentView: self.SelfView!, navController: self.NavController!)
         TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "约诊详细信息", navController: self.NavController!)
-        print(self)
     }
 
     override func PagePreRefresh() {
@@ -25,8 +24,6 @@ public class PageAppointmentDetailViewController: PageViewController {
     }
     
     override func PageDisapeared() {
-        print("isMovingToParentViewController : \(self.isMovingToParentViewController())")
-        print("isMovingFromParentViewController : \(self.isMovingFromParentViewController())")
         if(self.isMovingFromParentViewController()) {
             BodyView!.Clear()
             BodyView!.FullPageLoading.Hide()
@@ -46,3 +43,8 @@ public class PageAppointmentDetailViewController: PageViewController {
         YMPageModalMessage.ShowErrorInfo("支付失败，请重试！", nav: self.NavController!)
     }
 }
+
+
+
+
+

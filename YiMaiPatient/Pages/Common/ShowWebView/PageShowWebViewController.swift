@@ -12,6 +12,7 @@ import UIKit
 class PageShowWebViewController: PageViewController {
     var BodyView: PageShowWebBodyView!
     static var TargetUrl = "/"
+    static var IsFromDoctorServer = false
     
     override func PageLayout() {
         super.PageLayout()
@@ -25,14 +26,21 @@ class PageShowWebViewController: PageViewController {
     
     override func PagePreRefresh() {
         BodyView.Clear()
-        let urlStr = YMAPIInterfaceURL.Server +
-            PageShowWebViewController.TargetUrl
+        var urlStr = ""
+        if(PageShowWebViewController.IsFromDoctorServer) {
+            urlStr = YMAPIInterfaceURL.DoctorServer +
+                PageShowWebViewController.TargetUrl
+        } else {
+            urlStr = YMAPIInterfaceURL.Server +
+                PageShowWebViewController.TargetUrl
+        }
         
         BodyView.LoadWebPage(urlStr)
     }
     
     override func PageDisapeared() {
         PageShowWebViewController.TargetUrl = "/"
+        PageShowWebViewController.IsFromDoctorServer = false
         BodyView.Clear()
     }
 }

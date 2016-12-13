@@ -258,13 +258,13 @@ public class PageAppointmentBodyView: PageBodyView {
         let hosLabel = UILabel()
         let userHeadBackground = YMLayout.GetSuitableImageView("HeadImageBorder")
         
-        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
         nameLabel.text = name
-        nameLabel.textColor = YMColors.FontBlue
+        nameLabel.textColor = YMColors.PatientFontGreen
         nameLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
         nameLabel.sizeToFit()
         
-        divider.backgroundColor = YMColors.FontBlue
+        divider.backgroundColor = YMColors.PatientFontGreen
         
         jobTitleLabel.text = jobTitle
         jobTitleLabel.textColor = YMColors.FontGray
@@ -272,7 +272,7 @@ public class PageAppointmentBodyView: PageBodyView {
         jobTitleLabel.sizeToFit()
         
         deptLabel.text = department["name"] as? String
-        deptLabel.textColor = YMColors.FontBlue
+        deptLabel.textColor = YMColors.PatientFontGreen
         deptLabel.font = YMFonts.YMDefaultFont(22.LayoutVal())
         deptLabel.sizeToFit()
         
@@ -402,7 +402,7 @@ public class PageAppointmentBodyView: PageBodyView {
     
     public func SetConfirmEnable() {
         ConfirmButton?.enabled = true
-        ConfirmButton?.backgroundColor = YMColors.CommonBottomBlue
+        ConfirmButton?.backgroundColor = YMColors.PatientFontGreen
     }
     
     public func SetConfirmDisable() {

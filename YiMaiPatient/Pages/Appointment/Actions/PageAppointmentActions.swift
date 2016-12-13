@@ -51,7 +51,7 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
     
     public func UploadBlockBuilder(formData: AFMultipartFormData) {
         let filename = "\(PhotoIndex).jpg"
-        let imgData = GetImageData(ImageForUpload!)
+        let imgData = YMLayout.GetScaledImageData(ImageForUpload!) //GetImageData(ImageForUpload!)
 
         formData.appendPartWithFileData(imgData, name: "img", fileName: filename, mimeType: "image/jpeg")
     }
@@ -65,6 +65,8 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
         } else {
             TargetController?.Loading?.Hide()
             PageAppointmentViewController.NewAppointment = true
+            ImageForUpload = nil
+            PhotoIndex = 0
             DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
         }
     }
@@ -74,6 +76,8 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
         TargetController?.Loading?.Hide()
 //        YMPageModalMessage.ShowErrorInfo("网络错误，请稍后再试！", nav: self.NavController!)
         PageAppointmentViewController.NewAppointment = true
+        ImageForUpload = nil
+        PhotoIndex = 0
         DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
     }
     

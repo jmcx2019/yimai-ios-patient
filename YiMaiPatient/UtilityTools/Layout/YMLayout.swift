@@ -190,7 +190,7 @@ public class YMLayout {
         parentView: UIView,
         useObject: AnyObject,
         useMethod: Selector,
-        label: UILabel,
+        label: ActiveLabel,
         text: String,
         userStringData: String = "",
         fontSize: CGFloat = 28.LayoutVal(),
@@ -227,7 +227,7 @@ public class YMLayout {
         parentView: UIView,
         useObject: AnyObject,
         useMethod: Selector,
-        label: UILabel,
+        label: ActiveLabel,
         text: String,
         userStringData: String = "",
         fontSize: CGFloat = 28.LayoutVal(),
@@ -276,7 +276,7 @@ public class YMLayout {
         return userHead!
     }
     
-    public static func LoadImageFromServer(imageView: UIImageView, url urlSegment: String, fullUrl: String? = nil, makeItRound: Bool = false, refresh: Bool = false) {
+    public static func LoadImageFromServer(imageView: UIImageView, url urlSegment: String, isDocImg: Bool = false, fullUrl: String? = nil, makeItRound: Bool = false, refresh: Bool = false) {
         var url = urlSegment
         
         var urlArr = url.componentsSeparatedByString("Optional(")
@@ -288,10 +288,15 @@ public class YMLayout {
             url += urlArr2[0]
         }
         
+        var server = YMAPIInterfaceURL.Server
+        if(isDocImg) {
+            server = YMAPIInterfaceURL.DoctorServer
+        }
+        
         if(nil != fullUrl) {
             url = fullUrl!
         } else {
-            url = YMAPIInterfaceURL.Server + url
+            url = server + url
         }
         
         if(refresh) {
@@ -318,25 +323,37 @@ public class YMLayout {
         }
     }
     
-    public static func DrawCommonDocCell(data: [String: AnyObject], docPanel: UIView, action: AnyObject, selector: Selector, prevCell: UIView?) -> YMTouchableView {
+    
+    
+    public static func DrawCommonDocCell(data: [String: AnyObject], docPanel: UIView,
+                                         action: AnyObject, selector: Selector, prevCell: UIView? , highlight: String = "") -> YMTouchableView {
         let head = data["head_url"] as! String
         let name = data["name"] as! String
         let hospital = data["hospital"] as! [String: AnyObject]
         let department = data["department"] as! [String: AnyObject]
-        let jobTitle = data["job_title"] as? String
+        let jobTitle = YMVar.GetStringByKey(data, key: "job_title", defStr: "医生")//data["job_title"] as? String
         let userId = data["id"] as! String
         
-        let nameLabel = UILabel()
+        
+        let nameLabel = ActiveLabel()
         let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))
-        let jobTitleLabel = UILabel()
-        let deptLabel = UILabel()
-        let hosLabel = UILabel()
+        let jobTitleLabel = ActiveLabel()
+        let deptLabel = ActiveLabel()
+        let hosLabel = ActiveLabel()
         let userHeadBackground = YMLayout.GetSuitableImageView("HeadImageBorder")
         let bottomBorder = UIView()
         
+        func SetLabelHighlight(label: ActiveLabel, hightlight: String) {
+            let highlightType = ActiveType.Custom(pattern: hightlight)
+            let text = label.text
+            label.enabledTypes = [highlightType]
+            label.customColor[highlightType] = YMColors.PatientFontGreen
+            label.text = text
+        }
+        
         bottomBorder.backgroundColor = HexColor("#e0e0e0")
         
-        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
         nameLabel.text = name
         nameLabel.textColor = YMColors.PatientFontGray
         nameLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
@@ -361,6 +378,11 @@ public class YMLayout {
         hosLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         
         let cell = YMLayout.GetTouchableView(useObject: action, useMethod: selector, userStringData: userId)
+        
+        SetLabelHighlight(jobTitleLabel, hightlight: highlight)
+        SetLabelHighlight(deptLabel, hightlight: highlight)
+        SetLabelHighlight(hosLabel, hightlight: highlight)
+        SetLabelHighlight(nameLabel, hightlight: highlight)
         
         cell.addSubview(userHeadBackground)
         cell.addSubview(nameLabel)
@@ -391,8 +413,8 @@ public class YMLayout {
         return cell
     }
     
-    public static func GetNomalLabel(text: String, textColor: UIColor, fontSize: CGFloat) -> UILabel {
-        let label = UILabel()
+    public static func GetNomalLabel(text: String, textColor: UIColor, fontSize: CGFloat) -> ActiveLabel {
+        let label = ActiveLabel()
         label.text = text
         label.textColor = textColor
         label.font = YMFonts.YMDefaultFont(fontSize)

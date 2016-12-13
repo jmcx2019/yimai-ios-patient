@@ -258,7 +258,7 @@ public class PageViewController: UIViewController, UIGestureRecognizerDelegate{
 }
 
 public class PageBodyView: NSObject {
-    internal var ParentView: UIView? = nil
+    var ParentView: UIView? = nil
     internal var NavController: UINavigationController? = nil
     internal var Actions: AnyObject? = nil
     public var BodyView: UIScrollView = UIScrollView()

@@ -48,25 +48,26 @@ public class PageHospitalSearchBodyView: PageBodyView {
         SearchInput = YMLayout.GetTextFieldWithMaxCharCount(inputParam, maxCharCount: 20)
         InputPanel.addSubview(SearchInput!)
         
-        SearchInput?.anchorToEdge(Edge.Left, padding: 30.LayoutVal(), width: 570.LayoutVal(), height: 60.LayoutVal())
+//        SearchInput?.anchorToEdge(Edge.Left, padding: 30.LayoutVal(), width: 670.LayoutVal(), height: 60.LayoutVal())
+        SearchInput?.anchorInCenter(width: 670.LayoutVal(), height: 60.LayoutVal())
         SearchInput?.layer.cornerRadius = 6.LayoutVal()
         SearchInput?.layer.masksToBounds
         SearchInput?.SetLeftPadding(66.LayoutVal(), leftPaddingImage: "CommonIconSearchHeader")
 
         SearchInput?.EditEndCallback = SearchActions!.StartSearch
         
-        let manuallyInputButton = YMButton()
-        manuallyInputButton.setTitle("没找到？", forState: UIControlState.Normal)
-        manuallyInputButton.setTitleColor(YMColors.FontGray, forState: UIControlState.Normal)
-        manuallyInputButton.titleLabel?.font = YMFonts.YMDefaultFont(26.LayoutVal())
-        manuallyInputButton.sizeToFit()
-        
-        InputPanel.addSubview(manuallyInputButton)
-        manuallyInputButton.align(Align.ToTheRightCentered,
-            relativeTo: SearchInput!,
-            padding: 30.LayoutVal(),
-            width: manuallyInputButton.width,
-            height: manuallyInputButton.height)
+//        let manuallyInputButton = YMButton()
+//        manuallyInputButton.setTitle("没找到？", forState: UIControlState.Normal)
+//        manuallyInputButton.setTitleColor(YMColors.FontGray, forState: UIControlState.Normal)
+//        manuallyInputButton.titleLabel?.font = YMFonts.YMDefaultFont(26.LayoutVal())
+//        manuallyInputButton.sizeToFit()
+//        
+//        InputPanel.addSubview(manuallyInputButton)
+//        manuallyInputButton.align(Align.ToTheRightCentered,
+//            relativeTo: SearchInput!,
+//            padding: 30.LayoutVal(),
+//            width: manuallyInputButton.width,
+//            height: manuallyInputButton.height)
     }
     
     private func DrawHospitalCell(cell: YMTableViewCell, data: AnyObject?) {

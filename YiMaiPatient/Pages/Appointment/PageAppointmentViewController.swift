@@ -20,6 +20,7 @@ public class PageAppointmentViewController: PageViewController {
     public static var SelectedTimeForUpload: [String]? = nil
     
     public static var NewAppointment = true
+    public static var ByPlatform = false
 
     override func PageLayout() {
         super.PageLayout()

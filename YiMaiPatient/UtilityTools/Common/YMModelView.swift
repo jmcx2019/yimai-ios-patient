@@ -113,6 +113,34 @@ public class YMPageModalMessage {
     }
 }
 
+public typealias YMJobtitleSelectedCallback = ((UIAlertAction) -> Void)
+public class YMJobtitleSelectModal {
+    public static func ShowSelectModal(nav: UINavigationController, callback: YMJobtitleSelectedCallback) {
+        
+        
+        let alertController = UIAlertController(title: "选择职称", message: nil, preferredStyle: .Alert)
+        let chiefPhysicianBtn = UIAlertAction(title: "主任医师", style: .Default, handler: callback)
+        let deputyChiefPhysicianBtn = UIAlertAction(title: "副主任医师", style: .Default, handler: callback)
+        let attendingPhysicianBtn = UIAlertAction(title: "主治医师", style: .Default, handler: callback)
+        let residentPhysicianBtn = UIAlertAction(title: "住院医师", style: .Default, handler: callback)
+        
+        let cancleBtn = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
+        chiefPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        deputyChiefPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        attendingPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        residentPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        cancleBtn.setValue(YMColors.FontGray, forKey: "titleTextColor")
+        
+        alertController.addAction(chiefPhysicianBtn)
+        alertController.addAction(deputyChiefPhysicianBtn)
+        alertController.addAction(attendingPhysicianBtn)
+        alertController.addAction(residentPhysicianBtn)
+        alertController.addAction(cancleBtn)
+        
+        nav.presentViewController(alertController, animated: true, completion: nil)
+    }
+}
+
 
 
 

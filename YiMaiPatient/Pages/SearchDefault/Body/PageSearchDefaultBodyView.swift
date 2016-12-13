@@ -27,12 +27,18 @@ class PageSearchDefaultBodyView: PageBodyView {
     let ByDocPanel = UIView()
     let ByHosPanel = UIView()
     let ByTagPanel = UIView()
+    let ByDeptPanel = UIView()
     
     var SelectedDoc: [String: AnyObject]? = nil
     
     var LoadingView: YMPageLoadingView? = nil
     
     var CurrentFilter = [String: String!]()
+    
+    let appointmentBtn = UIButton()
+    let proxyBtn = UIButton()
+    let platformProxyBtn = UIButton()
+    let buttonDivider = UIView()
     
     override func ViewLayout() {
         super.ViewLayout()
@@ -50,6 +56,7 @@ class PageSearchDefaultBodyView: PageBodyView {
         DrawByDocPanel()
         DrawByHosPanel()
         DrawByTagPanel()
+        DrawByDeptPanel()
         
         DrawBoxPanel()
         
@@ -100,10 +107,18 @@ class PageSearchDefaultBodyView: PageBodyView {
     
     func DrawByTagPanel() {
         BodyView.addSubview(ByTagPanel)
-        ByTagPanel.align(Align.UnderMatchingLeft, relativeTo: ByHosPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 0)
+        ByTagPanel.align(Align.UnderMatchingLeft, relativeTo: ByDeptPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 0)
         ByTagPanel.layer.masksToBounds = true
         ByTagPanel.hidden = true
         ByTagPanel.backgroundColor = HexColor("#f9f9f9")
+    }
+    
+    func DrawByDeptPanel() {
+        BodyView.addSubview(ByDeptPanel)
+        ByDeptPanel.align(Align.UnderMatchingLeft, relativeTo: ByHosPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 0)
+        ByDeptPanel.layer.masksToBounds = true
+        ByDeptPanel.hidden = true
+        ByDeptPanel.backgroundColor = HexColor("#f9f9f9")
     }
     
     private func LoadSearchListByType(type: String, panel: UIView, data: [[String: AnyObject]], prevPanel: UIView) {
@@ -129,7 +144,9 @@ class PageSearchDefaultBodyView: PageBodyView {
         
         for doc in data {
             cellCnt += 1
-            cell = YMLayout.DrawCommonDocCell(doc, docPanel: panel, action: SearchActions!, selector: "DoctorTouched:".Sel(), prevCell: cell)
+            cell = YMLayout.DrawCommonDocCell(doc, docPanel: panel,
+                                              action: SearchActions!, selector: "DoctorTouched:".Sel(),
+                                              prevCell: cell, highlight: SearchInput.text!)
             cell?.backgroundColor = YMColors.None
             if (cellCnt > 1) {
                 break
@@ -158,19 +175,23 @@ class PageSearchDefaultBodyView: PageBodyView {
         let byDocData = data["name"] as! [[String: AnyObject]]
         let byHosData = data["hospital"] as! [[String: AnyObject]]
         let byTagData = data["tag"] as! [[String: AnyObject]]
+        let byDeptData = data["dept"] as! [[String: AnyObject]]
         
         YMLayout.ClearView(view: ByDocPanel)
         YMLayout.ClearView(view: ByHosPanel)
         YMLayout.ClearView(view: ByTagPanel)
+        YMLayout.ClearView(view: ByDeptPanel)
         
         DocPanel.hidden = true
         ByDocPanel.hidden = false
         ByHosPanel.hidden = false
         ByTagPanel.hidden = false
+        ByDeptPanel.hidden = false
 
         LoadSearchListByType("按医生", panel: ByDocPanel, data: byDocData, prevPanel: SearchPanel)
         LoadSearchListByType("按医院", panel: ByHosPanel, data: byHosData, prevPanel: ByDocPanel)
-        LoadSearchListByType("按专长", panel: ByTagPanel, data: byTagData, prevPanel: ByHosPanel)
+        LoadSearchListByType("按科室", panel: ByDeptPanel, data: byDeptData, prevPanel: ByHosPanel)
+        LoadSearchListByType("按专长", panel: ByTagPanel, data: byTagData, prevPanel: ByDeptPanel)
         
         
         
@@ -249,10 +270,7 @@ class PageSearchDefaultBodyView: PageBodyView {
         
         BoxInner.addSubview(BoxInfoPanel)
         BoxInfoPanel.anchorToEdge(Edge.Top, padding: 0, width: BoxInner.width, height: BoxInner.height)
-        
-        let appointmentBtn = UIButton()
-        let proxyBtn = UIButton()
-        
+
         appointmentBtn.setTitle("预约面诊", forState: UIControlState.Normal)
         appointmentBtn.backgroundColor = YMColors.White
         appointmentBtn.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Normal)
@@ -263,14 +281,20 @@ class PageSearchDefaultBodyView: PageBodyView {
         proxyBtn.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Normal)
         proxyBtn.titleLabel?.font = YMFonts.YMDefaultFont(28.LayoutVal())
         
+        platformProxyBtn.setTitle("请平台代约专家", forState: UIControlState.Normal)
+        platformProxyBtn.backgroundColor = YMColors.White
+        platformProxyBtn.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Normal)
+        platformProxyBtn.titleLabel?.font = YMFonts.YMDefaultFont(28.LayoutVal())
+        
         BoxInner.addSubview(appointmentBtn)
         BoxInner.addSubview(proxyBtn)
+        BoxInner.addSubview(platformProxyBtn)
         
         BoxInner.groupAgainstEdge(group: Group.Horizontal, views: [appointmentBtn, proxyBtn],
                                   againstEdge: Edge.Bottom, padding: 0, width: BoxInner.width / 2, height: 80.LayoutVal())
+        platformProxyBtn.anchorAndFillEdge(Edge.Bottom, xPad: 0, yPad: 0, otherSize: 80.LayoutVal())
         
         let buttonTopBorder = UIView()
-        let buttonDivider = UIView()
         
         buttonTopBorder.backgroundColor = YMColors.BackgroundGray
         buttonDivider.backgroundColor = YMColors.BackgroundGray
@@ -283,6 +307,7 @@ class PageSearchDefaultBodyView: PageBodyView {
         
         appointmentBtn.addTarget(SearchActions!, action: "AppointmentTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
         proxyBtn.addTarget(SearchActions!, action: "ProxyTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        platformProxyBtn.addTarget(SearchActions!, action: "PlatformProxyBtn:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
     }
     
     func LoadDoctorToBox(data: [String: AnyObject]) {
@@ -292,7 +317,9 @@ class PageSearchDefaultBodyView: PageBodyView {
         let name = data["name"] as! String
         let hospital = data["hospital"] as! [String: AnyObject]
         let department = data["department"] as! [String: AnyObject]
-        let jobTitle = data["job_title"] as? String
+        let jobTitle = YMVar.GetStringByKey(data, key: "job_title", defStr: "医生")
+        
+        let isMyDoc = YMVar.GetStringByKey(data, key: "is_my_doctor", defStr: "false")
         
         let nameLabel = UILabel()
         let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))
@@ -338,7 +365,19 @@ class PageSearchDefaultBodyView: PageBodyView {
         deptLabel.align(Align.UnderCentered, relativeTo: divider, padding: 10.LayoutVal(), width: deptLabel.width, height: deptLabel.height)
         hosLabel.align(Align.UnderCentered, relativeTo: deptLabel, padding: 10.LayoutVal(), width: hosLabel.width, height: hosLabel.height)
         
-        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
+        
+        if("false" != isMyDoc) {
+            appointmentBtn.hidden = false
+            proxyBtn.hidden = false
+            platformProxyBtn.hidden = true
+            buttonDivider.hidden = false
+        } else {
+            appointmentBtn.hidden = true
+            proxyBtn.hidden = true
+            platformProxyBtn.hidden = false
+            buttonDivider.hidden = true
+        }
         
         
         BoxPanel.hidden = false
@@ -356,6 +395,7 @@ class PageSearchDefaultBodyView: PageBodyView {
         ByDocPanel.hidden = true
         ByHosPanel.hidden = true
         ByTagPanel.hidden = true
+        ByDeptPanel.hidden = true
 
         DocPanel.hidden = false
         LoadData(data)
@@ -366,7 +406,9 @@ class PageSearchDefaultBodyView: PageBodyView {
         var cellCnt = 0
         for doc in data {
             cellCnt += 1
-            cell = YMLayout.DrawCommonDocCell(doc, docPanel: DocPanel, action: SearchActions!, selector: "DoctorTouched:".Sel(), prevCell: cell)
+            cell = YMLayout.DrawCommonDocCell(doc, docPanel: DocPanel,
+                                              action: SearchActions!, selector: "DoctorTouched:".Sel(),
+                                              prevCell: cell, highlight: SearchInput.text!)
             cell?.backgroundColor = YMColors.None
             if (cellCnt > 50) {
                 break
@@ -388,12 +430,14 @@ class PageSearchDefaultBodyView: PageBodyView {
         YMLayout.ClearView(view: ByDocPanel)
         YMLayout.ClearView(view: ByHosPanel)
         YMLayout.ClearView(view: ByTagPanel)
+        YMLayout.ClearView(view: ByDeptPanel)
         YMLayout.ClearView(view: DocPanel)
         
-        SearchInput.text = nil
+        SearchInput.text = ""
         ByDocPanel.hidden = true
         ByHosPanel.hidden = true
         ByTagPanel.hidden = true
+        ByDeptPanel.hidden = true
         DocPanel.hidden = false
         
         HideBox()

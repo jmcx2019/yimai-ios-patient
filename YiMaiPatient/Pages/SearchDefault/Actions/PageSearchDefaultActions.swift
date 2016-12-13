@@ -39,7 +39,8 @@ public class PageSearchDefaultActions: PageJumpActions {
     public func SearchSuccess(data: NSDictionary?) {
 //        let realData = data!["data"] as! [[String: AnyObject]]
 //        TargetView?.LoadData(realData)
-        print(data!["users"])
+//        print(data!["users"])
+        print(data)
         TargetView?.LoadSearchResult(data!["users"] as! [String: AnyObject])
         TargetView?.LoadingView?.Hide()
     }
@@ -111,10 +112,36 @@ public class PageSearchDefaultActions: PageJumpActions {
     
     public func AppointmentTouched(sender: UIButton) {
         PageAppointmentViewController.SelectedDoctor = TargetView?.SelectedDoc
+        PageAppointmentSelectTimeViewController.SelectedDoctor = TargetView?.SelectedDoc
+        PageAppointmentViewController.ByPlatform = false
         DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_SELECT_TIME)
     }
     
     public func ProxyTouched(sender: UIButton) {
         //调到代约页面
+        PageAppointmentProxyViewController.SelectedDoctor = TargetView?.SelectedDoc
+        PageAppointmentProxyViewController.NewAppointment = true
+        DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_PROXY_NAME)
+    }
+    
+    public func PlatformProxyBtn(sender: UIButton) {
+        PageAppointmentViewController.SelectedDoctor = TargetView?.SelectedDoc
+        PageAppointmentSelectTimeViewController.SelectedDoctor = TargetView?.SelectedDoc
+        PageAppointmentViewController.NewAppointment = true
+        PageAppointmentViewController.ByPlatform = true
+        DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_SELECT_TIME)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

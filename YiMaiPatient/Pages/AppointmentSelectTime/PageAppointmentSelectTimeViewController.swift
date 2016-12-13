@@ -11,6 +11,7 @@ import UIKit
 public class PageAppointmentSelectTimeViewController: PageViewController {
     private var Actions: PageAppointmentSelectTimeActions? = nil
     public var BodyView: PageAppointmentSelectTimeBodyView? = nil
+    static var SelectedDoctor:[String: AnyObject]? = nil
 
     public override func PageLayout() {
         if(PageLayoutFlag) {

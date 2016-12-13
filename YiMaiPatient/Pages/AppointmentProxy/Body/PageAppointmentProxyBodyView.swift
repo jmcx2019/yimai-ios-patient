@@ -92,6 +92,11 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         self.UpdateCondition()
         SetSelectTimeBySys()
         PageAppointmentProxyViewController.SelectedTimeForUpload.removeAll()
+        
+        RequireHospital?.text = YMVar.GetStringByKey(PageHospitalSearchBodyView.HospitalSelected as? [String: AnyObject], key: "name")
+        RequireDepartment?.text = YMVar.GetStringByKey(PageDepartmentSearchBodyView.DepartmentSelected as? [String: AnyObject], key: "name")
+        
+        PorxyActions.TargetController?.VerifyInput(false)
     }
 
     override func ViewLayout() {
@@ -150,7 +155,7 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         param.Placholder = "科室（必填）"
         RequireDepartment = YMLayout.GetTextFieldWithMaxCharCount(param, maxCharCount: 20)
         
-        param.Placholder = "职称（必填，可多选）"
+        param.Placholder = "职称（必填）"
         RequireJobTitle = YMLayout.GetTextFieldWithMaxCharCount(param, maxCharCount: 20)
         
         RequireHospital?.EditStartCallback = PorxyActions.RequireHospitalBeginEdit
@@ -331,7 +336,7 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         let name = dataObj[YMYiMaiStrings.CS_DATA_KEY_NAME] as! String
         let hospital = dataObj[YMYiMaiStrings.CS_DATA_KEY_HOSPATIL] as! [String: AnyObject]
         let department = dataObj[YMYiMaiStrings.CS_DATA_KEY_DEPARTMENT] as! [String: AnyObject]
-        let jobTitle = dataObj[YMYiMaiStrings.CS_DATA_KEY_JOB_TITLE] as? String
+        let jobTitle = YMVar.GetStringByKey(dataObj, key: YMYiMaiStrings.CS_DATA_KEY_JOB_TITLE)
         
         let nameLabel = UILabel()
         let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))
@@ -340,13 +345,13 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         let hosLabel = UILabel()
         let userHeadBackground = YMLayout.GetSuitableImageView("HeadImageBorder")
         
-        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
         nameLabel.text = name
-        nameLabel.textColor = YMColors.FontBlue
+        nameLabel.textColor = YMColors.PatientFontGreen
         nameLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
         nameLabel.sizeToFit()
         
-        divider.backgroundColor = YMColors.FontBlue
+        divider.backgroundColor = YMColors.PatientFontGreen
         
         jobTitleLabel.text = jobTitle
         jobTitleLabel.textColor = YMColors.FontGray
@@ -354,7 +359,7 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         jobTitleLabel.sizeToFit()
         
         deptLabel.text = department["name"] as? String
-        deptLabel.textColor = YMColors.FontBlue
+        deptLabel.textColor = YMColors.PatientFontGreen
         deptLabel.font = YMFonts.YMDefaultFont(22.LayoutVal())
         deptLabel.sizeToFit()
         
@@ -450,7 +455,7 @@ public class PageAppointmentProxyBodyView: PageBodyView {
     
     public func SetConfirmEnable() {
         ConfirmButton?.enabled = true
-        ConfirmButton?.backgroundColor = YMColors.CommonBottomBlue
+        ConfirmButton?.backgroundColor = YMColors.PatientFontGreen
     }
     
     public func SetConfirmDisable() {

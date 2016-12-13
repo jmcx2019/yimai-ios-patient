@@ -42,14 +42,19 @@ public class PageAppointmentPatientBasicInfoActions: PageJumpActions {
         
         if("" == name) {
             pageController.BodyView?.SetConfirmDisable()
+            pageController.BodyView?.ShowErrorInfo("")
             return
         }
         
         if(!YMValueValidator.IsCellPhoneNum(phone)) {
             pageController.BodyView?.SetConfirmDisable()
+            if(!pageController.BodyView!.PatientPhoneInput!.isFirstResponder() && phone != "") {
+                pageController.BodyView?.ShowErrorInfo("请输入正确的手机号码！")
+            }
             return
         }
         
+        pageController.BodyView?.ShowErrorInfo("")
         pageController.BodyView?.SetConfirmEnable()
     }
 }

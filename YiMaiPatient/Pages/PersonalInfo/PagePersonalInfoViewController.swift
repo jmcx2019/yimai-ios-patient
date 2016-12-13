@@ -9,23 +9,30 @@
 import UIKit
 
 class PagePersonalInfoViewController: PageViewController {
-    var BodyView: PagePersonalInfoBodyView!
+    var BodyView: PagePersonalInfoBodyView? = nil
     
     override func PageLayout() {
         super.PageLayout()
         
-        BodyView = PagePersonalInfoBodyView(parentView: self.view, navController: self.NavController!)
-        TopView = PageCommonTopView(parentView: self.view, titleString: "我的账户", navController: self.NavController!)
+//        BodyView = PagePersonalInfoBodyView(parentView: self.view, navController: self.NavController!)
+//        TopView = PageCommonTopView(parentView: self.view, titleString: "我的账户", navController: self.NavController!)
     }
     
     override func PagePreRefresh() {
-        YMLayout.ClearView(view: self.view)
         
-        BodyView.Actions = nil
-        BodyView.InfoActions.TargetView = nil
-        BodyView.InfoActions = nil
+        print(self.isMovingToParentViewController())
+        print(self.isMovingFromParentViewController())
         
-        BodyView = PagePersonalInfoBodyView(parentView: self.view, navController: self.NavController!)
-        TopView = PageCommonTopView(parentView: self.view, titleString: "我的账户", navController: self.NavController!)
+        if(self.isMovingToParentViewController()) {
+            YMLayout.ClearView(view: self.view)
+            
+            BodyView?.Actions = nil
+            BodyView?.InfoActions.TargetView = nil
+            BodyView?.InfoActions = nil
+            
+            print("???")
+            BodyView = PagePersonalInfoBodyView(parentView: self.view, navController: self.NavController!)
+            TopView = PageCommonTopView(parentView: self.view, titleString: "我的账户", navController: self.NavController!)
+        }
     }
 }
