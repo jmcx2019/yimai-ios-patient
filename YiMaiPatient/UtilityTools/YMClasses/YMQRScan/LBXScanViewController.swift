@@ -11,6 +11,7 @@ import Foundation
 import AVFoundation
 import Neon
 
+public typealias LBXQRScanResultCallback = ((qrString: String?) -> Void)
 
 public class LBXScanViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -21,6 +22,9 @@ public class LBXScanViewController: UIViewController, UIImagePickerControllerDel
     public var qRScanView: LBXScanView?
     
     public var TopView: PageCommonTopView? = nil
+    
+    public var scanSuccessHandler: LBXQRScanResultCallback? = nil
+    public var scanFailedHandler: LBXQRScanResultCallback? = nil
     
     
     //启动区域识别功能
@@ -127,16 +131,10 @@ public class LBXScanViewController: UIViewController, UIImagePickerControllerDel
      */
     public func handleCodeResult(arrayResult:[LBXScanResult])
     {
-        for result:LBXScanResult in arrayResult
-        {
-//            print("%@",result.strScanned)
-        }
         
         let result:LBXScanResult = arrayResult[0]
-        
-        print(result.strScanned)
-//        self.navigationController?.popViewControllerAnimated(true)
-        showMsg(result.strBarCodeType, message: result.strScanned)
+        self.navigationController?.popViewControllerAnimated(true)
+        scanSuccessHandler?(qrString: result.strScanned)
     }
     
     override public func viewWillDisappear(animated: Bool) {
@@ -153,6 +151,8 @@ public class LBXScanViewController: UIViewController, UIImagePickerControllerDel
         if(!LBXPermissions.isGetPhotoPermission())
         {
             showMsg("提示", message: "没有相册权限，请到设置->隐私中开启本程序相册权限")
+            self.navigationController?.popViewControllerAnimated(true)
+            scanFailedHandler?(qrString: nil)
         }
         
         let picker = UIImagePickerController()
@@ -189,6 +189,8 @@ public class LBXScanViewController: UIViewController, UIImagePickerControllerDel
         }
         
         showMsg("", message: "识别失败")
+        self.navigationController?.popViewControllerAnimated(true)
+        scanFailedHandler?(qrString: nil)
     }
     
     func showMsg(title:String?,message:String?)
@@ -212,9 +214,8 @@ public class LBXScanViewController: UIViewController, UIImagePickerControllerDel
             presentViewController(alertController, animated: true, completion: nil)
         }
     }
-    deinit
-    {
-//        print("LBXScanViewController deinit")
+    
+    deinit {
     }
     
 }

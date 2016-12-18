@@ -295,7 +295,7 @@ public class YMLayout {
         
         if(nil != fullUrl) {
             url = fullUrl!
-        } else {
+        } else if(!url.containsString("http")) {
             url = server + url
         }
         

@@ -110,7 +110,7 @@ public class PageAppointmentSelectTimeBodyView: PageBodyView {
         let hosLabel = UILabel()
         let userHeadBackground = YMLayout.GetSuitableImageView("HeadImageBorder")
         
-        YMLayout.LoadImageFromServer(userHeadBackground, url: head)
+        YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
         
         nameLabel.text = name
         nameLabel.textColor = YMColors.PatientFontGreen
@@ -391,7 +391,8 @@ public class PageAppointmentSelectTimeBodyView: PageBodyView {
         headLine.font = YMFonts.YMDefaultFont(24.LayoutVal())
         headLine.sizeToFit()
         
-        priceLine.text = "约诊费200/次"
+        let price = YMVar.GetStringByKey(PageAppointmentSelectTimeViewController.SelectedDoctor, key: "fee")
+        priceLine.text = "约诊费\(price)/次"
         priceLine.textColor = YMColors.PatientFontGreen
         priceLine.font = YMFonts.YMDefaultFont(30.LayoutVal())
         priceLine.sizeToFit()

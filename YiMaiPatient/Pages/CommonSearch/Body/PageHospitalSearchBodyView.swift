@@ -40,7 +40,7 @@ public class PageHospitalSearchBodyView: PageBodyView {
         inputParam.BackgroundColor = YMColors.White
         inputParam.Placholder = "输入医院名称"
         inputParam.FontSize = 26.LayoutVal()
-        inputParam.FontColor = YMColors.FontBlue
+        inputParam.FontColor = YMColors.PatientFontGreen
         
         BodyView.addSubview(InputPanel)
         InputPanel.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 120.LayoutVal())

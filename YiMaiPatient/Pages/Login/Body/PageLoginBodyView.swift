@@ -126,7 +126,7 @@ public class PageLoginBodyView : NSObject {
         newButton.setTitle(text, forState: UIControlState.Normal)
         newButton.titleLabel?.font = UIFont.systemFontOfSize(22.LayoutVal())
         newButton.setTitleColor(YMColors.FontGray, forState: UIControlState.Normal)
-        newButton.setTitleColor(YMColors.FontBlue, forState: UIControlState.Highlighted)
+        newButton.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Highlighted)
         newButton.contentHorizontalAlignment = align
         
         return newButton

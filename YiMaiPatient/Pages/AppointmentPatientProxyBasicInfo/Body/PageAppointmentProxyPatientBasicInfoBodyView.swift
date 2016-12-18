@@ -59,8 +59,8 @@ public class PageAppointmentProxyPatientBasicInfoBodyView: PageBodyView{
 
         })
         
-        goBack.setValue(YMColors.FontBlue, forKey: "titleTextColor")
-        goOn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        goBack.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
+        goOn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
         
         alertController.addAction(goBack)
         alertController.addAction(goOn)
@@ -74,7 +74,7 @@ public class PageAppointmentProxyPatientBasicInfoBodyView: PageBodyView{
             
             param.Placholder = placeholder
             param.FontSize = 28.LayoutVal()
-            param.FontColor = YMColors.FontBlue
+            param.FontColor = YMColors.PatientFontGreen
             var input: YMTextField
             if(isPhone) {
                 input = YMLayout.GetCellPhoneField(param)
@@ -135,7 +135,7 @@ public class PageAppointmentProxyPatientBasicInfoBodyView: PageBodyView{
     
     public func SetConfirmEnable() {
         ConfirmButton?.enabled = true
-        ConfirmButton?.backgroundColor = YMColors.FontBlue
+        ConfirmButton?.backgroundColor = YMColors.PatientFontGreen
     }
     
     public func SetConfirmDisable() {

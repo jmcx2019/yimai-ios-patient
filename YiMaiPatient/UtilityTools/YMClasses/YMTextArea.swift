@@ -96,7 +96,7 @@ public class YMTextArea: KMPlaceholderTextView {
         let downButton = YMButton()
         topView.addSubview(downButton)
         downButton.setTitle("完成", forState: UIControlState.Normal)
-        downButton.setTitleColor(YMColors.FontBlue, forState: UIControlState.Normal)
+        downButton.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Normal)
         downButton.titleLabel?.font = YMFonts.YMDefaultFont(24.LayoutVal())
         downButton.anchorToEdge(Edge.Right, padding: 0, width: 80.LayoutVal(), height: 60.LayoutVal())
         downButton.UserObjectData = self

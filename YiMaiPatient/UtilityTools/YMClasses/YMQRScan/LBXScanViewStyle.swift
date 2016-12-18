@@ -84,7 +84,7 @@ public struct LBXScanViewStyle
     /**
     *  动画效果的图像，如线条或网格的图像
     */
-    public var animationImage:UIImage?
+    public var animationImage:UIImage? = UIImage(named: "QRScanLineGreen")
     
     
     // MARK: -非识别区域颜色,默认 RGBA (0,0,0,0.5)，范围（0--1）

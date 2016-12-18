@@ -30,6 +30,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     private var DetailActions: PageAppointmentDetailActions? = nil
     
     var GoToPayBtn = YMButton()
+    var ConfirmBtn = YMButton()
     var ImageList = [UIImageView]()
 
     public var Loading: YMPageLoadingView? = nil
@@ -164,7 +165,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         let head = data["head_url"] as? String
         if(nil != head) {
-            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: YMAPIInterfaceURL.DoctorServer + head!, makeItRound: true)
+            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
         }
 
         divider.backgroundColor = YMColors.PatientFontGreen
@@ -228,7 +229,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         let head = data["head_url"] as? String
         if(nil != head) {
-            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: YMAPIInterfaceURL.DoctorServer + head!, makeItRound: true)
+            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
         }
         
         divider.backgroundColor = YMColors.PatientFontGreen
@@ -292,7 +293,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         let head = data["head_url"] as? String
         if(nil != head) {
-            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: YMAPIInterfaceURL.DoctorServer + head!, makeItRound: true)
+            YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
         }
         
         divider.backgroundColor = YMColors.PatientFontGreen
@@ -494,7 +495,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         if(YMValueValidator.IsEmptyString(history)) {
             history = "无"
         }
-        
+
         let textContent = YMLayout.GetTouchableView(useObject: DetailActions!, useMethod: "TextDetailTouched:".Sel())
         TextInfoPanel.addSubview(textContent)
         
@@ -523,11 +524,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     public func ShowImage(list: UIScrollView, imgUrl: String, prev: UIImageView?) -> YMTouchableImageView {
         let img = YMTouchableImageView()
         let url = NSURL(string: imgUrl)
-        img.setImageWithURL(url!, placeholderImage: nil)
-        img.kf_setImageWithURL(url, placeholderImage: nil, optionsInfo: nil, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
-            img.image = Toucan(image: image!)
-                .resize(CGSize(width: img.width, height: img.height), fitMode: Toucan.Resize.FitMode.Crop).image
-        })
+//        img.setImageWithURL(url!, placeholderImage: nil)
         
         img.backgroundColor = YMColors.DividerLineGray
         
@@ -539,6 +536,13 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 20.LayoutVal(),
                       width: list.height, height: list.height)
         }
+        
+        img.kf_setImageWithURL(url, placeholderImage: nil, optionsInfo: nil, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
+            if(nil != image) {
+                img.image = Toucan(image: image!)
+                    .resize(CGSize(width: img.width, height: img.height), fitMode: Toucan.Resize.FitMode.Crop).image
+            }
+        })
         
         let tapGR = UITapGestureRecognizer(target: DetailActions, action: "ImageTouched:".Sel())
         
@@ -827,7 +831,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                 indc.align(Align.UnderCentered, relativeTo: arr1, padding: 22.LayoutVal(),
                            width: indc.width, height: indc.height)
             }
-        } else if("患者确认" == milestone) {
+        } else if("患者确认" == milestone || "确认预约" == milestone) {
             SetBreadcrumbsEnabel(start)
             SetBreadcrumbsEnabel(patientConfirm)
             
@@ -859,10 +863,17 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     func DrawBottom() {
         let status = PageAppointmentDetailViewController.RecordInfo["status"] as! String
         
+        let statusCode = YMVar.GetStringByKey(PageAppointmentDetailViewController.RecordInfo, key: "status_code")
+
         GoToPayBtn.setTitle("", forState: UIControlState.Normal)
         GoToPayBtn.setTitleColor(YMColors.White, forState: UIControlState.Normal)
         GoToPayBtn.backgroundColor = YMColors.PatientFontGreen
         GoToPayBtn.titleLabel?.font = YMFonts.YMDefaultFont(32.LayoutVal())
+        
+        ConfirmBtn.setTitle("", forState: UIControlState.Normal)
+        ConfirmBtn.setTitleColor(YMColors.White, forState: UIControlState.Normal)
+        ConfirmBtn.backgroundColor = YMColors.PatientFontGreen
+        ConfirmBtn.titleLabel?.font = YMFonts.YMDefaultFont(32.LayoutVal())
         
         if(status.containsString("保证金")) {
             ParentView!.addSubview(GoToPayBtn)
@@ -875,6 +886,11 @@ public class PageAppointmentDetailBodyView: PageBodyView {
             GoToPayBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
             GoToPayBtn.setTitle("缴纳诊费", forState: UIControlState.Normal)
             GoToPayBtn.addTarget(DetailActions, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        } else if("wait-4" == statusCode) {
+            ParentView?.addSubview(ConfirmBtn)
+            ConfirmBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
+            ConfirmBtn.setTitle("确认改期", forState: UIControlState.Normal)
+            ConfirmBtn.addTarget(DetailActions, action: "ConfirmTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
         }
     }
 
@@ -942,6 +958,9 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         GoToPayBtn.removeFromSuperview()
         GoToPayBtn.removeTarget(nil, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        ConfirmBtn.removeFromSuperview()
+        ConfirmBtn.removeTarget(nil, action: "ConfirmTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
     }
 }
 

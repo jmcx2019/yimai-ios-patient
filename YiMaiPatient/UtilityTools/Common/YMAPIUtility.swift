@@ -82,6 +82,11 @@ public class YMAPIInterfaceURL {
     static let GetSameCollegeList = YMAPIInterfaceURL.ApiBaseUrl + "/user/search/same-college"
     static let GetSameDepartmentList = YMAPIInterfaceURL.ApiBaseUrl + "/user/search/same-department"
     static let GetPayInfo = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/pay"
+    
+    static let GetWalletRecord = YMAPIInterfaceURL.ApiBaseUrl + "/wallet/record"
+    static let AddDocotor = YMAPIInterfaceURL.ApiBaseUrl + "/user/add-doctor"
+    static let ConfirmRescheduled = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/confirm-rescheduled"
+
 }
 
 public class YMAPICommonVariable {
@@ -754,6 +759,19 @@ public class YMAPIUtility {
     func YMGetPayInfo(id: String) {
         YMAPIPost(YMAPIInterfaceURL.GetPayInfo, param: ["id": id], progressHandler: nil)
     }
+    
+    func YMGetWalletRecord() {
+        YMAPIGet(YMAPIInterfaceURL.GetWalletRecord, param: nil, progressHandler: nil)
+    }
+    
+    func YMAddDocotor(id: String) {
+        YMAPIPost(YMAPIInterfaceURL.AddDocotor, param: ["id": id], progressHandler: nil)
+    }
+    
+    func YMConfirmRescheduled(id: String) {
+        YMAPIPost(YMAPIInterfaceURL.ConfirmRescheduled, param: ["id": id], progressHandler: nil)
+    }
+    
 }
 
 

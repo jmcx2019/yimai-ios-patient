@@ -21,7 +21,7 @@ public class PageCommonSearchBodyView: PageBodyView {
     private func CellBuilder(cell: YMTableViewCell, data: AnyObject?) -> Void {
         let realData = data as! [String: AnyObject]
         let cellInner = UILabel()
-        cellInner.backgroundColor = YMColors.FontBlue
+        cellInner.backgroundColor = YMColors.PatientFontGreen
         cellInner.font = YMFonts.YMDefaultFont(20.LayoutVal())
         cellInner.text = realData["idx"] as? String
         cellInner.textColor = YMColors.White

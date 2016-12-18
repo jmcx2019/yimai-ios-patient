@@ -14,12 +14,12 @@ public class PageAppointmentSelectTimeViewController: PageViewController {
     static var SelectedDoctor:[String: AnyObject]? = nil
 
     public override func PageLayout() {
-        if(PageLayoutFlag) {
-            BodyView = PageAppointmentSelectTimeBodyView(parentView: self.SelfView!, navController: self.NavController!, pageActions: Actions!)
-            TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "期望就诊时间", navController: self.NavController!)
-            return
-        }
-        PageLayoutFlag=true
+//        if(PageLayoutFlag) {
+//            BodyView = PageAppointmentSelectTimeBodyView(parentView: self.SelfView!, navController: self.NavController!, pageActions: Actions!)
+//            TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "期望就诊时间", navController: self.NavController!)
+//            return
+//        }
+//        PageLayoutFlag=true
         
         super.PageLayout()
         Actions = PageAppointmentSelectTimeActions(navController: self.NavController, target: self)

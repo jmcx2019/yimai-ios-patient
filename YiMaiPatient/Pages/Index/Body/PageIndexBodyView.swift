@@ -215,9 +215,9 @@ public class PageIndexBodyView: PageBodyView {
         }
         
         BuildMenuEntry(myDoc, text: "我的医生", iconName: "PageIndexSideBarMyDocIcon")
-        BuildMenuEntry(myWallet, text: "我的钱包", iconName: "PageIndexSideBarMyWalletIcon")
+        BuildMenuEntry(myWallet, text: "我的消费", iconName: "PageIndexSideBarMyWalletIcon")
         BuildMenuEntry(broadcast, text: "广播站", iconName: "PageIndexSideBarBroadcastIcon")
-        BuildMenuEntry(about, text: "关于 “医脉-看专家”", iconName: "PageIndexSideBarAboutIcon")
+        BuildMenuEntry(about, text: "关于 “医者脉联-看专家”", iconName: "PageIndexSideBarAboutIcon")
 //        BuildMenuEntry(healthZone, text: "健康合作顾问专区", iconName: "PageIndexSideBarHealthZone")
     }
     

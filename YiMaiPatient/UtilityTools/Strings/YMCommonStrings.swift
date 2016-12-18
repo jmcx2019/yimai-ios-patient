@@ -48,6 +48,7 @@ public class YMCommonStrings {
     public static let CS_PAGE_ABOUT_YIMAI = "PageAboutYiMai"
     
     public static let CS_PAGE_WALLET_INFO = "PageWalletInfo"
+    public static let CS_PAGE_WALLET_RECORD = "PageWalletRecord"
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"
     public static let CS_API_PARAM_KEY_PHONE = "phone"

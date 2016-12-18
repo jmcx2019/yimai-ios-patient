@@ -76,7 +76,7 @@ public class PageSearchResultCell {
             jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
             jobTitle.sizeToFit()
             
-            divider.backgroundColor = YMColors.FontBlue
+            divider.backgroundColor = YMColors.PatientFontGreen
             divider.align(Align.ToTheRightCentered, relativeTo: name,
                           padding: 14.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
             
@@ -139,12 +139,12 @@ public class PageSearchResultCell {
             if(nil != relationText) {
                 cell.addSubview(relation)
                 relation.text = relationText!
-                relation.textColor = YMColors.FontBlue
+                relation.textColor = YMColors.PatientFontGreen
                 relation.textAlignment = NSTextAlignment.Center
                 relation.font = YMFonts.YMDefaultFont(20.LayoutVal())
                 
                 relation.layer.borderWidth = YMSizes.OnPx
-                relation.layer.borderColor = YMColors.FontBlue.CGColor
+                relation.layer.borderColor = YMColors.PatientFontGreen.CGColor
                 relation.layer.cornerRadius = 8.LayoutVal()
                 relation.layer.masksToBounds = true
                 

@@ -11,11 +11,24 @@ import UIKit
 
 public class PageIndexActions: PageJumpActions {
     var TargetView: PageIndexBodyView? = nil
+    var AddDocApi: YMAPIUtility!
     
     override func ExtInit() {
         super.ExtInit()
         
+        AddDocApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_ADD_TO_MY_DOCOTOR, success: AddSuccess, error: AddError)
         TargetView = self.Target as? PageIndexBodyView
+    }
+    
+    func AddSuccess(data: NSDictionary?) {
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowNormalInfo("成功添加医生", nav: NavController!)
+    }
+    
+    func AddError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowNormalInfo("成功添加医生", nav: NavController!)
     }
     
     public func SearchButtonTouched(gr: UIGestureRecognizer) {
@@ -76,7 +89,7 @@ public class PageIndexActions: PageJumpActions {
     
     public func MyWalletTouched(qr: UIGestureRecognizer) {
 //        print("MyWalletTouched")
-        DoJump(YMCommonStrings.CS_PAGE_WALLET_INFO)
+        DoJump(YMCommonStrings.CS_PAGE_WALLET_RECORD)
     }
     
     public func BroadcastTouched(qr: UIGestureRecognizer) {
@@ -89,6 +102,32 @@ public class PageIndexActions: PageJumpActions {
     
     public func HealthZoneTouched(qr: UIGestureRecognizer) {
         print("HealthZoneTouched")
+    }
+    
+    func ScanSuccess(result: String?) {
+        let ret = YMVar.TryToGetDictFromJsonStringData(result)
+        if(nil == ret) {
+            YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
+            return
+        }
+        let yimaiData = ret!["YMQRData"]
+        if(nil == yimaiData) {
+            YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
+            return
+        }
+        let docData = yimaiData! as! [String: AnyObject]
+        let id = YMVar.GetStringByKey(docData, key: "id")
+        if("" == id) {
+            YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
+            return
+        }
+        
+        TargetView?.FullPageLoading.Show()
+        AddDocApi.YMAddDocotor(id)
+    }
+    
+    func ScanFailed(result: String?) {
+        YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
     }
     
     public func QRButtonTouched(sender : UITapGestureRecognizer) {
@@ -117,7 +156,7 @@ public class PageIndexActions: PageJumpActions {
         //        style.animationImage = [UIImage imageNamed:@"CodeScan.bundle/qrcode_scan_part_net"]
         
         //码框周围4个角的颜色
-        style.colorAngle = YMColors.FontBlue // [UIColor colorWithRed:65./255. green:174./255. blue:57./255. alpha:1.0]
+        style.colorAngle = YMColors.PatientFontGreen // [UIColor colorWithRed:65./255. green:174./255. blue:57./255. alpha:1.0]
         
         //矩形框颜色
         style.colorRetangleLine = YMColors.FontGray // [UIColor colorWithRed:247/255. green:202./255. blue:15./255. alpha:1.0];
@@ -134,6 +173,8 @@ public class PageIndexActions: PageJumpActions {
         
         //开启只识别矩形框内图像功能
         vc.isOpenInterestRect = true
+        vc.scanSuccessHandler = ScanSuccess
+        vc.scanFailedHandler = ScanFailed
         
         self.NavController?.pushViewController(vc, animated: true)
     }

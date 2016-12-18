@@ -14,6 +14,7 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     var TargetView: PageAppointmentDetailBodyView? = nil
     private var DetailApi: YMAPIUtility? = nil
     private var PayApi: YMAPIUtility? = nil
+    private var ConfirmApi: YMAPIUtility!
     
     var TachedImageIdx: Int = 0
     public var imageCount: Int { get { return TargetView!.ImageList.count } }
@@ -35,7 +36,21 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
                                  success: DetailGetSuccess, error: DetailGetError)
         
         PayApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GOTO_PAY, success: GoToPaySuccess, error: GoToPayError)
+        ConfirmApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_CONFIRM_RESCHEDULED, success: ConfirmRescheduledSuccess, error: ConfirmRescheduledError)
         TargetView = self.Target as? PageAppointmentDetailBodyView
+    }
+    
+    func ConfirmRescheduledSuccess(data: NSDictionary?) {
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowNormalInfo("改期已确认，请等待医生回复", nav: NavController!) { (_) in
+            self.NavController!.popViewControllerAnimated(true)
+        }
+    }
+    
+    func ConfirmRescheduledError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowErrorInfo("网络繁忙，请稍后再试", nav: NavController!)
     }
     
     private func DetailGetSuccess(data: NSDictionary?) {
@@ -126,6 +141,11 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
         let backgroundColor = GalleryConfigurationItem.BackgroundColor(YMColors.OpacityBlackMask)
         
         return [dividerWidth, spinnerStyle, spinnerColor, closeButtonConfig, pagingMode, headerLayout, footerLayout, closeLayout, statusBarHidden, hideDecorationViews, backgroundColor]
+    }
+    
+    func ConfirmTouched(sender: YMButton) {
+        TargetView?.FullPageLoading.Show()
+        ConfirmApi.YMConfirmRescheduled(PageAppointmentDetailViewController.AppointmentID)
     }
 }
 

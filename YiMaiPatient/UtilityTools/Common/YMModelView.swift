@@ -44,6 +44,8 @@ public class YMPageLoading: NSObject {
     }
     
     public func Show(){
+        self.MaskBackground.removeFromSuperview()
+        ParentView?.addSubview(MaskBackground)
         self.MaskBackground.hidden = false
         UIView.animateWithDuration(AnimateDuration, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: self.DoShowAnimate, completion: nil)
     }
@@ -88,7 +90,7 @@ public class YMPageModalMessage {
         
         let alertController = UIAlertController(title: "", message: info, preferredStyle: .Alert)
         let okBtn = UIAlertAction(title: "确定", style: .Default, handler: callback)
-        okBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        okBtn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
 
         alertController.addAction(okBtn)
         alertController.setValue(attributedString, forKey: "attributedMessage")
@@ -104,7 +106,7 @@ public class YMPageModalMessage {
         
         let alertController = UIAlertController(title: "", message: info, preferredStyle: .Alert)
         let okBtn = UIAlertAction(title: "确定", style: .Default, handler: callback)
-        okBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        okBtn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
         
         alertController.addAction(okBtn)
         alertController.setValue(attributedString, forKey: "attributedMessage")
@@ -125,10 +127,10 @@ public class YMJobtitleSelectModal {
         let residentPhysicianBtn = UIAlertAction(title: "住院医师", style: .Default, handler: callback)
         
         let cancleBtn = UIAlertAction(title: "取消", style: .Cancel, handler: nil)
-        chiefPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
-        deputyChiefPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
-        attendingPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
-        residentPhysicianBtn.setValue(YMColors.FontBlue, forKey: "titleTextColor")
+        chiefPhysicianBtn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
+        deputyChiefPhysicianBtn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
+        attendingPhysicianBtn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
+        residentPhysicianBtn.setValue(YMColors.PatientFontGreen, forKey: "titleTextColor")
         cancleBtn.setValue(YMColors.FontGray, forKey: "titleTextColor")
         
         alertController.addAction(chiefPhysicianBtn)

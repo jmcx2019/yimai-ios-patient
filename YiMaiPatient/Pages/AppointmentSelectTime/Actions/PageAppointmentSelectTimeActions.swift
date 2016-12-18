@@ -20,6 +20,12 @@ public class PageAppointmentSelectTimeActions: PageJumpActions {
     public func OKButtonTouched(sender: UIGestureRecognizer) {
         let pageController = self.Target as! PageAppointmentSelectTimeViewController
 
+        let SelectedDays = pageController.BodyView!.GetSelectedDays()
+        if(YMValueValidator.IsEmptyString(SelectedDays)){
+            YMPageModalMessage.ShowErrorInfo("请选择面诊时间", nav: NavController!)
+            return
+        }
+        
         PageAppointmentViewController.SelectedTime = pageController.BodyView!.GetSelectedDays()
         PageAppointmentViewController.SelectedTimeForUpload = pageController.BodyView!.GetSelectedDaysForUpload()
         
@@ -32,6 +38,5 @@ public class PageAppointmentSelectTimeActions: PageJumpActions {
         PageAppointmentViewController.SelectedTimeForUpload = []
         PageAppointmentViewController.NewAppointment = true
         DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT)
-
     }
 }
