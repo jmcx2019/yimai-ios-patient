@@ -22,7 +22,7 @@ class PageGetMyDoctorsViewController: PageViewController {
     }
     
     override func PagePreRefresh() {
-        BodyView?.LoadingView?.Show()
+        BodyView?.FullPageLoading?.Show()
         BodyView?.DoctorsActions?.GetMyDoctorList()
     }
 

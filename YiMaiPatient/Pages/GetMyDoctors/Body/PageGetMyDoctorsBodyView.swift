@@ -13,7 +13,6 @@ import ChameleonFramework
 
 public class PageGetMyDoctorsBodyView: PageBodyView {
     var DoctorsActions: PageGetMyDoctorsActions? = nil
-    var LoadingView: YMPageLoadingView? = nil
     
     let SearchPanel = UIView()
     let SearchInput = YMTextField(aDelegate: nil)
@@ -25,6 +24,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
     
     var SelectedDoc: [String: AnyObject]? = nil
     var MyDoctor = [[String: AnyObject]]()
+    var DoctorCacheForDelete = [[String: AnyObject]]()
     
     override public func ViewLayout() {
         super.ViewLayout()
@@ -33,7 +33,6 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         DoctorsActions = PageGetMyDoctorsActions(navController: self.NavController!, target: self)
         DrawSearchPanel()
         
-        LoadingView = YMPageLoadingView(parentView: self.BodyView)
         DrawDoctorsPanel()
         
         DrawBoxPanel()
@@ -71,16 +70,33 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
     }
     
     func LoadData(data: [[String: AnyObject]]) {
-        
-        var cell: YMTouchableView? = nil
+        YMLayout.ClearView(view: MyDoctorsPanel)
+        var cell: YMScrollCell? = nil
         for doc in data {
             cell = YMLayout.DrawCommonDocCell(doc, docPanel: MyDoctorsPanel, action: DoctorsActions!, selector: "DoctorTouched:".Sel(), prevCell: cell)
+            
+            cell!.SetCellBtn("删除", titleColor: UIColor.whiteColor(), bkgColor: UIColor.redColor(), fontSize: 40.LayoutVal(), padding: 40.LayoutVal()) { (str, obj) in
+                YMPageModalMessage.ShowConfirmInfo("确认要删除此医生？", nav: self.NavController!, ok: { (_) in
+                    self.FullPageLoading.Show()
+                    self.DoctorCacheForDelete = self.MyDoctor
+                    
+                    for (idx, v) in self.DoctorCacheForDelete.enumerate() {
+                        let vId = YMVar.GetStringByKey(v, key: "id")
+                        if(vId == str!) {
+                            self.DoctorCacheForDelete.removeAtIndex(idx)
+                            break
+                        }
+                    }
+
+                    self.DoctorsActions?.DeleteDoctorApi.YMDeleteDoctor(str!)
+                    }, cancel: nil)
+            }
         }
         MyDoctor = data
         if (nil != cell) {
             YMLayout.SetViewHeightByLastSubview(MyDoctorsPanel, lastSubView: cell!)
         }
-        LoadingView?.Hide()
+        FullPageLoading?.Hide()
     }
     
     func Clear() {
@@ -101,7 +117,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         BoxPanel.fillSuperview()
         BoxPanel.hidden = true
         
-        
+        let closeBtn = YMLayout.GetTouchableImageView(useObject: DoctorsActions!, useMethod: "HideBox:".Sel(), imageName: "YMCloseBtnGray")
 
         BoxMask = YMLayout.GetTouchableView(useObject: DoctorsActions!, useMethod: "HideBox:".Sel())
         BoxMask?.backgroundColor = HexColor("#000000", 0.5)
@@ -146,6 +162,10 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         BoxInner.addSubview(buttonTopBorder)
         BoxInner.addSubview(buttonDivider)
         
+        BoxInner.addSubview(closeBtn)
+        
+        closeBtn.anchorInCorner(Corner.TopRight, xPad: 20.LayoutVal(), yPad: 20.LayoutVal(), width: closeBtn.width / 2, height: closeBtn.height / 2)
+        
         buttonTopBorder.anchorToEdge(Edge.Bottom, padding: 80.LayoutVal(), width: BoxInner.width, height: YMSizes.OnPx)
         buttonDivider.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.OnPx, height: 80.LayoutVal())
         
@@ -160,7 +180,7 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         let name = data["name"] as! String
         let hospital = data["hospital"] as! [String: AnyObject]
         let department = data["department"] as! [String: AnyObject]
-        let jobTitle = data["job_title"] as? String
+        let jobTitle = YMVar.GetStringByKey(data, key: "job_title", defStr: "医生")
         
         let nameLabel = UILabel()
         let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))

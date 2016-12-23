@@ -12,12 +12,23 @@ import UIKit
 public class PageIndexActions: PageJumpActions {
     var TargetView: PageIndexBodyView? = nil
     var AddDocApi: YMAPIUtility!
+    var BannerApi: YMAPIUtility!
     
     override func ExtInit() {
         super.ExtInit()
         
         AddDocApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_ADD_TO_MY_DOCOTOR, success: AddSuccess, error: AddError)
+        BannerApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GET_INDEX_BANNER, success: GetIndexBannerSuccess, error: GetIndexBannerError)
         TargetView = self.Target as? PageIndexBodyView
+    }
+    
+    func GetIndexBannerSuccess(data: NSDictionary?) {
+        let realData = data?["data"] as? [[String:String]]
+        TargetView?.RefreshScrollImage(realData)
+    }
+    
+    func GetIndexBannerError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
     }
     
     func AddSuccess(data: NSDictionary?) {
@@ -45,6 +56,7 @@ public class PageIndexActions: PageJumpActions {
     
     public func MessageNotifyTouched(qr: UIGestureRecognizer) {
         print("MessageNotifyTouched")
+        DoJump(YMCommonStrings.CS_PAGE_SELECT_CITY_NAME)
     }
     
     public func UserHeadTouched(gr: UIGestureRecognizer) {
@@ -84,7 +96,7 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func MyDocTouched(qr: UIGestureRecognizer) {
-        print("MyDocTouched")
+        DoJump(YMCommonStrings.CS_PAGE_GET_MY_DOCTORS_NAME)
     }
     
     public func MyWalletTouched(qr: UIGestureRecognizer) {
@@ -177,6 +189,13 @@ public class PageIndexActions: PageJumpActions {
         vc.scanFailedHandler = ScanFailed
         
         self.NavController?.pushViewController(vc, animated: true)
+    }
+    
+    func IndexScrollImageTouched(sender: UIGestureRecognizer) {
+        let img = sender.view! as! YMTouchableImageView
+        
+        PageShowWebViewController.TargetUrl = img.UserStringData
+        DoJump(YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE)
     }
 }
 

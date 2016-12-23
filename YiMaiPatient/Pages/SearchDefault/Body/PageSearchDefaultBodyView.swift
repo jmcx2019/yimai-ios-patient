@@ -402,7 +402,7 @@ class PageSearchDefaultBodyView: PageBodyView {
     }
     
     func LoadData(data: [[String: AnyObject]]) {
-        var cell: YMTouchableView? = nil
+        var cell: YMScrollCell? = nil
         var cellCnt = 0
         for doc in data {
             cellCnt += 1

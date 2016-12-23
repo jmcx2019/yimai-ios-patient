@@ -108,8 +108,16 @@ public class PageRegisterInputInfoActions: PageJumpActions {
         self.NavController!.presentViewController(alertController, animated: true, completion: nil)
     }
     
+    func CitySelected(name: String?, id: String?) {
+        if(nil == name || nil == id) {
+            return
+        }
+        TargetView!.UpdateCity(name!, id: id!)
+    }
+    
     public func CityTouched(sender: UIGestureRecognizer) {
-//        DoJump(YMCommonStrings.CS_PAGE_SELECT_CITY_NAME)
+        PageSelectCityViewController.CitySelectedCallback = CitySelected
+        DoJump(YMCommonStrings.CS_PAGE_SELECT_CITY_NAME)
     }
     
     func UpdateUserInfo(sender: UIButton) {

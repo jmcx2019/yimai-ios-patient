@@ -73,6 +73,39 @@ public class YMLocalData {
         
         return privateInfo[0]
     }
+    
+    public static func GetData(key: String) -> AnyObject? {
+        let es = YMLocalData.Engine.searchForEntity(types: [key])
+        if(0 == es.count) {
+            return nil
+        }
+        
+        return es[0][key]
+    }
+    
+    public static func SaveData(data: AnyObject, key: String) {
+        
+        let es = YMLocalData.Engine.searchForEntity(types: [key])
+        if(0 == es.count) {
+            let e = Entity(type: key)
+            e[key] = data
+        } else {
+            es[0][key] = data
+        }
+        
+        
+        YMLocalData.Engine.save()
+    }
+    
+    public static func RemoveData(key: String) {
+        
+        let es = YMLocalData.Engine.searchForEntity(types: [key])
+        for e in es {
+            e.delete()
+        }
+        
+        YMLocalData.Engine.save()
+    }
 }
 
 

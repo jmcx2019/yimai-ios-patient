@@ -27,7 +27,9 @@ class PageShowWebViewController: PageViewController {
     override func PagePreRefresh() {
         BodyView.Clear()
         var urlStr = ""
-        if(PageShowWebViewController.IsFromDoctorServer) {
+        if(PageShowWebViewController.TargetUrl.containsString("http")) {
+            urlStr = PageShowWebViewController.TargetUrl
+        } else if (PageShowWebViewController.IsFromDoctorServer) {
             urlStr = YMAPIInterfaceURL.DoctorServer +
                 PageShowWebViewController.TargetUrl
         } else {

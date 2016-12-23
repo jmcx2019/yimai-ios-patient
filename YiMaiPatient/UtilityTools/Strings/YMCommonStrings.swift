@@ -49,6 +49,10 @@ public class YMCommonStrings {
     
     public static let CS_PAGE_WALLET_INFO = "PageWalletInfo"
     public static let CS_PAGE_WALLET_RECORD = "PageWalletRecord"
+    
+    public static let CS_PAGE_FORGET_PASSWORD_NAME = "PageForgetPassword"
+    
+    public static let CS_PAGE_SELECT_FOCUSED_DEPT = "PageSelectFocusedDept"
 
     public static let CS_API_PARAM_KEY_TOKEN = "token"
     public static let CS_API_PARAM_KEY_PHONE = "phone"

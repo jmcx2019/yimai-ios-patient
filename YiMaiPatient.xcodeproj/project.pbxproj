@@ -17,8 +17,39 @@
 		6640845A1DFBE11D000B597E /* ActiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664084551DFBE11D000B597E /* ActiveType.swift */; };
 		6640845B1DFBE11D000B597E /* RegexParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664084561DFBE11D000B597E /* RegexParser.swift */; };
 		6640845C1DFBE11D000B597E /* StringTrimExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664084571DFBE11D000B597E /* StringTrimExtension.swift */; };
+		665D1FAC1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 665D1FAE1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard */; };
+		665D1FB01E0BD4EA004A3409 /* PageSelectFocusedDeptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D1FAF1E0BD4EA004A3409 /* PageSelectFocusedDeptViewController.swift */; };
+		665D1FB21E0BD546004A3409 /* PageSelectFocusedDeptBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D1FB11E0BD546004A3409 /* PageSelectFocusedDeptBodyView.swift */; };
+		665D1FB41E0BD589004A3409 /* PageSelectFocusedDeptActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D1FB31E0BD589004A3409 /* PageSelectFocusedDeptActions.swift */; };
+		665D1FB91E0CCEE5004A3409 /* PageSelectCityActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665D1FB81E0CCEE5004A3409 /* PageSelectCityActions.swift */; };
+		667A1BE31E0810BB00F158E0 /* PageForgetPasswordActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667A1BDD1E0810BB00F158E0 /* PageForgetPasswordActions.swift */; };
+		667A1BE41E0810BB00F158E0 /* PageForgetPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667A1BDE1E0810BB00F158E0 /* PageForgetPassword.storyboard */; };
+		667A1BE51E0810BB00F158E0 /* PageForgetPasswordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667A1BE11E0810BB00F158E0 /* PageForgetPasswordBodyView.swift */; };
+		667A1BE61E0810BB00F158E0 /* PageForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667A1BE21E0810BB00F158E0 /* PageForgetPasswordViewController.swift */; };
+		667A1BE81E08DDD500F158E0 /* YMImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667A1BE71E08DDD500F158E0 /* YMImageScrollView.swift */; };
 		668F4BA71DFFA60800FBDC8E /* YMCityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668F4BA61DFFA60800FBDC8E /* YMCityList.swift */; };
 		668F4BA91DFFABCA00FBDC8E /* cityList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 668F4BA81DFFABCA00FBDC8E /* cityList.plist */; };
+		6699BB421E09071700E2D505 /* CameraView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6699BB2A1E09071700E2D505 /* CameraView.strings */; };
+		6699BB431E09071700E2D505 /* CameraViewAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6699BB2B1E09071700E2D505 /* CameraViewAssets.xcassets */; };
+		6699BB441E09071700E2D505 /* CameraGlobals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB2D1E09071700E2D505 /* CameraGlobals.swift */; };
+		6699BB451E09071700E2D505 /* CameraShot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB2E1E09071700E2D505 /* CameraShot.swift */; };
+		6699BB461E09071700E2D505 /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB2F1E09071700E2D505 /* ImageFetcher.swift */; };
+		6699BB471E09071700E2D505 /* PhotoLibraryAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB301E09071700E2D505 /* PhotoLibraryAuthorizer.swift */; };
+		6699BB481E09071700E2D505 /* SingleImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB311E09071700E2D505 /* SingleImageFetcher.swift */; };
+		6699BB491E09071700E2D505 /* SingleImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB321E09071700E2D505 /* SingleImageSaver.swift */; };
+		6699BB4A1E09071700E2D505 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB331E09071700E2D505 /* UIButtonExtensions.swift */; };
+		6699BB4B1E09071700E2D505 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB341E09071700E2D505 /* UIViewExtensions.swift */; };
+		6699BB4C1E09071700E2D505 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB351E09071700E2D505 /* Utilities.swift */; };
+		6699BB4D1E09071700E2D505 /* VolumeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB361E09071700E2D505 /* VolumeControl.swift */; };
+		6699BB4E1E09071700E2D505 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB381E09071700E2D505 /* CameraViewController.swift */; };
+		6699BB4F1E09071700E2D505 /* CameraViewControllerConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB391E09071700E2D505 /* CameraViewControllerConstraint.swift */; };
+		6699BB501E09071700E2D505 /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB3A1E09071700E2D505 /* ConfirmViewController.swift */; };
+		6699BB511E09071700E2D505 /* ConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6699BB3B1E09071700E2D505 /* ConfirmViewController.xib */; };
+		6699BB521E09071700E2D505 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB3C1E09071700E2D505 /* PhotoLibraryViewController.swift */; };
+		6699BB531E09071700E2D505 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB3E1E09071700E2D505 /* CameraView.swift */; };
+		6699BB541E09071700E2D505 /* CropOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB3F1E09071700E2D505 /* CropOverlay.swift */; };
+		6699BB551E09071700E2D505 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB401E09071700E2D505 /* ImageCell.swift */; };
+		6699BB561E09071700E2D505 /* PermissionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6699BB411E09071700E2D505 /* PermissionsView.swift */; };
 		66F29DCF1E0241EC002A561B /* PageWalletRecord.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66F29DD11E0241EC002A561B /* PageWalletRecord.storyboard */; };
 		66F29DD31E024223002A561B /* PageWalletRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F29DD21E024223002A561B /* PageWalletRecordViewController.swift */; };
 		66F29DD51E024286002A561B /* PageWalletRecordBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F29DD41E024286002A561B /* PageWalletRecordBodyView.swift */; };
@@ -189,8 +220,39 @@
 		664084551DFBE11D000B597E /* ActiveType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveType.swift; sourceTree = "<group>"; };
 		664084561DFBE11D000B597E /* RegexParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexParser.swift; sourceTree = "<group>"; };
 		664084571DFBE11D000B597E /* StringTrimExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTrimExtension.swift; sourceTree = "<group>"; };
+		665D1FAD1E0BD4D7004A3409 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageSelectFocusedDept.storyboard; sourceTree = "<group>"; };
+		665D1FAF1E0BD4EA004A3409 /* PageSelectFocusedDeptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectFocusedDeptViewController.swift; sourceTree = "<group>"; };
+		665D1FB11E0BD546004A3409 /* PageSelectFocusedDeptBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectFocusedDeptBodyView.swift; sourceTree = "<group>"; };
+		665D1FB31E0BD589004A3409 /* PageSelectFocusedDeptActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectFocusedDeptActions.swift; sourceTree = "<group>"; };
+		665D1FB81E0CCEE5004A3409 /* PageSelectCityActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectCityActions.swift; sourceTree = "<group>"; };
+		667A1BDD1E0810BB00F158E0 /* PageForgetPasswordActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageForgetPasswordActions.swift; sourceTree = "<group>"; };
+		667A1BDF1E0810BB00F158E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageForgetPassword.storyboard; sourceTree = "<group>"; };
+		667A1BE11E0810BB00F158E0 /* PageForgetPasswordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageForgetPasswordBodyView.swift; sourceTree = "<group>"; };
+		667A1BE21E0810BB00F158E0 /* PageForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageForgetPasswordViewController.swift; sourceTree = "<group>"; };
+		667A1BE71E08DDD500F158E0 /* YMImageScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMImageScrollView.swift; sourceTree = "<group>"; };
 		668F4BA61DFFA60800FBDC8E /* YMCityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMCityList.swift; sourceTree = "<group>"; };
 		668F4BA81DFFABCA00FBDC8E /* cityList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = cityList.plist; sourceTree = "<group>"; };
+		6699BB2A1E09071700E2D505 /* CameraView.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = CameraView.strings; sourceTree = "<group>"; };
+		6699BB2B1E09071700E2D505 /* CameraViewAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CameraViewAssets.xcassets; sourceTree = "<group>"; };
+		6699BB2D1E09071700E2D505 /* CameraGlobals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraGlobals.swift; sourceTree = "<group>"; };
+		6699BB2E1E09071700E2D505 /* CameraShot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraShot.swift; sourceTree = "<group>"; };
+		6699BB2F1E09071700E2D505 /* ImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		6699BB301E09071700E2D505 /* PhotoLibraryAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAuthorizer.swift; sourceTree = "<group>"; };
+		6699BB311E09071700E2D505 /* SingleImageFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImageFetcher.swift; sourceTree = "<group>"; };
+		6699BB321E09071700E2D505 /* SingleImageSaver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleImageSaver.swift; sourceTree = "<group>"; };
+		6699BB331E09071700E2D505 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		6699BB341E09071700E2D505 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		6699BB351E09071700E2D505 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		6699BB361E09071700E2D505 /* VolumeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeControl.swift; sourceTree = "<group>"; };
+		6699BB381E09071700E2D505 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		6699BB391E09071700E2D505 /* CameraViewControllerConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewControllerConstraint.swift; sourceTree = "<group>"; };
+		6699BB3A1E09071700E2D505 /* ConfirmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
+		6699BB3B1E09071700E2D505 /* ConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfirmViewController.xib; sourceTree = "<group>"; };
+		6699BB3C1E09071700E2D505 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		6699BB3E1E09071700E2D505 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		6699BB3F1E09071700E2D505 /* CropOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropOverlay.swift; sourceTree = "<group>"; };
+		6699BB401E09071700E2D505 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		6699BB411E09071700E2D505 /* PermissionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsView.swift; sourceTree = "<group>"; };
 		66F29DD01E0241EC002A561B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageWalletRecord.storyboard; sourceTree = "<group>"; };
 		66F29DD21E024223002A561B /* PageWalletRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletRecordViewController.swift; sourceTree = "<group>"; };
 		66F29DD41E024286002A561B /* PageWalletRecordBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletRecordBodyView.swift; sourceTree = "<group>"; };
@@ -422,6 +484,120 @@
 			path = YMLabel;
 			sourceTree = "<group>";
 		};
+		665D1FA71E0BD461004A3409 /* SelectFocusedDept */ = {
+			isa = PBXGroup;
+			children = (
+				665D1FA81E0BD461004A3409 /* Actions */,
+				665D1FA91E0BD461004A3409 /* Body */,
+				665D1FAE1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard */,
+				665D1FAF1E0BD4EA004A3409 /* PageSelectFocusedDeptViewController.swift */,
+			);
+			path = SelectFocusedDept;
+			sourceTree = "<group>";
+		};
+		665D1FA81E0BD461004A3409 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				665D1FB31E0BD589004A3409 /* PageSelectFocusedDeptActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		665D1FA91E0BD461004A3409 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				665D1FB11E0BD546004A3409 /* PageSelectFocusedDeptBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		665D1FB71E0CCED9004A3409 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				665D1FB81E0CCEE5004A3409 /* PageSelectCityActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		667A1BDB1E0810BB00F158E0 /* ForgetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				667A1BDC1E0810BB00F158E0 /* Actions */,
+				667A1BE01E0810BB00F158E0 /* Body */,
+				667A1BDE1E0810BB00F158E0 /* PageForgetPassword.storyboard */,
+				667A1BE21E0810BB00F158E0 /* PageForgetPasswordViewController.swift */,
+			);
+			path = ForgetPassword;
+			sourceTree = "<group>";
+		};
+		667A1BDC1E0810BB00F158E0 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				667A1BDD1E0810BB00F158E0 /* PageForgetPasswordActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		667A1BE01E0810BB00F158E0 /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				667A1BE11E0810BB00F158E0 /* PageForgetPasswordBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
+		6699BB291E09071700E2D505 /* ALCameraViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6699BB2A1E09071700E2D505 /* CameraView.strings */,
+				6699BB2B1E09071700E2D505 /* CameraViewAssets.xcassets */,
+				6699BB2C1E09071700E2D505 /* Utilities */,
+				6699BB371E09071700E2D505 /* ViewController */,
+				6699BB3D1E09071700E2D505 /* Views */,
+			);
+			path = ALCameraViewController;
+			sourceTree = "<group>";
+		};
+		6699BB2C1E09071700E2D505 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6699BB2D1E09071700E2D505 /* CameraGlobals.swift */,
+				6699BB2E1E09071700E2D505 /* CameraShot.swift */,
+				6699BB2F1E09071700E2D505 /* ImageFetcher.swift */,
+				6699BB301E09071700E2D505 /* PhotoLibraryAuthorizer.swift */,
+				6699BB311E09071700E2D505 /* SingleImageFetcher.swift */,
+				6699BB321E09071700E2D505 /* SingleImageSaver.swift */,
+				6699BB331E09071700E2D505 /* UIButtonExtensions.swift */,
+				6699BB341E09071700E2D505 /* UIViewExtensions.swift */,
+				6699BB351E09071700E2D505 /* Utilities.swift */,
+				6699BB361E09071700E2D505 /* VolumeControl.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6699BB371E09071700E2D505 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6699BB381E09071700E2D505 /* CameraViewController.swift */,
+				6699BB391E09071700E2D505 /* CameraViewControllerConstraint.swift */,
+				6699BB3A1E09071700E2D505 /* ConfirmViewController.swift */,
+				6699BB3B1E09071700E2D505 /* ConfirmViewController.xib */,
+				6699BB3C1E09071700E2D505 /* PhotoLibraryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6699BB3D1E09071700E2D505 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6699BB3E1E09071700E2D505 /* CameraView.swift */,
+				6699BB3F1E09071700E2D505 /* CropOverlay.swift */,
+				6699BB401E09071700E2D505 /* ImageCell.swift */,
+				6699BB411E09071700E2D505 /* PermissionsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		66F29DCA1E0241B8002A561B /* WalletRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +628,7 @@
 		730DDF571D5EC4D600E4ABB6 /* UtilityTools */ = {
 			isa = PBXGroup;
 			children = (
+				6699BB291E09071700E2D505 /* ALCameraViewController */,
 				730DDF581D5EC4D600E4ABB6 /* Common */,
 				730DDF601D5EC4D600E4ABB6 /* Layout */,
 				730DDF661D5EC4D600E4ABB6 /* Strings */,
@@ -513,6 +690,7 @@
 				664084511DFBE11D000B597E /* YMLabel */,
 				967676241D8AFD0500A07106 /* YMQRScan */,
 				730DDF681D5EC4D600E4ABB6 /* YMButton.swift */,
+				667A1BE71E08DDD500F158E0 /* YMImageScrollView.swift */,
 				730DDF6A1D5EC4D600E4ABB6 /* YMClassesAndProtocols.swift */,
 				730DDF6B1D5EC4D600E4ABB6 /* YMDatetime.swift */,
 				730DDF6C1D5EC4D600E4ABB6 /* YMSelectors.swift */,
@@ -529,6 +707,8 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				665D1FA71E0BD461004A3409 /* SelectFocusedDept */,
+				667A1BDB1E0810BB00F158E0 /* ForgetPassword */,
 				66F29DCA1E0241B8002A561B /* WalletRecord */,
 				2F8DD7BC1DDB5D6500AEE7A9 /* WalletInfo */,
 				FD67C3F21DC33D5A00500798 /* AboutYiMai */,
@@ -744,19 +924,12 @@
 		738F494B1D5EC98B00E577F4 /* SelectCity */ = {
 			isa = PBXGroup;
 			children = (
-				738F494C1D5EC98B00E577F4 /* Actions */,
+				665D1FB71E0CCED9004A3409 /* Actions */,
 				738F494D1D5EC98B00E577F4 /* Body */,
 				73A678831D60AF950005E90C /* PageSelectCity.storyboard */,
 				73A678841D60AFAE0005E90C /* PageSelectCityViewController.swift */,
 			);
 			path = SelectCity;
-			sourceTree = "<group>";
-		};
-		738F494C1D5EC98B00E577F4 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 		738F494D1D5EC98B00E577F4 /* Body */ = {
@@ -1410,11 +1583,13 @@
 				7307BFD31D5EEF7B000F31E5 /* PageRegister.storyboard in Resources */,
 				2F8DD7C31DDB5F4700AEE7A9 /* PageWalletInfo.storyboard in Resources */,
 				FD53536E1DB7212C007C056A /* README.txt in Resources */,
+				6699BB421E09071700E2D505 /* CameraView.strings in Resources */,
 				FD67C3D41DC3333900500798 /* PageSYSBroadcast.storyboard in Resources */,
 				966FD69A1D8BD85300FD49B9 /* PageCommonSearch.storyboard in Resources */,
 				FDD9B7D71D86B40F0038F84B /* PageAppointmentProxyBasicInfo.storyboard in Resources */,
 				FDB5B0B91D82620C00FD07C4 /* PageGetMyDoctors.storyboard in Resources */,
 				668F4BA91DFFABCA00FBDC8E /* cityList.plist in Resources */,
+				6699BB431E09071700E2D505 /* CameraViewAssets.xcassets in Resources */,
 				7312ED8D1D5EB99D006F6B56 /* LaunchScreen.storyboard in Resources */,
 				FD67C3FB1DC33D5A00500798 /* PageAboutYiMai.storyboard in Resources */,
 				738F495F1D5ED04300E577F4 /* PageAppLoading.storyboard in Resources */,
@@ -1423,6 +1598,7 @@
 				FD0205851DBDAA0200D6E563 /* PagePersonalInfo.storyboard in Resources */,
 				73C7EF731D85419A00B1B971 /* PageSearchDefault.storyboard in Resources */,
 				FD67C3E21DC3357300500798 /* PageCommonTextInput.storyboard in Resources */,
+				665D1FAC1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard in Resources */,
 				7312ED8A1D5EB99D006F6B56 /* Assets.xcassets in Resources */,
 				73C7EFAF1D85A28300B1B971 /* PageAppointmentPatientCondition.storyboard in Resources */,
 				FD67C3EF1DC335E600500798 /* PageShowWebView.storyboard in Resources */,
@@ -1436,8 +1612,10 @@
 				73A678891D60B2FB0005E90C /* cityDictionary.plist in Resources */,
 				963337331DBB52C300A296C8 /* PageAppointmentDetail.storyboard in Resources */,
 				7312ED851D5EB99D006F6B56 /* Main.storyboard in Resources */,
+				667A1BE41E0810BB00F158E0 /* PageForgetPassword.storyboard in Resources */,
 				73C7EF931D85995600B1B971 /* PageAppointment.storyboard in Resources */,
 				FD95C5631DBA023C00AFFE5B /* PageAppointmentRecord.storyboard in Resources */,
+				6699BB511E09071700E2D505 /* ConfirmViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1501,14 +1679,19 @@
 				730DDF851D5EC4D600E4ABB6 /* YMTouchableView.swift in Sources */,
 				FD67C3D51DC3333900500798 /* PageSYSBroadcastBodyView.swift in Sources */,
 				73C7EFB01D85A28300B1B971 /* PageAppointmentPatientConditionBodyView.swift in Sources */,
+				6699BB4E1E09071700E2D505 /* CameraViewController.swift in Sources */,
 				FD0205841DBDA9F800D6E563 /* PagePersonalInfoViewController.swift in Sources */,
 				7312ED821D5EB99D006F6B56 /* ViewController.swift in Sources */,
 				966FD6981D8BD85300FD49B9 /* PageDepartmentSearchActions.swift in Sources */,
 				730DDF7C1D5EC4D600E4ABB6 /* YMSizes.swift in Sources */,
 				FD5353641DB720DB007C056A /* WXPay.swift in Sources */,
 				FDD9B7D91D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoViewController.swift in Sources */,
+				6699BB491E09071700E2D505 /* SingleImageSaver.swift in Sources */,
+				6699BB561E09071700E2D505 /* PermissionsView.swift in Sources */,
 				9676762E1D8AFD0500A07106 /* LBXScanNetAnimation.swift in Sources */,
 				FD0544041D86A43400185AEF /* PageAppointmentProxyActions.swift in Sources */,
+				665D1FB21E0BD546004A3409 /* PageSelectFocusedDeptBodyView.swift in Sources */,
+				6699BB4D1E09071700E2D505 /* VolumeControl.swift in Sources */,
 				966FD6A01D8BD85300FD49B9 /* PageCommonSearchTopView.swift in Sources */,
 				FD95C5621DBA002500AFFE5B /* PageAppointmentRecordActions.swift in Sources */,
 				967676311D8AFD0500A07106 /* LBXScanViewStyle.swift in Sources */,
@@ -1516,12 +1699,15 @@
 				FDD9B7D61D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoActions.swift in Sources */,
 				FD67C3E11DC3357300500798 /* PageCommonTextInputActions.swift in Sources */,
 				730DDF711D5EC4D600E4ABB6 /* YMAPIUtility.swift in Sources */,
+				665D1FB41E0BD589004A3409 /* PageSelectFocusedDeptActions.swift in Sources */,
 				7307BFDB1D5EF42B000F31E5 /* YMRegisterStrings.swift in Sources */,
 				FDB5B0C11D82629500FD07C4 /* PageGetMyDoctorsBodyView.swift in Sources */,
+				667A1BE31E0810BB00F158E0 /* PageForgetPasswordActions.swift in Sources */,
 				738F495A1D5ECEBB00E577F4 /* YMLoginStrings.swift in Sources */,
 				7312ED801D5EB99D006F6B56 /* AppDelegate.swift in Sources */,
 				730DDF771D5EC4D600E4ABB6 /* YMVar.swift in Sources */,
 				9676762C1D8AFD0500A07106 /* LBXPermissions.swift in Sources */,
+				6699BB481E09071700E2D505 /* SingleImageFetcher.swift in Sources */,
 				730DDF8B1D5EC5A800E4ABB6 /* YMLoaclDataStrings.swift in Sources */,
 				7307BFD71D5EEF94000F31E5 /* PageRegisterViewController.swift in Sources */,
 				73A678851D60AFAE0005E90C /* PageSelectCityViewController.swift in Sources */,
@@ -1534,20 +1720,24 @@
 				66F29DD71E02428F002A561B /* PageWalletRecordActions.swift in Sources */,
 				66F29DD31E024223002A561B /* PageWalletRecordViewController.swift in Sources */,
 				FD67C3FC1DC33D5A00500798 /* PageAboutYiMaiBodyView.swift in Sources */,
+				6699BB521E09071700E2D505 /* PhotoLibraryViewController.swift in Sources */,
 				FD67C3E31DC3357300500798 /* PageCommonTextInputBodyView.swift in Sources */,
 				730DDF731D5EC4D600E4ABB6 /* YMLoaclData.swift in Sources */,
 				73C7EF921D85995600B1B971 /* PageAppointmentActions.swift in Sources */,
 				730DDF721D5EC4D600E4ABB6 /* YMCoreDataEngine.swift in Sources */,
 				FD02058B1DBDAAC100D6E563 /* PagePersonalInfoActions.swift in Sources */,
+				667A1BE51E0810BB00F158E0 /* PageForgetPasswordBodyView.swift in Sources */,
 				7307BFDD1D5EF442000F31E5 /* PageRegisterActions.swift in Sources */,
 				FD67C3F01DC335E600500798 /* PageShowWebBodyView.swift in Sources */,
 				73C7EF841D85988600B1B971 /* PageAppointmentSelectTimeActions.swift in Sources */,
 				FDDEFC6F1D810D7B00887C3E /* PageIndexActions.swift in Sources */,
+				6699BB4B1E09071700E2D505 /* UIViewExtensions.swift in Sources */,
 				730DDF751D5EC4D600E4ABB6 /* YMNetworkUtility.swift in Sources */,
 				FDD9B7D81D86B40F0038F84B /* PageAppointmentProxyPatientBasicInfoBodyView.swift in Sources */,
 				2F8DD7C91DDB5FF900AEE7A9 /* PageWalletInfoActions.swift in Sources */,
 				FDB5B0C31D8262A000FD07C4 /* PageGetMyDoctorsActions.swift in Sources */,
 				730DDF891D5EC5A800E4ABB6 /* YMCommonStrings.swift in Sources */,
+				6699BB541E09071700E2D505 /* CropOverlay.swift in Sources */,
 				963337341DBB52C300A296C8 /* PageAppointmentDetailBodyView.swift in Sources */,
 				73A678961D60C3B70005E90C /* PageIndexBodyView.swift in Sources */,
 				73C7EFAE1D85A28300B1B971 /* PageAppointmentPatientConditionActions.swift in Sources */,
@@ -1560,6 +1750,9 @@
 				966FD69E1D8BD85300FD49B9 /* PageTopSearchInputPanel.swift in Sources */,
 				73A678941D60C37F0005E90C /* PageIndexViewController.swift in Sources */,
 				FD0544071D86A43400185AEF /* PageAppointmentProxyViewController.swift in Sources */,
+				6699BB451E09071700E2D505 /* CameraShot.swift in Sources */,
+				667A1BE81E08DDD500F158E0 /* YMImageScrollView.swift in Sources */,
+				665D1FB91E0CCEE5004A3409 /* PageSelectCityActions.swift in Sources */,
 				963337371DBB532500A296C8 /* YMAppointmentDetailStrings.swift in Sources */,
 				966FD6991D8BD85300FD49B9 /* PageHospitalSearchActions.swift in Sources */,
 				7307BFE61D5F0301000F31E5 /* PageRegisterInputInfoViewController.swift in Sources */,
@@ -1576,11 +1769,13 @@
 				FD0205891DBDAA3700D6E563 /* PagePersonalInfoBodyView.swift in Sources */,
 				FDD9B7DC1D86B40F0038F84B /* PageAppointmentProxyPatientConditionBodyView.swift in Sources */,
 				730DDF761D5EC4D600E4ABB6 /* YMValueValidator.swift in Sources */,
+				6699BB471E09071700E2D505 /* PhotoLibraryAuthorizer.swift in Sources */,
 				730DDF821D5EC4D600E4ABB6 /* YMTableView.swift in Sources */,
 				730DDF841D5EC4D600E4ABB6 /* YMTextInput.swift in Sources */,
 				966FD69C1D8BD85300FD49B9 /* PageDepartmentSearchBodyView.swift in Sources */,
 				664084591DFBE11D000B597E /* ActiveLabel.swift in Sources */,
 				730DDF811D5EC4D600E4ABB6 /* YMSelectors.swift in Sources */,
+				667A1BE61E0810BB00F158E0 /* PageForgetPasswordViewController.swift in Sources */,
 				FD4735CD1D81B22000BBEF16 /* YMQRCode.swift in Sources */,
 				FDB5B0BF1D82625600FD07C4 /* PageGetMyDoctorsViewController.swift in Sources */,
 				2F8DD7C21DDB5E8C00AEE7A9 /* PageWalletInfoViewController.swift in Sources */,
@@ -1590,23 +1785,30 @@
 				730DDF801D5EC4D600E4ABB6 /* YMDatetime.swift in Sources */,
 				FD67C3D61DC3333900500798 /* PageSYSBroadcastViewController.swift in Sources */,
 				FD67C3D31DC3333900500798 /* PageSYSBroadcastActions.swift in Sources */,
+				6699BB501E09071700E2D505 /* ConfirmViewController.swift in Sources */,
 				6640845A1DFBE11D000B597E /* ActiveType.swift in Sources */,
 				FD95C5601DB9FFFF00AFFE5B /* PageAppointmentRecordBodyView.swift in Sources */,
 				FD67C3FD1DC33D5A00500798 /* PageAboutYiMaiViewController.swift in Sources */,
+				6699BB441E09071700E2D505 /* CameraGlobals.swift in Sources */,
 				73C7EF941D85995600B1B971 /* PageAppointmentBodyView.swift in Sources */,
 				73C7EFAA1D85A28300B1B971 /* PageAppointmentPatientBasicInfoActions.swift in Sources */,
 				730DDF741D5EC4D600E4ABB6 /* YMModelView.swift in Sources */,
 				730DDF7B1D5EC4D600E4ABB6 /* YMLayout.swift in Sources */,
 				73C7EF991D859C1000B1B971 /* YMPhotoSelector.swift in Sources */,
 				730DDF9B1D5EC64600E4ABB6 /* YMCurrentPage.swift in Sources */,
+				6699BB461E09071700E2D505 /* ImageFetcher.swift in Sources */,
 				738F49411D5EC6DD00E577F4 /* YMAPIStrings.swift in Sources */,
+				6699BB4F1E09071700E2D505 /* CameraViewControllerConstraint.swift in Sources */,
 				730DDF9A1D5EC64600E4ABB6 /* PageCommonTopView.swift in Sources */,
+				665D1FB01E0BD4EA004A3409 /* PageSelectFocusedDeptViewController.swift in Sources */,
 				7307BFEA1D5F0EE6000F31E5 /* PageRegisterInputInfoActions.swift in Sources */,
 				FD67C3F11DC335E600500798 /* PageShowWebViewController.swift in Sources */,
 				73C7EFAD1D85A28300B1B971 /* PageAppointmentPatientBasicInfoViewController.swift in Sources */,
 				7307BFDF1D5EF540000F31E5 /* YMModuleStrings.swift in Sources */,
 				2F8DD7C71DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift in Sources */,
 				730DDF7D1D5EC4D600E4ABB6 /* YMButton.swift in Sources */,
+				6699BB531E09071700E2D505 /* CameraView.swift in Sources */,
+				6699BB4C1E09071700E2D505 /* Utilities.swift in Sources */,
 				664084581DFBE11D000B597E /* ActiveBuilder.swift in Sources */,
 				966FD6A21D8BDD4700FD49B9 /* YMCommonSearchPageStrings.swift in Sources */,
 				FD67C3E41DC3357300500798 /* PageCommonTextInputViewController.swift in Sources */,
@@ -1622,11 +1824,13 @@
 				730DDF991D5EC64600E4ABB6 /* PageSearchResultCell.swift in Sources */,
 				963337321DBB52C300A296C8 /* PageAppointmentDetailActions.swift in Sources */,
 				730DDF781D5EC4D600E4ABB6 /* YMBasicTypeExtensionForLayout.swift in Sources */,
+				6699BB551E09071700E2D505 /* ImageCell.swift in Sources */,
 				7307BFE81D5F032A000F31E5 /* PageRegisterInputInfoBodyView.swift in Sources */,
 				966FD69F1D8BD85300FD49B9 /* PageCommonSearchViewController.swift in Sources */,
 				FD0544061D86A43400185AEF /* PageAppointmentProxyBodyView.swift in Sources */,
 				7312ED881D5EB99D006F6B56 /* YiMaiPatient.xcdatamodeld in Sources */,
 				738F49561D5ECCF300E577F4 /* PageLoginBodyView.swift in Sources */,
+				6699BB4A1E09071700E2D505 /* UIButtonExtensions.swift in Sources */,
 				73C7EFB11D85A28300B1B971 /* PageAppointmentPatientConditionViewController.swift in Sources */,
 				967676301D8AFD0500A07106 /* LBXScanViewController.swift in Sources */,
 			);
@@ -1641,6 +1845,22 @@
 				2F8DD7C41DDB5F4700AEE7A9 /* Base */,
 			);
 			name = PageWalletInfo.storyboard;
+			sourceTree = "<group>";
+		};
+		665D1FAE1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				665D1FAD1E0BD4D7004A3409 /* Base */,
+			);
+			name = PageSelectFocusedDept.storyboard;
+			sourceTree = "<group>";
+		};
+		667A1BDE1E0810BB00F158E0 /* PageForgetPassword.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				667A1BDF1E0810BB00F158E0 /* Base */,
+			);
+			name = PageForgetPassword.storyboard;
 			sourceTree = "<group>";
 		};
 		66F29DD11E0241EC002A561B /* PageWalletRecord.storyboard */ = {

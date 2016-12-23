@@ -146,6 +146,8 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
     public func DoAppointment(_: YMButton) {
         let uploadData = TargetController!.VerifyInput()
         
+        print(uploadData)
+        
         if(nil != uploadData) {
             TargetController?.Loading?.Show()
             ApiUtility?.YMCreateNewAppointment(uploadData!)

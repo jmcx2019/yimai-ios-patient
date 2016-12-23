@@ -10,7 +10,7 @@ import Foundation
 
 public class YMVar:NSObject {
     public static var MyId: String = ""
-    public static var MyInfo: [String:AnyObject]!
+    public static var MyInfo: [String:AnyObject]! = [String:AnyObject]()
     
     public static func Clear() {
         YMVar.MyInfo.removeAll()
@@ -30,7 +30,12 @@ public class YMVar:NSObject {
             return defStr
         }
         
-        return "\(ret!)"
+        let retStr = "\(ret!)"
+        if(YMValueValidator.IsBlankString(retStr)) {
+            return defStr
+        }
+        
+        return retStr
     }
     
     public static func GetIntStringByKey(dict: [String: AnyObject], key: String) -> String {

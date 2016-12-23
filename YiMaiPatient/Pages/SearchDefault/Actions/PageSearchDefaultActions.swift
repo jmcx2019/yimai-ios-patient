@@ -52,7 +52,7 @@ public class PageSearchDefaultActions: PageJumpActions {
     }
     
     func DoctorTouched(gr: UIGestureRecognizer) {
-        let doctorCell = gr.view as! YMTouchableView
+        let doctorCell = gr.view as! YMScrollCell
         let doctorData = doctorCell.UserObjectData as! [String: AnyObject]
 
         TargetView?.LoadDoctorToBox(doctorData)
@@ -60,7 +60,7 @@ public class PageSearchDefaultActions: PageJumpActions {
     
     func DoSearch() {
         let type = TargetView?.CurrentFilter["type"]
-        if(nil != type || !YMValueValidator.IsEmptyString(TargetView?.SearchInput.text)) {
+        if(nil != type || !YMValueValidator.IsBlankString(TargetView?.SearchInput.text)) {
             TargetView?.LoadingView?.Show()
             var searchParam = [String: String]()
             if(nil != type) {

@@ -30,7 +30,6 @@ class PagePersonalInfoViewController: PageViewController {
             BodyView?.InfoActions.TargetView = nil
             BodyView?.InfoActions = nil
             
-            print("???")
             BodyView = PagePersonalInfoBodyView(parentView: self.view, navController: self.NavController!)
             TopView = PageCommonTopView(parentView: self.view, titleString: "我的账户", navController: self.NavController!)
         }

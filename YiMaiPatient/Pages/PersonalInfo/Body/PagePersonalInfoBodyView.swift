@@ -11,7 +11,7 @@ import Neon
 
 class PagePersonalInfoBodyView: PageBodyView {
     var InfoActions: PagePersonalInfoActions!
-    var PhotoPikcer: YMPhotoSelector? = nil
+//    var PhotoPikcer: YMPhotoSelector? = nil
     
     var HeadImg: YMTouchableImageView!
 
@@ -21,8 +21,8 @@ class PagePersonalInfoBodyView: PageBodyView {
         
         InfoActions = PagePersonalInfoActions(navController: self.NavController!, target: self)
         DrawFullBody()
-        PhotoPikcer = YMPhotoSelector(nav: self.NavController!, maxSelection: 1)
-        PhotoPikcer?.SelectedCallback = InfoActions!.HeadImagesSelected
+//        PhotoPikcer = YMPhotoSelector(nav: self.NavController!, maxSelection: 1)
+//        PhotoPikcer?.SelectedCallback = InfoActions!.HeadImagesSelected
     }
     
     func DrawCell(title: String, content: String, act: Selector, showArr: Bool, prev: UIView) -> YMTouchableView {
@@ -33,7 +33,7 @@ class PagePersonalInfoBodyView: PageBodyView {
         let cell = YMLayout.GetTouchableView(useObject: InfoActions, useMethod: act)
         BodyView.addSubview(cell)
         
-        cell.align(Align.UnderMatchingLeft, relativeTo: prev, padding: 0, width: YMSizes.PageWidth, height: 70.LayoutVal())
+        cell.align(Align.UnderMatchingLeft, relativeTo: prev, padding: 0, width: YMSizes.PageWidth, height: 100.LayoutVal())
         
         cell.addSubview(titleLabel)
         titleLabel.anchorToEdge(Edge.Left, padding: 40.LayoutVal(), width: titleLabel.width, height: titleLabel.height)
@@ -63,7 +63,7 @@ class PagePersonalInfoBodyView: PageBodyView {
         let titleLabel = YMLayout.GetNomalLabel("头像", textColor: YMColors.PatientFontGray, fontSize: 28.LayoutVal())
         let contentLabel = YMLayout.GetNomalLabel("请上传", textColor: YMColors.PatientFontGreen, fontSize: 28.LayoutVal())
         let arrowIcon = YMLayout.GetSuitableImageView("PageIndexSideBarArrowIcon")
-        HeadImg = YMLayout.GetTouchableImageView(useObject: InfoActions, useMethod: "HeadImgTouched:".Sel(), imageName: "PagePersonalInfoUserheadBkg")
+        HeadImg = YMLayout.GetTouchableImageView(useObject: InfoActions, useMethod: "ChangeHeadImage:".Sel(), imageName: "PagePersonalInfoUserheadBkg")
         
         let cell = YMLayout.GetTouchableView(useObject: InfoActions, useMethod: "ChangeHeadImage:".Sel())
         BodyView.addSubview(headPanel)
@@ -101,6 +101,7 @@ class PagePersonalInfoBodyView: PageBodyView {
     func DrawFullBody(updateUserHead: Bool = false) {
         let headurl = YMVar.GetOptionalValAsString(YMVar.MyInfo["head_url"])
         let name = YMVar.GetOptionalValAsString(YMVar.MyInfo["name"])
+        let nickname = YMVar.GetOptionalValAsString(YMVar.MyInfo["nickname"])
         var sex = YMVar.GetOptionalValAsString(YMVar.MyInfo["sex"])
         let phone = YMVar.GetOptionalValAsString(YMVar.MyInfo["phone"])
         let birthday = YMVar.GetOptionalValAsString(YMVar.MyInfo["birthday"])
@@ -116,7 +117,8 @@ class PagePersonalInfoBodyView: PageBodyView {
         print(YMVar.MyInfo)
         
         prev = DrawCell("账号", content: phone, act: PageJumpActions.DoNothingSel, showArr: false, prev: prev)
-        prev = DrawCell("姓名", content: name, act: PageJumpActions.DoNothingSel, showArr: true, prev: prev)
+        prev = DrawCell("姓名", content: name, act: "NameTouched:".Sel(), showArr: true, prev: prev)
+        prev = DrawCell("昵称", content: nickname, act: "NicknameTouched:".Sel(), showArr: true, prev: prev)
         prev = DrawCell("性别", content: sex, act: "GenderTouched:".Sel(), showArr: true, prev: prev)
         prev = DrawCell("出生日期", content: birthday, act: "BirthdayTouched:".Sel(), showArr: true, prev: prev)
         prev = DrawCell("退出登录", content: "", act: "LogoutTouched:".Sel(), showArr: true, prev: prev)
@@ -140,6 +142,10 @@ class PagePersonalInfoBodyView: PageBodyView {
 //        HeadImg.image = headImg
 //        FullPageLoading.Show()
         DrawFullBody(true)
+    }
+    
+    func UpdateAll() {
+        DrawFullBody()
     }
 }
 

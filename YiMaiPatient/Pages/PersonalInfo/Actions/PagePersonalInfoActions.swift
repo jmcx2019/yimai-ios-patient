@@ -29,7 +29,6 @@ class PagePersonalInfoActions: PageJumpActions {
                                  success: UploadSuccess,
                                  error: UploadError)
         
-        print(TargetView)
     }
     
     func UploadSuccess(data: NSDictionary?) {
@@ -46,11 +45,15 @@ class PagePersonalInfoActions: PageJumpActions {
     }
     
     func UpdateSuccess(data: NSDictionary?) {
-        print(data)
+        YMVar.MyInfo = data!["data"] as! [String: AnyObject]
+        TargetView.UpdateAll()
+        TargetView.FullPageLoading.Hide()
     }
     
     func UpdateError(error: NSError) {
+        TargetView.FullPageLoading.Hide()
         YMAPIUtility.PrintErrorInfo(error)
+        YMPageModalMessage.ShowErrorInfo("网络繁忙，请稍后再试", nav: NavController!)
     }
 
     func BirthdayTouched(gr: UIGestureRecognizer) {
@@ -113,18 +116,31 @@ class PagePersonalInfoActions: PageJumpActions {
     }
     
     func HeadImagesSelected(selectedPhotos: [PHAsset]) {
-        ImageForUpload = YMLayout.TransPHAssetToUIImage(selectedPhotos[0])
+//        ImageForUpload = YMLayout.TransPHAssetToUIImage(selectedPhotos[0])
 //        TargetView.UpdateUserHead()
-        TargetView.FullPageLoading.Show()
-        UploadApi.YMUploadUserHead(["head_img": "head_img.jpg"], blockBuilder: UploadBlockBuilder)
+//        TargetView.FullPageLoading.Show()
+//        UploadApi.YMUploadUserHead(["head_img": "head_img.jpg"], blockBuilder: UploadBlockBuilder)
     }
     
     func HeadImgTouched(gr: UIGestureRecognizer) {
         //TODO: big picture
     }
     
+    var CamSelect: CameraViewController!
     func ChangeHeadImage(_: UIGestureRecognizer) {
-        TargetView.PhotoPikcer?.Show()
+//        TargetView.PhotoPikcer?.Show()
+        CamSelect = CameraViewController(croppingEnabled: true) {(img, pha) in
+            if(nil != img) {
+                self.TargetView.FullPageLoading.Show()
+                self.ImageForUpload = img!
+                //                self.TargetController?.BodyView?.UpdateUserHead(img!)
+                self.UploadApi?.YMUploadUserHead(["head_img": "head_img.jpg"], blockBuilder: self.UploadBlockBuilder)
+            }
+            
+            self.CamSelect!.navigationController?.popViewControllerAnimated(true)
+        }
+        
+        self.NavController!.pushViewController(CamSelect, animated: true)
     }
     
     func LogoutTouched(_: UIGestureRecognizer) {
@@ -134,6 +150,42 @@ class PagePersonalInfoActions: PageJumpActions {
 //        YMBackgroundRefresh.Stop()
         //        YMAPICommonVariable.ClearCallbackMap()
         self.DoJump(YMCommonStrings.CS_PAGE_LOGIN_NAME)
+    }
+    
+    func NameChanged(name: String) {
+        if(YMValueValidator.IsBlankString(name)) {
+            return
+        }
+        TargetView.FullPageLoading.Show()
+        self.UpdateApi.YMChangeUserInfo(["name": name])
+    }
+    
+    func NicknameChanged(nickname: String) {
+        if(YMValueValidator.IsBlankString(nickname)) {
+            return
+        }
+        TargetView.FullPageLoading.Show()
+        self.UpdateApi.YMChangeUserInfo(["nickname": nickname])
+    }
+    
+    func NameTouched(_: UIGestureRecognizer) {
+        PageCommonTextInputViewController.TitleString = "姓名"
+        PageCommonTextInputViewController.Placeholder = "请输入姓名（最多10个字符）"
+        PageCommonTextInputViewController.InputType = PageCommonTextInputType.Text
+        PageCommonTextInputViewController.InputMaxLen = 10
+        PageCommonTextInputViewController.Result = NameChanged
+        
+        DoJump(YMCommonStrings.CS_PAGE_COMMON_TEXT_INPUT)
+    }
+    
+    func NicknameTouched(_: UIGestureRecognizer) {
+        PageCommonTextInputViewController.TitleString = "昵称"
+        PageCommonTextInputViewController.Placeholder = "请输入昵称（最多10个字符）"
+        PageCommonTextInputViewController.InputType = PageCommonTextInputType.Text
+        PageCommonTextInputViewController.InputMaxLen = 10
+        PageCommonTextInputViewController.Result = NicknameChanged
+        
+        DoJump(YMCommonStrings.CS_PAGE_COMMON_TEXT_INPUT)
     }
 }
 

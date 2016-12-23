@@ -12,6 +12,7 @@ import UIKit
 public class PageGetMyDoctorsActions: PageJumpActions {
     var MyDoctorApi: YMAPIUtility? = nil
     var TargetView: PageGetMyDoctorsBodyView? = nil
+    var DeleteDoctorApi: YMAPIUtility!
     
     override public func ExtInit () {
         super.ExtInit()
@@ -19,6 +20,24 @@ public class PageGetMyDoctorsActions: PageJumpActions {
         MyDoctorApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GET_MY_DOCTOR,
                                    success: GetMyDoctorSuccess,
                                    error: GetMyDoctorError)
+        
+        DeleteDoctorApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_DELETE_MY_DOCOTOR, success: DeleteDocSuccess, error: DeleteDocError)
+    }
+    
+    func DeleteDocSuccess(data: NSDictionary?) {
+        print(data)
+        TargetView?.MyDoctor = TargetView!.DoctorCacheForDelete
+        TargetView?.LoadData(TargetView!.MyDoctor)
+        TargetView?.FullPageLoading.Hide()
+
+    }
+    
+    func DeleteDocError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
+        YMPageModalMessage.ShowErrorInfo("网络繁忙，请稍后再试", nav: NavController!)
+        TargetView?.DoctorCacheForDelete = TargetView!.MyDoctor
+        TargetView?.LoadData(TargetView!.MyDoctor)
+        TargetView?.FullPageLoading.Hide()
     }
     
     public func GetMyDoctorSuccess(data: NSDictionary?) {
@@ -29,7 +48,7 @@ public class PageGetMyDoctorsActions: PageJumpActions {
     public func GetMyDoctorError(error: NSError) {
         YMAPIUtility.PrintErrorInfo(error)
         YMPageModalMessage.ShowErrorInfo("网络通讯故障，请稍后再试", nav: self.NavController!)
-        TargetView?.LoadingView?.Hide()
+        TargetView?.FullPageLoading?.Hide()
     }
 
     public func SearchInputEnded (sender: YMTextField) {
@@ -41,7 +60,7 @@ public class PageGetMyDoctorsActions: PageJumpActions {
     }
     
     public func DoctorTouched(gr: UIGestureRecognizer) {
-        let doctorCell = gr.view as! YMTouchableView
+        let doctorCell = gr.view as! YMScrollCell
         let doctorData = doctorCell.UserObjectData as! [String: AnyObject]
         
         TargetView?.LoadDoctorToBox(doctorData)

@@ -135,7 +135,7 @@ public class PageLoginBodyView : NSObject {
     private func BindButtonActions() {
         LoginButton.UserStringData = YMCommonStrings.CS_PAGE_INDEX_NAME
         RegisterButton.UserStringData = YMCommonStrings.CS_PAGE_REGISTER_NAME
-//        ForgotButton.UserStringData = YMCommonStrings.CS_PAGE_FORGET_PASSWORD_NAME
+        ForgotButton.UserStringData = YMCommonStrings.CS_PAGE_FORGET_PASSWORD_NAME
         
         LoginButton.addTarget(self.Actions, action: "DoLogin:".Sel(),
                               forControlEvents: UIControlEvents.TouchUpInside)

@@ -112,12 +112,12 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
         
         DrawBlankCell(GenderCell!)
         DrawBlankCell(BirthdayCell!, prev: GenderCell)
-//        DrawBlankCell(CityCell!, prev: BirthdayCell)
+        DrawBlankCell(CityCell!, prev: BirthdayCell)
         
         
         DrawInfoInputPanel("RegisterInputGender", title: "选择性别", cell: GenderCell!)
         DrawInfoInputPanel("RegisterInputBirthday", title: "选择生日", cell: BirthdayCell!)
-//        DrawInfoInputPanel("RegisterInputCity", title: "选择城市", cell: CityCell!)
+        DrawInfoInputPanel("RegisterInputCity", title: "选择城市", cell: CityCell!)
     }
     
     public func UpdateGender(gender: String, genderNumType: String) {
@@ -137,12 +137,23 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
         VerifyInputComplete()
     }
     
+    func UpdateCity(name: String, id: String) {
+        PageRegisterInputInfoBodyView.InfoList["city"] = id
+        DrawInfoInputPanel("RegisterInputCity", title: name, cell: CityCell!)
+
+        VerifyInputComplete()
+    }
+    
     private func VerifyInputComplete() {
         if(nil == PageRegisterInputInfoBodyView.InfoList["birthday"]) {
             return
         }
         
         if(nil == PageRegisterInputInfoBodyView.InfoList["gender"]) {
+            return
+        }
+        
+        if(nil == PageRegisterInputInfoBodyView.InfoList["city"]) {
             return
         }
         

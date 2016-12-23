@@ -11,7 +11,6 @@ import Neon
 
 public class PageIndexBodyView: PageBodyView {
     var IndexActions: PageIndexActions? = nil
-    let ScrollBannerPanel = UIScrollView()
     let BtnGroupPanel = UIView()
     let MsgPanel = UIView()
 
@@ -22,6 +21,10 @@ public class PageIndexBodyView: PageBodyView {
 
     var MessageNotifyCell: YMTouchableView? = nil
     var SideBarHead: YMTouchableImageView!
+    
+    let userNameLabel = UILabel()
+    
+    private var ScrollImageView: YMImageHScrollView = YMImageHScrollView(interval: 5)
 
     override func ViewLayout() {
         super.ViewLayout()
@@ -34,18 +37,34 @@ public class PageIndexBodyView: PageBodyView {
     }
     
     func DrawBannerScrollPanel() {
-        BodyView.addSubview(ScrollBannerPanel)
+        BodyView.addSubview(ScrollImageView)
+        ScrollImageView.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 520.LayoutVal())
+        ScrollImageView.SetImages([YMLayout.GetSuitableImageView("IndexScrollPhoto")]).StartAutoScroll()
+    }
+    
+    func RefreshScrollImage(data: [[String: String]]?) {
+        if(nil == data) {
+            return
+        }
         
-        ScrollBannerPanel.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 520.LayoutVal())
+        let list = data!
+        var imageList = [YMTouchableImageView]()
+        for banner in list {
+            let imgUrl = YMVar.GetStringByKey(banner, key: "focus_img_url")
+            let articleUrl = YMVar.GetStringByKey(banner, key: "content_url")
+            
+            let newImage = YMLayout.GetTouchableImageView(useObject: IndexActions!, useMethod: "IndexScrollImageTouched:".Sel(), imageName: "IndexScrollPhoto")
+            YMLayout.LoadImageFromServer(newImage, url: imgUrl)
+            newImage.UserStringData = articleUrl
+            imageList.append(newImage)
+        }
         
-        let img = YMLayout.GetSuitableImageView("TEMP_INDEX_BANNER")
-        ScrollBannerPanel.addSubview(img)
-        img.fillSuperview()
+        ScrollImageView.SetImages(imageList).StartAutoScroll()
     }
     
     func DrawButtonGroup() {
         BodyView.addSubview(BtnGroupPanel)
-        BtnGroupPanel.align(Align.UnderMatchingLeft, relativeTo: ScrollBannerPanel, padding: 0, width: YMSizes.PageWidth, height: 200.LayoutVal())
+        BtnGroupPanel.align(Align.UnderMatchingLeft, relativeTo: ScrollImageView, padding: 0, width: YMSizes.PageWidth, height: 200.LayoutVal())
         BtnGroupPanel.backgroundColor = YMColors.White
         
         let searchBtn = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "SearchButtonTouched:".Sel())
@@ -152,7 +171,7 @@ public class PageIndexBodyView: PageBodyView {
             YMLayout.LoadImageFromServer(SideBarHead, url: headurl, fullUrl: nil, makeItRound: true)
         }
         
-        let userNameLabel = UILabel()
+        
         let userPhone = UILabel()
         
         print(YMVar.MyInfo)
@@ -226,6 +245,10 @@ public class PageIndexBodyView: PageBodyView {
         if(!YMValueValidator.IsEmptyString(headurl)) {
             YMLayout.LoadImageFromServer(SideBarHead, url: headurl, fullUrl: nil, makeItRound: true)
         }
+        
+        userNameLabel.text = YMVar.GetStringByKey(YMVar.MyInfo, key: "name")
+        userNameLabel.sizeToFit()
+        userNameLabel.align(Align.UnderCentered, relativeTo: SideBarHead, padding: 20.LayoutVal(), width: userNameLabel.width, height: userNameLabel.height)
     }
 }
 

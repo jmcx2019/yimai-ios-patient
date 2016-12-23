@@ -13,7 +13,9 @@ import Toucan
 import ChameleonFramework
 import Photos
 import Kingfisher
+import ImageViewer
 
+public typealias TagBuilderCB = ((tagText: String, tagInnerPadding: CGFloat, tagHeight: CGFloat, userData: AnyObject) -> UIView)
 public class TextFieldCreateParam {
     public var Placholder : String = ""
     public var DefaultText : String = ""
@@ -77,6 +79,20 @@ public class YMLayout {
         newView.addGestureRecognizer(tapGR)
         newView.backgroundColor = YMColors.White
 
+        return newView
+    }
+    
+    static func GetScrollCell(useObject actionTarget: AnyObject, useMethod actionFunc: Selector,
+                                        userStringData: String = "", backgroundColor: UIColor = YMColors.White) -> YMScrollCell {
+        let newView = YMScrollCell()
+        
+        newView.UserStringData = userStringData
+        let tapGR = UITapGestureRecognizer(target: actionTarget, action: actionFunc)
+        
+        newView.userInteractionEnabled = true
+        newView.addGestureRecognizer(tapGR)
+        newView.backgroundColor = backgroundColor
+        
         return newView
     }
     
@@ -168,10 +184,13 @@ public class YMLayout {
         }
     }
     
-    public static func SetViewHeightByLastSubview(view: UIView, lastSubView: UIView, bottomPadding: CGFloat = 0) {
+    public static func SetViewHeightByLastSubview(view: UIView, lastSubView: UIView?, bottomPadding: CGFloat = 0) {
+        if(nil == lastSubView) {
+            return
+        }
         let viewPoint = view.frame.origin
         view.frame = CGRectMake(viewPoint.x, viewPoint.y, view.width,
-                                lastSubView.height + lastSubView.frame.origin.y + bottomPadding)
+                                lastSubView!.height + lastSubView!.frame.origin.y + bottomPadding)
     }
     
     public static func SetHScrollViewContentSize(scrollView: UIScrollView, lastSubView: UIView?, padding: CGFloat = 0) {
@@ -325,8 +344,8 @@ public class YMLayout {
     
     
     
-    public static func DrawCommonDocCell(data: [String: AnyObject], docPanel: UIView,
-                                         action: AnyObject, selector: Selector, prevCell: UIView? , highlight: String = "") -> YMTouchableView {
+    static func DrawCommonDocCell(data: [String: AnyObject], docPanel: UIView,
+                                         action: AnyObject, selector: Selector, prevCell: UIView? , highlight: String = "") -> YMScrollCell {
         let head = data["head_url"] as! String
         let name = data["name"] as! String
         let hospital = data["hospital"] as! [String: AnyObject]
@@ -377,7 +396,7 @@ public class YMLayout {
         hosLabel.sizeToFit()
         hosLabel.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         
-        let cell = YMLayout.GetTouchableView(useObject: action, useMethod: selector, userStringData: userId)
+        let cell = YMLayout.GetScrollCell(useObject: action, useMethod: selector, userStringData: userId)
         
         SetLabelHighlight(jobTitleLabel, hightlight: highlight)
         SetLabelHighlight(deptLabel, hightlight: highlight)
@@ -469,6 +488,174 @@ public class YMLayout {
         }
         
         return imgData!
+    }
+    
+    /*!
+     @param : tags : 这个是标签的数据
+     @param : tagPanel : 这个是标签列表的父级 UIView
+     @param : lineWidth : 这个是标签的一行的长度
+     @param : lineHeight : 这个是标签的行高，所有的标签高度会充满行高
+     @param : firstLineXPos : 第一行标签的左上角的 X 坐标值
+     @param : firstLineYPos : 第一行标签的左上角的 Y 坐标值
+     @param : lineSpace : 行间距，第一行总是按照上面两个参数进行位置布局，这个参数是控制从第二行开始，距离上一行的间距用的
+     @param : tagSpace : 标签间距，这个是两个标签之间的间距
+     @param : tagInnerPadding : 这个是标签的左右内边距
+     @param : lineJustified : 这个是标签是否两端对齐，如果是的话，那么 tagSpace 的设定值无效，会自动计算两端对齐需要的标签间距
+     @param : maxTagsInLine : 这个是一行最多排布几个标签，无论此行的剩余空间是否还能继续放下一个标签
+     */
+    public static func DrawTagList(tags : NSArray, tagPanel: UIView, tagBuilder: TagBuilderCB,
+                                   lineWidth: CGFloat, lineHeight: CGFloat,
+                                   firstLineXPos: CGFloat, firstLineYPos: CGFloat, lineSpace: CGFloat,
+                                   tagSpace: CGFloat, tagInnerPadding: CGFloat,
+                                   lineJustified: Bool = false, maxTagsInLine: Int = Int.max) -> UIView? {
+        func GetTagFullWidth(tagLabel: UIView) -> CGFloat{
+            return tagLabel.width
+        }
+        
+        for view in tagPanel.subviews {
+            view.removeFromSuperview()
+        }
+        var labelArray = [UIView]()
+        var widthArray = [CGFloat]()
+        var lineArray = [[Int]]()
+        var lineViewArray = [UIView]()
+        
+        let listLineWidth = lineWidth
+        let listLineHeight = lineHeight
+        
+        if(0 == tags.count) {
+            return nil
+        }
+        
+        let tagSorted = tags.sort { (a, b) -> Bool in
+            let aDict = a as! [String: AnyObject]
+            let bDict = b as! [String: AnyObject]
+            
+            let nameA = aDict["text"] as! String
+            let nameB = bDict["text"] as! String
+            return nameA.characters.count > nameB.characters.count
+        }
+        
+        
+        for tag in tagSorted {
+            let tagDict = tag as! [String: AnyObject]
+            let tagName = tagDict["text"] as! String
+            if(YMValueValidator.IsEmptyString(tagName)) {continue}
+            let tagLabel = tagBuilder(tagText: tagName, tagInnerPadding: tagInnerPadding, tagHeight: lineHeight, userData: tag)
+            labelArray.append(tagLabel)
+            widthArray.append(GetTagFullWidth(tagLabel))
+        }
+        
+        for (idx, val) in widthArray.enumerate() {
+            var newLineFlag = true
+            
+            for (lIdx, lVal) in lineArray.enumerate() {
+                var allTagWidth:CGFloat = 0
+                for tagIdx in lVal {
+                    allTagWidth += widthArray[tagIdx]
+                }
+                
+                if((allTagWidth + val + CGFloat(lineArray[lIdx].count - 1) * tagSpace) < listLineWidth) {
+                    if(maxTagsInLine > lineArray[lIdx].count) {
+                        newLineFlag = false
+                        lineArray[lIdx].append(idx)
+                        break
+                    }
+                }
+            }
+            
+            if(newLineFlag) {
+                var newLine = [Int]()
+                newLine.append(idx)
+                lineArray.append(newLine)
+            }
+        }
+        
+        var tagPaddingByLine = [CGFloat]()
+        if(true == lineJustified) {
+            for (_, lVal) in lineArray.enumerate() {
+                var lineTagWidth: CGFloat = 0.0
+                var tagCount: CGFloat = 0
+                for (_, val) in lVal.enumerate() {
+                    let tagLabel = labelArray[val]
+                    lineTagWidth += GetTagFullWidth(tagLabel)
+                    tagCount += 1
+                }
+                
+                if(tagCount > 1){
+                    tagPaddingByLine.append((lineWidth - lineTagWidth) / (tagCount - 1))
+                } else {
+                    tagPaddingByLine.append(0)
+                }
+            }
+        } else {
+            for (_, _) in lineArray.enumerate() {
+                tagPaddingByLine.append(tagSpace)
+            }
+        }
+        
+        var lastLine: UIView? = nil
+        for (lIdx, lVal) in lineArray.enumerate() {
+            let lineView = UIView()
+            lineViewArray.append(lineView)
+            tagPanel.addSubview(lineView)
+            if(0 == lIdx) {
+                lineView.anchorInCorner(Corner.TopLeft, xPad: firstLineXPos, yPad: firstLineYPos, width: listLineWidth, height: listLineHeight)
+            } else {
+                let prevLine = lineViewArray[lIdx - 1]
+                lineView.align(Align.UnderMatchingLeft, relativeTo: prevLine, padding: lineSpace, width: listLineWidth, height: listLineHeight)
+            }
+            
+            lastLine = lineView
+            
+            var prevLabel: UIView? = nil
+            let tagPadding = tagPaddingByLine[lIdx]
+            for (idx, val) in lVal.enumerate() {
+                let tagLabel = labelArray[val]
+                lineView.addSubview(tagLabel)
+                if(0 == idx) {
+                    tagLabel.anchorToEdge(Edge.Left, padding: 0, width: widthArray[val], height: listLineHeight)
+                } else {
+                    tagLabel.align(Align.ToTheRightCentered, relativeTo: prevLabel!, padding: tagPadding, width: widthArray[val], height: listLineHeight)
+                }
+                prevLabel = tagLabel
+            }
+        }
+        
+        //        YMLayout.SetViewHeightByLastSubview(tagPanel, lastSubView: lastLine!)
+        //        YMLayout.SetViewWidthBySubview(tagPanel, subView: lastLine!, padding: firstLineXPos / 2)
+        return lastLine
+    }
+    
+    static func DefaultGalleryConfiguration() -> GalleryConfiguration {
+        
+        let dividerWidth = GalleryConfigurationItem.ImageDividerWidth(10)
+        let spinnerColor = GalleryConfigurationItem.SpinnerColor(UIColor.whiteColor())
+        let spinnerStyle = GalleryConfigurationItem.SpinnerStyle(UIActivityIndicatorViewStyle.White)
+        
+        let closeButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 40.LayoutVal(), height: 40.LayoutVal())))
+        closeButton.setImage(UIImage(named: "YMIconCloseBtn"), forState: UIControlState.Normal)
+        closeButton.setImage(UIImage(named: "YMIconCloseBtn"), forState: UIControlState.Highlighted)
+        let closeButtonConfig = GalleryConfigurationItem.CloseButton(closeButton)
+        
+        //        let seeAllButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 100, height: 50)))
+        //        seeAllButton.setTitle("显示全部", forState: .Normal)
+        //        let seeAllButtonConfig = GalleryConfigurationItem.SeeAllButton(seeAllButton)
+        
+        let pagingMode = GalleryConfigurationItem.PagingMode(GalleryPagingMode.Standard)
+        
+        let closeLayout = GalleryConfigurationItem.CloseLayout(ButtonLayout.PinRight(40, 40))
+        //        let seeAllLayout = GalleryConfigurationItem.CloseLayout(ButtonLayout.PinLeft(8, 16))
+        let headerLayout = GalleryConfigurationItem.HeaderViewLayout(HeaderLayout.Center(25))
+        let footerLayout = GalleryConfigurationItem.FooterViewLayout(FooterLayout.Center(25))
+        
+        let statusBarHidden = GalleryConfigurationItem.StatusBarHidden(true)
+        
+        let hideDecorationViews = GalleryConfigurationItem.HideDecorationViewsOnLaunch(false)
+        
+        let backgroundColor = GalleryConfigurationItem.BackgroundColor(YMColors.OpacityBlackMask)
+        
+        return [dividerWidth, spinnerStyle, spinnerColor, closeButtonConfig, pagingMode, headerLayout, footerLayout, closeLayout, statusBarHidden, hideDecorationViews, backgroundColor]
     }
 }
 

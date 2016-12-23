@@ -16,6 +16,7 @@ public typealias YMAPIErrorCallback = ((NSError) -> Void)
 
 public class YMAPIInterfaceURL {
     public static let DoctorServer = "http://d.medi-link.cn/"
+    public static let DoctorApiBaseUrl = "http://p.medi-link.cn/api"
     public static let Server = "http://p.medi-link.cn/"
     public static let ApiBaseUrl = "http://p.medi-link.cn/api"
 
@@ -42,9 +43,7 @@ public class YMAPIInterfaceURL {
     static let SearchHospital = YMAPIInterfaceURL.ApiBaseUrl + "/hospital/search"
     static let GetHospitalById = YMAPIInterfaceURL.ApiBaseUrl + "/hospital"
     static let GetHospitalsByCity = YMAPIInterfaceURL.ApiBaseUrl + "/hospital/city"
-    
-    static let GetDepartment = YMAPIInterfaceURL.ApiBaseUrl + "/dept"
-    
+
     static let GetInitRelation = YMAPIInterfaceURL.ApiBaseUrl + "/relation"
     static let GetLevel1Relation = YMAPIInterfaceURL.ApiBaseUrl + "/relation/friends"
     static let GetLevel2Relation = YMAPIInterfaceURL.ApiBaseUrl + "/relation/friends-friends"
@@ -85,8 +84,12 @@ public class YMAPIInterfaceURL {
     
     static let GetWalletRecord = YMAPIInterfaceURL.ApiBaseUrl + "/wallet/record"
     static let AddDocotor = YMAPIInterfaceURL.ApiBaseUrl + "/user/add-doctor"
+    static let DeleteDoctor = YMAPIInterfaceURL.ApiBaseUrl + "/user/del-doctor"
     static let ConfirmRescheduled = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/confirm-rescheduled"
-
+    
+    static let GetIndexBanner = YMAPIInterfaceURL.ApiBaseUrl + "/get-banner-url"
+    
+    static let GetTagsAndIllness = YMAPIInterfaceURL.ApiBaseUrl + "/tag/group"
 }
 
 public class YMAPICommonVariable {
@@ -508,7 +511,7 @@ public class YMAPIUtility {
             return
         }
         
-        let url = YMAPIUtility.AppendTokenToUrl(YMAPIInterfaceURL.GetDepartment, token: token! as! String)
+        let url = YMAPIUtility.AppendTokenToUrl(YMAPIInterfaceURL.GetTagsAndIllness, token: token! as! String)
         DoGetRequest(url, param: nil, progressHandler: nil)
     }
     
@@ -768,10 +771,17 @@ public class YMAPIUtility {
         YMAPIPost(YMAPIInterfaceURL.AddDocotor, param: ["id": id], progressHandler: nil)
     }
     
+    func YMDeleteDoctor(id: String) {
+        YMAPIPost(YMAPIInterfaceURL.DeleteDoctor, param: ["id": id], progressHandler: nil)
+    }
+    
     func YMConfirmRescheduled(id: String) {
         YMAPIPost(YMAPIInterfaceURL.ConfirmRescheduled, param: ["id": id], progressHandler: nil)
     }
     
+    public func YMGetIndexBanner() {
+        YMAPIGet(YMAPIInterfaceURL.GetIndexBanner, param: nil, progressHandler: nil)
+    }
 }
 
 

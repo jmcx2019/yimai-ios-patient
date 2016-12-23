@@ -26,10 +26,12 @@ public class PageIndexViewController: PageViewController {
         super.PagePreRefresh()
         YMCurrentPage.CurrentPage = YMCommonStrings.CS_PAGE_INDEX_NAME
         
+        BodyView?.IndexActions?.BannerApi.YMGetIndexBanner()
+        
         if(PageIndexViewController.IsFromLogin) {
 //            BodyView?.IndexActions?.MainPageMaskTouched(UIGestureRecognizer())
             YMLayout.ClearView(view: self.view)
-            
+
             BodyView?.Actions = nil
             BodyView?.IndexActions?.TargetView = nil
             BodyView?.IndexActions?.Target = nil
@@ -47,3 +49,13 @@ public class PageIndexViewController: PageViewController {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+

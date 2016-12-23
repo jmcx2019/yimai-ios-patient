@@ -52,7 +52,11 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_GET_USER_WALLET_RECORD = "apiGetUserWalletRecord"
     
     public static let CS_API_ACTION_ADD_TO_MY_DOCOTOR = "apiAddToMyDocotor"
-
+    public static let CS_API_ACTION_DELETE_MY_DOCOTOR = "apiDeleteMyDocotor"
+    public static let CS_API_ACTION_GET_INDEX_BANNER = "apiGetIndexBanner"
+    public static let CS_API_ACTION_GET_TAGS_AND_ILLNESS = "apiGetTagsAndIllness"
+    
+    public static let CS_API_ACTION_GET_CITIES = "apiGetCities"
 }
 
 

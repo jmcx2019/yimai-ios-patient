@@ -154,7 +154,7 @@ class PageAppointmentRecordBodyView: PageBodyView {
 
         func BuildCell(data: [String: AnyObject], prev: YMTouchableView?) -> YMTouchableView? {
             let dHeadurl = YMVar.GetOptionalValAsString(data["doctor_head_url"])
-            let dNameStr = YMVar.GetOptionalValAsString(data["doctor_name"])
+            var dNameStr = YMVar.GetOptionalValAsString(data["doctor_name"])
             let dJobtitleStr = YMVar.GetOptionalValAsString(data["doctor_job_title"])
             let pNameStr = YMVar.GetOptionalValAsString(data["patient_name"])
             let pAgeStr = YMVar.GetOptionalValAsString(data["patient_age"])
@@ -163,8 +163,9 @@ class PageAppointmentRecordBodyView: PageBodyView {
             let timeStr = YMVar.GetOptionalValAsString(data["time"])
             let modeStr = YMVar.GetOptionalValAsString(data["request_mode"])
             
-            if(YMValueValidator.IsEmptyString(dNameStr)) {
-                return prev
+            if(YMValueValidator.IsBlankString(dNameStr)) {
+                dNameStr = "代约"
+//                return prev
             }
             
             let cell = YMLayout.GetTouchableView(useObject: RecordActions, useMethod: "CellTouched:".Sel())
@@ -202,7 +203,7 @@ class PageAppointmentRecordBodyView: PageBodyView {
             }
             
             if(!YMValueValidator.IsEmptyString(pAgeStr)) {
-                pInfoStr += " \(pAgeStr)"
+                pInfoStr += " \(pAgeStr)岁"
             }
             
             cell.UserObjectData = data
@@ -257,7 +258,7 @@ class PageAppointmentRecordBodyView: PageBodyView {
             pd.backgroundColor = YMColors.PatientFontDarkGray
             cell.addSubview(pInfo)
             pInfo.align(Align.ToTheRightCentered, relativeTo: pd, padding: 16.LayoutVal(),
-                        width: pd.width, height: pd.height)
+                        width: pInfo.width, height: pInfo.height)
             
             cell.addSubview(tIcon)
             cell.addSubview(time)

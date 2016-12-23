@@ -43,4 +43,23 @@ extension String {
     public func Sel() -> Selector {
         return Selector(self)
     }
+    
+    func TransformToPinYin() -> String {
+        let mutableString = NSMutableString(string: self)
+        CFStringTransform(mutableString, nil, kCFStringTransformToLatin, false)
+        CFStringTransform(mutableString, nil, kCFStringTransformStripDiacritics, false)
+        let string = String(mutableString)
+        return string.stringByReplacingOccurrencesOfString(" ", withString: "")
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
