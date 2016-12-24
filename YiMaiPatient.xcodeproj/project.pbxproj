@@ -12,6 +12,10 @@
 		2F8DD7C31DDB5F4700AEE7A9 /* PageWalletInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C51DDB5F4700AEE7A9 /* PageWalletInfo.storyboard */; };
 		2F8DD7C71DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C61DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift */; };
 		2F8DD7C91DDB5FF900AEE7A9 /* PageWalletInfoActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C81DDB5FF900AEE7A9 /* PageWalletInfoActions.swift */; };
+		6634E8011E0E89FA00408D5B /* PageSelectIllness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6634E8031E0E89FA00408D5B /* PageSelectIllness.storyboard */; };
+		6634E8051E0E8A1200408D5B /* PageSelectIllnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */; };
+		6634E8071E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634E8061E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift */; };
+		6634E8091E0E8A2900408D5B /* PageSelectIllnessActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634E8081E0E8A2900408D5B /* PageSelectIllnessActions.swift */; };
 		664084581DFBE11D000B597E /* ActiveBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664084521DFBE11D000B597E /* ActiveBuilder.swift */; };
 		664084591DFBE11D000B597E /* ActiveLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664084541DFBE11D000B597E /* ActiveLabel.swift */; };
 		6640845A1DFBE11D000B597E /* ActiveType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664084551DFBE11D000B597E /* ActiveType.swift */; };
@@ -214,6 +218,10 @@
 		2F8DD7C41DDB5F4700AEE7A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageWalletInfo.storyboard; sourceTree = "<group>"; };
 		2F8DD7C61DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletInfoBodyView.swift; sourceTree = "<group>"; };
 		2F8DD7C81DDB5FF900AEE7A9 /* PageWalletInfoActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletInfoActions.swift; sourceTree = "<group>"; };
+		6634E8021E0E89FA00408D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageSelectIllness.storyboard; sourceTree = "<group>"; };
+		6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectIllnessViewController.swift; sourceTree = "<group>"; };
+		6634E8061E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectIllnessBodyView.swift; sourceTree = "<group>"; };
+		6634E8081E0E8A2900408D5B /* PageSelectIllnessActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectIllnessActions.swift; sourceTree = "<group>"; };
 		664084521DFBE11D000B597E /* ActiveBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveBuilder.swift; sourceTree = "<group>"; };
 		664084531DFBE11D000B597E /* ActiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActiveLabel.h; sourceTree = "<group>"; };
 		664084541DFBE11D000B597E /* ActiveLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActiveLabel.swift; sourceTree = "<group>"; };
@@ -471,6 +479,33 @@
 			path = Body;
 			sourceTree = "<group>";
 		};
+		6634E7FC1E0E89CB00408D5B /* SelectIllness */ = {
+			isa = PBXGroup;
+			children = (
+				6634E7FD1E0E89CB00408D5B /* Actions */,
+				6634E7FE1E0E89CB00408D5B /* Body */,
+				6634E8031E0E89FA00408D5B /* PageSelectIllness.storyboard */,
+				6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */,
+			);
+			path = SelectIllness;
+			sourceTree = "<group>";
+		};
+		6634E7FD1E0E89CB00408D5B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				6634E8081E0E8A2900408D5B /* PageSelectIllnessActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		6634E7FE1E0E89CB00408D5B /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				6634E8061E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
 		664084511DFBE11D000B597E /* YMLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -707,6 +742,7 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				6634E7FC1E0E89CB00408D5B /* SelectIllness */,
 				665D1FA71E0BD461004A3409 /* SelectFocusedDept */,
 				667A1BDB1E0810BB00F158E0 /* ForgetPassword */,
 				66F29DCA1E0241B8002A561B /* WalletRecord */,
@@ -1597,6 +1633,7 @@
 				7307BFE21D5F02F2000F31E5 /* PageRegisterInputInfo.storyboard in Resources */,
 				FD0205851DBDAA0200D6E563 /* PagePersonalInfo.storyboard in Resources */,
 				73C7EF731D85419A00B1B971 /* PageSearchDefault.storyboard in Resources */,
+				6634E8011E0E89FA00408D5B /* PageSelectIllness.storyboard in Resources */,
 				FD67C3E21DC3357300500798 /* PageCommonTextInput.storyboard in Resources */,
 				665D1FAC1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard in Resources */,
 				7312ED8A1D5EB99D006F6B56 /* Assets.xcassets in Resources */,
@@ -1773,7 +1810,9 @@
 				730DDF821D5EC4D600E4ABB6 /* YMTableView.swift in Sources */,
 				730DDF841D5EC4D600E4ABB6 /* YMTextInput.swift in Sources */,
 				966FD69C1D8BD85300FD49B9 /* PageDepartmentSearchBodyView.swift in Sources */,
+				6634E8091E0E8A2900408D5B /* PageSelectIllnessActions.swift in Sources */,
 				664084591DFBE11D000B597E /* ActiveLabel.swift in Sources */,
+				6634E8071E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift in Sources */,
 				730DDF811D5EC4D600E4ABB6 /* YMSelectors.swift in Sources */,
 				667A1BE61E0810BB00F158E0 /* PageForgetPasswordViewController.swift in Sources */,
 				FD4735CD1D81B22000BBEF16 /* YMQRCode.swift in Sources */,
@@ -1824,6 +1863,7 @@
 				730DDF991D5EC64600E4ABB6 /* PageSearchResultCell.swift in Sources */,
 				963337321DBB52C300A296C8 /* PageAppointmentDetailActions.swift in Sources */,
 				730DDF781D5EC4D600E4ABB6 /* YMBasicTypeExtensionForLayout.swift in Sources */,
+				6634E8051E0E8A1200408D5B /* PageSelectIllnessViewController.swift in Sources */,
 				6699BB551E09071700E2D505 /* ImageCell.swift in Sources */,
 				7307BFE81D5F032A000F31E5 /* PageRegisterInputInfoBodyView.swift in Sources */,
 				966FD69F1D8BD85300FD49B9 /* PageCommonSearchViewController.swift in Sources */,
@@ -1845,6 +1885,14 @@
 				2F8DD7C41DDB5F4700AEE7A9 /* Base */,
 			);
 			name = PageWalletInfo.storyboard;
+			sourceTree = "<group>";
+		};
+		6634E8031E0E89FA00408D5B /* PageSelectIllness.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6634E8021E0E89FA00408D5B /* Base */,
+			);
+			name = PageSelectIllness.storyboard;
 			sourceTree = "<group>";
 		};
 		665D1FAE1E0BD4D7004A3409 /* PageSelectFocusedDept.storyboard */ = {

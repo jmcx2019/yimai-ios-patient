@@ -46,7 +46,7 @@ public class PageSelectCityViewController: PageViewController {
         }
 
     }
-    
+
     override func PageDisapeared() {
         var cityName: String? = nil
         var cityId: String? = nil

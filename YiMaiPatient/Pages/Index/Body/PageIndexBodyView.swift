@@ -39,7 +39,7 @@ public class PageIndexBodyView: PageBodyView {
     func DrawBannerScrollPanel() {
         BodyView.addSubview(ScrollImageView)
         ScrollImageView.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 520.LayoutVal())
-        ScrollImageView.SetImages([YMLayout.GetSuitableImageView("IndexScrollPhoto")]).StartAutoScroll()
+        ScrollImageView.SetImages([YMLayout.GetSuitableImageView("IndexScrollPhoto")])//.StartAutoScroll()
     }
     
     func RefreshScrollImage(data: [[String: String]]?) {

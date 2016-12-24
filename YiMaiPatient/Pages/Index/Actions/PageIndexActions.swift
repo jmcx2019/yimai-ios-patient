@@ -56,7 +56,7 @@ public class PageIndexActions: PageJumpActions {
     
     public func MessageNotifyTouched(qr: UIGestureRecognizer) {
         print("MessageNotifyTouched")
-        DoJump(YMCommonStrings.CS_PAGE_SELECT_CITY_NAME)
+//        DoJump(YMCommonStrings.CS_PAGE_SELECT_FOCUSED_DEPT)
     }
     
     public func UserHeadTouched(gr: UIGestureRecognizer) {
