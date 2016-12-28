@@ -10,14 +10,14 @@ import Foundation
 import Neon
 
 class PageShowWebBodyView: PageBodyView, UIWebViewDelegate {
-    var WebActions: PageShowWebViewActions!
+//    var WebActions: PageShowWebViewActions!
     var WebPanel = UIWebView()
     
     override func ViewLayout() {
         super.ViewLayout()
         
-        WebActions = PageShowWebViewActions(navController: self.NavController,
-                                            target: self)
+//        WebActions = PageShowWebViewActions(navController: self.NavController,
+//                                            target: self)
         
         DrawBody()
     }

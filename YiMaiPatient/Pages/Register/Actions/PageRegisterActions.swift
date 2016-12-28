@@ -123,6 +123,7 @@ public class PageRegisterActions: PageJumpActions {
     }
     
     func ShowAgreementTouched(sender: UIButton) {
+        PageShowWebViewController.TitleString = "协议"
         PageShowWebViewController.TargetUrl = "/agreement/doctor"
         PageShowWebViewController.IsFromDoctorServer = true
         DoJump(YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE)

@@ -15,6 +15,6 @@ class PageAboutYiMaiViewController: PageViewController {
         super.PageLayout()
         
         BodyView = PageAboutYiMaiBodyView(parentView: self.SelfView!, navController: self.NavController!)
-        TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "关于医脉", navController: self.NavController!)
+        TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "关于医者脉连-看专家", navController: self.NavController!)
     }
 }

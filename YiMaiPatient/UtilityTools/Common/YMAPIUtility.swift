@@ -165,6 +165,11 @@ public class YMAPIUtility {
             let errInfo = error.userInfo["com.alamofire.serialization.response.error.data"] as? NSData
             let errStr = NSString(data: errInfo!, encoding: NSUTF8StringEncoding)
             
+            print("")
+            
+            print("debug print from : [\(NSThread.callStackSymbols()[1])] : -------->")
+            
+            print("")
             
             print("error code is : \(response.statusCode)")
             if(nil != errInfo) {

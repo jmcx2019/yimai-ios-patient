@@ -34,6 +34,12 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
         info["gender"] = PatientGenderInput!.text
         info["age"] = PatientAgeInput!.text
         
+        if("男" == info["gender"]){
+            info["gender"] = "1"
+        } else {
+            info["gender"] = "0"
+        }
+        
         return info
     }
     

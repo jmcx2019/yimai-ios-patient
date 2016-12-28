@@ -122,12 +122,18 @@ public class PageIndexActions: PageJumpActions {
             YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
             return
         }
-        let yimaiData = ret!["YMQRData"]
-        if(nil == yimaiData) {
+//        let yimaiData = ret!["YMQRData"]
+//        if(nil == yimaiData) {
+//            YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
+//            return
+//        }
+        let docData = ret! as? [String: AnyObject]
+        if(nil == docData) {
             YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
             return
         }
-        let docData = yimaiData! as! [String: AnyObject]
+
+//        let docData = yimaiData! as! [String: AnyObject]
         let id = YMVar.GetStringByKey(docData, key: "id")
         if("" == id) {
             YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)

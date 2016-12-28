@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "YiMaiPlatformHead.png",
+      "filename" : "YiMaiDefaultHead.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "YiMaiPlatformHead-1.png",
+      "filename" : "YiMaiDefaultHead-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "YiMaiPlatformHead-2.png",
+      "filename" : "YiMaiDefaultHead-2.png",
       "scale" : "3x"
     }
   ],

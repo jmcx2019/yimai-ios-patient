@@ -176,7 +176,7 @@ public class PageIndexBodyView: PageBodyView {
         
         print(YMVar.MyInfo)
         
-        userNameLabel.text = YMVar.GetOptionalValAsString(YMVar.MyInfo["name"])
+        userNameLabel.text = YMVar.GetStringByKey(YMVar.MyInfo, key: "name", defStr: " ")
         userNameLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
         userNameLabel.textColor = YMColors.PatientFontDarkGray
         userNameLabel.sizeToFit()

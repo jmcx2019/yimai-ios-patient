@@ -13,11 +13,13 @@ import Toucan
 public class PageAppointmentDetailBodyView: PageBodyView {
     private let Breadcrumbs = YMTouchableView()
     private let DPPanel = UIView()
+    
     private let DocCell = UIView()
     private let ProxyDocCell = UIView()
     private let DocOnlyCell = UIView()
     private let PlatformCell = UIView()
     private let PatientCell = UIView()
+    
     private let AppointmentNum = UILabel()
     private let TextInfoPanel = UIView()
     private let ImagePanel = UIView()
@@ -145,13 +147,24 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         ]
     }
 
-    private func DrawDorctor(data: [String: AnyObject]) {
+    private func DrawDoctor(data: [String: AnyObject]) {
         let headImage = YMLayout.GetSuitableImageView("HeadImageBorder")
         let docName = UILabel()
         let jobTitle = UILabel()
         let dept = UILabel()
         let hospital = UILabel()
         let divider = UIView()
+        let titleLabel = UILabel()
+        
+        titleLabel.text = "接诊"
+        titleLabel.font = YMFonts.YMDefaultFont(20.LayoutVal())
+        titleLabel.textColor = YMColors.PatientFontGreen
+        titleLabel.sizeToFit()
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.layer.cornerRadius = 6.LayoutVal()
+        titleLabel.layer.borderWidth = 1
+        titleLabel.layer.borderColor = YMColors.PatientFontGreen.CGColor
+        titleLabel.layer.masksToBounds = true
         
         DocCell.addSubview(headImage)
         DocCell.addSubview(jobTitle)
@@ -159,12 +172,18 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         DocCell.addSubview(dept)
         DocCell.addSubview(hospital)
         DocCell.addSubview(divider)
+        DocCell.addSubview(titleLabel)
+        
+        titleLabel.anchorInCorner(Corner.TopRight, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(),
+                                  width: titleLabel.width + 20.LayoutVal(), height: titleLabel.height + 10.LayoutVal())
         
         headImage.anchorToEdge(Edge.Top, padding: 30.LayoutVal(),
                                width: headImage.width, height: headImage.height)
         
         let head = data["head_url"] as? String
         if(nil != head) {
+            print("doctor : " + head!)
+
             YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
         }
 
@@ -172,7 +191,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         divider.align(Align.UnderCentered, relativeTo: headImage,
                       padding: 20.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
         
-        docName.text = data["name"] as? String
+        docName.text = YMVar.GetStringByKey(data, key: "name", defStr: "待确认")
         docName.textColor = YMColors.PatientFontGreen
         docName.font = YMFonts.YMDefaultFont(30.LayoutVal())
         docName.sizeToFit()
@@ -180,7 +199,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 12.LayoutVal(),
                       width: docName.width, height: docName.height)
         
-        jobTitle.text = "面诊医生"
+        jobTitle.text = YMVar.GetStringByKey(data, key: "name", defStr: "医生") //"面诊医生"
         jobTitle.textColor = YMColors.FontGray
         jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
         jobTitle.sizeToFit()
@@ -216,6 +235,17 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         let dept = UILabel()
         let hospital = UILabel()
         let divider = UIView()
+        let titleLabel = UILabel()
+        
+        titleLabel.text = "代约"
+        titleLabel.font = YMFonts.YMDefaultFont(20.LayoutVal())
+        titleLabel.textColor = YMColors.PatientFontGreen
+        titleLabel.sizeToFit()
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.layer.cornerRadius = 6.LayoutVal()
+        titleLabel.layer.borderWidth = 1
+        titleLabel.layer.borderColor = YMColors.PatientFontGreen.CGColor
+        titleLabel.layer.masksToBounds = true
         
         ProxyDocCell.addSubview(headImage)
         ProxyDocCell.addSubview(jobTitle)
@@ -223,12 +253,18 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         ProxyDocCell.addSubview(dept)
         ProxyDocCell.addSubview(hospital)
         ProxyDocCell.addSubview(divider)
+        ProxyDocCell.addSubview(titleLabel)
+        
+        titleLabel.anchorInCorner(Corner.TopLeft, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(),
+                                  width: titleLabel.width + 20.LayoutVal(), height: titleLabel.height + 10.LayoutVal())
         
         headImage.anchorToEdge(Edge.Top, padding: 30.LayoutVal(),
                                width: headImage.width, height: headImage.height)
         
         let head = data["head_url"] as? String
         if(nil != head) {
+            print("proxy : " + head!)
+
             YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
         }
         
@@ -244,7 +280,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 12.LayoutVal(),
                       width: docName.width, height: docName.height)
         
-        jobTitle.text = "代约医生"
+        jobTitle.text = YMVar.GetStringByKey(data, key: "name", defStr: "医生")//"代约医生"
         jobTitle.textColor = YMColors.FontGray
         jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
         jobTitle.sizeToFit()
@@ -280,6 +316,17 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         let dept = UILabel()
         let hospital = UILabel()
         let divider = UIView()
+        let titleLabel = UILabel()
+        
+        titleLabel.text = "接诊"
+        titleLabel.font = YMFonts.YMDefaultFont(20.LayoutVal())
+        titleLabel.textColor = YMColors.PatientFontGreen
+        titleLabel.sizeToFit()
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.layer.cornerRadius = 6.LayoutVal()
+        titleLabel.layer.borderWidth = 1
+        titleLabel.layer.borderColor = YMColors.PatientFontGreen.CGColor
+        titleLabel.layer.masksToBounds = true
         
         DocOnlyCell.addSubview(headImage)
         DocOnlyCell.addSubview(jobTitle)
@@ -287,6 +334,10 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         DocOnlyCell.addSubview(dept)
         DocOnlyCell.addSubview(hospital)
         DocOnlyCell.addSubview(divider)
+        DocOnlyCell.addSubview(titleLabel)
+        
+        titleLabel.anchorInCorner(Corner.TopLeft, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(),
+                                  width: titleLabel.width + 20.LayoutVal(), height: titleLabel.height + 10.LayoutVal())
         
         headImage.anchorToEdge(Edge.Top, padding: 30.LayoutVal(),
                                width: headImage.width, height: headImage.height)
@@ -308,7 +359,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 12.LayoutVal(),
                       width: docName.width, height: docName.height)
         
-        jobTitle.text = "面诊医生"
+        jobTitle.text = YMVar.GetStringByKey(data, key: "name", defStr: "医生")//"面诊医生"
         jobTitle.textColor = YMColors.FontGray
         jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
         jobTitle.sizeToFit()
@@ -338,38 +389,51 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     }
     
     private func DrawPlatformPanel() {
-        let headImage = YMLayout.GetSuitableImageView("HeadImageBorder")
+        let headImage = YMLayout.GetSuitableImageView("YiMaiPlatformHead")
         let docName = UILabel()
-        let jobTitle = UILabel()
-        let divider = UIView()
+        let titleLabel = UILabel()
+        
+        titleLabel.text = "代约"
+        titleLabel.font = YMFonts.YMDefaultFont(20.LayoutVal())
+        titleLabel.textColor = YMColors.PatientFontGreen
+        titleLabel.sizeToFit()
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.layer.cornerRadius = 6.LayoutVal()
+        titleLabel.layer.borderWidth = 1
+        titleLabel.layer.borderColor = YMColors.PatientFontGreen.CGColor
+        titleLabel.layer.masksToBounds = true
+//        let jobTitle = UILabel()
+//        let divider = UIView()
         
         PlatformCell.addSubview(headImage)
-        PlatformCell.addSubview(jobTitle)
+//        PlatformCell.addSubview(jobTitle)
         PlatformCell.addSubview(docName)
-        PlatformCell.addSubview(divider)
+        PlatformCell.addSubview(titleLabel)
+        titleLabel.anchorInCorner(Corner.TopLeft, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(),
+                                  width: titleLabel.width + 20.LayoutVal(), height: titleLabel.height + 10.LayoutVal())
+//        PlatformCell.addSubview(divider)
         
         headImage.anchorToEdge(Edge.Top, padding: 30.LayoutVal(),
                                width: headImage.width, height: headImage.height)
         
-        divider.backgroundColor = YMColors.PatientFontGreen
-        divider.align(Align.UnderCentered, relativeTo: headImage,
-                      padding: 20.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
+//        divider.backgroundColor = YMColors.PatientFontGreen
+//        divider.align(Align.UnderCentered, relativeTo: headImage,
+//                      padding: 20.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
         
-        docName.text = "医者脉连"
+        docName.text = "医者脉连平台代约"
         docName.textColor = YMColors.PatientFontGreen
         docName.font = YMFonts.YMDefaultFont(30.LayoutVal())
         docName.sizeToFit()
-        docName.align(Align.ToTheLeftCentered, relativeTo: divider,
-                      padding: 12.LayoutVal(),
-                      width: docName.width, height: docName.height)
+        docName.align(Align.UnderCentered, relativeTo: headImage,
+                      padding: 20.LayoutVal(), width: docName.width, height: 30.LayoutVal())
         
-        jobTitle.text = "平台代约"
-        jobTitle.textColor = YMColors.FontGray
-        jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
-        jobTitle.sizeToFit()
-        jobTitle.align(Align.ToTheRightCentered, relativeTo: divider,
-                       padding: 12.LayoutVal(),
-                       width: jobTitle.width, height: jobTitle.height)
+//        jobTitle.text = "平台代约"
+//        jobTitle.textColor = YMColors.FontGray
+//        jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
+//        jobTitle.sizeToFit()
+//        jobTitle.align(Align.ToTheRightCentered, relativeTo: divider,
+//                       padding: 12.LayoutVal(),
+//                       width: jobTitle.width, height: jobTitle.height)
     }
     
     private func DrawPatient(data: [String: AnyObject]) {
@@ -460,7 +524,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
 //        DPPanel.addSubview(PatientCell)
         DPPanel.groupAndFill(group: Group.Horizontal, views: [ProxyDocCell, DocCell], padding: 0)
         DocOnlyCell.fillSuperview()
-        PlatformCell.fillSuperview()
+        PlatformCell.anchorToEdge(Edge.Left, padding: 0, width: DPPanel.width / 2, height: DPPanel.height)
         DPDivider.backgroundColor = YMColors.DividerLineGray
         DPDivider.anchorInCenter(width: YMSizes.OnPx, height: DPPanel.height)
     }
@@ -916,9 +980,10 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                 DrawPlatformPanel()
                 PlatformCell.hidden = false
                 DocOnlyCell.hidden = true
+                DrawDoctor(doc)
             } else if (locumsDoctorId != docId) {
                 DrawProxyDorctor(locumsDoctorInfo)
-                DrawDorctor(doc)
+                DrawDoctor(doc)
                 PlatformCell.hidden = true
                 DocOnlyCell.hidden = true
             } else {
@@ -927,18 +992,17 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                 DocOnlyCell.hidden = false
             }
         }
-        
+
 //        DrawPatient(patient)
         AppointmentNum.text = PageAppointmentDetailViewController.AppointmentID
         DrawTextInfo(patient)
         DrawImageList(patient)
         DrawTimeline(timeLine)
-        
+
         YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel, padding: 128.LayoutVal())
         FullPageLoading?.Hide()
-        
-        DrawBottom()
 
+        DrawBottom()
     }
     
     public func GetDetail() {

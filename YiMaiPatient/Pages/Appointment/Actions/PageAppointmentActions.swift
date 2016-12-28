@@ -67,6 +67,7 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
             PageAppointmentViewController.NewAppointment = true
             ImageForUpload = nil
             PhotoIndex = 0
+            PageAppointmentViewController.ByPlatform = false
             DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
         }
     }
@@ -78,6 +79,7 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
         PageAppointmentViewController.NewAppointment = true
         ImageForUpload = nil
         PhotoIndex = 0
+        PageAppointmentViewController.ByPlatform = false
         DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
     }
     
@@ -144,13 +146,25 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
     }
     
     public func DoAppointment(_: YMButton) {
-        let uploadData = TargetController!.VerifyInput()
+        var uploadData = TargetController!.VerifyInput()
         
-        print(uploadData)
+        print(PageAppointmentViewController.SelectedDoctor)
+        if(nil == uploadData) {
+            return
+        }
         
-        if(nil != uploadData) {
-            TargetController?.Loading?.Show()
-            ApiUtility?.YMCreateNewAppointment(uploadData!)
+        if(PageAppointmentViewController.ByPlatform) {
+            uploadData!["locums_doctor"] = "1"
+            
+            if(nil != uploadData) {
+                TargetController?.Loading?.Show()
+                ApiUtility?.YMCreateInsteadAppointment(uploadData!)
+            }
+        } else {
+            if(nil != uploadData) {
+                TargetController?.Loading?.Show()
+                ApiUtility?.YMCreateNewAppointment(uploadData!)
+            }
         }
     }
 }

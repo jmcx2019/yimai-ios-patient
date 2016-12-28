@@ -249,7 +249,7 @@ public class PageAppointmentBodyView: PageBodyView {
         let name = dataObj[YMYiMaiStrings.CS_DATA_KEY_NAME] as! String
         let hospital = dataObj[YMYiMaiStrings.CS_DATA_KEY_HOSPATIL] as! [String: AnyObject]
         let department = dataObj[YMYiMaiStrings.CS_DATA_KEY_DEPARTMENT] as! [String: AnyObject]
-        let jobTitle = dataObj[YMYiMaiStrings.CS_DATA_KEY_JOB_TITLE] as? String
+        let jobTitle = YMVar.GetStringByKey(dataObj, key: YMYiMaiStrings.CS_DATA_KEY_JOB_TITLE, defStr: "医生")
         
         let nameLabel = UILabel()
         let divider = UIView(frame: CGRect(x: 0,y: 0,width: YMSizes.OnPx,height: 20.LayoutVal()))

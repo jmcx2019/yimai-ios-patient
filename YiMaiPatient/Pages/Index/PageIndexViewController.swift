@@ -25,9 +25,7 @@ public class PageIndexViewController: PageViewController {
     override func PagePreRefresh() {
         super.PagePreRefresh()
         YMCurrentPage.CurrentPage = YMCommonStrings.CS_PAGE_INDEX_NAME
-        
-        BodyView?.IndexActions?.BannerApi.YMGetIndexBanner()
-        
+
         if(PageIndexViewController.IsFromLogin) {
 //            BodyView?.IndexActions?.MainPageMaskTouched(UIGestureRecognizer())
             YMLayout.ClearView(view: self.view)
@@ -47,6 +45,8 @@ public class PageIndexViewController: PageViewController {
         } else {
             BodyView?.Refresh()
         }
+        
+        BodyView?.IndexActions?.BannerApi.YMGetIndexBanner()
     }
 }
 

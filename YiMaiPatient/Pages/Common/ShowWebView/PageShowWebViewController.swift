@@ -13,18 +13,20 @@ class PageShowWebViewController: PageViewController {
     var BodyView: PageShowWebBodyView!
     static var TargetUrl = "/"
     static var IsFromDoctorServer = false
+    static var TitleString = "浏览"
     
     override func PageLayout() {
         super.PageLayout()
+    }
+    
+    override func PagePreRefresh() {
+        YMLayout.ClearView(view: self.view)
         
         BodyView = PageShowWebBodyView(parentView: self.view,
                                        navController: self.NavController!)
         TopView = PageCommonTopView(parentView: self.view,
-                                    titleString: "浏览",
+                                    titleString: PageShowWebViewController.TitleString,
                                     navController: self.NavController!)
-    }
-    
-    override func PagePreRefresh() {
         BodyView.Clear()
         var urlStr = ""
         if(PageShowWebViewController.TargetUrl.containsString("http")) {
@@ -42,6 +44,7 @@ class PageShowWebViewController: PageViewController {
     
     override func PageDisapeared() {
         PageShowWebViewController.TargetUrl = "/"
+        PageShowWebViewController.TitleString = "浏览"
         PageShowWebViewController.IsFromDoctorServer = false
         BodyView.Clear()
     }

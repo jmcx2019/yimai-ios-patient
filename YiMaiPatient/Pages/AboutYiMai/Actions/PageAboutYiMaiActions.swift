@@ -15,11 +15,13 @@ public class PageAboutYiMaiActions: PageJumpActions{
     }
     
     func ShowIntro(gr: UIGestureRecognizer) {
+        PageShowWebViewController.TitleString = "简介"
         PageShowWebViewController.TargetUrl = "/about/introduction"
         DoJump(YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE)
     }
     
     func ShowContact(gr: UIGestureRecognizer) {
+        PageShowWebViewController.TitleString = "联系我们"
         PageShowWebViewController.TargetUrl = "/about/contact-us"
         DoJump(YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE)
     }
