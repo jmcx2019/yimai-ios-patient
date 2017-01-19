@@ -222,13 +222,12 @@ public class PageGetMyDoctorsBodyView: PageBodyView {
         userHeadBackground.anchorToEdge(Edge.Top, padding: 50.LayoutVal(), width: userHeadBackground.width, height: userHeadBackground.height)
         divider.align(Align.UnderCentered, relativeTo: userHeadBackground, padding: 30.LayoutVal(), width: YMSizes.OnPx, height: 20.LayoutVal())
         nameLabel.align(Align.ToTheLeftCentered, relativeTo: divider, padding: 10.LayoutVal(), width: nameLabel.width, height: nameLabel.height)
-        jobTitleLabel.align(Align.ToTheRightCentered, relativeTo: divider, padding: 10.LayoutVal(), width: nameLabel.width, height: nameLabel.height)
+        jobTitleLabel.align(Align.ToTheRightCentered, relativeTo: divider, padding: 10.LayoutVal(), width: jobTitleLabel.width, height: jobTitleLabel.height)
         deptLabel.align(Align.UnderCentered, relativeTo: divider, padding: 10.LayoutVal(), width: deptLabel.width, height: deptLabel.height)
         hosLabel.align(Align.UnderCentered, relativeTo: deptLabel, padding: 10.LayoutVal(), width: hosLabel.width, height: hosLabel.height)
         
         YMLayout.LoadImageFromServer(userHeadBackground, url: head, isDocImg: true, fullUrl: nil, makeItRound: true)
 
-        
         BoxPanel.hidden = false
     }
 }

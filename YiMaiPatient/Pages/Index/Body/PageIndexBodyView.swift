@@ -28,6 +28,7 @@ public class PageIndexBodyView: PageBodyView {
 
     override func ViewLayout() {
         super.ViewLayout()
+
         IndexActions = PageIndexActions(navController: self.NavController!, target: self)
 
         ParentView?.backgroundColor = YMColors.BackgroundGray

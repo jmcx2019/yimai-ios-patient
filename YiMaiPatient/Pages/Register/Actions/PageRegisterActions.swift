@@ -14,7 +14,7 @@ public class PageRegisterActions: PageJumpActions {
     private var TargetBodyView : PageRegisterBodyView? = nil
     private var GetVerifyApi: YMAPIUtility? = nil
     private var DoRegisterApi: YMAPIUtility? = nil
-    private var VerifyCodeEnableCounter:Int = 0
+    var VerifyCodeEnableCounter:Int = 0
     override func ExtInit() {
         GetVerifyApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GET_VERIFY_CODE,
                                     success: self.GetVerifyCodeSuccess,

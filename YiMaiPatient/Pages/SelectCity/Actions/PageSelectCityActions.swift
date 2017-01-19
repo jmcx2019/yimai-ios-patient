@@ -34,7 +34,12 @@ class PageSelectCityActions: PageJumpActions {
     
     func CityTouched(gr: UITapGestureRecognizer) {
         let cell = gr.view as! YMLabel
-        TargetView.SetCityCellStatus(cell)
+        let selected = TargetView.SetCityCellStatus(cell)
+        if(selected) {
+            TargetView.UpdateSelectedCity(cell.text!)
+        } else {
+            TargetView.UpdateSelectedCity("尚未选择")
+        }
     }
     
     func SaveCityTouched(_: YMButton) {

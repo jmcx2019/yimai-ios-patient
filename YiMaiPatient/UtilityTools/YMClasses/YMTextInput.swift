@@ -101,6 +101,8 @@ public class YMTextField: UITextField {
     public var EditChangedCallback: YMTextFieldChangedCallback? = nil
     private var YMDelegate = YMTextFieldDelegate()
     
+    var UserData: AnyObject? = nil
+    
     public func SetLeftPaddingWidth(leftPadding: CGFloat, paddingMode: UITextFieldViewMode = UITextFieldViewMode.Always) {
         self.leftViewMode = paddingMode
         let leftPaddingFrame = CGRect(x: 0,y: 0,width: leftPadding,height: self.height)

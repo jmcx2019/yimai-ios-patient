@@ -93,8 +93,14 @@ public class PageAppointmentProxyBodyView: PageBodyView {
         SetSelectTimeBySys()
         PageAppointmentProxyViewController.SelectedTimeForUpload.removeAll()
         
-        RequireHospital?.text = YMVar.GetStringByKey(PageHospitalSearchBodyView.HospitalSelected as? [String: AnyObject], key: "name")
-        RequireDepartment?.text = YMVar.GetStringByKey(PageDepartmentSearchBodyView.DepartmentSelected as? [String: AnyObject], key: "name")
+        let selectedHos = PageHospitalSearchBodyView.HospitalSelected as? [String: AnyObject]
+        let selectedDept = PageDepartmentSearchBodyView.DepartmentSelected as? [String: AnyObject]
+
+        RequireHospital?.text = YMVar.GetStringByKey(selectedHos, key: "name")
+        RequireDepartment?.text = YMVar.GetStringByKey(selectedDept, key: "name")
+        
+        RequireHospital?.UserData = YMVar.GetStringByKey(selectedHos, key: "id")
+        RequireDepartment?.UserData = YMVar.GetStringByKey(selectedDept, key: "id")
         
         PorxyActions.TargetController?.VerifyInput(false)
     }

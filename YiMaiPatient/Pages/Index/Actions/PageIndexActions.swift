@@ -12,14 +12,25 @@ import UIKit
 public class PageIndexActions: PageJumpActions {
     var TargetView: PageIndexBodyView? = nil
     var AddDocApi: YMAPIUtility!
-    var BannerApi: YMAPIUtility!
+    var BannerApi: YMAPIUtility?
+    var UpdateDeviceToken: YMAPIUtility!
     
     override func ExtInit() {
         super.ExtInit()
         
         AddDocApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_ADD_TO_MY_DOCOTOR, success: AddSuccess, error: AddError)
         BannerApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GET_INDEX_BANNER, success: GetIndexBannerSuccess, error: GetIndexBannerError)
+        UpdateDeviceToken = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_UPDATE_USER + "UpdateDeviceToken",
+                                         success: UpdateDeviceTokenSuccess, error: UpdateDeviceTokenError)
         TargetView = self.Target as? PageIndexBodyView
+    }
+    
+    func UpdateDeviceTokenSuccess(data: NSDictionary?) {
+        print("update device token success")
+    }
+    
+    func UpdateDeviceTokenError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
     }
     
     func GetIndexBannerSuccess(data: NSDictionary?) {
@@ -56,6 +67,7 @@ public class PageIndexActions: PageJumpActions {
     
     public func MessageNotifyTouched(qr: UIGestureRecognizer) {
         print("MessageNotifyTouched")
+        print(WXApi.isWXAppInstalled())
 //        DoJump(YMCommonStrings.CS_PAGE_SELECT_FOCUSED_DEPT)
     }
     
@@ -134,7 +146,7 @@ public class PageIndexActions: PageJumpActions {
         }
 
 //        let docData = yimaiData! as! [String: AnyObject]
-        let id = YMVar.GetStringByKey(docData, key: "id")
+        let id = YMVar.GetStringByKey(docData, key: "data")
         if("" == id) {
             YMPageModalMessage.ShowNormalInfo("不能识别的医生信息，请扫描医脉平台生成的二维码。", nav: self.NavController!)
             return

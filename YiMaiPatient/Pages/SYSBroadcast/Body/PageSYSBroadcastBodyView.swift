@@ -46,10 +46,10 @@ class PageSYSBroadcastBodyView: PageBodyView {
 //        unread = "<null>";
 //        url = "/article/1";
         
-        let timeString = data["time"] as! String
+        let timeString = YMVar.GetStringByKey(data, key: "time")
         let ymdTime = timeString.componentsSeparatedByString(" ")[0]
-        let titleStr = data["name"] as! String
-        let url = data["img_url"] as! String
+        let titleStr = YMVar.GetStringByKey(data, key: "name", defStr: "文章")
+        let url = YMVar.GetStringByKey(data, key: "img_url")    
         
         let cover = YMLayout.GetSuitableImageView("SysBroadcastCover700x400")
         let titleLabel = YMLayout.GetNomalLabel(titleStr, textColor: YMColors.White, fontSize: 26.LayoutVal())

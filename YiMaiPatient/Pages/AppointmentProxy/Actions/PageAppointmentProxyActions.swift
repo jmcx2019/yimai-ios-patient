@@ -145,7 +145,7 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     
     public func DoAppointment(_: YMButton) {
         let uploadData = TargetController!.VerifyInput()
-        
+        print(uploadData)
         if(nil != uploadData) {
             TargetController?.Loading?.Show()
             ApiUtility?.YMCreateInsteadAppointment(uploadData!)

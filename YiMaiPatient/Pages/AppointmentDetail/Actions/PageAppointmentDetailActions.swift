@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import ImageViewer
+import UShareUI
+import UMSocialNetwork
 
 public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     var TargetView: PageAppointmentDetailBodyView? = nil
@@ -115,6 +117,32 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     func ConfirmTouched(sender: YMButton) {
         TargetView?.FullPageLoading.Show()
         ConfirmApi.YMConfirmRescheduled(PageAppointmentDetailViewController.AppointmentID)
+    }
+    
+    func ShareTouched(_: YMButton) {
+        var plateforms = [AnyObject]()
+        
+        if(UMSocialManager.defaultManager().isInstall(UMSocialPlatformType.WechatSession)) {
+            plateforms.append(UMSocialPlatformType.WechatSession.rawValue)
+            plateforms.append(UMSocialPlatformType.WechatTimeLine.rawValue)
+        }
+        if(UMSocialManager.defaultManager().isInstall(UMSocialPlatformType.Sina)) {
+            plateforms.append(UMSocialPlatformType.Sina.rawValue)
+        }
+        UMSocialUIManager.setPreDefinePlatforms(plateforms)
+        UMSocialUIManager.showShareMenuViewInWindowWithPlatformSelectionBlock { (type, data) in
+            //            print(type)
+            let msg = UMSocialMessageObject()
+            let shareObj = UMShareWebpageObject()
+            shareObj.title = "医者脉连-看专家"
+            shareObj.descr = "医者仁心，脉脉相连。 医脉帮助医生拓展人脉，与北上广一线专家相连，同时集医疗、科研、社区三大功能于一体，构架和谐医患关系。"
+//            shareObj.thumbImage = self.TargetView.UserHead.image //YMVar.GetStringByKey(YMVar.MyUserInfo, key: "head_url")
+            shareObj.webpageUrl = "http://www.medi-link.cn"
+            msg.shareObject = shareObj
+            UMSocialManager.defaultManager().shareToPlatform(type, messageObject: msg, currentViewController: self.NavController!, completion: { (data, error) in
+                print(error)
+            })
+        }
     }
 }
 

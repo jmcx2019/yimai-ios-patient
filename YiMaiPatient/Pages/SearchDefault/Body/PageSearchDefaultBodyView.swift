@@ -254,7 +254,7 @@ class PageSearchDefaultBodyView: PageBodyView {
         BoxPanel.fillSuperview()
         BoxPanel.hidden = true
         
-        
+        let closeBtn = YMLayout.GetTouchableImageView(useObject: SearchActions!, useMethod: "HideBox:".Sel(), imageName: "YMCloseBtnGray")
         
         BoxMask = YMLayout.GetTouchableView(useObject: SearchActions!, useMethod: "HideBox:".Sel())
         BoxMask?.backgroundColor = HexColor("#000000", 0.5)
@@ -301,6 +301,10 @@ class PageSearchDefaultBodyView: PageBodyView {
         
         BoxInner.addSubview(buttonTopBorder)
         BoxInner.addSubview(buttonDivider)
+        
+        BoxInner.addSubview(closeBtn)
+        
+        closeBtn.anchorInCorner(Corner.TopRight, xPad: 20.LayoutVal(), yPad: 20.LayoutVal(), width: closeBtn.width / 2, height: closeBtn.height / 2)
         
         buttonTopBorder.anchorToEdge(Edge.Bottom, padding: 80.LayoutVal(), width: BoxInner.width, height: YMSizes.OnPx)
         buttonDivider.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.OnPx, height: 80.LayoutVal())

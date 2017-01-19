@@ -29,6 +29,23 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
         DrawConfirmButton()
     }
     
+    func Clear() {
+        PageRegisterInputInfoBodyView.InfoList.removeAll()
+        SetConfirmButtonDisabled()
+        
+        if(nil != GenderCell) {
+            DrawInfoInputPanel("RegisterInputGender", title: "选择性别", cell: GenderCell!)
+        }
+        
+        if(nil != BirthdayCell) {
+            DrawInfoInputPanel("RegisterInputBirthday", title: "选择生日", cell: BirthdayCell!)
+        }
+        
+        if(nil != CityCell) {
+            DrawInfoInputPanel("RegisterInputCity", title: "选择城市", cell: CityCell!)
+        }
+    }
+    
     private func DrawConfirmButton() {
         ConfirmButton.setTitle("提交", forState: UIControlState.Normal)
         ConfirmButton.backgroundColor = YMColors.PatientDisabledBtnBkgGray
@@ -122,7 +139,7 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
     
     public func UpdateGender(gender: String, genderNumType: String) {
         DrawInfoInputPanel("RegisterInputGender", title: gender, cell: GenderCell!)
-        PageRegisterInputInfoBodyView.InfoList["gender"] = genderNumType
+        PageRegisterInputInfoBodyView.InfoList["sex"] = genderNumType
         VerifyInputComplete()
 
     }
@@ -149,7 +166,7 @@ public class PageRegisterInputInfoBodyView : PageBodyView {
             return
         }
         
-        if(nil == PageRegisterInputInfoBodyView.InfoList["gender"]) {
+        if(nil == PageRegisterInputInfoBodyView.InfoList["sex"]) {
             return
         }
         

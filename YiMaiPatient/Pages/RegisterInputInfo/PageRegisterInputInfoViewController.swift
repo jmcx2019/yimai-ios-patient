@@ -17,4 +17,10 @@ public class PageRegisterInputInfoViewController: PageViewController {
         BodyView = PageRegisterInputInfoBodyView(parentView: self.SelfView!, navController: self.NavController!)
         TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "完善信息")
     }
+    
+    override func PagePreRefresh() {
+        if(isMovingToParentViewController()){
+            BodyView?.Clear()
+        }
+    }
 }

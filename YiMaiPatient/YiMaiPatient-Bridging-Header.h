@@ -7,9 +7,10 @@
 //
 
 //友盟分享
-#import "UMSocial.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
-#import "UMSocialSinaSSOHandler.h"
+#import "UMessage.h"

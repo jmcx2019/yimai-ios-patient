@@ -12,6 +12,8 @@
 		2F8DD7C31DDB5F4700AEE7A9 /* PageWalletInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C51DDB5F4700AEE7A9 /* PageWalletInfo.storyboard */; };
 		2F8DD7C71DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C61DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift */; };
 		2F8DD7C91DDB5FF900AEE7A9 /* PageWalletInfoActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C81DDB5FF900AEE7A9 /* PageWalletInfoActions.swift */; };
+		662C58B01E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662C58AE1E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a */; };
+		6633A27A1E2BA0FA000CF329 /* YMNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633A2791E2BA0FA000CF329 /* YMNotification.swift */; };
 		6634E8011E0E89FA00408D5B /* PageSelectIllness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6634E8031E0E89FA00408D5B /* PageSelectIllness.storyboard */; };
 		6634E8051E0E8A1200408D5B /* PageSelectIllnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */; };
 		6634E8071E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634E8061E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift */; };
@@ -218,6 +220,9 @@
 		2F8DD7C41DDB5F4700AEE7A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageWalletInfo.storyboard; sourceTree = "<group>"; };
 		2F8DD7C61DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletInfoBodyView.swift; sourceTree = "<group>"; };
 		2F8DD7C81DDB5FF900AEE7A9 /* PageWalletInfoActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletInfoActions.swift; sourceTree = "<group>"; };
+		662C58AE1E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.3.0.a; sourceTree = "<group>"; };
+		662C58AF1E279BB200F9AB6B /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		6633A2791E2BA0FA000CF329 /* YMNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNotification.swift; sourceTree = "<group>"; };
 		6634E8021E0E89FA00408D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageSelectIllness.storyboard; sourceTree = "<group>"; };
 		6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectIllnessViewController.swift; sourceTree = "<group>"; };
 		6634E8061E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectIllnessBodyView.swift; sourceTree = "<group>"; };
@@ -435,6 +440,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				662C58B01E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a in Frameworks */,
 				FD53536C1DB7212C007C056A /* libWeChatSDK.a in Frameworks */,
 				00E7C407FA57CD648BFB7AB1 /* Pods_YiMaiPatient.framework in Frameworks */,
 			);
@@ -477,6 +483,15 @@
 				2F8DD7C61DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift */,
 			);
 			path = Body;
+			sourceTree = "<group>";
+		};
+		662C58AD1E279BB200F9AB6B /* UMessage_Sdk_1.3.0 */ = {
+			isa = PBXGroup;
+			children = (
+				662C58AE1E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a */,
+				662C58AF1E279BB200F9AB6B /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.3.0;
 			sourceTree = "<group>";
 		};
 		6634E7FC1E0E89CB00408D5B /* SelectIllness */ = {
@@ -675,6 +690,7 @@
 		730DDF581D5EC4D600E4ABB6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				662C58AD1E279BB200F9AB6B /* UMessage_Sdk_1.3.0 */,
 				FD5353651DB7212C007C056A /* WXPayLib */,
 				730DDF591D5EC4D600E4ABB6 /* YMAPIUtility.swift */,
 				730DDF5A1D5EC4D600E4ABB6 /* YMCoreDataEngine.swift */,
@@ -685,6 +701,7 @@
 				730DDF5F1D5EC4D600E4ABB6 /* YMVar.swift */,
 				FD4735CC1D81B22000BBEF16 /* YMQRCode.swift */,
 				FD5353631DB720DB007C056A /* WXPay.swift */,
+				6633A2791E2BA0FA000CF329 /* YMNotification.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1589,6 +1606,11 @@
 					7312ED7B1D5EB99D006F6B56 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 6HV8LR8T36;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1782,6 +1804,7 @@
 				73C7EF951D85995600B1B971 /* PageAppointmentViewController.swift in Sources */,
 				FD67C3FA1DC33D5A00500798 /* PageAboutYiMaiActions.swift in Sources */,
 				730DDF8A1D5EC5A800E4ABB6 /* YMCoreDataKeyStrings.swift in Sources */,
+				6633A27A1E2BA0FA000CF329 /* YMNotification.swift in Sources */,
 				73C7EF771D8541AD00B1B971 /* PageSearchDefaultViewController.swift in Sources */,
 				73C7EF871D85988600B1B971 /* PageAppointmentSelectTimeViewController.swift in Sources */,
 				966FD69E1D8BD85300FD49B9 /* PageTopSearchInputPanel.swift in Sources */,
@@ -2214,12 +2237,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YiMaiPatient/UtilityTools/Common/WXPayLib",
+					"$(PROJECT_DIR)/YiMaiPatient/UtilityTools/Common/UMessage_Sdk_1.3.0",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2236,12 +2261,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = YiMaiPatient/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/YiMaiPatient/UtilityTools/Common/WXPayLib",
+					"$(PROJECT_DIR)/YiMaiPatient/UtilityTools/Common/UMessage_Sdk_1.3.0",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yimai.patient;
 				PRODUCT_NAME = "$(TARGET_NAME)";

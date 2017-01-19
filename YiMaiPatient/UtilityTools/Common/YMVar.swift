@@ -11,6 +11,7 @@ import Foundation
 public class YMVar:NSObject {
     public static var MyId: String = ""
     public static var MyInfo: [String:AnyObject]! = [String:AnyObject]()
+    public static var DeviceToken: String = ""
     
     public static func Clear() {
         YMVar.MyInfo.removeAll()

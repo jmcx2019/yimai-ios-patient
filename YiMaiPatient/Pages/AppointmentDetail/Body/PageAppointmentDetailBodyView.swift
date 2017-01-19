@@ -34,6 +34,8 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     var GoToPayBtn = YMButton()
     var ConfirmBtn = YMButton()
     var ImageList = [UIImageView]()
+    
+    var ShareBtn = YMButton()
 
     public var Loading: YMPageLoadingView? = nil
 
@@ -50,6 +52,22 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         FullPageLoading?.Show()
     }
     
+    func DrawShareButton(topView: UIView) {
+        if(!UMSocialManager.defaultManager().isInstall(UMSocialPlatformType.WechatSession)
+            && !UMSocialManager.defaultManager().isInstall(UMSocialPlatformType.Sina)) {
+            return
+        }
+        ShareBtn.setTitle("分享", forState: UIControlState.Normal)
+        ShareBtn.setTitleColor(YMColors.FontGray, forState: UIControlState.Normal)
+        ShareBtn.titleLabel?.font = YMFonts.YMDefaultFont(26.LayoutVal())
+        ShareBtn.sizeToFit()
+        
+        topView.addSubview(ShareBtn)
+        ShareBtn.anchorInCorner(Corner.BottomRight, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(), width: ShareBtn.width, height: ShareBtn.height)
+        
+        ShareBtn.addTarget(DetailActions, action: "ShareTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+
     private func CreateTimelineIconMap() {
         TimelineIconMap["begin"] = "YMIconTimelineBegin"
         TimelineIconMap["close"] = "YMIconTimelineClose"
@@ -924,10 +942,12 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         }
     }
     
-    func DrawBottom() {
-        let status = PageAppointmentDetailViewController.RecordInfo["status"] as! String
+    func DrawBottom(otherInfo: [String: AnyObject]) {
+//        let status = PageAppointmentDetailViewController.RecordInfo["status"] as! String
+//        
+//        let statusCode = YMVar.GetStringByKey(PageAppointmentDetailViewController.RecordInfo, key: "status_code")
         
-        let statusCode = YMVar.GetStringByKey(PageAppointmentDetailViewController.RecordInfo, key: "status_code")
+        let status = YMVar.GetStringByKey(otherInfo, key: "status_code")
 
         GoToPayBtn.setTitle("", forState: UIControlState.Normal)
         GoToPayBtn.setTitleColor(YMColors.White, forState: UIControlState.Normal)
@@ -939,18 +959,20 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         ConfirmBtn.backgroundColor = YMColors.PatientFontGreen
         ConfirmBtn.titleLabel?.font = YMFonts.YMDefaultFont(32.LayoutVal())
         
-        if(status.containsString("保证金")) {
-            ParentView!.addSubview(GoToPayBtn)
-            GoToPayBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
-            GoToPayBtn.setTitle("缴纳保证金", forState: UIControlState.Normal)
-            
-            GoToPayBtn.addTarget(DetailActions, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
-        } else if(status.containsString("诊费")) {
+//        if(status.containsString("保证金")) {
+//            ParentView!.addSubview(GoToPayBtn)
+//            GoToPayBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
+//            GoToPayBtn.setTitle("缴纳保证金", forState: UIControlState.Normal)
+//            
+//            GoToPayBtn.addTarget(DetailActions, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+//        } else
+        
+        if("wait-1" == status) {
             ParentView!.addSubview(GoToPayBtn)
             GoToPayBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
             GoToPayBtn.setTitle("缴纳诊费", forState: UIControlState.Normal)
             GoToPayBtn.addTarget(DetailActions, action: "GoToPayTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
-        } else if("wait-4" == statusCode) {
+        } else if("wait-4" == status) {
             ParentView?.addSubview(ConfirmBtn)
             ConfirmBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
             ConfirmBtn.setTitle("确认改期", forState: UIControlState.Normal)
@@ -1002,7 +1024,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel, padding: 128.LayoutVal())
         FullPageLoading?.Hide()
 
-        DrawBottom()
+        DrawBottom(otherInfo)
     }
     
     public func GetDetail() {

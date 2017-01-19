@@ -49,7 +49,7 @@ public class PageRegisterInputInfoActions: PageJumpActions {
                 self.TargetView?.FullPageLoading.Hide()
                 PageIndexViewController.IsFromLogin = true
                 PageSelectIllnessViewController.WichPageJumpTo = YMCommonStrings.CS_PAGE_INDEX_NAME
-                self.DoJump(YMCommonStrings.CS_PAGE_SELECT_FOCUSED_DEPT)
+                self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
             })
         }
         

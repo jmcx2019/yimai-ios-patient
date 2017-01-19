@@ -15,11 +15,12 @@ public class PageIndexViewController: PageViewController {
     
     override func PageLayout() {
         super.PageLayout()
-        BodyView = PageIndexBodyView(parentView: self.SelfView!, navController: self.NavController!)
-        TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "")
-
-        BodyView?.DrawTopBtn(TopView!.TopViewPanel)
-        BodyView?.DrawSideBar()
+//        BodyView = PageIndexBodyView(parentView: self.SelfView!, navController: self.NavController!)
+//        TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "")
+//
+//        BodyView?.DrawTopBtn(TopView!.TopViewPanel)
+//        BodyView?.DrawSideBar()
+        
     }
     
     override func PagePreRefresh() {
@@ -27,14 +28,8 @@ public class PageIndexViewController: PageViewController {
         YMCurrentPage.CurrentPage = YMCommonStrings.CS_PAGE_INDEX_NAME
 
         if(PageIndexViewController.IsFromLogin) {
-//            BodyView?.IndexActions?.MainPageMaskTouched(UIGestureRecognizer())
             YMLayout.ClearView(view: self.view)
 
-            BodyView?.Actions = nil
-            BodyView?.IndexActions?.TargetView = nil
-            BodyView?.IndexActions?.Target = nil
-            BodyView?.IndexActions = nil
-            
             BodyView = PageIndexBodyView(parentView: self.SelfView!, navController: self.NavController!)
             TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "")
             
@@ -42,11 +37,24 @@ public class PageIndexViewController: PageViewController {
             BodyView?.DrawSideBar()
             
             PageIndexViewController.IsFromLogin = false
+
+            BodyView?.IndexActions?.BannerApi?.YMGetIndexBanner()
+            UpdateDeviceToken()
         } else {
             BodyView?.Refresh()
         }
         
-        BodyView?.IndexActions?.BannerApi.YMGetIndexBanner()
+//        BodyView?.IndexActions?.BannerApi.YMGetIndexBanner()
+    }
+    
+    func UpdateDeviceToken() {
+        if(YMVar.DeviceToken.characters.count != 64) {
+            YMDelay(1.0, closure: {
+                self.UpdateDeviceToken()
+            })
+            return
+        }
+        BodyView?.IndexActions?.UpdateDeviceToken.YMChangeUserInfo(["device_token": YMVar.DeviceToken])
     }
 }
 

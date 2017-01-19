@@ -18,6 +18,7 @@ public class PageSelectCityBodyView: PageBodyView{
     var SearchResultPanel = UIView()
     var SearchInput: YMTextField!
     
+    var SelectedCityTitle: ActiveLabel!
     let SelectedCityLabel = ActiveLabel()
     
     var SaveButton: YMButton!
@@ -40,11 +41,12 @@ public class PageSelectCityBodyView: PageBodyView{
         DrawSaveButton()
     }
     
-    func SetCityCellStatus(cell: YMLabel?) {
+    func SetCityCellStatus(cell: YMLabel?) -> Bool{
         var cellData = cell?.UserObjectData as? [String: AnyObject]
         let selectedStatus = YMVar.GetStringByKey(cellData, key: "selected")
 
         var keepCell: YMLabel? = cell
+        var ret = false
         if(nil == cell || "1" == selectedStatus) {
             keepCell = nil
             SelectedCity = nil
@@ -58,6 +60,8 @@ public class PageSelectCityBodyView: PageBodyView{
             cell?.UserObjectData = cellData
             SaveButton.enabled = true
             SaveButton.backgroundColor = YMColors.PatientFontGreen
+            
+            ret = true
         }
         
         ClearCellSelectedFlag(HotCityCell, theCell: keepCell)
@@ -67,6 +71,8 @@ public class PageSelectCityBodyView: PageBodyView{
         } else {
             ClearCellSelectedFlag(AllCityCell, theCell: keepCell)
         }
+        
+        return ret
     }
     
     func ClearCellSelectedFlag(list: [YMLabel], theCell: YMLabel? = nil) {
@@ -212,11 +218,11 @@ public class PageSelectCityBodyView: PageBodyView{
         SelectedCityPanel.align(Align.UnderCentered, relativeTo: SearchPanel, padding: 0, width: YMSizes.PageWidth, height: 160.LayoutVal())
         
         YMLayout.ClearView(view: SelectedCityPanel)
-        let titleLabel = YMLayout.GetNomalLabel("已选择城市", textColor: YMColors.FontGray, fontSize: 24.LayoutVal())
-        SelectedCityPanel.addSubview(titleLabel)
+        SelectedCityTitle = YMLayout.GetNomalLabel("已选择城市", textColor: YMColors.FontGray, fontSize: 24.LayoutVal())
+        SelectedCityPanel.addSubview(SelectedCityTitle)
         SelectedCityPanel.addSubview(SelectedCityLabel)
         
-        titleLabel.anchorInCorner(Corner.TopLeft, xPad: 40.LayoutVal(), yPad: 30.LayoutVal(), width: titleLabel.width, height: titleLabel.height)
+        SelectedCityTitle.anchorInCorner(Corner.TopLeft, xPad: 40.LayoutVal(), yPad: 30.LayoutVal(), width: SelectedCityTitle.width, height: SelectedCityTitle.height)
         SelectedCityLabel.textAlignment = NSTextAlignment.Center
         SelectedCityLabel.font = YMFonts.YMDefaultFont(30.LayoutVal())
         SelectedCityLabel.textColor = YMColors.White
@@ -229,7 +235,14 @@ public class PageSelectCityBodyView: PageBodyView{
         SelectedCityLabel.text = YMVar.GetStringByKey(selectedCity, key: "name", defStr: "尚未选择")
         
         SelectedCityLabel.sizeToFit()
-        SelectedCityLabel.align(Align.UnderMatchingLeft, relativeTo: titleLabel, padding: 20.LayoutVal(),
+        SelectedCityLabel.align(Align.UnderMatchingLeft, relativeTo: SelectedCityTitle, padding: 20.LayoutVal(),
+                                width: SelectedCityLabel.width + 110.LayoutVal(), height: 60.LayoutVal())
+    }
+    
+    func UpdateSelectedCity(city: String) {
+        SelectedCityLabel.text = city
+        SelectedCityLabel.sizeToFit()
+        SelectedCityLabel.align(Align.UnderMatchingLeft, relativeTo: SelectedCityTitle, padding: 20.LayoutVal(),
                                 width: SelectedCityLabel.width + 110.LayoutVal(), height: 60.LayoutVal())
     }
     

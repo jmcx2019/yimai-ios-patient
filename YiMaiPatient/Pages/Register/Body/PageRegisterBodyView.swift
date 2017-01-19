@@ -59,8 +59,28 @@ public class PageRegisterBodyView: NSObject {
         DrawAgreeCheckbox()
     }
     
+    func Clear() {
+        AgreeCheckbox?.image = AgreementCheckedImage
+        AgreeChecked = true
+
+        CellPhoneInput?.text = ""
+        PasswordInput?.text = ""
+        VerifyCodeInput?.text = ""
+        
+        PageRegisterViewController.RegPhone = ""
+        PageRegisterViewController.RegPassword = ""
+        PageRegisterViewController.RegInvitedCode = ""
+        
+        Actions?.VerifyCodeEnableCounter = 601
+        
+        EnableGetVerifyCodeButton()
+        NextStepCodeButton?.enabled = false
+        
+        CellPhoneInput?.becomeFirstResponder()
+    }
+    
     public func ToggleAgreementStatus() {
-        self.AgreeChecked = !self.AgreeChecked
+        AgreeChecked = !self.AgreeChecked
         
         if(self.AgreeChecked){
             AgreeCheckbox?.image = AgreementCheckedImage
@@ -141,13 +161,13 @@ public class PageRegisterBodyView: NSObject {
         
         ShowAgreementBtn.addTarget(Actions, action: "ShowAgreementTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
         ShowAgreementBtn.setTitle("查看", forState: UIControlState.Normal)
-        ShowAgreementBtn.titleLabel?.font = YMFonts.YMDefaultFont(24.LayoutVal())
+        ShowAgreementBtn.titleLabel?.font = YMFonts.YMDefaultFont(26.LayoutVal())
         ShowAgreementBtn.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Normal)
         ShowAgreementBtn.sizeToFit()
         
         AgreeButton?.addTarget(self.Actions, action: "AgreementButtonTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
         AgreeButton?.setTitle(YMRegisterStrings.CS_AGREE_LABEL_BUTTON, forState: UIControlState.Normal)
-        AgreeButton?.titleLabel?.font = UIFont.systemFontOfSize(24.LayoutVal())
+        AgreeButton?.titleLabel?.font = UIFont.systemFontOfSize(26.LayoutVal())
         AgreeButton?.setTitleColor(YMColors.FontLightGray, forState: UIControlState.Normal)
         AgreeButton?.titleLabel?.textAlignment = NSTextAlignment.Left
         
@@ -234,4 +254,5 @@ public class PageRegisterBodyView: NSObject {
             "password": password!,
             "verify_code": verifyCode!
         ]
-    }}
+    }
+}

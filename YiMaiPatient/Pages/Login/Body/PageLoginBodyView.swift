@@ -124,7 +124,7 @@ public class PageLoginBodyView : NSObject {
     private func GetTextButton(text: String, align: UIControlContentHorizontalAlignment) -> YMButton {
         let newButton = YMButton(frame: CGRect(x: 0,y: 0,width: 140.LayoutVal(),height: 22.LayoutVal()))
         newButton.setTitle(text, forState: UIControlState.Normal)
-        newButton.titleLabel?.font = UIFont.systemFontOfSize(22.LayoutVal())
+        newButton.titleLabel?.font = UIFont.systemFontOfSize(26.LayoutVal())
         newButton.setTitleColor(YMColors.FontGray, forState: UIControlState.Normal)
         newButton.setTitleColor(YMColors.PatientFontGreen, forState: UIControlState.Highlighted)
         newButton.contentHorizontalAlignment = align

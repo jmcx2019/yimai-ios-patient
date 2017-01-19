@@ -58,6 +58,7 @@ public class PageAppLoadingActions: PageJumpActions {
         } else {
             queue.addOperationWithBlock({ () -> Void in
                 self.TargetController?.LoadingIndc?.Hide()
+                PageIndexViewController.IsFromLogin = true
                 self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
             })
         }
