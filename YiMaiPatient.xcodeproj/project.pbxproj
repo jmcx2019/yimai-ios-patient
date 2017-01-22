@@ -13,6 +13,11 @@
 		2F8DD7C71DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C61DDB5F5F00AEE7A9 /* PageWalletInfoBodyView.swift */; };
 		2F8DD7C91DDB5FF900AEE7A9 /* PageWalletInfoActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8DD7C81DDB5FF900AEE7A9 /* PageWalletInfoActions.swift */; };
 		662C58B01E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 662C58AE1E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a */; };
+		66318E3B1E320017003624FD /* PageMyAdmissionListActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318E351E320017003624FD /* PageMyAdmissionListActions.swift */; };
+		66318E3C1E320017003624FD /* PageMyAdmissionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66318E361E320017003624FD /* PageMyAdmissionList.storyboard */; };
+		66318E3D1E320017003624FD /* PageMyAdmissionListBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318E391E320017003624FD /* PageMyAdmissionListBodyView.swift */; };
+		66318E3E1E320017003624FD /* PageMyAdmissionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318E3A1E320017003624FD /* PageMyAdmissionListViewController.swift */; };
+		66318E401E3204F4003624FD /* YMBackgroundRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66318E3F1E3204F4003624FD /* YMBackgroundRefresh.swift */; };
 		6633A27A1E2BA0FA000CF329 /* YMNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6633A2791E2BA0FA000CF329 /* YMNotification.swift */; };
 		6634E8011E0E89FA00408D5B /* PageSelectIllness.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6634E8031E0E89FA00408D5B /* PageSelectIllness.storyboard */; };
 		6634E8051E0E8A1200408D5B /* PageSelectIllnessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */; };
@@ -222,6 +227,11 @@
 		2F8DD7C81DDB5FF900AEE7A9 /* PageWalletInfoActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageWalletInfoActions.swift; sourceTree = "<group>"; };
 		662C58AE1E279BB200F9AB6B /* libUMessage_Sdk_1.3.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.3.0.a; sourceTree = "<group>"; };
 		662C58AF1E279BB200F9AB6B /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		66318E351E320017003624FD /* PageMyAdmissionListActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMyAdmissionListActions.swift; sourceTree = "<group>"; };
+		66318E371E320017003624FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageMyAdmissionList.storyboard; sourceTree = "<group>"; };
+		66318E391E320017003624FD /* PageMyAdmissionListBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMyAdmissionListBodyView.swift; sourceTree = "<group>"; };
+		66318E3A1E320017003624FD /* PageMyAdmissionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageMyAdmissionListViewController.swift; sourceTree = "<group>"; };
+		66318E3F1E3204F4003624FD /* YMBackgroundRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMBackgroundRefresh.swift; sourceTree = "<group>"; };
 		6633A2791E2BA0FA000CF329 /* YMNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YMNotification.swift; sourceTree = "<group>"; };
 		6634E8021E0E89FA00408D5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/PageSelectIllness.storyboard; sourceTree = "<group>"; };
 		6634E8041E0E8A1200408D5B /* PageSelectIllnessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSelectIllnessViewController.swift; sourceTree = "<group>"; };
@@ -494,6 +504,33 @@
 			path = UMessage_Sdk_1.3.0;
 			sourceTree = "<group>";
 		};
+		66318E331E320017003624FD /* MyAdmissionList */ = {
+			isa = PBXGroup;
+			children = (
+				66318E381E320017003624FD /* Body */,
+				66318E341E320017003624FD /* Actions */,
+				66318E361E320017003624FD /* PageMyAdmissionList.storyboard */,
+				66318E3A1E320017003624FD /* PageMyAdmissionListViewController.swift */,
+			);
+			path = MyAdmissionList;
+			sourceTree = "<group>";
+		};
+		66318E341E320017003624FD /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				66318E351E320017003624FD /* PageMyAdmissionListActions.swift */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		66318E381E320017003624FD /* Body */ = {
+			isa = PBXGroup;
+			children = (
+				66318E391E320017003624FD /* PageMyAdmissionListBodyView.swift */,
+			);
+			path = Body;
+			sourceTree = "<group>";
+		};
 		6634E7FC1E0E89CB00408D5B /* SelectIllness */ = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +739,7 @@
 				FD4735CC1D81B22000BBEF16 /* YMQRCode.swift */,
 				FD5353631DB720DB007C056A /* WXPay.swift */,
 				6633A2791E2BA0FA000CF329 /* YMNotification.swift */,
+				66318E3F1E3204F4003624FD /* YMBackgroundRefresh.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -759,6 +797,7 @@
 		730DDF8C1D5EC64600E4ABB6 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				66318E331E320017003624FD /* MyAdmissionList */,
 				6634E7FC1E0E89CB00408D5B /* SelectIllness */,
 				665D1FA71E0BD461004A3409 /* SelectFocusedDept */,
 				667A1BDB1E0810BB00F158E0 /* ForgetPassword */,
@@ -1665,6 +1704,7 @@
 				FD53536D1DB7212C007C056A /* read_me.txt in Resources */,
 				73C7EF851D85988600B1B971 /* PageAppointmentSelectTime.storyboard in Resources */,
 				66F29DCF1E0241EC002A561B /* PageWalletRecord.storyboard in Resources */,
+				66318E3C1E320017003624FD /* PageMyAdmissionList.storyboard in Resources */,
 				73C7EFAB1D85A28300B1B971 /* PageAppointmentBasicInfo.storyboard in Resources */,
 				FD0544051D86A43400185AEF /* PageAppointmentProxy.storyboard in Resources */,
 				FDD9B7DB1D86B40F0038F84B /* PageAppointmentProxyPatientCondition.storyboard in Resources */,
@@ -1818,6 +1858,7 @@
 				7307BFE61D5F0301000F31E5 /* PageRegisterInputInfoViewController.swift in Sources */,
 				966FD69B1D8BD85300FD49B9 /* PageCommonSearchBodyView.swift in Sources */,
 				FDD9B7DD1D86B40F0038F84B /* PageAppointmentProxyPatientConditionViewController.swift in Sources */,
+				66318E3E1E320017003624FD /* PageMyAdmissionListViewController.swift in Sources */,
 				738F49631D5ED0CA00E577F4 /* PageAppLoadingViewController.swift in Sources */,
 				73C7EF791D8541E500B1B971 /* PageSearchDefaultBodyView.swift in Sources */,
 				7307BFD91D5EEFBA000F31E5 /* PageRegisterBodyView.swift in Sources */,
@@ -1833,6 +1874,7 @@
 				730DDF821D5EC4D600E4ABB6 /* YMTableView.swift in Sources */,
 				730DDF841D5EC4D600E4ABB6 /* YMTextInput.swift in Sources */,
 				966FD69C1D8BD85300FD49B9 /* PageDepartmentSearchBodyView.swift in Sources */,
+				66318E3B1E320017003624FD /* PageMyAdmissionListActions.swift in Sources */,
 				6634E8091E0E8A2900408D5B /* PageSelectIllnessActions.swift in Sources */,
 				664084591DFBE11D000B597E /* ActiveLabel.swift in Sources */,
 				6634E8071E0E8A1F00408D5B /* PageSelectIllnessBodyView.swift in Sources */,
@@ -1845,6 +1887,7 @@
 				6640845B1DFBE11D000B597E /* RegexParser.swift in Sources */,
 				730DDF971D5EC64600E4ABB6 /* YMCommonActions.swift in Sources */,
 				730DDF801D5EC4D600E4ABB6 /* YMDatetime.swift in Sources */,
+				66318E3D1E320017003624FD /* PageMyAdmissionListBodyView.swift in Sources */,
 				FD67C3D61DC3333900500798 /* PageSYSBroadcastViewController.swift in Sources */,
 				FD67C3D31DC3333900500798 /* PageSYSBroadcastActions.swift in Sources */,
 				6699BB501E09071700E2D505 /* ConfirmViewController.swift in Sources */,
@@ -1881,6 +1924,7 @@
 				73C7EF971D85998A00B1B971 /* YMYiMaiStrings.swift in Sources */,
 				738F49541D5ECCA300E577F4 /* PageLoginViewController.swift in Sources */,
 				730DDF7A1D5EC4D600E4ABB6 /* YMFonts.swift in Sources */,
+				66318E401E3204F4003624FD /* YMBackgroundRefresh.swift in Sources */,
 				966FD69D1D8BD85300FD49B9 /* PageHospitalSearchBodyView.swift in Sources */,
 				9676762F1D8AFD0500A07106 /* LBXScanView.swift in Sources */,
 				730DDF991D5EC64600E4ABB6 /* PageSearchResultCell.swift in Sources */,
@@ -1908,6 +1952,14 @@
 				2F8DD7C41DDB5F4700AEE7A9 /* Base */,
 			);
 			name = PageWalletInfo.storyboard;
+			sourceTree = "<group>";
+		};
+		66318E361E320017003624FD /* PageMyAdmissionList.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				66318E371E320017003624FD /* Base */,
+			);
+			name = PageMyAdmissionList.storyboard;
 			sourceTree = "<group>";
 		};
 		6634E8031E0E89FA00408D5B /* PageSelectIllness.storyboard */ = {

@@ -657,6 +657,36 @@ public class YMLayout {
         
         return [dividerWidth, spinnerStyle, spinnerColor, closeButtonConfig, pagingMode, headerLayout, footerLayout, closeLayout, statusBarHidden, hideDecorationViews, backgroundColor]
     }
+    
+    static func GetUnreadCountLabel(count: Int) -> YMLabel {
+        let label = YMLabel()
+        if(count < 1000) {
+            label.text = "\(count)"
+        } else {
+            label.text = "999+"
+        }
+        label.textColor = YMColors.White
+        label.backgroundColor = YMColors.WarningFontColor
+        label.font = YMFonts.YMDefaultFont(20.LayoutVal())
+        label.sizeToFit()
+        
+        label.textAlignment = NSTextAlignment.Center
+        
+        label.frame = CGRect(x: 0, y: 0, width: label.width + 20.LayoutVal(), height: 28.LayoutVal())
+        label.SetSemicircleBorder()
+        
+        return label
+    }
+    
+    static func GetIndexGreenPoint() -> YMLabel {
+        let label = YMLabel()
+        
+        label.frame = CGRect(x: 0, y: 0, width: 10.LayoutVal(), height: 10.LayoutVal())
+        label.backgroundColor = YMColors.PatientFontGreen
+        label.SetSemicircleBorder()
+        
+        return label
+    }
 }
 
 

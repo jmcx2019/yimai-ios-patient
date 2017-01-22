@@ -36,7 +36,8 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_FORGET_PASSWORD_NAME: true,
         YMCommonStrings.CS_PAGE_COMMON_TEXT_INPUT: true,
         YMCommonStrings.CS_PAGE_SELECT_FOCUSED_DEPT: true,
-        YMCommonStrings.CS_PAGE_SELECT_FOCUSED_ILLNESS: true
+        YMCommonStrings.CS_PAGE_SELECT_FOCUSED_ILLNESS: true,
+        YMCommonStrings.CS_PAGE_MY_ADMISSION_LIST: true
     ]
 }
 

@@ -24,6 +24,8 @@ public class PageIndexBodyView: PageBodyView {
     
     let userNameLabel = UILabel()
     
+    var FirstLoadMsg = false
+    
     private var ScrollImageView: YMImageHScrollView = YMImageHScrollView(interval: 5)
 
     override func ViewLayout() {
@@ -40,7 +42,7 @@ public class PageIndexBodyView: PageBodyView {
     func DrawBannerScrollPanel() {
         BodyView.addSubview(ScrollImageView)
         ScrollImageView.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 520.LayoutVal())
-        ScrollImageView.SetImages([YMLayout.GetSuitableImageView("IndexScrollPhoto")])//.StartAutoScroll()
+        ScrollImageView.SetImages([YMLayout.GetSuitableImageView("TEMP_INDEX_BANNER")])//.StartAutoScroll()
     }
     
     func RefreshScrollImage(data: [[String: String]]?) {
@@ -99,17 +101,74 @@ public class PageIndexBodyView: PageBodyView {
         BuildGroupButton(appointmentBtn, text: "约诊记录", iconName: "PageIndexAppoinmentBtn")
     }
     
-    func DrawMsgPanel() {
-        BodyView.addSubview(MsgPanel)
-        MsgPanel.align(Align.UnderMatchingLeft, relativeTo: BtnGroupPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 0	)
+    func DrawLatestMsg(data: [[String: AnyObject]]) {
+        var prev: YMTouchableView = MessageNotifyCell!
+        var msgCount:Int = 0
+        for msg in data {
+            let cell = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "MsgCellTouched:".Sel())
+            cell.UserStringData = YMVar.GetStringByKey(msg, key: "appointment_id")
+            let labelText = YMVar.GetStringByKey(msg, key: "text")
+            
+            let label = YMLayout.GetNomalLabel(labelText, textColor: YMColors.FontGray, fontSize: 24.LayoutVal())
+            let point = YMLayout.GetIndexGreenPoint()
+
+            cell.addSubview(label)
+            cell.addSubview(point)
+
+            MsgPanel.addSubview(cell)
+            cell.align(Align.UnderMatchingLeft, relativeTo: prev, padding: YMSizes.OnPx, width: YMSizes.PageWidth, height: 70.LayoutVal())
+            point.anchorToEdge(Edge.Left, padding: 40.LayoutVal(), width: point.width, height: point.height)
+            label.align(Align.ToTheRightCentered, relativeTo: point, padding: 20.LayoutVal(), width: 640.LayoutVal(), height: label.height)
+            
+            prev = cell
+            msgCount += 1
+            if(msgCount >= 3) {
+                break
+            }
+        }
         
+        if(FirstLoadMsg) {
+            UIView.beginAnimations(nil, context: nil)
+            UIView.setAnimationDuration(0.2)
+        }
+
+        YMLayout.SetViewHeightByLastSubview(MsgPanel, lastSubView: prev)
+        YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: MsgPanel)
+        
+        if(FirstLoadMsg) {
+            UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
+            UIView.commitAnimations()
+        }
+        
+        FirstLoadMsg = false
+    }
+    
+    func DrawMsgPanel(data: [[String: AnyObject]]? = nil) {
+        BodyView.addSubview(MsgPanel)
+        MsgPanel.align(Align.UnderMatchingLeft, relativeTo: BtnGroupPanel, padding: 10.LayoutVal(), width: YMSizes.PageWidth, height: 70.LayoutVal())
+        MsgPanel.layer.masksToBounds = true
+        YMLayout.ClearView(view: MsgPanel)
         MessageNotifyCell = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "MessageNotifyTouched:".Sel())
         MsgPanel.addSubview(MessageNotifyCell!)
         MessageNotifyCell?.anchorToEdge(Edge.Top, padding: 0, width: YMSizes.PageWidth, height: 70.LayoutVal())
         
         let leftIcon = YMLayout.GetSuitableImageView("PageIndexMessageIcon")
         let label = UILabel()
-        label.text = "暂无消息"
+        
+        var text = "正在获取我的接诊消息"
+        var unreadLabel = YMLabel()
+        if(nil != data) {
+            if(data!.count > 0) {
+                text = "消息通知"
+                unreadLabel = YMLayout.GetUnreadCountLabel(data!.count)
+            } else {
+                text = "暂无新消息 （点击查看历史消息）"
+            }
+        } else {
+            FirstLoadMsg = true
+        }
+        
+        label.text = text
         label.textColor = YMColors.PatientFontGray
         label.font = YMFonts.YMDefaultFont(24.LayoutVal())
         label.sizeToFit()
@@ -118,13 +177,20 @@ public class PageIndexBodyView: PageBodyView {
         
         MessageNotifyCell?.addSubview(leftIcon)
         MessageNotifyCell?.addSubview(label)
+        MessageNotifyCell?.addSubview(unreadLabel)
         MessageNotifyCell?.addSubview(rightIcon)
         
         leftIcon.anchorToEdge(Edge.Left, padding: 40.LayoutVal(), width: leftIcon.width, height: leftIcon.height)
         rightIcon.anchorToEdge(Edge.Right, padding: 40.LayoutVal(), width: rightIcon.width, height: rightIcon.height)
         label.align(Align.ToTheRightCentered, relativeTo: leftIcon, padding: 14.LayoutVal(), width: label.width, height: label.height)
+        unreadLabel.align(Align.ToTheRightCentered, relativeTo: label, padding: 10.LayoutVal(), width: unreadLabel.width, height: unreadLabel.height)
         
-        YMLayout.SetViewHeightByLastSubview(MsgPanel, lastSubView: MessageNotifyCell!)
+        if(nil != data) {
+            DrawLatestMsg(data!)
+        } else {
+            YMLayout.SetViewHeightByLastSubview(MsgPanel, lastSubView: MessageNotifyCell!)
+            YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: MsgPanel)
+        }
     }
     
     public func DrawTopBtn(topView: UIView) {
@@ -250,6 +316,14 @@ public class PageIndexBodyView: PageBodyView {
         userNameLabel.text = YMVar.GetStringByKey(YMVar.MyInfo, key: "name")
         userNameLabel.sizeToFit()
         userNameLabel.align(Align.UnderCentered, relativeTo: SideBarHead, padding: 20.LayoutVal(), width: userNameLabel.width, height: userNameLabel.height)
+    }
+    
+    func RefreshMessagePanel(data: AnyObject?, isSuccess: Bool) {
+        if(!isSuccess) { return }
+        if(nil == data){ return }
+        
+        let msgArr = (data! as! NSDictionary)["data"] as! [[String: AnyObject]]
+        DrawMsgPanel(msgArr)
     }
 }
 

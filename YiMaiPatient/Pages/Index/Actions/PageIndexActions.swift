@@ -66,9 +66,7 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func MessageNotifyTouched(qr: UIGestureRecognizer) {
-        print("MessageNotifyTouched")
-        print(WXApi.isWXAppInstalled())
-//        DoJump(YMCommonStrings.CS_PAGE_SELECT_FOCUSED_DEPT)
+        DoJump(YMCommonStrings.CS_PAGE_MY_ADMISSION_LIST)
     }
     
     public func UserHeadTouched(gr: UIGestureRecognizer) {
@@ -122,6 +120,14 @@ public class PageIndexActions: PageJumpActions {
     
     public func AboutTouched(qr: UIGestureRecognizer) {
         DoJump(YMCommonStrings.CS_PAGE_ABOUT_YIMAI)
+    }
+    
+    func MsgCellTouched(qr: UIGestureRecognizer) {
+        let sender = qr.view! as! YMTouchableView
+        
+        PageAppointmentDetailViewController.AppointmentID = sender.UserStringData
+        DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME)
+        
     }
     
     public func HealthZoneTouched(qr: UIGestureRecognizer) {

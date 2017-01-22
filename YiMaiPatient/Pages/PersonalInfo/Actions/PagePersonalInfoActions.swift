@@ -15,6 +15,7 @@ import Toucan
 class PagePersonalInfoActions: PageJumpActions {
     var TargetView: PagePersonalInfoBodyView!
     var UpdateApi: YMAPIUtility!
+    var LogoutApi: YMAPIUtility!
     
     var UploadApi: YMAPIUtility!
     var ImageForUpload: UIImage? = nil
@@ -28,7 +29,27 @@ class PagePersonalInfoActions: PageJumpActions {
         UploadApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_UPLOAD_USER_HEAD,
                                  success: UploadSuccess,
                                  error: UploadError)
-        
+        LogoutApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_UPDATE_USER + "-fromAccountLogout", success: LogoutSuccess, error: LogoutError)
+
+    }
+    
+    func LogoutSuccess(data: NSDictionary?) {
+        ClearCaches()
+    }
+    
+    func LogoutError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
+        ClearCaches()
+    }
+    
+    func ClearCaches() {
+        YMBackgroundRefresh.Stop()
+        YMCoreDataEngine.Clear()
+        YMLocalData.ClearLogin()
+        YMVar.Clear()
+        YMBackgroundRefresh.Stop()
+        self.DoJump(YMCommonStrings.CS_PAGE_LOGIN_NAME)
+        TargetView.FullPageLoading.Hide()
     }
     
     func UploadSuccess(data: NSDictionary?) {
@@ -144,12 +165,8 @@ class PagePersonalInfoActions: PageJumpActions {
     }
     
     func LogoutTouched(_: UIGestureRecognizer) {
-        YMCoreDataEngine.Clear()
-        YMLocalData.ClearLogin()
-        YMVar.Clear()
-//        YMBackgroundRefresh.Stop()
-        //        YMAPICommonVariable.ClearCallbackMap()
-        self.DoJump(YMCommonStrings.CS_PAGE_LOGIN_NAME)
+        TargetView.FullPageLoading.Show()
+        LogoutApi.YMChangeUserInfo(["device_token": ""])
     }
     
     func NameChanged(name: String) {

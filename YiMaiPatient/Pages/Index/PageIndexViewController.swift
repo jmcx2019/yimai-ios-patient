@@ -36,15 +36,16 @@ public class PageIndexViewController: PageViewController {
             BodyView?.DrawTopBtn(TopView!.TopViewPanel)
             BodyView?.DrawSideBar()
             
+            BodyView?.DrawMsgPanel()
             PageIndexViewController.IsFromLogin = false
 
             BodyView?.IndexActions?.BannerApi?.YMGetIndexBanner()
             UpdateDeviceToken()
+            YMBackgroundRefresh.Start()
+            YMBackgroundRefresh.RegisterCallback(YMBackgroundCallbackFor.SystemMessage, cb: BodyView!.RefreshMessagePanel)
         } else {
             BodyView?.Refresh()
         }
-        
-//        BodyView?.IndexActions?.BannerApi.YMGetIndexBanner()
     }
     
     func UpdateDeviceToken() {

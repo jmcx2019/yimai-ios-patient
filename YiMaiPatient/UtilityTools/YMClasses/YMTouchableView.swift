@@ -76,6 +76,11 @@ public class YMLabel: ActiveLabel {
     public var UserStringData: String = ""
     public var UserObjectData: AnyObject? = nil
     public var UserAnyData: Any? = nil
+    
+    public func SetSemicircleBorder() {
+        self.layer.cornerRadius = self.height / 2
+        self.layer.masksToBounds = true
+    }
 }
 
 

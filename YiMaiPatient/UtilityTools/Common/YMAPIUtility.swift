@@ -90,6 +90,10 @@ public class YMAPIInterfaceURL {
     static let GetIndexBanner = YMAPIInterfaceURL.ApiBaseUrl + "/get-banner-url"
     
     static let GetTagsAndIllness = YMAPIInterfaceURL.ApiBaseUrl + "/tag/group"
+    
+    static let GetNewMessage = YMAPIInterfaceURL.ApiBaseUrl + "/msg/new"
+    static let GetAllMessage = YMAPIInterfaceURL.ApiBaseUrl + "/msg/all"
+    static let SetMessageReaden = YMAPIInterfaceURL.ApiBaseUrl + "/msg/read"
 }
 
 public class YMAPICommonVariable {
@@ -786,6 +790,22 @@ public class YMAPIUtility {
     
     public func YMGetIndexBanner() {
         YMAPIGet(YMAPIInterfaceURL.GetIndexBanner, param: nil, progressHandler: nil)
+    }
+
+//    static let GetNewMessage = YMAPIInterfaceURL.ApiBaseUrl + "/msg/new"
+//    static let GetAllMessage = YMAPIInterfaceURL.ApiBaseUrl + "/msg/all"
+//    static let SetMessageReaden = YMAPIInterfaceURL.ApiBaseUrl + "/msg/read"
+    
+    public func YMGetNewMessage() {
+        YMAPIGet(YMAPIInterfaceURL.GetNewMessage, param: nil, progressHandler: nil)
+    }
+    
+    public func YMGetAllMessage() {
+        YMAPIGet(YMAPIInterfaceURL.GetAllMessage, param: nil, progressHandler: nil)
+    }
+    
+    func YMSetMessageReaden(id: String) {
+        YMAPIPost(YMAPIInterfaceURL.SetMessageReaden, param: ["id": id], progressHandler: nil)
     }
 }
 

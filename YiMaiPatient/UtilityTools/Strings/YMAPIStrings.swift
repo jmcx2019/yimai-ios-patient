@@ -57,6 +57,9 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_GET_TAGS_AND_ILLNESS = "apiGetTagsAndIllness"
     
     public static let CS_API_ACTION_GET_CITIES = "apiGetCities"
+    
+    public static let CS_API_ACTION_GET_ALL_NEW_ADMISSION_MSG = "apiGetAllNewAdmissionMsg"
+    public static let CS_API_ACTION_CLEAR_ALL_NEW_ADMISSION_MSG = "apiClearAllNewAdmissionMsg"
 }
 
 
