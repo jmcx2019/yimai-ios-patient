@@ -39,6 +39,7 @@ public class PageIndexViewController: PageViewController {
             BodyView?.DrawMsgPanel()
             PageIndexViewController.IsFromLogin = false
 
+            print("get banner start")
             BodyView?.IndexActions?.BannerApi?.YMGetIndexBanner()
             UpdateDeviceToken()
             YMBackgroundRefresh.Start()

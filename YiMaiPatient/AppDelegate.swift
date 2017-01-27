@@ -113,6 +113,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
         UMSocialManager.defaultManager().setPlaform(UMSocialPlatformType.Sina,
                                                     appKey: "1075290971", appSecret: "ebd03c962864546d7b5e854f2b4a8dc1",
                                                     redirectURL: "https://www.medi-link.cn")
+        
+        UIDevice.currentDevice()
         return true
     }
 

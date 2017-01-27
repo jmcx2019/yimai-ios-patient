@@ -56,7 +56,7 @@ public class PageIndexBodyView: PageBodyView {
             let imgUrl = YMVar.GetStringByKey(banner, key: "focus_img_url")
             let articleUrl = YMVar.GetStringByKey(banner, key: "content_url")
             
-            let newImage = YMLayout.GetTouchableImageView(useObject: IndexActions!, useMethod: "IndexScrollImageTouched:".Sel(), imageName: "IndexScrollPhoto")
+            let newImage = YMLayout.GetTouchableImageView(useObject: IndexActions!, useMethod: "IndexScrollImageTouched:".Sel(), imageName: "TEMP_INDEX_BANNER")
             YMLayout.LoadImageFromServer(newImage, url: imgUrl)
             newImage.UserStringData = articleUrl
             imageList.append(newImage)
