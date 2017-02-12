@@ -66,6 +66,12 @@ public class YMTouchableView: UIView {
     public var UserAnyData: Any? = nil
 }
 
+public class YMTouchableScrollView: UIScrollView {
+    public var UserStringData: String = ""
+    public var UserObjectData: AnyObject? = nil
+    public var UserAnyData: Any? = nil
+}
+
 public class YMTouchableImageView: UIImageView {
     public var UserStringData: String = ""
     public var UserObjectData: AnyObject? = nil
@@ -80,6 +86,13 @@ public class YMLabel: ActiveLabel {
     public func SetSemicircleBorder() {
         self.layer.cornerRadius = self.height / 2
         self.layer.masksToBounds = true
+    }
+    
+    public func SetTouchable(withObject actionObject: AnyObject, useMethod actionMethod: Selector) {
+        self.userInteractionEnabled = true
+        
+        let gr = UITapGestureRecognizer(target: actionObject, action: actionMethod)
+        self.addGestureRecognizer(gr)
     }
 }
 

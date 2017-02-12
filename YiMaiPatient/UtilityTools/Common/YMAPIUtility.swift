@@ -86,6 +86,12 @@ public class YMAPIInterfaceURL {
     static let AddDocotor = YMAPIInterfaceURL.ApiBaseUrl + "/user/add-doctor"
     static let DeleteDoctor = YMAPIInterfaceURL.ApiBaseUrl + "/user/del-doctor"
     static let ConfirmRescheduled = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/confirm-rescheduled"
+    static let CloseAppointment = YMAPIInterfaceURL.ApiBaseUrl + "/appointment/cancel"
+    
+    static let WalletInfo = YMAPIInterfaceURL.ApiBaseUrl + "/wallet/info"
+    static let WalletRecharge = YMAPIInterfaceURL.ApiBaseUrl + "/wallet/recharge"
+    static let PayFromWallet = YMAPIInterfaceURL.ApiBaseUrl + "/pay/appointment"
+    static let PayFromWalletForList = YMAPIInterfaceURL.ApiBaseUrl + "/pay/appointment-list"
     
     static let GetIndexBanner = YMAPIInterfaceURL.ApiBaseUrl + "/get-banner-url"
     
@@ -94,6 +100,7 @@ public class YMAPIInterfaceURL {
     static let GetNewMessage = YMAPIInterfaceURL.ApiBaseUrl + "/msg/new"
     static let GetAllMessage = YMAPIInterfaceURL.ApiBaseUrl + "/msg/all"
     static let SetMessageReaden = YMAPIInterfaceURL.ApiBaseUrl + "/msg/read"
+    static let SetAllMessageReaden = YMAPIInterfaceURL.ApiBaseUrl + "/msg/all-read"
 }
 
 public class YMAPICommonVariable {
@@ -788,6 +795,10 @@ public class YMAPIUtility {
         YMAPIPost(YMAPIInterfaceURL.ConfirmRescheduled, param: ["id": id], progressHandler: nil)
     }
     
+    func YMCloseAppointment(id: String) {
+        YMAPIPost(YMAPIInterfaceURL.CloseAppointment, param: ["id": id], progressHandler: nil)
+    }
+    
     public func YMGetIndexBanner() {
         YMAPIGet(YMAPIInterfaceURL.GetIndexBanner, param: nil, progressHandler: nil)
     }
@@ -806,6 +817,30 @@ public class YMAPIUtility {
     
     func YMSetMessageReaden(id: String) {
         YMAPIPost(YMAPIInterfaceURL.SetMessageReaden, param: ["id": id], progressHandler: nil)
+    }
+    
+    func YMSetAllMessageReaden() {
+        YMAPIGet(YMAPIInterfaceURL.SetAllMessageReaden, param: nil, progressHandler: nil)
+    }
+    
+//    static let WalletInfo = YMAPIInterfaceURL.ApiBaseUrl + "/wallet/info"
+//    static let WalletRecharge = YMAPIInterfaceURL.ApiBaseUrl + "/wallet/recharge"
+//    static let PayFromWallet = YMAPIInterfaceURL.ApiBaseUrl + "/pay/appointment"
+    
+    func YMWalletInfo() {
+        YMAPIGet(YMAPIInterfaceURL.WalletInfo, param: nil, progressHandler: nil)
+    }
+    
+    func YMWalletRecharge(fee: String) {
+        YMAPIPost(YMAPIInterfaceURL.WalletRecharge, param: ["fee": fee], progressHandler: nil)
+    }
+    
+    func YMPayFromWallet(id: String) {
+        YMAPIPost(YMAPIInterfaceURL.PayFromWallet, param: ["id": id], progressHandler: nil)
+    }
+    
+    func YMPayFromWalletForList(ids: String) {
+        YMAPIPost(YMAPIInterfaceURL.PayFromWalletForList, param: ["id_list": ids], progressHandler: nil)
     }
 }
 

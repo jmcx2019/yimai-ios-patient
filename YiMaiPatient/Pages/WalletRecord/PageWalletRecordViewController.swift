@@ -16,7 +16,7 @@ class PageWalletRecordViewController: PageViewController {
         super.PageLayout()
         
         BodyView = PageWalletRecordBodyView(parentView: self.view, navController: NavController!)
-        TopView = PageCommonTopView(parentView: self.view, titleString: "消费明细", navController: NavController!)
+        TopView = PageCommonTopView(parentView: self.view, titleString: "明细", navController: NavController!)
     }
     
     override func PagePreRefresh() {

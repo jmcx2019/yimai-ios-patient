@@ -38,6 +38,8 @@ public class PageAppointmentDetailBodyView: PageBodyView {
     var ShareBtn = YMButton()
 
     public var Loading: YMPageLoadingView? = nil
+    
+    var CloseBtn = YMButton()
 
     override func ViewLayout() {
         super.ViewLayout()
@@ -50,6 +52,19 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         DrawDP()
         DrawAppointmentNum()
         FullPageLoading?.Show()
+    }
+    
+    func DrawCloseBtn() {
+        CloseBtn.setTitle("结束本次约诊", forState: UIControlState.Normal)
+        CloseBtn.setTitleColor(YMColors.White, forState: UIControlState.Normal)
+        CloseBtn.titleLabel?.font = YMFonts.YMDefaultFont(32.LayoutVal())
+        CloseBtn.backgroundColor = YMColors.PatientFontGreen
+        CloseBtn.hidden = true
+
+        ParentView!.addSubview(CloseBtn)
+        CloseBtn.addTarget(DetailActions, action: "CloseBtnTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        CloseBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
+
     }
     
     func DrawShareButton(topView: UIView) {
@@ -977,6 +992,8 @@ public class PageAppointmentDetailBodyView: PageBodyView {
             ConfirmBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
             ConfirmBtn.setTitle("确认改期", forState: UIControlState.Normal)
             ConfirmBtn.addTarget(DetailActions, action: "ConfirmTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
+        } else if(status.containsString("wait")) {
+            CloseBtn.hidden = false
         }
     }
 
@@ -1024,6 +1041,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel, padding: 128.LayoutVal())
         FullPageLoading?.Hide()
 
+        DrawCloseBtn()
         DrawBottom(otherInfo)
     }
     

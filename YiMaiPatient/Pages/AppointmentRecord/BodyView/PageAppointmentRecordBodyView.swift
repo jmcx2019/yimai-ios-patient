@@ -162,6 +162,7 @@ class PageAppointmentRecordBodyView: PageBodyView {
             let statusStr = YMVar.GetOptionalValAsString(data["status"])
             let timeStr = YMVar.GetOptionalValAsString(data["time"])
             let modeStr = YMVar.GetOptionalValAsString(data["request_mode"])
+            let statusCode = YMVar.GetStringByKey(data, key: "status_code")
             
             if(YMValueValidator.IsBlankString(dNameStr)) {
                 dNameStr = "代约"
@@ -216,6 +217,10 @@ class PageAppointmentRecordBodyView: PageBodyView {
             let status = YMLayout.GetNomalLabel(statusStr,textColor: YMColors.PatientFontGreen, fontSize: 24.LayoutVal())
             let time = YMLayout.GetNomalLabel(timeStr,textColor: YMColors.PatientFontDarkGray, fontSize: 22.LayoutVal())
             let mode = YMLayout.GetNomalLabel(modeStr,textColor: YMColors.PatientFontGreen, fontSize: 22.LayoutVal())
+            
+            if("wait-1" == statusCode) {
+                status.textColor = YMColors.NotifyFlagOrange
+            }
             
             let pIcon = YMLayout.GetSuitableImageView("AppointmentListIconPatient")
             let tIcon = YMLayout.GetSuitableImageView("AppointmentListIconTime")

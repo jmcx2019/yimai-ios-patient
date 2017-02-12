@@ -50,6 +50,11 @@ public class YMAPIStrings {
     public static let CS_API_ACTION_GET_SYS_BORADCAST_LIST = "apiGetSYSBroadcastList"
     public static let CS_API_ACTION_UPDATE_USER_INFO_WHEN_REG = "apiUpdateUserInfoWhenReg"
     public static let CS_API_ACTION_GET_USER_WALLET_RECORD = "apiGetUserWalletRecord"
+    public static let CS_API_ACTION_GET_USER_WALLET_INFO = "apiGetUserWalletInfo"
+    public static let CS_API_ACTION_RECHARGE_WALLET = "apiRechargeWallet"
+    public static let CS_API_ACTION_PAY_FROM_WALLET = "apiPayFromWallet"
+    public static let CS_API_ACTION_PAY_FOR_LIST = "apiPayForList"
+    public static let CS_API_ACTION_CLOSE_APPOINTMENT = "apiCloseAppointment"
     
     public static let CS_API_ACTION_ADD_TO_MY_DOCOTOR = "apiAddToMyDocotor"
     public static let CS_API_ACTION_DELETE_MY_DOCOTOR = "apiDeleteMyDocotor"
@@ -60,6 +65,7 @@ public class YMAPIStrings {
     
     public static let CS_API_ACTION_GET_ALL_NEW_ADMISSION_MSG = "apiGetAllNewAdmissionMsg"
     public static let CS_API_ACTION_CLEAR_ALL_NEW_ADMISSION_MSG = "apiClearAllNewAdmissionMsg"
+    public static let CS_API_ACTION_CLEAR_ADMISSION_MSG = "apiClearAdmissionMsg"
 }
 
 

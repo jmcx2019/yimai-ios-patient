@@ -16,7 +16,9 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     var TargetView: PageAppointmentDetailBodyView? = nil
     private var DetailApi: YMAPIUtility? = nil
     private var PayApi: YMAPIUtility? = nil
+    private var PayByWalletApi: YMAPIUtility? = nil
     private var ConfirmApi: YMAPIUtility!
+    var CloseApi: YMAPIUtility!
     
     var TachedImageIdx: Int = 0
     public var imageCount: Int { get { return TargetView!.ImageList.count } }
@@ -39,7 +41,58 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
         
         PayApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GOTO_PAY, success: GoToPaySuccess, error: GoToPayError)
         ConfirmApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_CONFIRM_RESCHEDULED, success: ConfirmRescheduledSuccess, error: ConfirmRescheduledError)
-        TargetView = self.Target as? PageAppointmentDetailBodyView
+        
+        PayByWalletApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_PAY_FROM_WALLET, success: PaySuccess, error: PayError)
+        CloseApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_CLOSE_APPOINTMENT, success: CloseSuccess, error: CloseError)
+        TargetView = self.Target as? PageAppointmentDetailBodyView        
+    }
+
+    func CloseSuccess(data: NSDictionary?) {
+        let realData = data!["data"] as! [String: AnyObject]
+        TargetView?.Clear()
+        TargetView?.LoadData(realData["appointment_info"] as! NSDictionary)
+        TargetView?.FullPageLoading.Hide()
+    }
+    
+    func CloseError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowErrorInfo("服务器繁忙，请稍后再试。", nav: self.NavController!)
+    }
+    
+    func PaySuccess(data: NSDictionary?) {
+        let realData = data!["data"] as! [String: AnyObject]
+        let detail = realData["appointment_info"] as! [String: AnyObject]
+        TargetView?.Clear()
+        TargetView?.LoadData(detail)
+        TargetView?.FullPageLoading.Hide()
+        YMPageModalMessage.ShowNormalInfo("支付成功！", nav: NavController!)
+//        self.NavController?.popViewControllerAnimated(true)
+    }
+    
+    func PayError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
+        TargetView?.FullPageLoading.Hide()
+        if(nil != error.userInfo["com.alamofire.serialization.response.error.response"]) {
+            let response = error.userInfo["com.alamofire.serialization.response.error.response"]!
+            //let errInfo = JSON(data: error.userInfo["com.alamofire.serialization.response.error.data"] as! NSData)
+            YMAPIUtility.PrintErrorInfo(error)
+            if(response.statusCode >= 500) {
+                //显示服务器繁忙
+                YMPageModalMessage.ShowErrorInfo("服务器繁忙，请稍后再试。", nav: self.NavController!)
+            } else if (400 == response.statusCode) {
+                //显示验证失败，用户名或密码错误
+                YMPageModalMessage.ShowConfirmInfo("余额不足，是否前往钱包充值？", nav: NavController!, ok: { (_) in
+                        self.DoJump(YMCommonStrings.CS_PAGE_WALLET_INFO)
+                    }, cancel: nil)
+//                YMPageModalMessage.ShowErrorInfo("余额不足，请!", nav: self.NavController!)
+            } else {
+                //显示服务器繁忙
+                YMPageModalMessage.ShowErrorInfo("服务器繁忙，请稍后再试。", nav: self.NavController!)
+            }
+        } else {
+            YMPageModalMessage.ShowErrorInfo("网络连接异常，请稍后再试。", nav: self.NavController!)
+        }
     }
     
     func ConfirmRescheduledSuccess(data: NSDictionary?) {
@@ -52,11 +105,10 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     func ConfirmRescheduledError(error: NSError) {
         YMAPIUtility.PrintErrorInfo(error)
         TargetView?.FullPageLoading.Hide()
-        YMPageModalMessage.ShowErrorInfo("网络繁忙，请稍后再试", nav: NavController!)
+        YMPageModalMessage.ShowErrorInfo("网络繁忙，请稍后再试。", nav: NavController!)
     }
     
     private func DetailGetSuccess(data: NSDictionary?) {
-        print(data)
         TargetView?.LoadData(data!)
     }
     
@@ -110,7 +162,8 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     
     func GoToPayTouched(sender: YMButton) {
         print(PageAppointmentDetailViewController.AppointmentID)
-        PayApi?.YMGetPayInfo(PageAppointmentDetailViewController.AppointmentID)
+//        PayApi?.YMGetPayInfo(PageAppointmentDetailViewController.AppointmentID)
+        PayByWalletApi?.YMPayFromWallet(PageAppointmentDetailViewController.AppointmentID)
         TargetView?.FullPageLoading.Show()
     }
     
@@ -137,12 +190,21 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
             shareObj.title = "医者脉连-看专家"
             shareObj.descr = "医者仁心，脉脉相连。 医脉帮助医生拓展人脉，与北上广一线专家相连，同时集医疗、科研、社区三大功能于一体，构架和谐医患关系。"
 //            shareObj.thumbImage = self.TargetView.UserHead.image //YMVar.GetStringByKey(YMVar.MyUserInfo, key: "head_url")
-            shareObj.webpageUrl = "http://www.medi-link.cn"
+            shareObj.webpageUrl = "http://p.medi-link.cn/YMPatientShareiOS/"
             msg.shareObject = shareObj
             UMSocialManager.defaultManager().shareToPlatform(type, messageObject: msg, currentViewController: self.NavController!, completion: { (data, error) in
                 print(error)
             })
         }
+    }
+    
+    func CloseBtnTouched(sender: YMButton) {
+//        /appointment/cancel
+        YMPageModalMessage.ShowConfirmInfo("确定结束本次约诊？", nav: NavController!, ok: { (_) in
+            self.TargetView?.FullPageLoading.Show()
+            self.CloseApi.YMCloseAppointment(PageAppointmentDetailViewController.AppointmentID)
+        }, cancel: nil)
+        
     }
 }
 

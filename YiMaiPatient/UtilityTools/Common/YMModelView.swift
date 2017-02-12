@@ -103,7 +103,7 @@ public class YMPageModalMessage {
     public static func ShowNormalInfo(info: String, nav: UINavigationController, callback: YMNormalAlertCallback? = nil) {
         let attributedString = NSAttributedString(string: info, attributes: [
             NSFontAttributeName: YMFonts.YMDefaultFont(24.LayoutVal())!, //your font here,
-            NSForegroundColorAttributeName : YMColors.FontLightGray
+            NSForegroundColorAttributeName : YMColors.FontGray
             ])
         
         let alertController = UIAlertController(title: "", message: info, preferredStyle: .Alert)
@@ -119,7 +119,7 @@ public class YMPageModalMessage {
     public static func ShowConfirmInfo(info: String, nav: UINavigationController, ok: YMModalCallback? = nil, cancel: YMModalCallback? = nil) {
         let attributedString = NSAttributedString(string: info, attributes: [
             NSFontAttributeName: YMFonts.YMDefaultFont(24.LayoutVal())!, //your font here,
-            NSForegroundColorAttributeName : YMColors.FontLightGray
+            NSForegroundColorAttributeName : YMColors.FontGray
             ])
         
         let alertController = UIAlertController(title: "", message: info, preferredStyle: .Alert)

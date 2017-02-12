@@ -45,6 +45,7 @@ class PageMyAdmissionListActions: PageJumpActions {
         
         let cellData = cell.UserObjectData as! [String: AnyObject]
         let id = "\(cellData["appointment_id"]!)"
+        let msgId = YMVar.GetStringByKey(cellData, key: "id")
         
         //        data": {
         //        "id": "消息ID",
@@ -55,8 +56,20 @@ class PageMyAdmissionListActions: PageJumpActions {
         //        "time": "时间"
         //    }
         
+        ClearListApi.YMSetMessageReaden(msgId)
+        
         PageAppointmentDetailViewController.AppointmentID = id
         DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME)
+    }
+    
+    func SetAllReaden(_: AnyObject) {
+        TargetView.FullPageLoading.Show()
+        ClearListApi.YMSetAllMessageReaden()
+        for (idx, _) in TargetView.PrevData.enumerate() {
+            TargetView.PrevData[idx]["read"] = "1"
+        }
+        TargetView.LoadData(TargetView.PrevData)
+        TargetView.FullPageLoading.Hide()
     }
 }
 

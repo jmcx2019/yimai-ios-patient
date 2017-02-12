@@ -14,6 +14,8 @@ public class PageIndexActions: PageJumpActions {
     var AddDocApi: YMAPIUtility!
     var BannerApi: YMAPIUtility?
     var UpdateDeviceToken: YMAPIUtility!
+    var ClearReadFlag: YMAPIUtility!
+
     
     override func ExtInit() {
         super.ExtInit()
@@ -22,7 +24,15 @@ public class PageIndexActions: PageJumpActions {
         BannerApi = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_GET_INDEX_BANNER, success: GetIndexBannerSuccess, error: GetIndexBannerError)
         UpdateDeviceToken = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_UPDATE_USER + "UpdateDeviceToken",
                                          success: UpdateDeviceTokenSuccess, error: UpdateDeviceTokenError)
+        
+        ClearReadFlag = YMAPIUtility(key: YMAPIStrings.CS_API_ACTION_CLEAR_ADMISSION_MSG, success: ClearFlagSuccess, error: ClearFlagError)
+
         TargetView = self.Target as? PageIndexBodyView
+    }
+    
+    func ClearFlagSuccess(_: NSDictionary?) {}
+    func ClearFlagError(error: NSError) {
+        YMAPIUtility.PrintErrorInfo(error)
     }
     
     func UpdateDeviceTokenSuccess(data: NSDictionary?) {
@@ -110,8 +120,7 @@ public class PageIndexActions: PageJumpActions {
     }
     
     public func MyWalletTouched(qr: UIGestureRecognizer) {
-//        print("MyWalletTouched")
-        DoJump(YMCommonStrings.CS_PAGE_WALLET_RECORD)
+        DoJump(YMCommonStrings.CS_PAGE_WALLET_INFO)
     }
     
     public func BroadcastTouched(qr: UIGestureRecognizer) {
@@ -124,6 +133,10 @@ public class PageIndexActions: PageJumpActions {
     
     func MsgCellTouched(qr: UIGestureRecognizer) {
         let sender = qr.view! as! YMTouchableView
+        let userData = sender.UserObjectData as! [String: AnyObject]
+        let msgId = YMVar.GetStringByKey(userData, key: "id")
+        
+        ClearReadFlag.YMSetMessageReaden(msgId)
         
         PageAppointmentDetailViewController.AppointmentID = sender.UserStringData
         DoJump(YMCommonStrings.CS_PAGE_APPOINTMENT_DETAIL_NAME)

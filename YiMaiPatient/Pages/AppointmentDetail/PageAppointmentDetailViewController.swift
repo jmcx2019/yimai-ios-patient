@@ -22,10 +22,12 @@ public class PageAppointmentDetailViewController: PageViewController {
     }
 
     override func PagePreRefresh() {
+        super.PagePreRefresh()
         BodyView?.GetDetail()
     }
 
     override func PageDisapeared() {
+        super.PageDisapeared()
         if(self.isMovingFromParentViewController()) {
             BodyView!.Clear()
             BodyView!.FullPageLoading.Hide()

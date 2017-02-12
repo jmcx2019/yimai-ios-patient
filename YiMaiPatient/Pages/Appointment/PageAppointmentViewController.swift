@@ -68,6 +68,8 @@ public class PageAppointmentViewController: PageViewController {
             BodyView?.Reload()
             PageAppointmentViewController.NewAppointment = false
         }
+        
+        Loading?.Hide()
     }
 
     public func VerifyInput(showAlarm: Bool = true) -> [String:String]? {

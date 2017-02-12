@@ -19,6 +19,7 @@ class PageWalletRecordActions: PageJumpActions {
     }
     
     func GetListSuccess(data: NSDictionary?) {
+        print(data)
         TargetView.LoadData(data!["data"] as! [[String: AnyObject]])
         TargetView.FullPageLoading.Hide()
     }

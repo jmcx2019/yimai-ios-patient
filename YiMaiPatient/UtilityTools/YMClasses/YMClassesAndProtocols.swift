@@ -33,6 +33,7 @@ public class StoryboardThatExist {
         YMCommonStrings.CS_PAGE_SHOW_WEB_PAGE: true,
         YMCommonStrings.CS_PAGE_ABOUT_YIMAI: true,
         YMCommonStrings.CS_PAGE_WALLET_RECORD: true,
+        YMCommonStrings.CS_PAGE_WALLET_INFO: true, 
         YMCommonStrings.CS_PAGE_FORGET_PASSWORD_NAME: true,
         YMCommonStrings.CS_PAGE_COMMON_TEXT_INPUT: true,
         YMCommonStrings.CS_PAGE_SELECT_FOCUSED_DEPT: true,

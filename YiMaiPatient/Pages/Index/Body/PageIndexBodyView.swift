@@ -107,6 +107,7 @@ public class PageIndexBodyView: PageBodyView {
         for msg in data {
             let cell = YMLayout.GetTouchableView(useObject: IndexActions!, useMethod: "MsgCellTouched:".Sel())
             cell.UserStringData = YMVar.GetStringByKey(msg, key: "appointment_id")
+            cell.UserObjectData = msg
             let labelText = YMVar.GetStringByKey(msg, key: "text")
             
             let label = YMLayout.GetNomalLabel(labelText, textColor: YMColors.FontGray, fontSize: 24.LayoutVal())
@@ -301,7 +302,7 @@ public class PageIndexBodyView: PageBodyView {
         }
         
         BuildMenuEntry(myDoc, text: "我的医生", iconName: "PageIndexSideBarMyDocIcon")
-        BuildMenuEntry(myWallet, text: "我的消费", iconName: "PageIndexSideBarMyWalletIcon")
+        BuildMenuEntry(myWallet, text: "我的钱包", iconName: "PageIndexSideBarMyWalletIcon")
         BuildMenuEntry(broadcast, text: "广播站", iconName: "PageIndexSideBarBroadcastIcon")
         BuildMenuEntry(about, text: "关于 “医者脉联-看专家”", iconName: "PageIndexSideBarAboutIcon")
 //        BuildMenuEntry(healthZone, text: "健康合作顾问专区", iconName: "PageIndexSideBarHealthZone")

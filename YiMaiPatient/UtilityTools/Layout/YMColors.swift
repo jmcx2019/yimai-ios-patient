@@ -50,6 +50,7 @@ public class YMColors {
     public static let PatientSearchBackgroundGray = UIColor(red: 0xf9.RGBVal(), green: 0xf9.RGBVal(), blue: 0xf9.RGBVal(), alpha: 1)
     public static let PatientGrayBorder = UIColor(red: 0xc8.RGBVal(), green: 0xc8.RGBVal(), blue: 0xc8.RGBVal(), alpha: 1)
     public static let PatientTabBackgroundGray = UIColor(red: 0xf0.RGBVal(), green: 0xf0.RGBVal(), blue: 0xf0.RGBVal(), alpha: 1)
+    public static let PatientChargeButtonBkg = UIColor(red: 0xff.RGBVal(), green: 0xa4.RGBVal(), blue: 0x01.RGBVal(), alpha: 1)
     
     public static let OpacityBlackMask = UIColor(red: 0x00.RGBVal(), green: 0x00.RGBVal(), blue: 0x00.RGBVal(), alpha: 0.7)
 

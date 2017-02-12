@@ -12,6 +12,8 @@ import Neon
 class PageMyAdmissionListBodyView: PageBodyView {
     var ListActions: PageMyAdmissionListActions!
     
+    var PrevData = [[String: AnyObject]]()
+    
     override func ViewLayout() {
         super.ViewLayout()
         
@@ -83,6 +85,8 @@ class PageMyAdmissionListBodyView: PageBodyView {
     
     func LoadData(data: [[String: AnyObject]]) {
         var prev: YMTouchableView? = nil
+        
+        PrevData = data
         
         YMLayout.ClearView(view: BodyView)
         BodyView.contentOffset = CGPoint(x: 0, y: -YMSizes.PageTopHeight)

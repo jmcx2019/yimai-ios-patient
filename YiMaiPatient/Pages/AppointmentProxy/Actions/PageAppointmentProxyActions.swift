@@ -57,7 +57,6 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     }
     
     public func UploadSuccess(data: NSDictionary?) {
-        print("image \(PhotoIndex) uploaded")
         PhotoIndex += 1
         if(PhotoIndex < TargetController!.BodyView!.PhotoArray.count) {
             ImageForUpload = TargetController!.BodyView!.PhotoArray[PhotoIndex]
@@ -66,7 +65,10 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
             TargetController?.Loading?.Hide()
             PhotoIndex = 0
             ImageForUpload = nil
-            PageAppointmentProxyViewController.NewAppointment = true
+            YMPageModalMessage.ShowNormalInfo("预约成功，请耐心等待代约回复。", nav: NavController!, callback: { (_) in
+                PageAppointmentProxyViewController.NewAppointment = true
+                self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            })
             DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
         }
     }
@@ -77,8 +79,10 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
         PhotoIndex = 0
         ImageForUpload = nil
 //        YMPageModalMessage.ShowErrorInfo("网络错误，请稍后再试！", nav: self.NavController!)
-        PageAppointmentProxyViewController.NewAppointment = true
-        DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+        YMPageModalMessage.ShowNormalInfo("预约成功，请耐心等待代约回复。", nav: NavController!, callback: { (_) in
+            PageAppointmentProxyViewController.NewAppointment = true
+            self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+        })
     }
     
     public func PhotoScrollLeft(sender: UIGestureRecognizer) {
@@ -126,15 +130,19 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     
     public func CreateAppointmentSuccess(data: NSDictionary?) {
 
-        AppointmentId = "\(data!["id"]!)"
+        let realData = data!["data"] as! [String: AnyObject]
+        
+        AppointmentId = "\(realData["id"]!)"
         if(PhotoIndex < TargetController!.BodyView!.PhotoArray.count) {
             ImageForUpload = TargetController!.BodyView!.PhotoArray[PhotoIndex]
             UploadApi?.YMUploadAddmissionPhotos(["id": AppointmentId], blockBuilder: self.UploadBlockBuilder)
         } else {
-            PageAppointmentProxyViewController.NewAppointment = true
-            DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            YMPageModalMessage.ShowNormalInfo("预约成功，请耐心等待代约回复。", nav: NavController!, callback: { (_) in
+                PageAppointmentProxyViewController.NewAppointment = true
+                self.TargetController?.BodyView?.FullPageLoading.Hide()
+                self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            })
         }
-        
     }
 
     public func CreateAppointmentError(err: NSError) {
@@ -164,6 +172,7 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     
     public func RequireHospitalBeginEdit(textField: YMTextField) -> Bool {
         TargetController?.BodyView?.AllInputResignFirstResponder()
+        PageCommonSearchViewController.InitPageTitle = "选择医院"
         PageCommonSearchViewController.SearchPageTypeName =
             YMCommonSearchPageStrings.CS_HOSPITAL_SEARCH_PAGE_TYPE
         DoJump(YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME)
@@ -172,6 +181,7 @@ public class PageAppointmentProxyActions: PageJumpActions, UINavigationControlle
     
     public func RequireDepartmentBeginEdit(textField: YMTextField) -> Bool {
         TargetController?.BodyView?.AllInputResignFirstResponder()
+        PageCommonSearchViewController.InitPageTitle = "选择科室"
         PageCommonSearchViewController.SearchPageTypeName =
             YMCommonSearchPageStrings.CS_DEPARTMENT_SEARCH_PAGE_TYPE
         DoJump(YMCommonStrings.CS_PAGE_COMMON_SEARCH_NAME)

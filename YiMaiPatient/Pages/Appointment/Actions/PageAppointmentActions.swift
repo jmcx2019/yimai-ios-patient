@@ -68,7 +68,9 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
             ImageForUpload = nil
             PhotoIndex = 0
             PageAppointmentViewController.ByPlatform = false
-            DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            YMPageModalMessage.ShowNormalInfo("预约成功。", nav: NavController!) { (_) in
+                self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            }
         }
     }
     
@@ -80,7 +82,9 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
         ImageForUpload = nil
         PhotoIndex = 0
         PageAppointmentViewController.ByPlatform = false
-        DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+        YMPageModalMessage.ShowNormalInfo("预约成功。", nav: NavController!) { (_) in
+            self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+        }
     }
     
     public func PhotoScrollLeft(sender: UIGestureRecognizer) {
@@ -127,14 +131,17 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
     }
     
     public func CreateAppointmentSuccess(data: NSDictionary?) {
-
-        AppointmentId = "\(data!["id"]!)"
+        let realData = data!["data"] as! [String: AnyObject]
+        AppointmentId = "\(realData["id"]!)"
         if(PhotoIndex < TargetController!.BodyView!.PhotoArray.count) {
             ImageForUpload = TargetController!.BodyView!.PhotoArray[PhotoIndex]
             UploadApi?.YMUploadAddmissionPhotos(["id": AppointmentId], blockBuilder: self.UploadBlockBuilder)
         } else {
             PageAppointmentViewController.NewAppointment = true
-            DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            YMPageModalMessage.ShowNormalInfo("预约成功。", nav: NavController!) { (_) in
+                self.DoJump(YMCommonStrings.CS_PAGE_INDEX_NAME)
+            }
+
         }
         
     }
@@ -147,8 +154,7 @@ public class PageAppointmentActions: PageJumpActions, UINavigationControllerDele
     
     public func DoAppointment(_: YMButton) {
         var uploadData = TargetController!.VerifyInput()
-        
-        print(PageAppointmentViewController.SelectedDoctor)
+        print(uploadData)
         if(nil == uploadData) {
             return
         }

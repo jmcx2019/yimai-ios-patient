@@ -47,8 +47,9 @@ public class YMCommonStrings {
     public static let CS_PAGE_SYS_BROADCAST = "PageSYSBroadcast"
     public static let CS_PAGE_ABOUT_YIMAI = "PageAboutYiMai"
     
-    public static let CS_PAGE_WALLET_INFO = "PageWalletInfo"
+    public static let CS_PAGE_WALLET_INFO = "PageMyWalletInfo"
     public static let CS_PAGE_WALLET_RECORD = "PageWalletRecord"
+    
     
     public static let CS_PAGE_FORGET_PASSWORD_NAME = "PageForgetPassword"
     
