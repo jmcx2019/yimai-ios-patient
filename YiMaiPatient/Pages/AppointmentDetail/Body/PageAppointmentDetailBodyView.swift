@@ -54,17 +54,17 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         FullPageLoading?.Show()
     }
     
-    func DrawCloseBtn() {
-        CloseBtn.setTitle("结束本次约诊", forState: UIControlState.Normal)
-        CloseBtn.setTitleColor(YMColors.White, forState: UIControlState.Normal)
-        CloseBtn.titleLabel?.font = YMFonts.YMDefaultFont(32.LayoutVal())
-        CloseBtn.backgroundColor = YMColors.PatientFontGreen
+    func DrawCloseBtn(topView: UIView) {
+        CloseBtn.setTitle("取消约诊", forState: UIControlState.Normal)
+        CloseBtn.setTitleColor(YMColors.FontGray, forState: UIControlState.Normal)
+        CloseBtn.titleLabel?.font = YMFonts.YMDefaultFont(26.LayoutVal())
+        CloseBtn.sizeToFit()
+
         CloseBtn.hidden = true
 
-        ParentView!.addSubview(CloseBtn)
+        topView.addSubview(CloseBtn)
+        CloseBtn.anchorInCorner(Corner.BottomRight, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(), width: CloseBtn.width, height: CloseBtn.height)
         CloseBtn.addTarget(DetailActions, action: "CloseBtnTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
-        CloseBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
-
     }
     
     func DrawShareButton(topView: UIView) {
@@ -77,9 +77,11 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         ShareBtn.titleLabel?.font = YMFonts.YMDefaultFont(26.LayoutVal())
         ShareBtn.sizeToFit()
         
+        ShareBtn.hidden = true
+
+        
         topView.addSubview(ShareBtn)
         ShareBtn.anchorInCorner(Corner.BottomRight, xPad: 40.LayoutVal(), yPad: 20.LayoutVal(), width: ShareBtn.width, height: ShareBtn.height)
-        
         ShareBtn.addTarget(DetailActions, action: "ShareTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
     }
 
@@ -215,8 +217,6 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         let head = data["head_url"] as? String
         if(nil != head) {
-            print("doctor : " + head!)
-
             YMLayout.LoadImageFromServer(headImage, url: head!, fullUrl: nil, makeItRound: true)
         }
 
@@ -232,7 +232,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 12.LayoutVal(),
                       width: docName.width, height: docName.height)
         
-        jobTitle.text = YMVar.GetStringByKey(data, key: "name", defStr: "医生") //"面诊医生"
+        jobTitle.text = YMVar.GetStringByKey(data, key: "job_title", defStr: "医生") //"面诊医生"
         jobTitle.textColor = YMColors.FontGray
         jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
         jobTitle.sizeToFit()
@@ -313,7 +313,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 12.LayoutVal(),
                       width: docName.width, height: docName.height)
         
-        jobTitle.text = YMVar.GetStringByKey(data, key: "name", defStr: "医生")//"代约医生"
+        jobTitle.text = YMVar.GetStringByKey(data, key: "job_title", defStr: "医生")//"代约医生"
         jobTitle.textColor = YMColors.FontGray
         jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
         jobTitle.sizeToFit()
@@ -392,7 +392,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
                       padding: 12.LayoutVal(),
                       width: docName.width, height: docName.height)
         
-        jobTitle.text = YMVar.GetStringByKey(data, key: "name", defStr: "医生")//"面诊医生"
+        jobTitle.text = YMVar.GetStringByKey(data, key: "job_title", defStr: "医生")//"面诊医生"
         jobTitle.textColor = YMColors.FontGray
         jobTitle.font = YMFonts.YMDefaultFont(20.LayoutVal())
         jobTitle.sizeToFit()
@@ -636,6 +636,11 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         
         img.kf_setImageWithURL(url, placeholderImage: nil, optionsInfo: nil, progressBlock: nil,  completionHandler: { (image, error, cacheType, imageURL) in
             if(nil != image) {
+                let imgIdx = Int(img.UserStringData)
+                if(nil == imgIdx) {
+                    return
+                }
+                self.ImageList[imgIdx!] = UIImageView(image: image!)
                 img.image = Toucan(image: image!)
                     .resize(CGSize(width: img.width, height: img.height), fitMode: Toucan.Resize.FitMode.Crop).image
             }
@@ -992,8 +997,14 @@ public class PageAppointmentDetailBodyView: PageBodyView {
             ConfirmBtn.anchorToEdge(Edge.Bottom, padding: 0, width: YMSizes.PageWidth, height: 98.LayoutVal())
             ConfirmBtn.setTitle("确认改期", forState: UIControlState.Normal)
             ConfirmBtn.addTarget(DetailActions, action: "ConfirmTouched:".Sel(), forControlEvents: UIControlEvents.TouchUpInside)
-        } else if(status.containsString("wait")) {
+        }
+        
+        if(status.containsString("wait")) {
             CloseBtn.hidden = false
+            ShareBtn.hidden = true
+        } else {
+            ShareBtn.hidden = false
+            CloseBtn.hidden = true
         }
     }
 
@@ -1041,7 +1052,7 @@ public class PageAppointmentDetailBodyView: PageBodyView {
         YMLayout.SetVScrollViewContentSize(BodyView, lastSubView: TimeLinePanel, padding: 128.LayoutVal())
         FullPageLoading?.Hide()
 
-        DrawCloseBtn()
+//        DrawCloseBtn()
         DrawBottom(otherInfo)
     }
     

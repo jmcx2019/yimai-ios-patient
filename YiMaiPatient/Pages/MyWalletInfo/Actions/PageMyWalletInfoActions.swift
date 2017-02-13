@@ -125,7 +125,7 @@ class PageMyWalletInfoActions: PageJumpActions {
     
     func DoCharge(value: Int) {
         TargetView.FullPageLoading.Show()
-        ChargeApi.YMWalletRecharge("\(1)")
+        ChargeApi.YMWalletRecharge("\(value)")
     }
     
     func Charge(_: YMButton) {

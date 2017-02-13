@@ -19,10 +19,14 @@ public class PageAppointmentDetailViewController: PageViewController {
         TopView = PageCommonTopView(parentView: self.SelfView!, titleString: "约诊详细信息", navController: self.NavController!)
         
         BodyView?.DrawShareButton(TopView!.TopViewPanel)
+        BodyView?.DrawCloseBtn(TopView!.TopViewPanel)
     }
 
     override func PagePreRefresh() {
         super.PagePreRefresh()
+
+        BodyView?.CloseBtn.hidden = true
+        BodyView?.ShareBtn.hidden = true
         BodyView?.GetDetail()
     }
 

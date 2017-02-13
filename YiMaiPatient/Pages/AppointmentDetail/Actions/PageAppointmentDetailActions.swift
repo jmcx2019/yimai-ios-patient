@@ -200,7 +200,7 @@ public class PageAppointmentDetailActions: PageJumpActions, ImageProvider {
     
     func CloseBtnTouched(sender: YMButton) {
 //        /appointment/cancel
-        YMPageModalMessage.ShowConfirmInfo("确定结束本次约诊？", nav: NavController!, ok: { (_) in
+        YMPageModalMessage.ShowConfirmInfo("确定取消本次约诊？", nav: NavController!, ok: { (_) in
             self.TargetView?.FullPageLoading.Show()
             self.CloseApi.YMCloseAppointment(PageAppointmentDetailViewController.AppointmentID)
         }, cancel: nil)

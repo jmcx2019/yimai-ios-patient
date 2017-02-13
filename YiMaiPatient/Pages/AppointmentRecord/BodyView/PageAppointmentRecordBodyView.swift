@@ -304,11 +304,11 @@ class PageAppointmentRecordBodyView: PageBodyView {
     }
     
     func Reload() {
-        YMLayout.ClearView(view: ListPanel)
-        ResetAllTab()
-        ListPanel.align(Align.UnderMatchingLeft, relativeTo: TabBarPanel, padding: 0, width: YMSizes.PageWidth, height: 0)
-        FullPageLoading.Show()
-        AppointmentList = nil
+//        YMLayout.ClearView(view: ListPanel)
+//        ResetAllTab()
+//        ListPanel.align(Align.UnderMatchingLeft, relativeTo: TabBarPanel, padding: 0, width: YMSizes.PageWidth, height: 0)
+//        FullPageLoading.Show()
+//        AppointmentList = nil
         RecordActions.AppointmentApi.YMGetAppointmentList()
     }
 }

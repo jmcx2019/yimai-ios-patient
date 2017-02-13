@@ -31,13 +31,13 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
         
         info["name"] = PatientNameInput!.text
         info["phone"] = PatientPhoneInput!.text
-        info["gender"] = PatientGenderInput!.text
+        info["sex"] = PatientGenderInput!.text
         info["age"] = PatientAgeInput!.text
         
         if("男" == info["gender"]){
-            info["gender"] = "1"
+            info["sex"] = "1"
         } else {
-            info["gender"] = "0"
+            info["sex"] = "0"
         }
         
         return info
@@ -61,12 +61,14 @@ public class PageAppointmentPatientBasicInfoBodyView: PageBodyView{
                                    handler: {
                                     action in
                                     self.PatientGenderInput?.text = "男"
+                                    self.PatientAgeInput?.becomeFirstResponder()
         })
         
         let goOn = UIAlertAction(title: "女", style: .Default,
                                  handler: {
                                     action in
                                     self.PatientGenderInput?.text = "女"
+                                    self.PatientAgeInput?.becomeFirstResponder()
 
         })
         

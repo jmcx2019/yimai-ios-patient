@@ -30,6 +30,8 @@ class PageAppointmentRecordActions: PageJumpActions {
         }
         
         TargetView.AppointmentList = data!["data"] as? [String: [[String: AnyObject]]]
+        print(TargetView.AppointmentList)
+
         TargetView.ShowWaitForConfirm()
         TargetView.FullPageLoading.Hide()
     }
